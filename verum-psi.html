@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verum Psi — Escalas clínicas y forenses para Android | Ecosistema Verum</title>
+<meta name="description" content="Verum Psi: más de 110 escalas y cuestionarios estandarizados de psicología clínica y forense, grabadora de sesiones, registro clínico y firma con verificación de identidad.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<defs>
+
+<!-- Documento / PDF -->
+<symbol id="i-documento" viewBox="0 0 24 24">
+  <path d="M7 3.5h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-16a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M14 3.5v4h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <line x1="9" y1="13" x2="15" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="9" y1="16.5" x2="15" y2="16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+</symbol>
+
+<!-- Micrófono -->
+<symbol id="i-microfono" viewBox="0 0 24 24">
+  <rect x="9.3" y="3" width="5.4" height="10" rx="2.7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <path d="M6 11v1a6 6 0 0 0 12 0v-1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="12" y1="18" x2="12" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="8.5" y1="21" x2="15.5" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</symbol>
+
+<!-- Lupa / buscar -->
+<symbol id="i-lupa" viewBox="0 0 24 24">
+  <circle cx="10.8" cy="10.8" r="6.3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <line x1="15.3" y1="15.3" x2="20.5" y2="20.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+</symbol>
+
+<!-- Cámara / foto -->
+<symbol id="i-camara" viewBox="0 0 24 24">
+  <path d="M4 8h3.2l1.3-2h7l1.3 2H20v11H4V8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <circle cx="12" cy="13.5" r="3.3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+</symbol>
+
+<!-- Candado con llave / confidencialidad -->
+<symbol id="i-confidencial" viewBox="0 0 24 24">
+  <rect x="5.5" y="11" width="13" height="9.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <path d="M8 11V7.5a4 4 0 0 1 8 0V11" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <circle cx="12" cy="15.2" r="1.4" fill="none" stroke="currentColor" stroke-width="1.3"/>
+  <line x1="12" y1="16.6" x2="12" y2="18.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+</symbol>
+
+<!-- Portapapeles / historia clínica -->
+<symbol id="i-portapapeles" viewBox="0 0 24 24">
+  <rect x="5.5" y="4.5" width="13" height="16.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <rect x="9" y="3" width="6" height="3" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="8.3" y1="11" x2="15.7" y2="11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="8.3" y1="14.2" x2="15.7" y2="14.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="8.3" y1="17.4" x2="12.5" y2="17.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+</symbol>
+
+<!-- Balanza / justicia -->
+<symbol id="i-balanza" viewBox="0 0 24 24">
+  <line x1="12" y1="3.5" x2="12" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="5" y1="7" x2="19" y2="7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M5 7 2.3 12.2a2.9 2.9 0 0 0 5.4 0L5 7Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+  <path d="M19 7 16.3 12.2a2.9 2.9 0 0 0 5.4 0L19 7Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+  <line x1="8.5" y1="20.5" x2="15.5" y2="20.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</symbol>
+
+<!-- Alerta -->
+<symbol id="i-alerta" viewBox="0 0 24 24">
+  <path d="M12 3.5 21.5 20h-19L12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <line x1="12" y1="10" x2="12" y2="14.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="12" y1="17.1" x2="12" y2="17.1" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+</symbol>
+
+<!-- Corazón / bienestar -->
+<symbol id="i-vitales" viewBox="0 0 24 24">
+  <path d="M12 19.5C6 15.6 3 12.4 3 8.8 3 6.2 5 4.3 7.5 4.3c1.7 0 3.2 1 4.5 2.6 1.3-1.6 2.8-2.6 4.5-2.6C19 4.3 21 6.2 21 8.8c0 3.6-3 6.8-9 10.7Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M5.5 11h2.7l1.4-2.6 1.8 4.6 1.3-2h5.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+</symbol>
+
+<!-- Ajustes / configuración -->
+<symbol id="i-ajustes" viewBox="0 0 24 24">
+  <circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <path d="M12 3.5v2.3M12 18.2v2.3M20.5 12h-2.3M5.8 12H3.5M17.8 6.2l-1.6 1.6M7.8 16.2l-1.6 1.6M17.8 17.8l-1.6-1.6M7.8 7.8 6.2 6.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</symbol>
+
+</defs>
+</svg>
+
+<header class="cabecera">
+<div class="contenedor cabecera-fila">
+    <a href="index.html" class="marca">
+        <img src="img/logo-verumia.png" alt="Ecosistema Verum">
+        <span class="marca-texto">
+            <strong>Ecosistema Verum</strong>
+            <span>EDM Legal Especializados</span>
+        </span>
+    </a>
+    <button class="nav-boton" onclick="document.getElementById('nav').classList.toggle('abierto')" aria-label="Menú">☰</button>
+    <nav class="nav" id="nav">
+        <a href="index.html">Inicio</a>
+        <a href="verumia.html">VerumIA</a>
+        <a href="lex-verum-pro.html">Lex Verum Pro</a>
+        <a href="verum-med.html">VerumMed</a>
+        <a href="verum-status.html">Verum Status</a>
+        <a href="verum-psi.html" class="activo">Verum Psi</a>
+        <a href="libro.html">La Ingeniería de la Verdad</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="soporte.html">Soporte</a>
+    </nav>
+</div>
+</header>
+
+<section class="portada">
+<div class="contenedor">
+    <span class="portada-etiqueta">Android · En pruebas cerradas</span>
+    <div class="portada-encabezado">
+        <img src="img/icono-verum-psi-96.png" alt="" class="icono-app-portada">
+        <h1><em>Verum Psi</em></h1>
+    </div>
+    <p>Más de 110 escalas y cuestionarios estandarizados de psicología clínica y forense, con grabadora de sesiones, registro clínico y firma con verificación de identidad — todo en el bolsillo del profesional.</p>
+    <div class="botones">
+        <a href="soporte.html" class="boton boton-oro">Avísame del lanzamiento</a>
+        <a href="#funciones" class="boton boton-linea">Ver funciones →</a>
+    </div>
+</div>
+</section>
+
+<section class="seccion seccion-clara" id="funciones">
+<div class="contenedor">
+    <div class="seccion-titulo">
+        <div class="linea-oro"></div>
+        <h2>Un banco de más de 110 escalas</h2>
+        <p>Instrumentos estandarizados organizados por área, listos para aplicar, calificar y anexar al expediente.</p>
+    </div>
+
+    <div class="rejilla rejilla-3">
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-balanza"></use></svg></div>
+            <h3>Evaluación forense</h3>
+            <p>Riesgo de violencia (HCR-20), detección de simulación de síntomas (M-FAST), evaluación de custodia (Escalas Bricklin), riesgo suicida y guía de entrevista forense.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-vitales"></use></svg></div>
+            <h3>Clínica general</h3>
+            <p>Ansiedad (Hamilton, social), depresión, trauma y TEPT, trastorno bipolar, TDAH, espectro autista, pánico, fobias, somatización y deterioro cognitivo.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-portapapeles"></use></svg></div>
+            <h3>Trastornos de personalidad</h3>
+            <p>Personalidad límite, dependiente, evitativa y obsesiva, narcisismo (NPI), psicopatía, y mecanismos de defensa (escisión, formación reactiva, sublimación).</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-alerta"></use></svg></div>
+            <h3>Riesgo y violencia</h3>
+            <p>Violencia de género, maltrato infantil, acoso escolar y callejero, ciberacoso, acoso laboral (mobbing NAQ-R) y abuso psicológico.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-lupa"></use></svg></div>
+            <h3>Adicciones y sueño</h3>
+            <p>Consumo de sustancias (DAST-10), ludopatía (SOGS), nicotina (Fagerström), adicciones conductuales, insomnio y apnea del sueño (STOP-BANG).</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-ajustes"></use></svg></div>
+            <h3>Laboral y bienestar</h3>
+            <p>Clima organizacional, engagement, síndrome del impostor, liderazgo, calidad de vida (SF-36), resiliencia, autoestima y sentido de vida.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="seccion">
+<div class="contenedor">
+    <div class="seccion-titulo">
+        <div class="linea-oro"></div>
+        <h2>Herramientas del expediente</h2>
+        <p>La sesión, la evaluación y la firma, en el mismo lugar.</p>
+    </div>
+
+    <div class="rejilla rejilla-3">
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-microfono"></use></svg></div>
+            <h3>Grabadora de sesiones</h3>
+            <p>Graba entrevistas y sesiones clínicas cuando tú lo decidas — nunca en segundo plano ni sin tu intervención.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-portapapeles"></use></svg></div>
+            <h3>Registro clínico</h3>
+            <p>Organiza cada caso con sus escalas aplicadas, resultados y archivos asociados.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-documento"></use></svg></div>
+            <h3>Reporte y archivos</h3>
+            <p>Gestor de archivos del expediente y generación de reporte con los resultados del banco de escalas.</p>
+        </div>
+    </div>
+
+    <div class="rejilla rejilla-2" style="margin-top:24px">
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-camara"></use></svg></div>
+            <h3>Verificación de identidad al firmar</h3>
+            <p>Antes de cerrar un registro clínico, la aplicación exige una foto de verificación de identidad del profesional, igual que en VerumMed.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-confidencial"></use></svg></div>
+            <h3>Autenticación biométrica</h3>
+            <p>El acceso a las funciones clínicas puede protegerse con huella o reconocimiento facial del propio dispositivo.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="seccion seccion-clara">
+<div class="contenedor">
+    <div class="documento">
+        <h2>Información legal y responsabilidad</h2>
+        <p>Antes de usar la aplicación, el profesional debe leer y aceptar expresamente:</p>
+        <ol>
+            <li><strong>Responsabilidad de los datos:</strong> quien diligencie los datos es el único responsable de la custodia, archivo, integridad y privacidad de la información clínica y personal contenida en la aplicación.</li>
+            <li><strong>Veracidad de la información:</strong> los resultados generados por las herramientas dependen exclusivamente de la veracidad y precisión de los datos registrados por el usuario.</li>
+            <li><strong>Uso profesional:</strong> esta aplicación es una herramienta de apoyo técnico. El juicio clínico final y las conclusiones periciales son responsabilidad exclusiva del profesional que firma el reporte.</li>
+            <li><strong>Reserva legal:</strong> el usuario se compromete a cumplir con las leyes de protección de datos personales y secreto profesional vigentes en su jurisdicción.</li>
+        </ol>
+        <p style="margin-bottom:0"><a href="privacidad-verum-psi.html">Leer la política de privacidad completa →</a></p>
+    </div>
+
+    <div style="text-align:center;margin-top:38px">
+        <a href="soporte.html" class="boton boton-oro">Quiero saber cuándo sale</a>
+    </div>
+</div>
+</section>
+
+<footer class="pie">
+<div class="contenedor">
+    <div class="pie-rejilla">
+        <div>
+            <h4>Ecosistema Verum</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Perfil profesional</a></li>
+                <li><a href="libro.html">La Ingeniería de la Verdad</a></li>
+                <li><a href="soporte.html">Soporte y contacto</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Aplicaciones</h4>
+            <ul>
+                <li><a href="verumia.html">VerumIA</a></li>
+                <li><a href="lex-verum-pro.html">Lex Verum Pro</a></li>
+                <li><a href="verum-med.html">VerumMed</a></li>
+                <li><a href="verum-status.html">Verum Status</a></li>
+                <li><a href="verum-psi.html">Verum Psi</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="privacidad-lex-verum-pro.html">Privacidad — Lex Verum Pro</a></li>
+                <li><a href="privacidad-verum-status.html">Privacidad — Verum Status</a></li>
+                <li><a href="privacidad-verum-psi.html">Privacidad — Verum Psi</a></li>
+                <li><a href="privacidad-verumia.html">Privacidad — VerumIA</a></li>
+                <li><a href="terminos.html">Términos de uso</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contacto</h4>
+            <ul>
+                <li><a href="mailto:edmlegal.especializados@gmail.com">edmlegal.especializados@gmail.com</a></li>
+                <li><a href="https://wa.me/573202413579" target="_blank" rel="noopener">WhatsApp +57 320 241 3579</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="pie-abajo">
+        <span>© 2026 Ecosistema Verum / EDM Legal Especializados SAS. Todos los derechos reservados.</span>
+        <span>Colombia</span>
+    </div>
+</div>
+</footer>
+
+</body>
+</html>
