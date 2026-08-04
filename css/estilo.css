@@ -294,6 +294,27 @@ a:hover{text-decoration:underline}
     border-left:4px solid var(--oro);
     border-radius:10px;padding:18px 22px;margin:22px 0;
 }
+/*==============================================================*/
+/* CAPTURA DE PANTALLA EN MARCO DE NAVEGADOR */
+/*==============================================================*/
+
+.mockup-navegador{
+    max-width:980px;margin:0 auto;border-radius:14px;overflow:hidden;
+    box-shadow:0 24px 60px rgba(11,31,59,.28);
+    border:1px solid var(--borde);background:var(--superficie);
+}
+
+.mockup-barra{
+    background:#e4e9f1;padding:11px 16px;
+    display:flex;align-items:center;gap:8px;
+}
+.mockup-barra span{width:11px;height:11px;border-radius:50%;display:block}
+.mockup-barra span:nth-child(1){background:#ec6a5e}
+.mockup-barra span:nth-child(2){background:#f4bf4f}
+.mockup-barra span:nth-child(3){background:#61c454}
+
+.mockup-navegador img{display:block;width:100%;height:auto}
+
 .aviso strong{color:var(--marca-oscuro);display:block;margin-bottom:5px}
 
 /* Ícono de línea en encabezados (documento h3, aviso strong) */
