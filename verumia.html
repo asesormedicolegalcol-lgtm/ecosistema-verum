@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VerumIA — Asistente jurídico especializado para el despacho | Ecosistema Verum</title>
+<meta name="description" content="VerumIA: expedientes, cronologías automáticas, análisis médico-legal con IA, dictámenes, demandas, PCL, audiencias y facturación. Funciona en tu propio equipo, sin servidor externo.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<defs>
+
+<!-- Carpeta / expediente -->
+<symbol id="i-carpeta" viewBox="0 0 24 24">
+  <path d="M3 6.5c0-.83.67-1.5 1.5-1.5H10l2 2h7.5c.83 0 1.5.67 1.5 1.5v9c0 .83-.67 1.5-1.5 1.5h-15C3.67 19 3 18.33 3 17.5v-11Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+</symbol>
+
+<!-- Documento / PDF -->
+<symbol id="i-documento" viewBox="0 0 24 24">
+  <path d="M7 3.5h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-16a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M14 3.5v4h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <line x1="9" y1="13" x2="15" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="9" y1="16.5" x2="15" y2="16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+</symbol>
+
+<!-- Reloj / cronología -->
+<symbol id="i-reloj" viewBox="0 0 24 24">
+  <circle cx="12" cy="12.5" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <path d="M12 8v5l3.4 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="9.5" y1="2.5" x2="14.5" y2="2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</symbol>
+
+<!-- IA / red neuronal -->
+<symbol id="i-ia" viewBox="0 0 24 24">
+  <circle cx="6" cy="7" r="1.9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="6" cy="17" r="1.9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="18" cy="12" r="1.9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="12" cy="12" r="2.3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <line x1="7.7" y1="8.1" x2="10.2" y2="10.4" stroke="currentColor" stroke-width="1.4"/>
+  <line x1="7.7" y1="15.9" x2="10.2" y2="13.6" stroke="currentColor" stroke-width="1.4"/>
+  <line x1="14.3" y1="12" x2="16.1" y2="12" stroke="currentColor" stroke-width="1.4"/>
+</symbol>
+
+<!-- Contradictor / Abogado del Diablo -->
+<symbol id="i-contradictor" viewBox="0 0 24 24">
+  <path d="M7 4.5 4 12l3 7.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 4.5 20 12l-3 7.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="10.5" y1="12" x2="13.5" y2="12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+</symbol>
+
+<!-- Balanza / justicia -->
+<symbol id="i-balanza" viewBox="0 0 24 24">
+  <line x1="12" y1="3.5" x2="12" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="5" y1="7" x2="19" y2="7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M5 7 2.3 12.2a2.9 2.9 0 0 0 5.4 0L5 7Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+  <path d="M19 7 16.3 12.2a2.9 2.9 0 0 0 5.4 0L19 7Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+  <line x1="8.5" y1="20.5" x2="15.5" y2="20.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</symbol>
+
+<!-- Micrófono -->
+<symbol id="i-microfono" viewBox="0 0 24 24">
+  <rect x="9.3" y="3" width="5.4" height="10" rx="2.7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <path d="M6 11v1a6 6 0 0 0 12 0v-1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="12" y1="18" x2="12" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="8.5" y1="21" x2="15.5" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</symbol>
+
+<!-- Campana / alertas -->
+<symbol id="i-campana" viewBox="0 0 24 24">
+  <path d="M6 16v-4.5a6 6 0 0 1 12 0V16l1.6 2.2H4.4L6 16Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M10 20a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</symbol>
+
+<!-- Calendario -->
+<symbol id="i-calendario" viewBox="0 0 24 24">
+  <rect x="4" y="5.5" width="16" height="14.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <line x1="4" y1="9.7" x2="20" y2="9.7" stroke="currentColor" stroke-width="1.6"/>
+  <line x1="8" y1="3.3" x2="8" y2="7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="16" y1="3.3" x2="16" y2="7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="8" y1="13.5" x2="8" y2="13.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="12" y1="13.5" x2="12" y2="13.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="16" y1="13.5" x2="16" y2="13.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="8" y1="16.7" x2="8" y2="16.7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="12" y1="16.7" x2="12" y2="16.7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+</symbol>
+
+<!-- Moneda / cobros -->
+<symbol id="i-moneda" viewBox="0 0 24 24">
+  <circle cx="12" cy="12" r="8.3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <path d="M14.3 9.3a2.7 2.7 0 0 0-2.3-1.1c-1.7 0-3 1.3-3 3.8s1.3 3.8 3 3.8c1 0 1.8-.4 2.3-1.1" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="8" y1="10.3" x2="12.5" y2="10.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="8" y1="13.2" x2="12.5" y2="13.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+</symbol>
+
+<!-- Nota / minuta -->
+<symbol id="i-nota" viewBox="0 0 24 24">
+  <path d="M6 4.5h9l3 3v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-14a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M9.5 14.8 15.3 9l1.7 1.7-5.8 5.8H9.5v-1.7Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+</symbol>
+
+<!-- Enlace / Red de Socios -->
+<symbol id="i-enlace" viewBox="0 0 24 24">
+  <circle cx="8.5" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <circle cx="15.5" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+</symbol>
+
+<!-- Biblioteca / libros -->
+<symbol id="i-biblioteca" viewBox="0 0 24 24">
+  <line x1="4" y1="20" x2="20" y2="20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <rect x="5" y="6" width="3.4" height="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <rect x="9.4" y="4" width="3.4" height="16" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <rect x="13.8" y="8" width="3.4" height="12" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <path d="M18.2 20 17 8.3l3.3-.5 1.2 11.7-3.3.5Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+</symbol>
+
+<!-- Disco / respaldo -->
+<symbol id="i-disco" viewBox="0 0 24 24">
+  <path d="M5 4h11l3 3v13H5V4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <rect x="8" y="4" width="7" height="5.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <rect x="7.5" y="13.5" width="9" height="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+</symbol>
+
+<!-- Usuarios -->
+<symbol id="i-usuarios" viewBox="0 0 24 24">
+  <circle cx="9" cy="8.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <path d="M3.5 19c.6-3.4 2.9-5.2 5.5-5.2s4.9 1.8 5.5 5.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="16.3" cy="9.3" r="2.3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <path d="M15 14.3c2.1.2 3.9 1.7 4.4 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+</symbol>
+
+<!-- Lupa / buscar -->
+<symbol id="i-lupa" viewBox="0 0 24 24">
+  <circle cx="10.8" cy="10.8" r="6.3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <line x1="15.3" y1="15.3" x2="20.5" y2="20.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+</symbol>
+
+<!-- Sincronizar -->
+<symbol id="i-sincronizar" viewBox="0 0 24 24">
+  <path d="M5 11a7 7 0 0 1 12.2-4.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M17.3 3.7v3.4h-3.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M19 13a7 7 0 0 1-12.2 4.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M6.7 20.3v-3.4h3.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+
+<!-- Notificación push -->
+<symbol id="i-push" viewBox="0 0 24 24">
+  <rect x="7" y="2.5" width="10" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <line x1="10" y1="18.3" x2="14" y2="18.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="17" cy="6.5" r="2.6" fill="var(--fondo-icono, #faf1d9)" stroke="currentColor" stroke-width="1.4"/>
+  <line x1="17" y1="5.3" x2="17" y2="6.9" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+  <line x1="17" y1="7.7" x2="17" y2="7.7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+</symbol>
+
+<!-- Calculadora -->
+<symbol id="i-calculadora" viewBox="0 0 24 24">
+  <rect x="5.5" y="3" width="13" height="18" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <rect x="7.7" y="5.3" width="8.6" height="3.6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <line x1="8.3" y1="12.3" x2="8.3" y2="12.3" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+  <line x1="12" y1="12.3" x2="12" y2="12.3" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+  <line x1="15.7" y1="12.3" x2="15.7" y2="12.3" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+  <line x1="8.3" y1="15.7" x2="8.3" y2="15.7" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+  <line x1="12" y1="15.7" x2="12" y2="15.7" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+  <line x1="15.7" y1="15.7" x2="15.7" y2="15.7" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+  <line x1="8.3" y1="19" x2="8.3" y2="19" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+  <line x1="12" y1="19" x2="12" y2="19" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+  <line x1="15.7" y1="19" x2="15.7" y2="19" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+</symbol>
+
+<!-- Video / soporte audiovisual -->
+<symbol id="i-video" viewBox="0 0 24 24">
+  <rect x="3" y="6" width="13" height="12" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <path d="M16 10.3 21 7.5v9L16 13.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+</symbol>
+
+<!-- Descarga -->
+<symbol id="i-descarga" viewBox="0 0 24 24">
+  <path d="M12 3.5v11.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M7.5 11 12 15.5 16.5 11" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="5" y1="20" x2="19" y2="20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+</symbol>
+
+<!-- Candado con llave / confidencialidad -->
+<symbol id="i-confidencial" viewBox="0 0 24 24">
+  <rect x="5.5" y="11" width="13" height="9.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <path d="M8 11V7.5a4 4 0 0 1 8 0V11" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <circle cx="12" cy="15.2" r="1.4" fill="none" stroke="currentColor" stroke-width="1.3"/>
+  <line x1="12" y1="16.6" x2="12" y2="18.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+</symbol>
+
+<!-- Libro cerrado -->
+<symbol id="i-libro" viewBox="0 0 24 24">
+  <path d="M4 5.3c2.4-1.1 5.4-1.1 8 0v14c-2.6-1.1-5.6-1.1-8 0v-14Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M20 5.3c-2.4-1.1-5.4-1.1-8 0v14c2.6-1.1 5.6-1.1 8 0v-14Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+</symbol>
+
+<!-- Birrete / docencia -->
+<symbol id="i-docencia" viewBox="0 0 24 24">
+  <path d="M12 5 2.5 9.3 12 13.6l9.5-4.3L12 5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M6.5 11.4v4.4c0 1.6 2.5 2.9 5.5 2.9s5.5-1.3 5.5-2.9v-4.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+  <line x1="21.5" y1="9.3" x2="21.5" y2="15.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+</symbol>
+
+<!-- Microscopio / ciencias forenses -->
+<symbol id="i-microscopio" viewBox="0 0 24 24">
+  <line x1="6" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M11 21c-3-.3-4.7-2-4.7-4.6 0-3 2.6-4.7 5-6.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M10.6 8.3 15 3.5l2 1.9-4.2 4.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <circle cx="9.7" cy="16.3" r="2.1" fill="none" stroke="currentColor" stroke-width="1.4"/>
+  <line x1="4.5" y1="12.5" x2="8" y2="15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+</symbol>
+
+<!-- Estetoscopio / clínica -->
+<symbol id="i-estetoscopio" viewBox="0 0 24 24">
+  <path d="M7 3.5v6.3a5 5 0 0 0 10 0V3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="7" y1="3.5" x2="9" y2="3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="15" y1="3.5" x2="17" y2="3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M12 14.8v2.7a4 4 0 0 0 8 0v-1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="20" cy="16" r="1.7" fill="none" stroke="currentColor" stroke-width="1.4"/>
+</symbol>
+
+<!-- Correo -->
+<symbol id="i-correo" viewBox="0 0 24 24">
+  <rect x="3.5" y="5.5" width="17" height="13" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <path d="M4.2 6.3 12 12.3l7.8-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+</symbol>
+
+<!-- Chat / mensaje -->
+<symbol id="i-chat" viewBox="0 0 24 24">
+  <path d="M4 5.5h16v10.5H9l-4 3.6v-3.6H4V5.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <line x1="7.5" y1="9.3" x2="16.5" y2="9.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+  <line x1="7.5" y1="12.3" x2="13.5" y2="12.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+</symbol>
+
+<!-- Cámara / foto -->
+<symbol id="i-camara" viewBox="0 0 24 24">
+  <path d="M4 8h3.2l1.3-2h7l1.3 2H20v11H4V8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <circle cx="12" cy="13.5" r="3.3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+</symbol>
+
+<!-- Corazón / signos vitales -->
+<symbol id="i-vitales" viewBox="0 0 24 24">
+  <path d="M12 19.5C6 15.6 3 12.4 3 8.8 3 6.2 5 4.3 7.5 4.3c1.7 0 3.2 1 4.5 2.6 1.3-1.6 2.8-2.6 4.5-2.6C19 4.3 21 6.2 21 8.8c0 3.6-3 6.8-9 10.7Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M5.5 11h2.7l1.4-2.6 1.8 4.6 1.3-2h5.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+</symbol>
+
+<!-- Escudo con marca / plan de manejo, seguridad jurídica -->
+<symbol id="i-escudo" viewBox="0 0 24 24">
+  <path d="M12 3 19.5 6v6c0 5-3.3 8-7.5 9-4.2-1-7.5-4-7.5-9V6L12 3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M8.7 12 11 14.3l4.5-4.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+
+
+<!-- Ajustes / configuración -->
+<symbol id="i-ajustes" viewBox="0 0 24 24">
+  <circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <path d="M12 3.5v2.3M12 18.2v2.3M20.5 12h-2.3M5.8 12H3.5M17.8 6.2l-1.6 1.6M7.8 16.2l-1.6 1.6M17.8 17.8l-1.6-1.6M7.8 7.8 6.2 6.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+</symbol>
+
+<!-- Portapapeles / historia clínica -->
+<symbol id="i-portapapeles" viewBox="0 0 24 24">
+  <rect x="5.5" y="4.5" width="13" height="16.5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <rect x="9" y="3" width="6" height="3" rx="1" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="8.3" y1="11" x2="15.7" y2="11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="8.3" y1="14.2" x2="15.7" y2="14.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  <line x1="8.3" y1="17.4" x2="12.5" y2="17.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+</symbol>
+
+<!-- Alerta -->
+<symbol id="i-alerta" viewBox="0 0 24 24">
+  <path d="M12 3.5 21.5 20h-19L12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <line x1="12" y1="10" x2="12" y2="14.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  <line x1="12" y1="17.1" x2="12" y2="17.1" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/>
+</symbol>
+
+</defs>
+</svg>
+
+
+<header class="cabecera">
+<div class="contenedor cabecera-fila">
+    <a href="index.html" class="marca">
+        <img src="img/logo-verumia.png" alt="Ecosistema Verum">
+        <span class="marca-texto">
+            <strong>Ecosistema Verum</strong>
+            <span>EDM Legal Especializados</span>
+        </span>
+    </a>
+    <button class="nav-boton" onclick="document.getElementById('nav').classList.toggle('abierto')" aria-label="Menú">☰</button>
+    <nav class="nav" id="nav">
+        <a href="index.html">Inicio</a>
+        <a href="verumia.html" class="activo">VerumIA</a>
+        <a href="lex-verum-pro.html">Lex Verum Pro</a>
+        <a href="verum-med.html">VerumMed</a>
+        <a href="verum-status.html">Verum Status</a>
+        <a href="libro.html">La Ingeniería de la Verdad</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="soporte.html">Soporte</a>
+    </nav>
+</div>
+</header>
+
+<section class="portada">
+<div class="contenedor">
+    <span class="portada-etiqueta">Escritorio · Windows</span>
+    <h1><em>VerumIA</em></h1>
+    <p>Tu asistente jurídico especializado: lleva tus expedientes, redacta borradores con inteligencia artificial, calcula lo que se factura a cada cliente y mantiene todo respaldado — <strong>sin depender de ningún servidor externo</strong>.</p>
+    <div class="botones">
+        <a href="soporte.html" class="boton boton-oro">Solicitar información</a>
+        <a href="#funciones" class="boton boton-linea">Ver todas las funciones →</a>
+    </div>
+</div>
+</section>
+
+<section class="seccion seccion-clara">
+<div class="contenedor">
+    <div class="seccion-titulo">
+        <div class="linea-oro"></div>
+        <h2>Un caso, de principio a fin</h2>
+        <p>VerumIA acompaña el ciclo completo: desde el cliente y el expediente, hasta el dictamen radicado y la cuenta de cobro pagada.</p>
+    </div>
+
+    <div class="rejilla rejilla-3">
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-carpeta"></use></svg></div>
+            <h3>Clientes y expedientes</h3>
+            <p>Personas naturales o jurídicas, con todos sus casos colgando de la ficha. Cada expediente aísla sus documentos, cronología y análisis, aunque el mismo cliente tenga varios procesos abiertos.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-documento"></use></svg></div>
+            <h3>Documentos y evidencia</h3>
+            <p>Cuatro repositorios separados por función: Documentos, Acervo Probatorio, Evidencia Recaudada y E.F./E.M.P. Con OCR, extracción de texto, unificación y control de duplicados.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-reloj"></use></svg></div>
+            <h3>Cronología automática</h3>
+            <p>La IA lee cada documento, detecta su fecha real y arma la línea de tiempo del caso, indicando la fuente documental de cada evento.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-ia"></use></svg></div>
+            <h3>Análisis con IA</h3>
+            <p>Hecho, daño, nexo causal, comparación normativa y Probabilidad de Victoria Real. Con verificación de evidencia y auditoría de consistencia entre los propios análisis.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-contradictor"></use></svg></div>
+            <h3>Abogado del Diablo</h3>
+            <p>La contraparte simulada: la IA ataca tu propio caso para que encuentres los huecos antes que el juez o el litigante contrario.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-balanza"></use></svg></div>
+            <h3>Controversia</h3>
+            <p>Compara la Demanda contra la Contestación hecho por hecho, y te muestra en tabla dónde hay aceptación, negación o contradicción.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="seccion" id="funciones">
+<div class="contenedor">
+    <div class="seccion-titulo">
+        <div class="linea-oro"></div>
+        <h2>Documentos que redacta por ti</h2>
+        <p>La IA entrega un borrador estructurado y prellenado con el material real del expediente. Tú corriges y firmas.</p>
+    </div>
+
+    <div class="rejilla rejilla-2">
+        <div class="tarjeta">
+            <h3>Gestión pericial</h3>
+            <ul class="lista-check">
+                <li><strong>Dictamen médico-legal</strong> — estructurado, con estatus probatorio y marcas [VERIFICAR]</li>
+                <li><strong>Informe de viabilidad</strong> — para cualquiera de las especialidades</li>
+                <li><strong>PCL</strong> — pérdida de capacidad laboral con cálculo por capítulos, Balthazar, deficiencia, sensorial y auditivo</li>
+            </ul>
+        </div>
+        <div class="tarjeta">
+            <h3>Gestión jurídica</h3>
+            <ul class="lista-check">
+                <li><strong>Demanda</strong> — con cálculo automatizado de pretensiones</li>
+                <li><strong>Tutela</strong> y <strong>Derecho de Petición</strong></li>
+                <li><strong>Conciliación</strong> — con cálculo de pretensiones</li>
+                <li><strong>Alegatos de Conclusión</strong> y <strong>Memoriales</strong></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="aviso">
+        <strong>Todo documento se exporta en Word y PDF</strong>
+        <p>Con el membrete, la firma y las credenciales profesionales del usuario que lo emite — incluidos peritos con más de una profesión acreditada.</p>
+    </div>
+</div>
+</section>
+
+<section class="seccion seccion-clara">
+<div class="contenedor">
+    <div class="seccion-titulo">
+        <div class="linea-oro"></div>
+        <h2>Las 11 especialidades</h2>
+        <p>Cada una con su propia cadena de agentes de análisis, no un prompt genérico.</p>
+    </div>
+    <div class="insignias" style="justify-content:center;max-width:840px;margin:0 auto">
+        <span class="insignia">Médico-legal</span>
+        <span class="insignia">Penal</span>
+        <span class="insignia">Laboral</span>
+        <span class="insignia">Civil</span>
+        <span class="insignia">Familia</span>
+        <span class="insignia">Administrativo</span>
+        <span class="insignia">Comercial</span>
+        <span class="insignia">Disciplinario</span>
+        <span class="insignia">Tributario</span>
+        <span class="insignia">Ambiental</span>
+        <span class="insignia">Otra</span>
+    </div>
+    <p style="text-align:center;color:var(--texto-suave);margin-top:22px;font-size:.95rem">En Penal, además, la etapa procesal (captura, imputación, acusación, sentencia) determina qué tan exigente es la IA al evaluar la suficiencia probatoria.</p>
+</div>
+</section>
+
+<section class="seccion">
+<div class="contenedor">
+    <div class="seccion-titulo">
+        <div class="linea-oro"></div>
+        <h2>La operación del despacho</h2>
+    </div>
+
+    <div class="rejilla rejilla-3">
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-microfono"></use></svg></div>
+            <h3>Audiencias</h3>
+            <p>Graba en vivo desde el programa o sube una grabación existente, y obtén la transcripción con análisis de testimonio.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-campana"></use></svg></div>
+            <h3>Estados judiciales</h3>
+            <p>Consulta automatizada del portal de la Rama Judicial por radicado, con marcado de novedades revisadas y sincronización masiva.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-calendario"></use></svg></div>
+            <h3>Agenda y alertas</h3>
+            <p>Eventos, audiencias del día, vencimientos y notificaciones de todo lo que exige tu atención.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-moneda"></use></svg></div>
+            <h3>Trabajos, cobros y cuota litis</h3>
+            <p>Qué se le factura a cada cliente, qué pagó, con comprobantes adjuntos por pago.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-nota"></use></svg></div>
+            <h3>Minutas y cobros</h3>
+            <p>64 modelos de contrato listos, más poderes, cuentas de cobro y cotizaciones — en Word y PDF, con QR de verificación.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-enlace"></use></svg></div>
+            <h3>Red de Socios</h3>
+            <p>Comparte un expediente con otra instalación de VerumIA, con sincronización, control de conflictos e historial de cambios.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-biblioteca"></use></svg></div>
+            <h3>Biblioteca, Jurisprudencia y Normatividad</h3>
+            <p>Corpus documental indexado con búsqueda vectorial, para que la IA compare tu caso contra la norma y el precedente.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-disco"></use></svg></div>
+            <h3>Copias de seguridad</h3>
+            <p>Respaldo automático programado a la carpeta o disco que elijas, con la base de datos y todos los archivos.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-usuarios"></use></svg></div>
+            <h3>Usuarios y auditoría</h3>
+            <p>Roles diferenciados (abogado, perito, asistente, secretaria, contador…) y registro de auditoría de cada acción.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="seccion seccion-clara">
+<div class="contenedor">
+    <div class="seccion-titulo">
+        <div class="linea-oro"></div>
+        <h2>Tu información no sale de tu equipo</h2>
+    </div>
+
+    <div class="documento">
+        <p>VerumIA se instala y corre <strong>en tu propio computador</strong>. La base de datos, los expedientes, las historias clínicas y las grabaciones viven en tu máquina, no en la nube de nadie.</p>
+        <p>Para la inteligencia artificial puedes trabajar con un <strong>modelo local (Ollama)</strong>, que no envía nada a internet, o conectar tu propia clave de alguno de los 14 proveedores soportados, con una cadena de respaldo que salta al siguiente si uno se cae o agota su cuota.</p>
+        <div class="insignias" style="margin:18px 0">
+            <span class="insignia teal">Ollama (local)</span>
+            <span class="insignia">Google Gemini</span>
+            <span class="insignia">Groq</span>
+            <span class="insignia">Cerebras</span>
+            <span class="insignia">OpenRouter</span>
+            <span class="insignia">Mistral</span>
+            <span class="insignia">GitHub Models</span>
+            <span class="insignia">Hugging Face</span>
+            <span class="insignia">Cloudflare</span>
+            <span class="insignia">Cohere</span>
+            <span class="insignia">NVIDIA NIM</span>
+            <span class="insignia">OpenAI</span>
+            <span class="insignia">DeepSeek</span>
+            <span class="insignia">Anthropic</span>
+        </div>
+        <div class="aviso">
+            <strong>La velocidad y calidad de la IA depende del modelo que uses</strong>
+            <p>Con el modelo local (Ollama), el análisis corre en tu propio equipo: la rapidez y la profundidad del resultado dependen directamente de la capacidad de tu computador (procesador, memoria RAM y, si tiene, tarjeta gráfica). Un equipo modesto puede tardar más y trabajar con modelos más livianos. Con un proveedor en la nube, el rendimiento depende en cambio de la clave y el plan que contrates con ese proveedor. En ambos casos puedes ajustar qué proveedor usa cada función desde Configuración.</p>
+        </div>
+        <p style="margin-bottom:0"><strong>Nota profesional.</strong> VerumIA produce borradores y análisis de apoyo. No sustituye el criterio del médico, el abogado o el perito, y toda afirmación relevante queda marcada para su verificación contra el documento original.</p>
+    </div>
+
+    <div style="text-align:center;margin-top:38px">
+        <a href="soporte.html" class="boton boton-oro">Solicitar información y licencia</a>
+    </div>
+</div>
+</section>
+
+<footer class="pie">
+<div class="contenedor">
+    <div class="pie-rejilla">
+        <div>
+            <h4>Ecosistema Verum</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Perfil profesional</a></li>
+                <li><a href="libro.html">La Ingeniería de la Verdad</a></li>
+                <li><a href="soporte.html">Soporte y contacto</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Aplicaciones</h4>
+            <ul>
+                <li><a href="verumia.html">VerumIA</a></li>
+                <li><a href="lex-verum-pro.html">Lex Verum Pro</a></li>
+                <li><a href="verum-med.html">VerumMed</a></li>
+                <li><a href="verum-status.html">Verum Status</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="privacidad-lex-verum-pro.html">Privacidad — Lex Verum Pro</a></li>
+                <li><a href="privacidad-verum-status.html">Privacidad — Verum Status</a></li>
+                <li><a href="privacidad-verumia.html">Privacidad — VerumIA</a></li>
+                <li><a href="terminos.html">Términos de uso</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contacto</h4>
+            <ul>
+                <li><a href="mailto:edmlegal.especializados@gmail.com">edmlegal.especializados@gmail.com</a></li>
+                <li><a href="https://wa.me/573202413579" target="_blank" rel="noopener">WhatsApp +57 320 241 3579</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="pie-abajo">
+        <span>© 2026 Ecosistema Verum / EDM Legal Especializados SAS. Todos los derechos reservados.</span>
+        <span>Colombia</span>
+    </div>
+</div>
+</footer>
+
+</body>
+</html>

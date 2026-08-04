@@ -1,0 +1,399 @@
+/*
+===============================================================================
+Ecosistema Verum — Hoja de estilos compartida
+Paleta oficial de VerumIA (navy + dorado), tomada de codigo_fuente/frontend/src/App.css
+===============================================================================
+*/
+
+:root{
+
+    /* Identidad institucional — mismos valores que la aplicación VerumIA */
+    --marca-oscuro:#0b1f3b;
+    --marca-tarjeta:#11284a;
+    --marca-hover:#183863;
+
+    /* Dorado — segundo color de la identidad */
+    --oro:#d4a62a;
+    --oro-brillante:#f2c94c;
+    --oro-suave:#faf1d9;
+
+    /* Tercer acento */
+    --teal:#0f766e;
+
+    /* Superficies */
+    --fondo:#eef2f7;
+    --superficie:#ffffff;
+    --borde:#dbe3ee;
+
+    /* Texto */
+    --texto:#16233a;
+    --texto-suave:#5a6a83;
+
+    --sombra:0 2px 10px rgba(11,31,59,.07);
+    --sombra-alta:0 10px 30px rgba(11,31,59,.13);
+
+    --radio:14px;
+    --ancho:1120px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+    font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+    background:var(--fondo);
+    color:var(--texto);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+}
+
+img{max-width:100%;height:auto;display:block}
+
+a{color:var(--marca-hover);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.contenedor{max-width:var(--ancho);margin:0 auto;padding:0 24px}
+
+/*==============================================================*/
+/* ENCABEZADO */
+/*==============================================================*/
+
+.cabecera{
+    background:var(--marca-oscuro);
+    position:sticky;top:0;z-index:50;
+    box-shadow:0 1px 0 rgba(255,255,255,.07);
+}
+
+.cabecera-fila{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:20px;padding:14px 0;
+}
+
+.marca{display:flex;align-items:center;gap:11px;text-decoration:none}
+.marca:hover{text-decoration:none}
+.marca img{height:34px;width:auto}
+
+.marca-texto{display:flex;flex-direction:column;line-height:1.15}
+.marca-texto strong{color:#fff;font-size:1.05rem;letter-spacing:.3px}
+.marca-texto span{color:var(--oro);font-size:.7rem;letter-spacing:1.1px;text-transform:uppercase}
+
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+
+.nav a{
+    color:#c7d3e6;padding:8px 13px;border-radius:8px;
+    font-size:.9rem;transition:background .15s,color .15s;
+}
+.nav a:hover{background:var(--marca-hover);color:#fff;text-decoration:none}
+.nav a.activo{background:var(--marca-tarjeta);color:var(--oro-brillante);font-weight:600}
+
+.nav-boton{
+    display:none;background:none;border:0;color:#fff;
+    font-size:1.5rem;cursor:pointer;padding:4px 10px;line-height:1;
+}
+
+/*==============================================================*/
+/* PORTADA */
+/*==============================================================*/
+
+.portada{
+    background:linear-gradient(160deg,var(--marca-oscuro) 0%,var(--marca-tarjeta) 55%,var(--marca-hover) 100%);
+    color:#fff;padding:76px 0 84px;position:relative;overflow:hidden;
+}
+
+.portada::after{
+    content:"";position:absolute;right:-140px;top:-140px;
+    width:440px;height:440px;border-radius:50%;
+    background:radial-gradient(circle,rgba(212,166,42,.20),transparent 68%);
+}
+
+.portada .contenedor{position:relative;z-index:1}
+
+.portada-etiqueta{
+    display:inline-block;background:rgba(212,166,42,.15);
+    border:1px solid rgba(212,166,42,.45);color:var(--oro-brillante);
+    padding:5px 15px;border-radius:999px;
+    font-size:.74rem;letter-spacing:1.3px;text-transform:uppercase;
+    font-weight:600;margin-bottom:20px;
+}
+
+.portada-encabezado{display:flex;align-items:center;gap:22px;margin-bottom:18px}
+
+.icono-app-portada{
+    width:76px;height:76px;border-radius:19px;flex-shrink:0;
+    box-shadow:0 8px 22px rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.25);
+}
+
+.portada h1{
+    font-size:clamp(2rem,5vw,3.1rem);line-height:1.15;
+    font-weight:700;margin-bottom:18px;max-width:19ch;
+}
+.portada-encabezado h1{margin-bottom:0}
+.portada h1 em{color:var(--oro-brillante);font-style:normal}
+
+.portada p{
+    font-size:clamp(1rem,2vw,1.16rem);color:#c9d6e9;
+    max-width:62ch;margin-bottom:30px;
+}
+
+.botones{display:flex;gap:12px;flex-wrap:wrap}
+
+.boton{
+    display:inline-block;padding:12px 26px;border-radius:10px;
+    font-weight:600;font-size:.96rem;
+    transition:transform .12s,box-shadow .15s,background .15s;
+}
+.boton:hover{text-decoration:none;transform:translateY(-1px)}
+
+.boton-oro{background:var(--oro);color:var(--marca-oscuro);box-shadow:0 4px 16px rgba(212,166,42,.32)}
+.boton-oro:hover{background:var(--oro-brillante)}
+
+.boton-linea{border:1.5px solid rgba(255,255,255,.42);color:#fff}
+.boton-linea:hover{background:rgba(255,255,255,.11);border-color:#fff}
+
+.boton-navy{background:var(--marca-oscuro);color:#fff;box-shadow:var(--sombra)}
+.boton-navy:hover{background:var(--marca-hover)}
+
+/*==============================================================*/
+/* SECCIONES */
+/*==============================================================*/
+
+.seccion{padding:66px 0}
+.seccion-clara{background:var(--superficie)}
+
+.seccion-titulo{text-align:center;max-width:64ch;margin:0 auto 44px}
+
+.seccion-titulo h2{
+    font-size:clamp(1.5rem,3.4vw,2.1rem);color:var(--marca-oscuro);
+    margin-bottom:12px;font-weight:700;
+}
+.seccion-titulo p{color:var(--texto-suave);font-size:1.03rem}
+
+.linea-oro{
+    width:56px;height:3px;background:var(--oro);
+    border-radius:2px;margin:0 auto 20px;
+}
+
+/*==============================================================*/
+/* TARJETAS */
+/*==============================================================*/
+
+.rejilla{display:grid;gap:24px}
+.rejilla-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.rejilla-3{grid-template-columns:repeat(auto-fit,minmax(276px,1fr))}
+
+.tarjeta{
+    background:var(--superficie);border:1px solid var(--borde);
+    border-radius:var(--radio);padding:28px;
+    box-shadow:var(--sombra);
+    transition:transform .15s,box-shadow .15s,border-color .15s;
+}
+.tarjeta:hover{transform:translateY(-3px);box-shadow:var(--sombra-alta);border-color:#c3d0e2}
+
+.tarjeta h3{color:var(--marca-oscuro);font-size:1.16rem;margin-bottom:10px;font-weight:650}
+.tarjeta p{color:var(--texto-suave);font-size:.95rem}
+
+.tarjeta-icono{
+    width:46px;height:46px;border-radius:11px;
+    background:var(--oro-suave);color:var(--marca-oscuro);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:15px;
+}
+.tarjeta-icono svg{width:24px;height:24px}
+
+/* Insignia numerada — pasos de un proceso secuencial real (ej. los 7
+   pasos de la historia clínica de VerumMed), no un adorno decorativo. */
+.paso-numero{
+    width:46px;height:46px;border-radius:50%;
+    background:var(--marca-oscuro);color:var(--oro-brillante);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:1.15rem;margin-bottom:15px;
+    font-variant-numeric:tabular-nums;
+}
+
+/* Tarjeta de producto del ecosistema */
+.producto{
+    display:flex;flex-direction:column;
+    background:var(--superficie);border:1px solid var(--borde);
+    border-radius:var(--radio);overflow:hidden;
+    box-shadow:var(--sombra);
+    transition:transform .15s,box-shadow .15s;
+}
+.producto:hover{transform:translateY(-4px);box-shadow:var(--sombra-alta)}
+
+.producto-cinta{height:5px;background:linear-gradient(90deg,var(--oro),var(--oro-brillante))}
+.producto-cinta.teal{background:linear-gradient(90deg,var(--teal),#2aa79b)}
+.producto-cinta.navy{background:linear-gradient(90deg,var(--marca-hover),#3b6bb0)}
+
+.producto-cuerpo{padding:30px;flex:1;display:flex;flex-direction:column}
+
+.producto-encabezado{display:flex;align-items:center;gap:13px;margin-bottom:4px}
+
+.icono-app{
+    width:52px;height:52px;border-radius:14px;flex-shrink:0;
+    box-shadow:0 3px 10px rgba(11,31,59,.18);
+    border:1px solid rgba(255,255,255,.5);
+}
+
+.icono-app-chico{width:34px;height:34px;border-radius:9px;box-shadow:0 2px 7px rgba(11,31,59,.2)}
+
+.producto h3{color:var(--marca-oscuro);font-size:1.35rem;margin-bottom:6px;font-weight:700}
+.producto-encabezado h3{margin-bottom:0}
+
+.producto-tipo{
+    font-size:.7rem;letter-spacing:1.2px;text-transform:uppercase;
+    color:var(--teal);font-weight:700;margin-bottom:13px;
+}
+
+.producto p{color:var(--texto-suave);font-size:.95rem;margin-bottom:20px;flex:1}
+
+/*==============================================================*/
+/* LISTAS DE CARACTERÍSTICAS */
+/*==============================================================*/
+
+.lista-check{list-style:none;display:grid;gap:11px}
+
+.lista-check li{
+    position:relative;padding-left:29px;
+    color:var(--texto-suave);font-size:.95rem;
+}
+.lista-check li::before{
+    content:"✓";position:absolute;left:0;top:-1px;
+    color:var(--oro);font-weight:700;font-size:1.02rem;
+}
+.lista-check li strong{color:var(--texto);font-weight:650}
+
+.lista-punto{list-style:none;display:grid;gap:9px}
+.lista-punto li{position:relative;padding-left:20px;color:var(--texto-suave);font-size:.95rem}
+.lista-punto li::before{
+    content:"";position:absolute;left:2px;top:.62em;
+    width:6px;height:6px;border-radius:50%;background:var(--oro);
+}
+
+/*==============================================================*/
+/* ETIQUETAS / INSIGNIAS */
+/*==============================================================*/
+
+.insignias{display:flex;flex-wrap:wrap;gap:9px}
+
+.insignia{
+    background:var(--oro-suave);color:var(--marca-oscuro);
+    border:1px solid rgba(212,166,42,.4);
+    padding:5px 13px;border-radius:999px;
+    font-size:.82rem;font-weight:600;
+}
+.insignia.teal{background:#e6f4f2;border-color:rgba(15,118,110,.3);color:var(--teal)}
+
+/*==============================================================*/
+/* AVISO / PENDIENTE */
+/*==============================================================*/
+
+.aviso{
+    background:var(--oro-suave);border:1px solid rgba(212,166,42,.5);
+    border-left:4px solid var(--oro);
+    border-radius:10px;padding:18px 22px;margin:22px 0;
+}
+.aviso strong{color:var(--marca-oscuro);display:block;margin-bottom:5px}
+
+/* Ícono de línea en encabezados (documento h3, aviso strong) */
+.icono-linea{
+    width:19px;height:19px;flex-shrink:0;
+    vertical-align:-4px;margin-right:8px;
+    color:var(--marca-hover);
+}
+.aviso p{color:#6b5720;font-size:.93rem;margin:0}
+
+.pendiente{
+    background:#fff6f6;border:1px dashed #e0a3a3;
+    border-radius:10px;padding:18px 22px;margin:20px 0;
+}
+.pendiente strong{color:#a03535;display:block;margin-bottom:5px}
+.pendiente p{color:#8a4a4a;font-size:.93rem;margin:0}
+
+/*==============================================================*/
+/* CONTENIDO LEGAL / TEXTO LARGO */
+/*==============================================================*/
+
+.documento{
+    background:var(--superficie);border:1px solid var(--borde);
+    border-radius:var(--radio);padding:clamp(28px,5vw,52px);
+    box-shadow:var(--sombra);max-width:850px;margin:0 auto;
+}
+
+.documento h2{
+    color:var(--marca-oscuro);font-size:1.35rem;font-weight:700;
+    margin:34px 0 13px;padding-bottom:9px;
+    border-bottom:2px solid var(--oro-suave);
+}
+.documento h2:first-child{margin-top:0}
+
+.documento h3{color:var(--marca-hover);font-size:1.06rem;margin:22px 0 9px;font-weight:650}
+
+.documento p{margin-bottom:14px;color:#3c4a61;font-size:.97rem}
+
+.documento ul,.documento ol{margin:0 0 16px 22px;color:#3c4a61;font-size:.97rem}
+.documento li{margin-bottom:7px}
+
+.documento table{
+    width:100%;border-collapse:collapse;margin:16px 0;font-size:.92rem;
+}
+.documento th,.documento td{
+    border:1px solid var(--borde);padding:10px 13px;text-align:left;vertical-align:top;
+}
+.documento th{background:var(--marca-oscuro);color:#fff;font-weight:600}
+.documento tr:nth-child(even) td{background:#f7f9fc}
+
+.tabla-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+.fecha-doc{
+    color:var(--texto-suave);font-size:.87rem;
+    padding-bottom:18px;margin-bottom:6px;border-bottom:1px solid var(--borde);
+}
+
+/*==============================================================*/
+/* PIE */
+/*==============================================================*/
+
+.pie{background:var(--marca-oscuro);color:#a9b8cf;padding:52px 0 26px;margin-top:0}
+
+.pie-rejilla{
+    display:grid;gap:34px;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+    margin-bottom:34px;
+}
+
+.pie h4{
+    color:#fff;font-size:.79rem;letter-spacing:1.3px;text-transform:uppercase;
+    margin-bottom:14px;font-weight:700;
+}
+
+.pie ul{list-style:none;display:grid;gap:9px}
+.pie a{color:#a9b8cf;font-size:.92rem}
+.pie a:hover{color:var(--oro-brillante);text-decoration:none}
+
+.pie-abajo{
+    border-top:1px solid rgba(255,255,255,.11);padding-top:22px;
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    font-size:.86rem;
+}
+
+/*==============================================================*/
+/* RESPONSIVO */
+/*==============================================================*/
+
+@media (max-width:860px){
+
+    .nav-boton{display:block}
+
+    .nav{
+        display:none;width:100%;flex-direction:column;
+        padding-bottom:12px;gap:2px;
+    }
+    .nav.abierto{display:flex}
+
+    .cabecera-fila{flex-wrap:wrap}
+
+    .portada{padding:54px 0 60px}
+    .seccion{padding:48px 0}
+}
