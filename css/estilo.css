@@ -52,6 +52,7 @@ img{max-width:100%;height:auto;display:block}
 
 a{color:var(--marca-hover);text-decoration:none}
 a:hover{text-decoration:underline}
+a:focus-visible{outline:2px solid var(--oro);outline-offset:2px;border-radius:3px}
 
 .contenedor{max-width:var(--ancho);margin:0 auto;padding:0 24px}
 
@@ -97,8 +98,18 @@ a:hover{text-decoration:underline}
 /*==============================================================*/
 
 .portada{
-    background:linear-gradient(160deg,var(--marca-oscuro) 0%,var(--marca-tarjeta) 55%,var(--marca-hover) 100%);
+    background:
+        radial-gradient(560px 420px at -8% 122%,rgba(15,118,110,.28),transparent 62%),
+        linear-gradient(160deg,var(--marca-oscuro) 0%,var(--marca-tarjeta) 55%,var(--marca-hover) 100%);
     color:#fff;padding:76px 0 84px;position:relative;overflow:hidden;
+}
+
+.portada::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);
+    background-size:28px 28px;
+    -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.55),transparent 72%);
+    mask-image:linear-gradient(180deg,rgba(0,0,0,.55),transparent 72%);
 }
 
 .portada::after{
@@ -156,19 +167,37 @@ a:hover{text-decoration:underline}
 
 .boton{
     display:inline-block;padding:12px 26px;border-radius:10px;
-    font-weight:600;font-size:.96rem;
+    font-weight:600;font-size:.96rem;position:relative;overflow:hidden;
     transition:transform .12s,box-shadow .15s,background .15s;
 }
 .boton:hover{text-decoration:none;transform:translateY(-1px)}
+.boton:focus-visible{outline:2px solid var(--oro-brillante);outline-offset:3px}
 
 .boton-oro{background:var(--oro);color:var(--marca-oscuro);box-shadow:0 4px 16px rgba(212,166,42,.32)}
 .boton-oro:hover{background:var(--oro-brillante)}
+.boton-oro::before{
+    content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,.6),transparent);
+    transform:skewX(-20deg);
+}
+.boton-oro:hover::before{animation:brillo-boton .85s ease forwards}
+@keyframes brillo-boton{to{left:130%}}
 
 .boton-linea{border:1.5px solid rgba(255,255,255,.42);color:#fff}
 .boton-linea:hover{background:rgba(255,255,255,.11);border-color:#fff}
 
 .boton-navy{background:var(--marca-oscuro);color:#fff;box-shadow:var(--sombra)}
 .boton-navy:hover{background:var(--marca-hover)}
+
+/* Franja de cifras clave, para usar bajo el texto de una portada oscura */
+.metricas-mini{
+    display:flex;flex-wrap:wrap;gap:30px;
+    margin-top:34px;padding-top:22px;
+    border-top:1px solid rgba(255,255,255,.14);
+}
+.metrica-mini{display:flex;flex-direction:column;gap:2px}
+.metrica-mini strong{color:var(--oro-brillante);font-size:1.32rem;font-weight:700;line-height:1.1}
+.metrica-mini span{color:#c9d6e9;font-size:.78rem;letter-spacing:.2px}
 
 /*==============================================================*/
 /* SECCIONES */
@@ -201,20 +230,30 @@ a:hover{text-decoration:underline}
 .tarjeta{
     background:var(--superficie);border:1px solid var(--borde);
     border-radius:var(--radio);padding:28px;
-    box-shadow:var(--sombra);
-    transition:transform .15s,box-shadow .15s,border-color .15s;
+    box-shadow:var(--sombra);position:relative;overflow:hidden;
+    transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s cubic-bezier(.2,.8,.2,1),border-color .2s;
 }
-.tarjeta:hover{transform:translateY(-3px);box-shadow:var(--sombra-alta);border-color:#c3d0e2}
+.tarjeta::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--oro),var(--oro-brillante));
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.tarjeta:hover::before{transform:scaleX(1)}
+.tarjeta:hover{transform:translateY(-4px);box-shadow:var(--sombra-alta);border-color:#c3d0e2}
 
 .tarjeta h3{color:var(--marca-oscuro);font-size:1.16rem;margin-bottom:10px;font-weight:650}
 .tarjeta p{color:var(--texto-suave);font-size:.95rem}
 
 .tarjeta-icono{
     width:46px;height:46px;border-radius:11px;
-    background:var(--oro-suave);color:var(--marca-oscuro);
+    background:linear-gradient(135deg,var(--oro-suave),#fff);
+    color:var(--marca-oscuro);border:1px solid rgba(212,166,42,.35);
     display:flex;align-items:center;justify-content:center;
     margin-bottom:15px;
+    transition:transform .3s cubic-bezier(.2,.8,.2,1);
 }
+.tarjeta:hover .tarjeta-icono{transform:scale(1.08) rotate(-2deg)}
 .tarjeta-icono svg{width:24px;height:24px}
 
 /* Insignia numerada — pasos de un proceso secuencial real (ej. los 7
@@ -297,8 +336,11 @@ a:hover{text-decoration:underline}
     border:1px solid rgba(212,166,42,.4);
     padding:5px 13px;border-radius:999px;
     font-size:.82rem;font-weight:600;
+    transition:transform .18s ease,box-shadow .18s ease;
 }
+.insignia:hover{transform:translateY(-2px);box-shadow:0 4px 10px rgba(212,166,42,.28)}
 .insignia.teal{background:#e6f4f2;border-color:rgba(15,118,110,.3);color:var(--teal)}
+.insignia.teal:hover{box-shadow:0 4px 10px rgba(15,118,110,.25)}
 
 /*==============================================================*/
 /* AVISO / PENDIENTE */
@@ -328,7 +370,8 @@ a:hover{text-decoration:underline}
 .mockup-barra span:nth-child(2){background:#f4bf4f}
 .mockup-barra span:nth-child(3){background:#61c454}
 
-.mockup-navegador img{display:block;width:100%;height:auto}
+.mockup-navegador img{display:block;width:100%;height:auto;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.mockup-navegador:hover img{transform:scale(1.012)}
 
 .aviso strong{color:var(--marca-oscuro);display:block;margin-bottom:5px}
 
@@ -426,7 +469,11 @@ a:hover{text-decoration:underline}
         display:none;width:100%;flex-direction:column;
         padding-bottom:12px;gap:2px;
     }
-    .nav.abierto{display:flex}
+    .nav.abierto{
+        display:flex;background:var(--marca-tarjeta);
+        border-radius:10px;padding:10px;margin-top:8px;
+        box-shadow:var(--sombra-alta);
+    }
 
     .cabecera-fila{flex-wrap:wrap}
 
