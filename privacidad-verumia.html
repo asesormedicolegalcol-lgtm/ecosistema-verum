@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Política de Privacidad — VerumIA | Ecosistema Verum</title>
-<meta name="description" content="Política de privacidad de VerumIA: almacenamiento local, proveedores de inteligencia artificial, licenciamiento por equipo y responsabilidad profesional del usuario.">
+<meta name="description" content="Política de privacidad de VerumIA: almacenamiento local, proveedores de inteligencia artificial, transcripción y OCR locales, derechos del titular, licenciamiento por equipo y responsabilidad profesional del usuario.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/estilo.css">
 </head>
@@ -307,24 +307,28 @@
 <div class="documento">
 
     <h2>Política de Privacidad — VerumIA</h2>
-    <p class="fecha-doc">Asistente jurídico especializado de escritorio · Última actualización: 4 de agosto de 2026</p>
-
-    <div class="pendiente">
-        <strong>Borrador pendiente de revisión</strong>
-        <p>Este texto fue redactado a partir del funcionamiento real del programa. A diferencia de las políticas de Lex Verum Pro y Verum Status —que son tus textos ya publicados— esta es nueva y debe ser revisada y aprobada por ti antes de publicarse.</p>
-    </div>
+    <p class="fecha-doc">Asistente jurídico especializado de escritorio · Última actualización: 16 de septiembre de 2026</p>
 
     <h3>1. Naturaleza del programa</h3>
-    <p>VerumIA es una aplicación de escritorio que se instala y ejecuta <strong>en el equipo del propio usuario</strong>. Está dirigida a abogados, peritos, médicos y auxiliares de la justicia para la gestión de expedientes, el análisis documental asistido por inteligencia artificial y la elaboración de documentos técnicos y jurídicos.</p>
+    <p>VerumIA es una aplicación de escritorio del Ecosistema Verum que se instala y ejecuta <strong>en el equipo del propio usuario</strong>. Está dirigida a abogados, peritos, médicos y auxiliares de la justicia para la gestión de expedientes, el análisis documental y probatorio asistido por inteligencia artificial, la elaboración de documentos técnicos y jurídicos, y el seguimiento procesal de los casos a su cargo.</p>
 
-    <h3>2. Dónde vive tu información</h3>
+    <h3>2. Identificación del Responsable del Tratamiento</h3>
+    <p>Frente a los datos personales que EDM Legal Especializados SAS recibe directamente del usuario con ocasión de la adquisición de la licencia, el soporte técnico o la relación comercial (nombre, correo electrónico, datos de contacto, huella técnica del equipo, comunicaciones de soporte), el <strong>Responsable del Tratamiento</strong>, en los términos del artículo 3, literal e), de la Ley 1581 de 2012, es:</p>
+    <ul>
+        <li><strong>Razón social:</strong> EDM Legal Especializados SAS.</li>
+        <li><strong>Domicilio:</strong> Cúcuta, Colombia.</li>
+        <li><strong>Canales de contacto:</strong> los indicados en el numeral 17 de este documento.</li>
+    </ul>
+    <p>Esta calidad de Responsable del Tratamiento se predica <strong>únicamente</strong> de los datos descritos en este numeral. No se extiende a los expedientes, historias clínicas ni demás información de terceros que el usuario gestiona dentro del programa: sobre esa información, como se explica en el numeral 10, el Responsable del Tratamiento es el propio usuario.</p>
+
+    <h3>3. Dónde vive tu información</h3>
     <p>La base de datos, los expedientes, los documentos, las historias clínicas, las grabaciones de audiencias y los documentos generados se almacenan <strong>exclusivamente en el equipo donde está instalado el programa</strong>, o en la ubicación de respaldo que el propio usuario configure.</p>
     <p>El creador de VerumIA <strong>no tiene acceso, ni recibe copia, ni almacena en servidores propios</strong> ninguna de estas informaciones.</p>
 
-    <h3>3. Licenciamiento y huella de equipo</h3>
+    <h3>4. Licenciamiento y huella de equipo</h3>
     <p>Para activar el programa, VerumIA genera una <strong>huella técnica del equipo</strong> a partir de identificadores de hardware. Ese código se utiliza únicamente para emitir un archivo de licencia válido para esa máquina y evitar instalaciones no autorizadas. La huella no contiene datos personales del usuario ni información de sus expedientes.</p>
 
-    <h3>4. Proveedores de inteligencia artificial</h3>
+    <h3>5. Proveedores de inteligencia artificial</h3>
     <p>VerumIA puede operar con un <strong>modelo de lenguaje local</strong> (Ollama), en cuyo caso el contenido analizado no sale del equipo del usuario en ningún momento.</p>
     <p>Alternativamente, el usuario puede configurar sus <strong>propias claves de acceso</strong> a proveedores externos de inteligencia artificial. En ese caso:</p>
     <ul>
@@ -334,31 +338,78 @@
     </ul>
     <p>Es responsabilidad del usuario evaluar si el envío de información amparada por secreto profesional, reserva legal o habeas data a un proveedor externo resulta procedente en su caso concreto.</p>
 
-    <h3>5. Consulta de fuentes públicas</h3>
+    <h3>6. Procesamiento local de audio, documentos e imágenes</h3>
+    <p>Varias funciones de VerumIA procesan audio, voz o imágenes directamente en el equipo del usuario, sin depender de un servicio externo de transcripción o reconocimiento:</p>
+    <ul>
+        <li><strong>Grabación de audiencias:</strong> el módulo de Audiencias puede capturar simultáneamente el micrófono del usuario y el audio de salida del sistema (por ejemplo, en una audiencia virtual por Zoom o Teams), combinándolos en un archivo de audio que se guarda en el propio equipo. La grabación se inicia únicamente por decisión expresa del usuario.</li>
+        <li><strong>Transcripción de audiencias y dictado por voz:</strong> tanto la transcripción de las grabaciones de audiencias como el dictado por voz para campos de texto libre se procesan con un motor de reconocimiento de voz que corre <strong>de forma local en el equipo del usuario</strong> (Whisper, vía la librería faster-whisper), sin necesidad de clave de acceso (API key) ni de enviar el audio a un servicio externo de transcripción.</li>
+        <li><strong>Análisis de la transcripción por IA</strong> (por ejemplo, identificación de testimonios relevantes y contradicciones frente al expediente): una vez transcrita, la audiencia puede analizarse con inteligencia artificial siguiendo el mismo esquema descrito en el numeral 5 — modelo local (Ollama) o proveedor externo con clave propia del usuario, según lo que este haya configurado.</li>
+        <li><strong>Reconocimiento óptico de caracteres (OCR):</strong> el análisis de documentos e imágenes escaneadas (folios sin capa de texto) se realiza con Tesseract OCR, incluido y ejecutado localmente por el propio instalador de VerumIA. Las imágenes y páginas procesadas no salen del equipo del usuario durante este proceso.</li>
+    </ul>
+
+    <h3>7. Consulta de fuentes públicas</h3>
     <p>Las funciones de estados judiciales consultan el portal público de la Rama Judicial de Colombia utilizando los radicados que el usuario registra. Esta consulta se ejecuta desde el equipo del usuario contra una fuente de acceso público.</p>
 
-    <h3>6. Red de Socios e intercambio de expedientes</h3>
+    <h3>8. Red de Socios e intercambio de expedientes</h3>
     <p>Cuando el usuario decide compartir un expediente o exportar un cliente hacia otra instalación de VerumIA, la información viaja en un <strong>paquete cifrado protegido por contraseña</strong>, que el usuario entrega por el canal que elija. El intercambio ocurre siempre por decisión expresa del usuario.</p>
 
-    <h3>7. Datos personales y sensibles</h3>
-    <p>El usuario reconoce que los expedientes gestionados en VerumIA contienen, por su naturaleza, datos personales y datos sensibles —incluidos datos de salud— de terceros.</p>
-    <p>En su condición de <strong>responsable del tratamiento</strong>, corresponde exclusivamente al usuario cumplir con la Ley 1581 de 2012 y demás normas aplicables sobre protección de datos, habeas data, historia clínica (Resolución 1995 de 1999), secreto profesional y reserva legal.</p>
+    <h3>9. Módulos y funciones del programa</h3>
+    <p>Además de lo descrito en los numerales anteriores, VerumIA incluye, entre otros, los siguientes módulos, todos ellos operando sobre la información almacenada localmente conforme al numeral 3 y, cuando emplean inteligencia artificial, conforme al numeral 5:</p>
+    <ul>
+        <li>Gestión de expedientes, personas y clientes.</li>
+        <li>Cronología inteligente del caso, chat asistido y generación de documentos con IA (informes, dictámenes, demandas), con respuesta en tiempo real.</li>
+        <li>Análisis médico-legal asistido: relación hecho/daño/nexo causal, comparación normativa, estimación de probabilidad de resultado (PVR), contraargumentación ("abogado del diablo"), verificación y consistencia de la evidencia.</li>
+        <li>Módulo de Controversia (comparación entre demanda y contestación).</li>
+        <li>Corpus documental propio: biblioteca normativa y base de conocimiento, y jurisprudencia mediante recuperación aumentada (RAG) que cada usuario alimenta con sus propios documentos.</li>
+        <li>Consulta de estados judiciales, agenda y auditoría de actuaciones.</li>
+        <li>Exportación de documentos a Word y PDF, con opción de anonimizar los datos personales que contengan.</li>
+        <li>Configuración de proveedores de inteligencia artificial por rol de usuario, con seguimiento del consumo de tokens.</li>
+        <li>Panel de calibración predictiva (comparación entre el PVR estimado y el resultado real del caso).</li>
+    </ul>
+    <p>Estas funciones no cambian dónde vive la información ni quién es responsable de ella: siguen las reglas generales de los numerales 3, 5 y 6.</p>
 
-    <h3>8. Limitación de responsabilidad profesional</h3>
+    <h3>10. Datos personales y sensibles de terceros</h3>
+    <p>El usuario reconoce que los expedientes gestionados en VerumIA contienen, por su naturaleza, datos personales y datos sensibles —incluidos datos de salud— de terceros.</p>
+    <p>En su condición de <strong>responsable del tratamiento</strong> de esa información, corresponde exclusivamente al usuario cumplir con la Ley 1581 de 2012 y demás normas aplicables sobre protección de datos, habeas data, historia clínica (Resolución 1995 de 1999), secreto profesional y reserva legal.</p>
+
+    <h3>11. Derechos del Titular frente a EDM Legal Especializados SAS</h3>
+    <p>Toda persona cuyos datos personales sean tratados directamente por EDM Legal Especializados SAS en su calidad de Responsable del Tratamiento (numeral 2) tiene derecho, conforme al artículo 8 de la Ley 1581 de 2012, a:</p>
+    <ul>
+        <li>Conocer, actualizar y rectificar sus datos personales frente a EDM Legal Especializados SAS.</li>
+        <li>Solicitar prueba de la autorización otorgada, salvo cuando la ley exceptúe dicho requisito.</li>
+        <li>Ser informado, previa solicitud, sobre el uso que se le ha dado a sus datos personales.</li>
+        <li>Presentar quejas ante la Superintendencia de Industria y Comercio por infracciones a la Ley 1581 de 2012.</li>
+        <li>Revocar la autorización y/o solicitar la supresión del dato, cuando no se respeten los principios, derechos y garantías constitucionales y legales.</li>
+        <li>Acceder de forma gratuita a sus datos personales que hayan sido objeto de tratamiento.</li>
+    </ul>
+    <p>Estos derechos se ejercen a través del procedimiento descrito en el numeral 12.</p>
+
+    <h3>12. Procedimiento para consultas y reclamos</h3>
+    <p>Las consultas y reclamos sobre los datos descritos en el numeral 2 se atienden por los canales indicados en el numeral 17, con los siguientes plazos (artículos 14 y 15 de la Ley 1581 de 2012):</p>
+    <ul>
+        <li><strong>Consultas:</strong> se resuelven en un término máximo de diez (10) días hábiles contados desde la fecha de recibo. Si no es posible atenderla dentro de ese plazo, se informará al solicitante el motivo de la demora y la fecha en que se atenderá, la cual en ningún caso podrá superar cinco (5) días hábiles adicionales al vencimiento del primer plazo.</li>
+        <li><strong>Reclamos:</strong> si el reclamo está incompleto, se requerirá al solicitante dentro de los cinco (5) días siguientes a su recibo para que subsane las fallas; transcurridos dos (2) meses desde esa solicitud sin que el interesado presente la información requerida, se entenderá que ha desistido del reclamo. Una vez completo, se incluirá en la base de datos una leyenda de "reclamo en trámite" dentro de los dos (2) días hábiles siguientes. El reclamo se resolverá en un término máximo de quince (15) días hábiles contados a partir del día siguiente a la fecha de su recibo; cuando no sea posible atenderlo dentro de ese término, se informará al interesado los motivos de la demora y la fecha en que se atenderá, la cual en ningún caso podrá superar los ocho (8) días hábiles siguientes al vencimiento del primer plazo.</li>
+    </ul>
+
+    <h3>13. Limitación de responsabilidad profesional</h3>
     <p>VerumIA produce <strong>borradores y análisis de apoyo</strong>. No constituye asesoría jurídica, médica ni pericial, y no sustituye el criterio profesional del médico, el abogado o el perito.</p>
     <p>Los análisis generados por inteligencia artificial pueden contener errores, omisiones o interpretaciones inexactas. Toda afirmación relevante debe ser verificada contra el documento original antes de ser utilizada en actuaciones profesionales, administrativas o judiciales.</p>
 
-    <h3>9. Copias de seguridad</h3>
+    <h3>14. Copias de seguridad</h3>
     <p>El programa incluye respaldo automático a la carpeta o disco que el usuario configure. La custodia, integridad y seguridad de esas copias es responsabilidad del usuario.</p>
 
-    <h3>10. Modificaciones</h3>
+    <h3>15. Modificaciones</h3>
     <p>Nos reservamos el derecho de actualizar esta política en cualquier momento. Las modificaciones entrarán en vigor desde su publicación.</p>
 
-    <h3>11. Ley aplicable</h3>
+    <h3>16. Ley aplicable</h3>
     <p>Esta política se rige por las leyes de la República de Colombia.</p>
 
-    <h3>12. Contacto</h3>
-    <p>Para consultas relacionadas con privacidad o protección de datos: <a href="mailto:edmlegal.especializados@gmail.com">edmlegal.especializados@gmail.com</a></p>
+    <h3>17. Contacto y atención de solicitudes</h3>
+    <p>Las consultas, reclamos y demás solicitudes relacionadas con privacidad o protección de datos personales, incluidas las descritas en los numerales 11 y 12, se atienden a través de:</p>
+    <ul>
+        <li>Correo electrónico: <a href="mailto:edmlegal.especializados@gmail.com">edmlegal.especializados@gmail.com</a></li>
+        <li>WhatsApp: <a href="https://wa.me/573202413579" target="_blank" rel="noopener">+57 320 241 3579</a></li>
+    </ul>
 
     <p style="margin-top:30px;padding-top:18px;border-top:1px solid var(--borde);color:var(--texto-suave);font-size:.9rem">© 2026 Ecosistema Verum / EDM Legal. Todos los derechos reservados.</p>
 
