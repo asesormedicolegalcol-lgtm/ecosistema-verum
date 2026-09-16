@@ -314,8 +314,29 @@
         <a href="#aplicaciones" class="boton boton-oro">Ver las aplicaciones</a>
         <a href="perfil.html" class="boton boton-linea">Dirección del ecosistema →</a>
     </div>
+
+    <div class="metricas-mini">
+        <div class="metrica-mini"><strong><span data-contador="19" data-sufijo="+">0</span></strong><span>Años de trayectoria</span></div>
+        <div class="metrica-mini"><strong><span data-contador="120" data-sufijo="+">0</span></strong><span>Dictámenes periciales</span></div>
+        <div class="metrica-mini"><strong><span data-contador="40" data-sufijo="+">0</span></strong><span>Sustentaciones orales</span></div>
+        <div class="metrica-mini"><strong><span data-contador="5" data-sufijo="">0</span></strong><span>Aplicaciones del ecosistema</span></div>
+    </div>
 </div>
 </section>
+
+<div class="contenedor">
+    <div class="selector-necesidad">
+        <p>¿Qué necesitas resolver?</p>
+        <div class="chips-necesidad">
+            <button type="button" class="chip-necesidad" data-objetivo="redactar">Redactar demandas y dictámenes</button>
+            <button type="button" class="chip-necesidad" data-objetivo="vigilar">Vigilar mis procesos judiciales</button>
+            <button type="button" class="chip-necesidad" data-objetivo="campo">Trabajar desde el celular, en campo</button>
+            <button type="button" class="chip-necesidad" data-objetivo="clinica">Llevar historia clínica</button>
+            <button type="button" class="chip-necesidad" data-objetivo="psicologia">Evaluación psicológica o forense</button>
+            <button type="button" class="chip-necesidad" data-objetivo="medida">Una aplicación a la medida</button>
+        </div>
+    </div>
+</div>
 
 <section class="seccion seccion-clara" id="aplicaciones">
 <div class="contenedor">
@@ -328,7 +349,7 @@
 
     <div class="rejilla rejilla-3">
 
-        <article class="producto">
+        <article class="producto" data-necesidades="redactar">
             <div class="producto-cinta"></div>
             <div class="producto-cuerpo">
                 <div class="producto-tipo">Escritorio · Windows</div>
@@ -345,7 +366,7 @@
             </div>
         </article>
 
-        <article class="producto">
+        <article class="producto" data-necesidades="campo">
             <div class="producto-cinta"></div>
             <div class="producto-cuerpo">
                 <div class="producto-tipo">Android · Disponible</div>
@@ -362,7 +383,7 @@
             </div>
         </article>
 
-        <article class="producto">
+        <article class="producto" data-necesidades="vigilar">
             <div class="producto-cinta teal"></div>
             <div class="producto-cuerpo">
                 <div class="producto-tipo">Android · Próximamente</div>
@@ -379,7 +400,7 @@
             </div>
         </article>
 
-        <article class="producto">
+        <article class="producto" data-necesidades="clinica">
             <div class="producto-cinta navy"></div>
             <div class="producto-cuerpo">
                 <div class="producto-tipo">Android · En fase de pruebas</div>
@@ -396,7 +417,7 @@
             </div>
         </article>
 
-        <article class="producto">
+        <article class="producto" data-necesidades="psicologia">
             <div class="producto-cinta teal"></div>
             <div class="producto-cuerpo">
                 <div class="producto-tipo">Android · En pruebas cerradas</div>
@@ -413,7 +434,7 @@
             </div>
         </article>
 
-        <article class="producto">
+        <article class="producto" data-necesidades="medida">
             <div class="producto-cinta"></div>
             <div class="producto-cuerpo">
                 <div class="producto-tipo">Servicio · A la medida</div>
@@ -502,5 +523,6 @@
 </div>
 </footer>
 
+<script src="js/interactivo.js" defer></script>
 </body>
 </html>
