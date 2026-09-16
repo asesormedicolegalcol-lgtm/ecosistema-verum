@@ -33,7 +33,7 @@ Paleta oficial de VerumIA (navy + dorado), tomada de codigo_fuente/frontend/src/
     --sombra-alta:0 10px 30px rgba(11,31,59,.13);
 
     --radio:14px;
-    --ancho:1120px;
+    --ancho:1360px;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -479,4 +479,88 @@ a:focus-visible{outline:2px solid var(--oro);outline-offset:2px;border-radius:3p
 
     .portada{padding:54px 0 60px}
     .seccion{padding:48px 0}
+
+    .selector-necesidad{margin:-26px 16px 40px;padding:20px}
+}
+
+/*==============================================================*/
+/* INTERACCIÓN: REVELADO AL HACER SCROLL */
+/*==============================================================*/
+
+.reveal{
+    opacity:0;transform:translateY(22px);
+    transition:opacity .6s ease var(--retardo,0ms),transform .6s cubic-bezier(.2,.8,.2,1) var(--retardo,0ms);
+}
+.reveal.visible{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+    .reveal{transition:none;opacity:1;transform:none}
+}
+
+/*==============================================================*/
+/* ENCABEZADO CON SOMBRA AL DESPLAZAR */
+/*==============================================================*/
+
+.cabecera{transition:box-shadow .2s ease}
+.cabecera.con-sombra{box-shadow:0 6px 22px rgba(11,31,59,.22)}
+
+/*==============================================================*/
+/* BOTONES FLOTANTES (WhatsApp / volver arriba) */
+/*==============================================================*/
+
+.flotante-whatsapp{
+    position:fixed;right:22px;bottom:22px;z-index:80;
+    width:54px;height:54px;border-radius:50%;
+    background:#25d366;color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 22px rgba(0,0,0,.28);
+    transition:transform .18s ease,box-shadow .18s ease;
+}
+.flotante-whatsapp:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 12px 28px rgba(0,0,0,.32);text-decoration:none}
+.flotante-whatsapp:focus-visible{outline:2px solid var(--oro-brillante);outline-offset:3px}
+
+.flotante-arriba{
+    position:fixed;right:22px;bottom:86px;z-index:80;
+    width:44px;height:44px;border-radius:50%;border:1px solid var(--borde);
+    background:var(--superficie);color:var(--marca-oscuro);
+    font-size:1.2rem;line-height:1;cursor:pointer;
+    box-shadow:var(--sombra);
+    opacity:0;pointer-events:none;transform:translateY(8px);
+    transition:opacity .2s ease,transform .2s ease;
+}
+.flotante-arriba.visible{opacity:1;pointer-events:auto;transform:none}
+.flotante-arriba:hover{background:var(--oro-suave)}
+
+@media (max-width:600px){
+    .flotante-whatsapp{right:16px;bottom:16px;width:48px;height:48px}
+    .flotante-arriba{right:16px;bottom:72px;width:40px;height:40px}
+}
+
+/*==============================================================*/
+/* SELECTOR DE NECESIDAD (portada del inicio) */
+/*==============================================================*/
+
+.selector-necesidad{
+    background:var(--superficie);border:1px solid var(--borde);
+    border-radius:var(--radio);padding:26px 28px;
+    box-shadow:var(--sombra-alta);margin:-46px auto 50px;
+    max-width:960px;position:relative;z-index:2;
+}
+.selector-necesidad p{color:var(--texto-suave);font-size:.9rem;margin-bottom:14px;font-weight:600}
+.chips-necesidad{display:flex;flex-wrap:wrap;gap:10px}
+
+.chip-necesidad{
+    background:var(--fondo);border:1px solid var(--borde);color:var(--texto);
+    padding:9px 16px;border-radius:999px;font-size:.88rem;font-weight:600;
+    cursor:pointer;transition:background .15s,border-color .15s,color .15s,transform .15s;
+}
+.chip-necesidad:hover{transform:translateY(-2px)}
+.chip-necesidad.activo{background:var(--marca-oscuro);border-color:var(--marca-oscuro);color:var(--oro-brillante)}
+.chip-necesidad:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+
+.producto{transition:transform .15s,box-shadow .15s,border-color .2s,outline-color .2s}
+.producto.resaltado{
+    border-color:var(--oro);
+    outline:2px solid var(--oro);outline-offset:2px;
+    box-shadow:0 14px 34px rgba(212,166,42,.22);
 }
