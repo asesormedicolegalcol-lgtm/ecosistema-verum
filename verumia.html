@@ -861,7 +861,7 @@
         <div class="calculadora-resultado">
 
             <p id="calc-aviso-bloqueo" class="calculadora-aviso-bloqueo">
-                Completa tu nombre y correo (a la izquierda) para ver el precio calculado.
+                Completa tu nombre y correo (a la izquierda) y dale clic a "Calcular cotización" para ver el precio.
             </p>
 
             <div id="calc-valores">
@@ -884,7 +884,7 @@
             </div>
 
             <button id="calc-boton-calcular" type="button" class="boton boton-navy" style="width:100%;text-align:center;margin-top:18px;cursor:pointer;border:none;font-family:inherit">
-                Solicitar esta cotización por correo
+                Calcular cotización
             </button>
 
             <p id="calc-mensaje-correo" style="font-size:.82rem;color:var(--teal);margin-top:8px;min-height:1.2em"></p>
@@ -1036,25 +1036,34 @@
 
     var REGEX_CORREO = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    var panelValores = document.getElementById("calc-valores");
+    var avisoBloqueo = document.getElementById("calc-aviso-bloqueo");
+    var botonWhatsapp = document.getElementById("calc-boton-whatsapp");
+    var botonCalcular = document.getElementById("calc-boton-calcular");
+    var mensajeCorreo = document.getElementById("calc-mensaje-correo");
+
     function datosCompletos() {
         return campoNombre.value.trim().length > 0 && REGEX_CORREO.test(campoCorreo.value.trim());
     }
 
-    function actualizarBloqueo(completos) {
+    function bloquear() {
 
-        var panelValores = document.getElementById("calc-valores");
-        var aviso = document.getElementById("calc-aviso-bloqueo");
-        var botonWhatsapp = document.getElementById("calc-boton-whatsapp");
+        panelValores.classList.add("bloqueado");
+        avisoBloqueo.style.display = "block";
 
-        panelValores.classList.toggle("bloqueado", !completos);
-        aviso.style.display = completos ? "none" : "block";
-
-        document.getElementById("calc-boton-calcular").disabled = !completos;
-        botonWhatsapp.classList.toggle("deshabilitado", !completos);
-        botonWhatsapp.setAttribute("aria-disabled", String(!completos));
+        botonWhatsapp.classList.add("deshabilitado");
+        botonWhatsapp.setAttribute("aria-disabled", "true");
+        botonWhatsapp.href = "#";
 
     }
 
+    // Recalcula los números (aunque sigan tapados) cada vez que cambia
+    // algo -- así, en cuanto el clic en "Calcular cotización" los
+    // destape, ya están al día. Cualquier cambio posterior a un cálculo
+    // ya hecho vuelve a tapar el resultado y a exigir un clic nuevo --
+    // sin esto, alguien podría cambiar la cantidad después de calcular
+    // y quedarse viendo un precio que ya no corresponde a lo que se
+    // envió por correo.
     function actualizar() {
 
         var cantidad = Math.max(1, parseInt(campoEquipos.value, 10) || 1);
@@ -1065,39 +1074,8 @@
         document.getElementById("calc-cantidad-equipos").textContent = cantidad + (cantidad === 1 ? " equipo" : " equipos");
         document.getElementById("calc-total").textContent = formatoCOP.format(total);
 
-        var completos = datosCompletos();
-        actualizarBloqueo(completos);
-
-        var plazoTexto = NOMBRES_PLAZO[campoPlazo.value];
-        var nombre = campoNombre.value.trim();
-        var correo = campoCorreo.value.trim();
-        var referido = campoReferido.value.trim();
-
-        var mensaje = "Hola, quiero solicitar una licencia de VerumIA: " + cantidad +
-            " equipo(s), plazo " + plazoTexto + ", total estimado " + formatoCOP.format(total) + ".";
-
-        if (nombre) {
-            mensaje += " Mi nombre: " + nombre + ".";
-        }
-
-        if (correo) {
-            mensaje += " Mi correo: " + correo + ".";
-        }
-
-        if (referido) {
-            mensaje += " Código de referido: " + referido + ".";
-        }
-
-        var botonWhatsapp = document.getElementById("calc-boton-whatsapp");
-
-        // Sin datos completos, el enlace no lleva a ningún lado (en vez
-        // de abrir WhatsApp igual pese a estar "deshabilitado" visualmente
-        // -- `pointer-events:none` de `.deshabilitado` ya lo bloquea, pero
-        // esto es una segunda barrera si alguien fuerza el clic por otro
-        // medio, ej. Tab + Enter).
-        botonWhatsapp.href = completos
-            ? "https://wa.me/573202413579?text=" + encodeURIComponent(mensaje)
-            : "#";
+        bloquear();
+        mensajeCorreo.textContent = "";
 
     }
 
@@ -1107,33 +1085,58 @@
     campoCorreo.addEventListener("input", actualizar);
     campoReferido.addEventListener("input", actualizar);
 
-    // Botón separado del de WhatsApp -- este SOLO calcula (ya lo hace
-    // `actualizar()` en vivo con cada cambio) y envía el correo, sin
-    // tocar el botón de WhatsApp, que sigue funcionando exactamente
-    // igual que antes (abre WhatsApp con el mensaje, el visitante da
-    // "Enviar"). El correo va hacia FormSubmit, un intermediario
-    // gratuito que reenvía el contenido del formulario sin necesidad de
-    // un servidor propio ni de exponer ninguna contraseña en la página.
-    // El primer envío real le pedirá a Eduardo confirmar un correo de
-    // activación en edmlegal.especializados@gmail.com -- después de
-    // eso, los siguientes ya llegan directo.
-    var botonCalcular = document.getElementById("calc-boton-calcular");
-    var mensajeCorreo = document.getElementById("calc-mensaje-correo");
+    // El único botón que destapa el precio Y envía el correo -- a
+    // propósito son la MISMA acción (pedido explícito de Eduardo): que
+    // el precio se pudiera ver solo llenando los campos, sin dar clic,
+    // dejaba visitantes que veían la cotización y se iban sin que el
+    // correo llegara nunca -- ahora ver el precio y que el lead te
+    // llegue son inseparables. El correo va hacia FormSubmit, un
+    // intermediario gratuito que reenvía el contenido del formulario
+    // sin necesidad de un servidor propio ni de exponer ninguna
+    // contraseña en la página. El primer envío real le pedirá a Eduardo
+    // confirmar un correo de activación en
+    // edmlegal.especializados@gmail.com -- después de eso, los
+    // siguientes ya llegan directo. El botón de WhatsApp sigue siendo
+    // una acción aparte (abre WhatsApp, el visitante da "Enviar"), pero
+    // solo queda habilitado después de este mismo clic.
 
     botonCalcular.addEventListener("click", function () {
 
-        actualizar();
+        var cantidad = Math.max(1, parseInt(campoEquipos.value, 10) || 1);
+        var precioUnitario = precioPorEquipo(campoPlazo.value, cantidad);
+        var total = precioUnitario * cantidad;
+
+        document.getElementById("calc-precio-unitario").textContent = formatoCOP.format(precioUnitario);
+        document.getElementById("calc-cantidad-equipos").textContent = cantidad + (cantidad === 1 ? " equipo" : " equipos");
+        document.getElementById("calc-total").textContent = formatoCOP.format(total);
 
         if (!datosCompletos()) {
             mensajeCorreo.style.color = "#b91c1c";
-            mensajeCorreo.textContent = "Completa tu nombre y correo antes de solicitar la cotización.";
+            mensajeCorreo.textContent = "Completa tu nombre y correo antes de calcular la cotización.";
             return;
         }
 
-        mensajeCorreo.style.color = "var(--teal)";
+        panelValores.classList.remove("bloqueado");
+        avisoBloqueo.style.display = "none";
+        botonWhatsapp.classList.remove("deshabilitado");
+        botonWhatsapp.setAttribute("aria-disabled", "false");
 
-        var cantidad = Math.max(1, parseInt(campoEquipos.value, 10) || 1);
-        var total = precioPorEquipo(campoPlazo.value, cantidad) * cantidad;
+        var plazoTexto = NOMBRES_PLAZO[campoPlazo.value];
+        var nombre = campoNombre.value.trim();
+        var correo = campoCorreo.value.trim();
+        var referido = campoReferido.value.trim();
+
+        var mensajeWhatsapp = "Hola, quiero solicitar una licencia de VerumIA: " + cantidad +
+            " equipo(s), plazo " + plazoTexto + ", total estimado " + formatoCOP.format(total) +
+            ". Mi nombre: " + nombre + ". Mi correo: " + correo + ".";
+
+        if (referido) {
+            mensajeWhatsapp += " Código de referido: " + referido + ".";
+        }
+
+        botonWhatsapp.href = "https://wa.me/573202413579?text=" + encodeURIComponent(mensajeWhatsapp);
+
+        mensajeCorreo.style.color = "var(--teal)";
 
         var datosCorreo = new FormData();
         datosCorreo.append("nombre", campoNombre.value.trim());
