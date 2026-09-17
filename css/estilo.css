@@ -564,3 +564,66 @@ a:focus-visible{outline:2px solid var(--oro);outline-offset:2px;border-radius:3p
     outline:2px solid var(--oro);outline-offset:2px;
     box-shadow:0 14px 34px rgba(212,166,42,.22);
 }
+
+/*==============================================================*/
+/* CALCULADORA DE PRECIO (licencia VerumIA) */
+/*==============================================================*/
+
+.calculadora-precio{
+    display:grid;grid-template-columns:1fr 1fr;
+    max-width:900px;margin:0 auto;
+    background:var(--superficie);border:1px solid var(--borde);
+    border-radius:var(--radio);box-shadow:var(--sombra-alta);
+    overflow:hidden;
+}
+
+.calculadora-controles{
+    padding:clamp(24px,4vw,36px);
+    display:flex;flex-direction:column;gap:16px;
+    border-right:1px solid var(--borde);
+}
+
+.calculadora-controles label{
+    display:flex;flex-direction:column;gap:7px;
+    font-size:.88rem;font-weight:650;color:var(--texto);
+}
+
+.calculadora-controles input,
+.calculadora-controles select{
+    border:1px solid var(--borde);border-radius:9px;
+    padding:11px 13px;font-size:.95rem;font-family:inherit;
+    background:var(--fondo);color:var(--texto);
+}
+
+.calculadora-controles input:focus,
+.calculadora-controles select:focus{
+    outline:none;border-color:var(--marca-hover);
+    background:var(--superficie);
+}
+
+.calculadora-resultado{
+    padding:clamp(24px,4vw,36px);
+    background:var(--oro-suave);
+    display:flex;flex-direction:column;
+}
+
+.calculadora-linea{
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+    padding:9px 0;font-size:.92rem;color:var(--texto-suave);
+    border-bottom:1px solid rgba(11,31,59,.08);
+}
+.calculadora-linea strong{color:var(--texto);font-weight:650;white-space:nowrap}
+
+.calculadora-descuento strong{color:var(--teal)}
+
+.calculadora-total{
+    border-bottom:none;margin-top:6px;padding-top:14px;
+    border-top:2px solid rgba(11,31,59,.15);
+}
+.calculadora-total span{font-size:1rem;font-weight:700;color:var(--marca-oscuro)}
+.calculadora-total strong{font-size:1.5rem;color:var(--marca-oscuro)}
+
+@media (max-width:720px){
+    .calculadora-precio{grid-template-columns:1fr}
+    .calculadora-controles{border-right:none;border-bottom:1px solid var(--borde)}
+}
