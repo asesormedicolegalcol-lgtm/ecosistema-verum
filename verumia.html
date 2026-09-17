@@ -838,13 +838,13 @@
             </label>
 
             <label for="calc-nombre">
-                Tu nombre
-                <input type="text" id="calc-nombre" placeholder="¿Cómo te llamas?">
+                Tu nombre <span style="color:#b91c1c">*</span>
+                <input type="text" id="calc-nombre" placeholder="¿Cómo te llamas?" required>
             </label>
 
             <label for="calc-correo">
-                Tu correo
-                <input type="email" id="calc-correo" placeholder="tu@correo.com">
+                Tu correo <span style="color:#b91c1c">*</span>
+                <input type="email" id="calc-correo" placeholder="tu@correo.com" required>
             </label>
 
             <label for="calc-referido">
@@ -860,19 +860,27 @@
 
         <div class="calculadora-resultado">
 
-            <div class="calculadora-linea">
-                <span>Precio por equipo</span>
-                <strong id="calc-precio-unitario">$1.320.000</strong>
-            </div>
+            <p id="calc-aviso-bloqueo" class="calculadora-aviso-bloqueo">
+                Completa tu nombre y correo (a la izquierda) para ver el precio calculado.
+            </p>
 
-            <div class="calculadora-linea">
-                <span>Cantidad</span>
-                <strong id="calc-cantidad-equipos">1 equipo</strong>
-            </div>
+            <div id="calc-valores">
 
-            <div class="calculadora-linea calculadora-total">
-                <span>Total</span>
-                <strong id="calc-total">$1.320.000</strong>
+                <div class="calculadora-linea">
+                    <span>Precio por equipo</span>
+                    <strong id="calc-precio-unitario">$1.320.000</strong>
+                </div>
+
+                <div class="calculadora-linea">
+                    <span>Cantidad</span>
+                    <strong id="calc-cantidad-equipos">1 equipo</strong>
+                </div>
+
+                <div class="calculadora-linea calculadora-total">
+                    <span>Total</span>
+                    <strong id="calc-total">$1.320.000</strong>
+                </div>
+
             </div>
 
             <button id="calc-boton-calcular" type="button" class="boton boton-navy" style="width:100%;text-align:center;margin-top:18px;cursor:pointer;border:none;font-family:inherit">
@@ -1026,6 +1034,27 @@
         return TABLA_PRECIOS[plazo][indice];
     }
 
+    var REGEX_CORREO = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function datosCompletos() {
+        return campoNombre.value.trim().length > 0 && REGEX_CORREO.test(campoCorreo.value.trim());
+    }
+
+    function actualizarBloqueo(completos) {
+
+        var panelValores = document.getElementById("calc-valores");
+        var aviso = document.getElementById("calc-aviso-bloqueo");
+        var botonWhatsapp = document.getElementById("calc-boton-whatsapp");
+
+        panelValores.classList.toggle("bloqueado", !completos);
+        aviso.style.display = completos ? "none" : "block";
+
+        document.getElementById("calc-boton-calcular").disabled = !completos;
+        botonWhatsapp.classList.toggle("deshabilitado", !completos);
+        botonWhatsapp.setAttribute("aria-disabled", String(!completos));
+
+    }
+
     function actualizar() {
 
         var cantidad = Math.max(1, parseInt(campoEquipos.value, 10) || 1);
@@ -1035,6 +1064,9 @@
         document.getElementById("calc-precio-unitario").textContent = formatoCOP.format(precioUnitario);
         document.getElementById("calc-cantidad-equipos").textContent = cantidad + (cantidad === 1 ? " equipo" : " equipos");
         document.getElementById("calc-total").textContent = formatoCOP.format(total);
+
+        var completos = datosCompletos();
+        actualizarBloqueo(completos);
 
         var plazoTexto = NOMBRES_PLAZO[campoPlazo.value];
         var nombre = campoNombre.value.trim();
@@ -1056,8 +1088,16 @@
             mensaje += " Código de referido: " + referido + ".";
         }
 
-        document.getElementById("calc-boton-whatsapp").href =
-            "https://wa.me/573202413579?text=" + encodeURIComponent(mensaje);
+        var botonWhatsapp = document.getElementById("calc-boton-whatsapp");
+
+        // Sin datos completos, el enlace no lleva a ningún lado (en vez
+        // de abrir WhatsApp igual pese a estar "deshabilitado" visualmente
+        // -- `pointer-events:none` de `.deshabilitado` ya lo bloquea, pero
+        // esto es una segunda barrera si alguien fuerza el clic por otro
+        // medio, ej. Tab + Enter).
+        botonWhatsapp.href = completos
+            ? "https://wa.me/573202413579?text=" + encodeURIComponent(mensaje)
+            : "#";
 
     }
 
@@ -1083,6 +1123,14 @@
     botonCalcular.addEventListener("click", function () {
 
         actualizar();
+
+        if (!datosCompletos()) {
+            mensajeCorreo.style.color = "#b91c1c";
+            mensajeCorreo.textContent = "Completa tu nombre y correo antes de solicitar la cotización.";
+            return;
+        }
+
+        mensajeCorreo.style.color = "var(--teal)";
 
         var cantidad = Math.max(1, parseInt(campoEquipos.value, 10) || 1);
         var total = precioPorEquipo(campoPlazo.value, cantidad) * cantidad;

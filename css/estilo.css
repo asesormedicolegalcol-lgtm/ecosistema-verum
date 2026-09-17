@@ -621,6 +621,22 @@ a:focus-visible{outline:2px solid var(--oro);outline-offset:2px;border-radius:3p
 .calculadora-total span{font-size:1rem;font-weight:700;color:var(--marca-oscuro)}
 .calculadora-total strong{font-size:1.5rem;color:var(--marca-oscuro)}
 
+.calculadora-aviso-bloqueo{
+    display:none;
+    background:var(--oro-suave);border:1px solid rgba(212,166,42,.45);
+    border-radius:8px;padding:10px 14px;margin-bottom:14px;
+    font-size:.85rem;color:#6b5720;
+}
+
+#calc-valores.bloqueado .calculadora-linea strong{
+    filter:blur(7px);user-select:none;
+}
+
+.boton[disabled],
+.boton.deshabilitado{
+    opacity:.5;pointer-events:none;cursor:default;
+}
+
 @media (max-width:720px){
     .calculadora-precio{grid-template-columns:1fr}
     .calculadora-controles{border-right:none;border-bottom:1px solid var(--borde)}
