@@ -614,8 +614,6 @@ a:focus-visible{outline:2px solid var(--oro);outline-offset:2px;border-radius:3p
 }
 .calculadora-linea strong{color:var(--texto);font-weight:650;white-space:nowrap}
 
-.calculadora-descuento strong{color:var(--teal)}
-
 .calculadora-total{
     border-bottom:none;margin-top:6px;padding-top:14px;
     border-top:2px solid rgba(11,31,59,.15);

@@ -816,7 +816,7 @@
     <div class="seccion-titulo">
         <div class="linea-oro"></div>
         <h2>Calcula tu licencia</h2>
-        <p>Indica cuántos equipos necesitas y por cuánto tiempo — el precio se ajusta al instante, con descuento automático por volumen.</p>
+        <p>Indica cuántos equipos necesitas y por cuánto tiempo — el precio por equipo se ajusta solo, más bajo entre más equipos pidas.</p>
     </div>
 
     <div class="calculadora-precio">
@@ -831,9 +831,9 @@
             <label for="calc-plazo">
                 Duración de la licencia
                 <select id="calc-plazo">
-                    <option value="400000">Trimestral — $400.000 por equipo</option>
-                    <option value="700000">Semestral — $700.000 por equipo</option>
-                    <option value="1200000" selected>Anual — $1.200.000 por equipo</option>
+                    <option value="trimestral">Trimestral — desde $320.000 por equipo</option>
+                    <option value="semestral">Semestral — desde $560.000 por equipo</option>
+                    <option value="anual" selected>Anual — desde $960.000 por equipo</option>
                 </select>
             </label>
 
@@ -843,7 +843,7 @@
             </label>
 
             <p style="font-size:.82rem;color:var(--texto-suave);margin-top:2px">
-                Descuento por volumen: 10% desde 3 equipos, 15% desde 6, 20% desde 10.
+                El precio por equipo baja solo con la cantidad: 1, 2, 3-5, 6-9 y 10 o más equipos son escalones distintos.
             </p>
 
         </div>
@@ -852,22 +852,17 @@
 
             <div class="calculadora-linea">
                 <span>Precio por equipo</span>
-                <strong id="calc-precio-unitario">$1.200.000</strong>
+                <strong id="calc-precio-unitario">$1.320.000</strong>
             </div>
 
             <div class="calculadora-linea">
-                <span>Subtotal (<span id="calc-cantidad-equipos">1</span> equipo)</span>
-                <strong id="calc-subtotal">$1.200.000</strong>
-            </div>
-
-            <div class="calculadora-linea calculadora-descuento" id="calc-fila-descuento" style="display:none">
-                <span>Descuento por volumen (<span id="calc-porcentaje-descuento">10</span>%)</span>
-                <strong id="calc-descuento">-$0</strong>
+                <span>Cantidad</span>
+                <strong id="calc-cantidad-equipos">1 equipo</strong>
             </div>
 
             <div class="calculadora-linea calculadora-total">
                 <span>Total</span>
-                <strong id="calc-total">$1.200.000</strong>
+                <strong id="calc-total">$1.320.000</strong>
             </div>
 
             <a id="calc-boton-whatsapp" href="https://wa.me/573202413579" class="boton boton-oro" target="_blank" rel="noopener" style="width:100%;text-align:center;margin-top:18px">
@@ -992,48 +987,42 @@
 
     if (!campoEquipos || !campoPlazo) return;
 
-    // Tramos de descuento por volumen, del más alto al más bajo -- el
-    // primero cuyo mínimo cumpla la cantidad pedida es el que aplica.
-    var TRAMOS_DESCUENTO = [
-        { minimo: 10, porcentaje: 20 },
-        { minimo: 6, porcentaje: 15 },
-        { minimo: 3, porcentaje: 10 }
-    ];
+    // Precio por equipo según plazo y cantidad -- cada plazo tiene su
+    // propio precio para 1 y 2 equipos, y desde 3 comparte los mismos
+    // 3 escalones de volumen (3-5 / 6-9 / 10+).
+    var TABLA_PRECIOS = {
+        trimestral: { 1: 400000, 2: 400000, escalones: [{ minimo: 10, precio: 320000 }, { minimo: 6, precio: 340000 }, { minimo: 3, precio: 360000 }] },
+        semestral: { 1: 735000, 2: 717500, escalones: [{ minimo: 10, precio: 560000 }, { minimo: 6, precio: 595000 }, { minimo: 3, precio: 630000 }] },
+        anual: { 1: 1320000, 2: 1260000, escalones: [{ minimo: 10, precio: 960000 }, { minimo: 6, precio: 1020000 }, { minimo: 3, precio: 1080000 }] }
+    };
 
-    var NOMBRES_PLAZO = { "400000": "trimestral", "700000": "semestral", "1200000": "anual" };
+    var NOMBRES_PLAZO = { trimestral: "trimestral", semestral: "semestral", anual: "anual" };
 
     var formatoCOP = new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 });
 
-    function descuentoAplicable(cantidad) {
-        for (var i = 0; i < TRAMOS_DESCUENTO.length; i++) {
-            if (cantidad >= TRAMOS_DESCUENTO[i].minimo) return TRAMOS_DESCUENTO[i];
+    function precioPorEquipo(plazo, cantidad) {
+
+        var tabla = TABLA_PRECIOS[plazo];
+
+        if (cantidad === 1) return tabla[1];
+        if (cantidad === 2) return tabla[2];
+
+        for (var i = 0; i < tabla.escalones.length; i++) {
+            if (cantidad >= tabla.escalones[i].minimo) return tabla.escalones[i].precio;
         }
-        return null;
+
+        return tabla.escalones[tabla.escalones.length - 1].precio;
+
     }
 
     function actualizar() {
 
         var cantidad = Math.max(1, parseInt(campoEquipos.value, 10) || 1);
-        var precioUnitario = parseInt(campoPlazo.value, 10);
-        var subtotal = precioUnitario * cantidad;
-        var tramo = descuentoAplicable(cantidad);
-        var valorDescuento = tramo ? Math.round(subtotal * tramo.porcentaje / 100) : 0;
-        var total = subtotal - valorDescuento;
+        var precioUnitario = precioPorEquipo(campoPlazo.value, cantidad);
+        var total = precioUnitario * cantidad;
 
         document.getElementById("calc-precio-unitario").textContent = formatoCOP.format(precioUnitario);
-        document.getElementById("calc-cantidad-equipos").textContent = cantidad;
-        document.getElementById("calc-subtotal").textContent = formatoCOP.format(subtotal);
-
-        var filaDescuento = document.getElementById("calc-fila-descuento");
-
-        if (tramo) {
-            filaDescuento.style.display = "flex";
-            document.getElementById("calc-porcentaje-descuento").textContent = tramo.porcentaje;
-            document.getElementById("calc-descuento").textContent = "-" + formatoCOP.format(valorDescuento);
-        } else {
-            filaDescuento.style.display = "none";
-        }
-
+        document.getElementById("calc-cantidad-equipos").textContent = cantidad + (cantidad === 1 ? " equipo" : " equipos");
         document.getElementById("calc-total").textContent = formatoCOP.format(total);
 
         var plazoTexto = NOMBRES_PLAZO[campoPlazo.value];
