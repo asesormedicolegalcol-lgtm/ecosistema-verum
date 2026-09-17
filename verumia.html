@@ -875,7 +875,13 @@
                 <strong id="calc-total">$1.320.000</strong>
             </div>
 
-            <a id="calc-boton-whatsapp" href="https://wa.me/573202413579" class="boton boton-oro" target="_blank" rel="noopener" style="width:100%;text-align:center;margin-top:18px">
+            <button id="calc-boton-calcular" type="button" class="boton boton-navy" style="width:100%;text-align:center;margin-top:18px;cursor:pointer;border:none;font-family:inherit">
+                Calcular y enviar cotización por correo
+            </button>
+
+            <p id="calc-mensaje-correo" style="font-size:.82rem;color:var(--teal);margin-top:8px;min-height:1.2em"></p>
+
+            <a id="calc-boton-whatsapp" href="https://wa.me/573202413579" class="boton boton-oro" target="_blank" rel="noopener" style="width:100%;text-align:center;margin-top:6px">
                 Solicitar esta cotización por WhatsApp
             </a>
 
@@ -1061,18 +1067,22 @@
     campoCorreo.addEventListener("input", actualizar);
     campoReferido.addEventListener("input", actualizar);
 
-    // Correo con la misma cotización, en paralelo al WhatsApp -- no
-    // bloquea ni retrasa la apertura de WhatsApp (que sigue abriendo en
-    // pestaña nueva por el propio enlace): esto solo dispara un envío
-    // de fondo hacia FormSubmit, un intermediario gratuito que reenvía
-    // el contenido del formulario por correo sin necesidad de un
-    // servidor propio ni de exponer ninguna contraseña en la página.
+    // Botón separado del de WhatsApp -- este SOLO calcula (ya lo hace
+    // `actualizar()` en vivo con cada cambio) y envía el correo, sin
+    // tocar el botón de WhatsApp, que sigue funcionando exactamente
+    // igual que antes (abre WhatsApp con el mensaje, el visitante da
+    // "Enviar"). El correo va hacia FormSubmit, un intermediario
+    // gratuito que reenvía el contenido del formulario sin necesidad de
+    // un servidor propio ni de exponer ninguna contraseña en la página.
     // El primer envío real le pedirá a Eduardo confirmar un correo de
     // activación en edmlegal.especializados@gmail.com -- después de
     // eso, los siguientes ya llegan directo.
-    var botonWhatsapp = document.getElementById("calc-boton-whatsapp");
+    var botonCalcular = document.getElementById("calc-boton-calcular");
+    var mensajeCorreo = document.getElementById("calc-mensaje-correo");
 
-    botonWhatsapp.addEventListener("click", function () {
+    botonCalcular.addEventListener("click", function () {
+
+        actualizar();
 
         var cantidad = Math.max(1, parseInt(campoEquipos.value, 10) || 1);
         var total = precioPorEquipo(campoPlazo.value, cantidad) * cantidad;
@@ -1088,15 +1098,23 @@
         datosCorreo.append("_template", "table");
         datosCorreo.append("_captcha", "false");
 
+        botonCalcular.disabled = true;
+        mensajeCorreo.textContent = "Enviando...";
+
         fetch("https://formsubmit.co/ajax/edmlegal.especializados@gmail.com", {
             method: "POST",
             headers: { "Accept": "application/json" },
             body: datosCorreo,
-        }).catch(function () {
-            // Sin conexión o el servicio no respondió -- no es crítico,
-            // el WhatsApp (que ya abrió en paralelo) sigue siendo el
-            // canal principal.
-        });
+        })
+            .then(function () {
+                mensajeCorreo.textContent = "Cotización enviada por correo -- también puedes escribirnos por WhatsApp abajo.";
+            })
+            .catch(function () {
+                mensajeCorreo.textContent = "No se pudo enviar el correo -- puedes escribirnos igual por WhatsApp abajo.";
+            })
+            .finally(function () {
+                botonCalcular.disabled = false;
+            });
 
     });
 
