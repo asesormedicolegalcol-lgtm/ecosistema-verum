@@ -837,6 +837,16 @@
                 </select>
             </label>
 
+            <label for="calc-nombre">
+                Tu nombre
+                <input type="text" id="calc-nombre" placeholder="¿Cómo te llamas?">
+            </label>
+
+            <label for="calc-correo">
+                Tu correo
+                <input type="email" id="calc-correo" placeholder="tu@correo.com">
+            </label>
+
             <label for="calc-referido">
                 Código de referido (opcional)
                 <input type="email" id="calc-referido" placeholder="correo@quien-te-recomendó.com">
@@ -983,6 +993,8 @@
 
     var campoEquipos = document.getElementById("calc-equipos");
     var campoPlazo = document.getElementById("calc-plazo");
+    var campoNombre = document.getElementById("calc-nombre");
+    var campoCorreo = document.getElementById("calc-correo");
     var campoReferido = document.getElementById("calc-referido");
 
     if (!campoEquipos || !campoPlazo) return;
@@ -1019,10 +1031,20 @@
         document.getElementById("calc-total").textContent = formatoCOP.format(total);
 
         var plazoTexto = NOMBRES_PLAZO[campoPlazo.value];
+        var nombre = campoNombre.value.trim();
+        var correo = campoCorreo.value.trim();
         var referido = campoReferido.value.trim();
 
         var mensaje = "Hola, quiero solicitar una licencia de VerumIA: " + cantidad +
             " equipo(s), plazo " + plazoTexto + ", total estimado " + formatoCOP.format(total) + ".";
+
+        if (nombre) {
+            mensaje += " Mi nombre: " + nombre + ".";
+        }
+
+        if (correo) {
+            mensaje += " Mi correo: " + correo + ".";
+        }
 
         if (referido) {
             mensaje += " Código de referido: " + referido + ".";
@@ -1035,6 +1057,8 @@
 
     campoEquipos.addEventListener("input", actualizar);
     campoPlazo.addEventListener("change", actualizar);
+    campoNombre.addEventListener("input", actualizar);
+    campoCorreo.addEventListener("input", actualizar);
     campoReferido.addEventListener("input", actualizar);
 
     actualizar();
