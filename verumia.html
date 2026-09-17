@@ -1061,6 +1061,45 @@
     campoCorreo.addEventListener("input", actualizar);
     campoReferido.addEventListener("input", actualizar);
 
+    // Correo con la misma cotización, en paralelo al WhatsApp -- no
+    // bloquea ni retrasa la apertura de WhatsApp (que sigue abriendo en
+    // pestaña nueva por el propio enlace): esto solo dispara un envío
+    // de fondo hacia FormSubmit, un intermediario gratuito que reenvía
+    // el contenido del formulario por correo sin necesidad de un
+    // servidor propio ni de exponer ninguna contraseña en la página.
+    // El primer envío real le pedirá a Eduardo confirmar un correo de
+    // activación en edmlegal.especializados@gmail.com -- después de
+    // eso, los siguientes ya llegan directo.
+    var botonWhatsapp = document.getElementById("calc-boton-whatsapp");
+
+    botonWhatsapp.addEventListener("click", function () {
+
+        var cantidad = Math.max(1, parseInt(campoEquipos.value, 10) || 1);
+        var total = precioPorEquipo(campoPlazo.value, cantidad) * cantidad;
+
+        var datosCorreo = new FormData();
+        datosCorreo.append("nombre", campoNombre.value.trim());
+        datosCorreo.append("correo_solicitante", campoCorreo.value.trim());
+        datosCorreo.append("equipos", cantidad);
+        datosCorreo.append("plazo", NOMBRES_PLAZO[campoPlazo.value]);
+        datosCorreo.append("total_estimado", formatoCOP.format(total));
+        datosCorreo.append("codigo_referido", campoReferido.value.trim());
+        datosCorreo.append("_subject", "Nueva cotización de VerumIA");
+        datosCorreo.append("_template", "table");
+        datosCorreo.append("_captcha", "false");
+
+        fetch("https://formsubmit.co/ajax/edmlegal.especializados@gmail.com", {
+            method: "POST",
+            headers: { "Accept": "application/json" },
+            body: datosCorreo,
+        }).catch(function () {
+            // Sin conexión o el servicio no respondió -- no es crítico,
+            // el WhatsApp (que ya abrió en paralelo) sigue siendo el
+            // canal principal.
+        });
+
+    });
+
     actualizar();
 
 })();
