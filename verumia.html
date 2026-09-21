@@ -318,10 +318,11 @@
     </div>
     <p>Tu asistente jurídico especializado: lleva tus expedientes, redacta borradores con inteligencia artificial, calcula lo que se factura a cada cliente y mantiene todo respaldado — <strong>sin depender de ningún servidor externo</strong>.</p>
     <div class="botones">
-        <a href="https://wa.me/573202413579?text=Hola,%20quiero%20solicitar%20una%20demo%20gratis%20de%20VerumIA" class="boton boton-oro" target="_blank" rel="noopener">Solicitar demo gratis</a>
+        <button type="button" id="demo-boton-abrir" class="boton boton-oro" style="cursor:pointer;border:none;font-family:inherit;font-size:inherit">Descargar demo gratis (Windows)</button>
+        <a href="https://wa.me/573202413579?text=Hola,%20quiero%20solicitar%20una%20demo%20gratis%20de%20VerumIA" class="boton boton-linea" target="_blank" rel="noopener">Solicitar por WhatsApp</a>
         <a href="#funciones" class="boton boton-linea">Ver todas las funciones →</a>
     </div>
-    <p style="margin-top:12px;font-size:.92rem;color:rgba(255,255,255,.7)">Próximamente: descarga directa del instalador, aquí mismo.</p>
+    <p style="margin-top:12px;font-size:.92rem;color:rgba(255,255,255,.7)">Demo completa por 7 días, luego pide tu licencia -- funciona en tu propio equipo, sin instalar nada externo.</p>
     <div class="metricas-mini">
         <div class="metrica-mini"><strong>11</strong><span>Especialidades jurídicas</span></div>
         <div class="metrica-mini"><strong>33</strong><span>Calculadoras determinísticas</span></div>
@@ -1170,6 +1171,105 @@
     });
 
     actualizar();
+
+})();
+</script>
+
+<div id="demo-modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(11,31,59,.72);z-index:200;align-items:center;justify-content:center;padding:20px">
+    <div style="background:var(--superficie);border-radius:var(--radio);max-width:420px;width:100%;padding:28px;position:relative;box-shadow:var(--sombra-alta)">
+        <button type="button" id="demo-modal-cerrar" aria-label="Cerrar" style="position:absolute;top:14px;right:14px;border:none;background:none;font-size:1.4rem;line-height:1;cursor:pointer;color:var(--texto-suave)">×</button>
+        <h3 style="margin-top:0;color:var(--marca-oscuro)">Antes de descargar</h3>
+        <p style="color:var(--texto-suave);font-size:.92rem">Cuéntanos quién eres -- te llega el enlace de descarga y quedamos en contacto para tu licencia cuando termine la prueba de 7 días.</p>
+
+        <label style="display:block;margin-top:14px;font-size:.9rem;font-weight:600;color:var(--texto)">Nombre completo
+            <input type="text" id="demo-modal-nombre" required style="display:block;width:100%;margin-top:4px;padding:10px;border:1px solid var(--borde);border-radius:8px;font-family:inherit;font-size:1rem;box-sizing:border-box">
+        </label>
+
+        <label style="display:block;margin-top:12px;font-size:.9rem;font-weight:600;color:var(--texto)">Correo electrónico
+            <input type="email" id="demo-modal-correo" required style="display:block;width:100%;margin-top:4px;padding:10px;border:1px solid var(--borde);border-radius:8px;font-family:inherit;font-size:1rem;box-sizing:border-box">
+        </label>
+
+        <label style="display:block;margin-top:12px;font-size:.9rem;font-weight:600;color:var(--texto)">¿Eres abogado o perito?
+            <select id="demo-modal-rol" style="display:block;width:100%;margin-top:4px;padding:10px;border:1px solid var(--borde);border-radius:8px;font-family:inherit;font-size:1rem;box-sizing:border-box">
+                <option value="Abogado">Abogado</option>
+                <option value="Perito">Perito</option>
+                <option value="Ambos">Ambos</option>
+            </select>
+        </label>
+
+        <p id="demo-modal-mensaje" style="min-height:1.2em;font-size:.85rem;margin-top:10px"></p>
+
+        <button type="button" id="demo-modal-boton" class="boton boton-oro" style="width:100%;text-align:center;margin-top:6px;cursor:pointer;border:none;font-family:inherit;font-size:1rem">Descargar demo gratis</button>
+    </div>
+</div>
+
+<script>
+(function () {
+
+    var overlay = document.getElementById("demo-modal-overlay");
+    var botonAbrir = document.getElementById("demo-boton-abrir");
+    var botonCerrar = document.getElementById("demo-modal-cerrar");
+    var botonDescargar = document.getElementById("demo-modal-boton");
+    var campoNombre = document.getElementById("demo-modal-nombre");
+    var campoCorreo = document.getElementById("demo-modal-correo");
+    var campoRol = document.getElementById("demo-modal-rol");
+    var mensaje = document.getElementById("demo-modal-mensaje");
+
+    var URL_DESCARGA = "https://github.com/asesormedicolegalcol-lgtm/ecosistema-verum/releases/download/verumia-v1.3.0/VerumIA-Setup-1.3.0.exe";
+
+    botonAbrir.addEventListener("click", function () {
+        overlay.style.display = "flex";
+        mensaje.textContent = "";
+    });
+
+    botonCerrar.addEventListener("click", function () {
+        overlay.style.display = "none";
+    });
+
+    overlay.addEventListener("click", function (evento) {
+        if (evento.target === overlay) overlay.style.display = "none";
+    });
+
+    botonDescargar.addEventListener("click", function () {
+
+        if (!campoNombre.value.trim() || !campoCorreo.value.trim()) {
+            mensaje.style.color = "#b91c1c";
+            mensaje.textContent = "Completa tu nombre y correo para continuar.";
+            return;
+        }
+
+        var datos = new FormData();
+        datos.append("nombre", campoNombre.value.trim());
+        datos.append("correo_solicitante", campoCorreo.value.trim());
+        datos.append("rol", campoRol.value);
+        datos.append("_subject", "Nueva descarga de demo -- VerumIA");
+        datos.append("_template", "table");
+        datos.append("_captcha", "false");
+
+        botonDescargar.disabled = true;
+        mensaje.style.color = "var(--teal)";
+        mensaje.textContent = "Preparando la descarga...";
+
+        fetch("https://formsubmit.co/ajax/edmlegal.especializados@gmail.com", {
+            method: "POST",
+            headers: { "Accept": "application/json" },
+            body: datos,
+        })
+            .catch(function () {
+                // Aunque falle el envío del correo, igual se deja
+                // descargar -- no tiene sentido bloquear una demo real
+                // por un problema del servicio de correo.
+            })
+            .finally(function () {
+                mensaje.textContent = "¡Listo! Empezando la descarga...";
+                window.location.href = URL_DESCARGA;
+                setTimeout(function () {
+                    overlay.style.display = "none";
+                    botonDescargar.disabled = false;
+                }, 1200);
+            });
+
+    });
 
 })();
 </script>
