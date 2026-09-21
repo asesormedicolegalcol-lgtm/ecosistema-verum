@@ -1279,13 +1279,19 @@
             })
             .finally(function () {
                 clearTimeout(temporizadorTiempo);
-                // La descarga arranca en la página de instrucciones
-                // (no aquí) -- así, si el cliente necesita volver a
-                // descargar más tarde, tiene un enlace visible ahí en
-                // vez de depender de un correo automático (formsubmit
-                // no manda auto-respuesta con envíos por AJAX/sin
-                // captcha, que es justo como está armado este envío).
-                mensaje.textContent = "¡Listo! Redirigiendo a las instrucciones de instalación...";
+                mensaje.textContent = "¡Listo! Iniciando la descarga...";
+
+                // La descarga se dispara aquí, una sola vez, con el
+                // clic real de la persona -- la página de instrucciones
+                // ya NO la repite sola al cargar (solo si la persona
+                // hace clic ahí en "¿No empezó? Descargar de nuevo").
+                var enlaceDescarga = document.createElement("a");
+                enlaceDescarga.href = URL_DESCARGA;
+                enlaceDescarga.setAttribute("download", "VerumIA-Setup-1.3.0.exe");
+                document.body.appendChild(enlaceDescarga);
+                enlaceDescarga.click();
+                enlaceDescarga.remove();
+
                 window.location.href = "instrucciones-descarga.html";
             });
 
