@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo instalar la demo de VerumIA | Ecosistema Verum</title>
+<meta name="description" content="Paso a paso para descargar e instalar la demo de VerumIA en Windows, incluyendo los avisos normales del navegador y de Windows por ser un instalador nuevo.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/estilo.css">
+<style>
+.paso-caja{background:var(--superficie);border:1px solid var(--borde);border-radius:var(--radio);padding:24px;margin-bottom:28px;box-shadow:var(--sombra)}
+.paso-numero{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--marca-oscuro);color:#fff;font-weight:700;margin-right:12px;flex-shrink:0}
+.paso-titulo{display:flex;align-items:center;margin-bottom:10px}
+.paso-titulo h3{margin:0}
+.simulacion{border:1px solid var(--borde);border-radius:10px;overflow:hidden;margin:14px 0;font-family:Segoe UI,Arial,sans-serif;max-width:460px}
+.simulacion-barra{background:#f3f3f3;border-bottom:1px solid #ddd;padding:8px 14px;font-size:.8rem;color:#555;display:flex;align-items:center;gap:8px}
+.simulacion-cuerpo{padding:16px;background:#fff}
+.simulacion-windows{background:#f3f3f3;padding:18px}
+.simulacion-windows-caja{background:#fff;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,.18);max-width:360px;margin:0 auto;overflow:hidden}
+.simulacion-windows-topbar{background:#0067c0;height:8px}
+.simulacion-windows-cuerpo{padding:18px 20px}
+.simulacion-windows-titulo{font-weight:700;font-size:.95rem;color:#1b1b1b;margin-bottom:8px}
+.simulacion-windows-texto{font-size:.82rem;color:#444;line-height:1.5}
+.simulacion-boton-azul{display:inline-block;margin-top:14px;background:#0067c0;color:#fff;font-size:.82rem;padding:6px 18px;border-radius:2px}
+.simulacion-boton-gris{display:inline-block;margin-top:14px;margin-left:8px;background:#e6e6e6;color:#1b1b1b;font-size:.82rem;padding:6px 18px;border-radius:2px}
+.simulacion-enlace{color:#0067c0;font-size:.82rem;text-decoration:underline;display:inline-block;margin-top:10px;cursor:default}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<defs>
+<symbol id="i-descarga" viewBox="0 0 24 24">
+  <path d="M12 3.5v12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M7 11l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4.5 18.5v1.5a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-1.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+</symbol>
+<symbol id="i-escudo" viewBox="0 0 24 24">
+  <path d="M12 3.5 19.5 6.5V11c0 5.2-3.2 8.6-7.5 9.7C7.7 19.6 4.5 16.2 4.5 11V6.5L12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M9 12l2.2 2.2L15.5 9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="i-ia" viewBox="0 0 24 24">
+  <circle cx="6" cy="7" r="1.9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="6" cy="17" r="1.9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="18" cy="12" r="1.9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="12" cy="12" r="2.3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <line x1="7.7" y1="8.1" x2="10.2" y2="10.4" stroke="currentColor" stroke-width="1.4"/>
+  <line x1="7.7" y1="15.9" x2="10.2" y2="13.6" stroke="currentColor" stroke-width="1.4"/>
+  <line x1="14.3" y1="12" x2="16.1" y2="12" stroke="currentColor" stroke-width="1.4"/>
+</symbol>
+</defs>
+</svg>
+
+<header class="cabecera">
+<div class="contenedor cabecera-fila">
+    <a href="index.html" class="marca">
+        <img src="img/logo-verumia.png" alt="Ecosistema Verum">
+        <span class="marca-texto">
+            <strong>Ecosistema Verum</strong>
+            <span>EDM Legal Especializados</span>
+        </span>
+    </a>
+    <button class="nav-boton" onclick="document.getElementById('nav').classList.toggle('abierto')" aria-label="Menú">☰</button>
+    <nav class="nav" id="nav">
+        <a href="index.html">Inicio</a>
+        <a href="verumia.html">VerumIA</a>
+        <a href="lex-verum-pro.html">Lex Verum Pro</a>
+        <a href="verum-med.html">VerumMed</a>
+        <a href="verum-status.html">Verum Status</a>
+        <a href="verum-psi.html">Verum Psi</a>
+        <a href="libro.html">La Ingeniería de la Verdad</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="soporte.html">Soporte</a>
+    </nav>
+</div>
+</header>
+
+<section class="portada">
+<div class="contenedor">
+    <span class="portada-etiqueta">Guía de instalación</span>
+    <h1>Cómo instalar la <em>demo de VerumIA</em></h1>
+    <p>Tu descarga ya empezó sola. Estos son los pasos normales para abrir el instalador en Windows — ningún aviso que veas es un error, es lo esperado la primera vez que se instala un programa nuevo que todavía no tiene firma digital de Microsoft.</p>
+    <div class="botones">
+        <a id="descarga-respaldo" href="https://github.com/asesormedicolegalcol-lgtm/ecosistema-verum/releases/download/verumia-v1.3.0/VerumIA-Setup-1.3.0.exe" class="boton boton-oro" download>¿No empezó? Descargar de nuevo</a>
+    </div>
+</div>
+</section>
+
+<script>
+window.location.href = "https://github.com/asesormedicolegalcol-lgtm/ecosistema-verum/releases/download/verumia-v1.3.0/VerumIA-Setup-1.3.0.exe";
+</script>
+
+<section class="seccion seccion-clara">
+<div class="contenedor" style="max-width:760px;margin:0 auto">
+
+    <div class="paso-caja">
+        <div class="paso-titulo"><span class="paso-numero">1</span><h3>El navegador termina de descargar el archivo</h3></div>
+        <p>VerumIA-Setup-1.3.0.exe pesa cerca de 420 MB — según tu conexión, puede tardar algunos minutos. Como es un instalador nuevo y todavía poco descargado, Chrome o Edge pueden mostrar un aviso antes de guardarlo:</p>
+
+        <div class="simulacion">
+            <div class="simulacion-barra"><svg width="14" height="14"><use href="#i-descarga" style="color:#555"></use></svg> Descargas</div>
+            <div class="simulacion-cuerpo">
+                <strong style="font-size:.85rem">VerumIA-Setup-1.3.0.exe no se descarga con frecuencia.</strong>
+                <p style="font-size:.8rem;color:#555;margin:6px 0 10px">Asegúrate de que confías en VerumIA-Setup-1.3.0.exe antes de abrirlo.</p>
+                <span style="display:inline-block;background:#1a73e8;color:#fff;font-size:.78rem;padding:6px 14px;border-radius:4px;margin-right:6px">Conservar</span>
+                <span style="display:inline-block;background:#f1f3f4;color:#333;font-size:.78rem;padding:6px 14px;border-radius:4px">Eliminar</span>
+            </div>
+        </div>
+
+        <p>Haz clic en <strong>"Conservar"</strong> (o "Mantener"/"Descargar de todas formas", el texto exacto varía un poco entre Chrome y Edge). Es un aviso genérico para cualquier instalador poco común, no algo específico de VerumIA.</p>
+    </div>
+
+    <div class="paso-caja">
+        <div class="paso-titulo"><span class="paso-numero">2</span><h3>Windows revisa el instalador antes de abrirlo (SmartScreen)</h3></div>
+        <p>Al hacer doble clic en el archivo descargado, Windows Defender SmartScreen muestra esta ventana porque el instalador es de un desarrollador independiente, todavía sin firma digital de pago de Microsoft:</p>
+
+        <div class="simulacion-windows">
+            <div class="simulacion-windows-caja">
+                <div class="simulacion-windows-topbar"></div>
+                <div class="simulacion-windows-cuerpo">
+                    <div class="simulacion-windows-titulo">🛡️ Windows protegió su PC</div>
+                    <div class="simulacion-windows-texto">Microsoft Defender SmartScreen impidió el inicio de una aplicación no reconocida. Ejecutar esta aplicación podría poner en riesgo su PC.</div>
+                    <div class="simulacion-enlace">Más información</div><br>
+                    <span class="simulacion-boton-azul">No ejecutar</span>
+                </div>
+            </div>
+        </div>
+
+        <p>Haz clic en <strong>"Más información"</strong> — la ventana se expande y aparece un botón nuevo:</p>
+
+        <div class="simulacion-windows">
+            <div class="simulacion-windows-caja">
+                <div class="simulacion-windows-topbar"></div>
+                <div class="simulacion-windows-cuerpo">
+                    <div class="simulacion-windows-titulo">🛡️ Windows protegió su PC</div>
+                    <div class="simulacion-windows-texto">Microsoft Defender SmartScreen impidió el inicio de una aplicación no reconocida. Ejecutar esta aplicación podría poner en riesgo su PC.<br><br><strong>Editor: Editor desconocido</strong><br>Aplicación: VerumIA-Setup-1.3.0.exe</div>
+                    <span class="simulacion-boton-gris">Ejecutar de todas formas</span>
+                    <span class="simulacion-boton-azul">No ejecutar</span>
+                </div>
+            </div>
+        </div>
+
+        <p>Haz clic en <strong>"Ejecutar de todas formas"</strong>. Este paso solo aparece la primera vez que se ejecuta el instalador en tu equipo.</p>
+    </div>
+
+    <div class="paso-caja">
+        <div class="paso-titulo"><span class="paso-numero">3</span><h3>Sigue el asistente de instalación</h3></div>
+        <p>Es un instalador estándar de Windows (Inno Setup): elige la carpeta de instalación si quieres cambiarla, acepta los términos y haz clic en <strong>Siguiente</strong> hasta llegar a <strong>Instalar</strong>. Al finalizar, VerumIA queda disponible en el menú Inicio y con un ícono en el escritorio.</p>
+    </div>
+
+    <div class="paso-caja">
+        <div class="paso-titulo"><span class="paso-numero">4</span><h3>Primer arranque: elige tu proveedor de inteligencia artificial</h3></div>
+        <p>La primera vez que abras VerumIA, te va a pedir configurar al menos un proveedor de IA (para redactar borradores, cronologías y análisis). Tienes dos caminos:</p>
+        <ul class="lista-check" style="margin-top:10px">
+            <li><strong>Un proveedor en la nube</strong> (OpenAI, Anthropic, Gemini, etc., con tu propia llave/API key) — queda listo casi de inmediato.</li>
+            <li><strong>Ollama (IA 100% local, sin enviar nada a internet)</strong> — VerumIA necesita descargar el modelo de lenguaje a tu equipo la primera vez, que puede pesar varios GB. <span style="color:var(--teal);font-weight:600">Si eliges esta opción, la primera configuración va a tardar más</span> (varios minutos, según tu conexión e internet) — es normal, solo pasa una vez; después arranca de inmediato en cada apertura.</li>
+        </ul>
+    </div>
+
+    <div class="aviso" style="margin-top:8px">
+        <strong>¿Algo no coincide con lo que ves en tu pantalla?</strong>
+        <p>Escríbenos por <a href="https://wa.me/573202413579?text=Hola,%20tengo%20una%20duda%20instalando%20la%20demo%20de%20VerumIA" target="_blank" rel="noopener">WhatsApp</a> y te acompañamos en el proceso.</p>
+    </div>
+
+</div>
+</section>
+
+<footer class="pie">
+<div class="contenedor">
+    <div class="pie-rejilla">
+        <div>
+            <h4>Ecosistema Verum</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Perfil profesional</a></li>
+                <li><a href="libro.html">La Ingeniería de la Verdad</a></li>
+                <li><a href="soporte.html">Soporte y contacto</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Aplicaciones</h4>
+            <ul>
+                <li><a href="verumia.html">VerumIA</a></li>
+                <li><a href="lex-verum-pro.html">Lex Verum Pro</a></li>
+                <li><a href="verum-med.html">VerumMed</a></li>
+                <li><a href="verum-status.html">Verum Status</a></li>
+                <li><a href="verum-psi.html">Verum Psi</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="privacidad-verumia.html">Privacidad — VerumIA</a></li>
+                <li><a href="terminos.html">Términos de uso</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contacto</h4>
+            <ul>
+                <li><a href="mailto:edmlegal.especializados@gmail.com">edmlegal.especializados@gmail.com</a></li>
+                <li><a href="https://wa.me/573202413579" target="_blank" rel="noopener">WhatsApp +57 320 241 3579</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="pie-abajo">
+        <span>© 2026 Ecosistema Verum / EDM Legal Especializados SAS. Todos los derechos reservados.</span>
+        <span>Colombia</span>
+    </div>
+</div>
+</footer>
+
+<script src="js/interactivo.js" defer></script>
+</body>
+</html>

@@ -1261,12 +1261,14 @@
                 // por un problema del servicio de correo.
             })
             .finally(function () {
-                mensaje.textContent = "¡Listo! Empezando la descarga...";
-                window.location.href = URL_DESCARGA;
-                setTimeout(function () {
-                    overlay.style.display = "none";
-                    botonDescargar.disabled = false;
-                }, 1200);
+                // La descarga arranca en la página de instrucciones
+                // (no aquí) -- así, si el cliente necesita volver a
+                // descargar más tarde, tiene un enlace visible ahí en
+                // vez de depender de un correo automático (formsubmit
+                // no manda auto-respuesta con envíos por AJAX/sin
+                // captcha, que es justo como está armado este envío).
+                mensaje.textContent = "¡Listo! Redirigiendo a las instrucciones de instalación...";
+                window.location.href = "instrucciones-descarga.html";
             });
 
     });
