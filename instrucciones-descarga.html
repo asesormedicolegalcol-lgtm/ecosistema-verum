@@ -12,18 +12,12 @@
 .paso-numero{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--marca-oscuro);color:#fff;font-weight:700;margin-right:12px;flex-shrink:0}
 .paso-titulo{display:flex;align-items:center;margin-bottom:10px}
 .paso-titulo h3{margin:0}
-.simulacion{border:1px solid var(--borde);border-radius:10px;overflow:hidden;margin:14px 0;font-family:Segoe UI,Arial,sans-serif;max-width:460px}
-.simulacion-barra{background:#f3f3f3;border-bottom:1px solid #ddd;padding:8px 14px;font-size:.8rem;color:#555;display:flex;align-items:center;gap:8px}
-.simulacion-cuerpo{padding:16px;background:#fff}
-.simulacion-windows{background:#f3f3f3;padding:18px}
-.simulacion-windows-caja{background:#fff;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,.18);max-width:360px;margin:0 auto;overflow:hidden}
-.simulacion-windows-topbar{background:#0067c0;height:8px}
-.simulacion-windows-cuerpo{padding:18px 20px}
-.simulacion-windows-titulo{font-weight:700;font-size:.95rem;color:#1b1b1b;margin-bottom:8px}
-.simulacion-windows-texto{font-size:.82rem;color:#444;line-height:1.5}
-.simulacion-boton-azul{display:inline-block;margin-top:14px;background:#0067c0;color:#fff;font-size:.82rem;padding:6px 18px;border-radius:2px}
-.simulacion-boton-gris{display:inline-block;margin-top:14px;margin-left:8px;background:#e6e6e6;color:#1b1b1b;font-size:.82rem;padding:6px 18px;border-radius:2px}
-.simulacion-enlace{color:#0067c0;font-size:.82rem;text-decoration:underline;display:inline-block;margin-top:10px;cursor:default}
+.captura{border:1px solid var(--borde);border-radius:10px;box-shadow:var(--sombra);max-width:100%;display:block;margin:14px 0}
+.captura-fila{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0}
+.captura-fila .captura{margin:0;flex:1 1 260px;max-width:340px}
+.subpaso{margin:20px 0 8px;padding-top:16px;border-top:1px solid var(--borde)}
+.subpaso:first-of-type{border-top:none;padding-top:0}
+.subpaso h4{margin:0 0 6px}
 </style>
 </head>
 <body>
@@ -80,7 +74,7 @@
     <h1>Cómo instalar la <em>demo de VerumIA</em></h1>
     <p>Tu descarga ya empezó sola. Estos son los pasos normales para abrir el instalador en Windows — ningún aviso que veas es un error, es lo esperado la primera vez que se instala un programa nuevo que todavía no tiene firma digital de Microsoft.</p>
     <div class="botones">
-        <a id="descarga-respaldo" href="https://github.com/asesormedicolegalcol-lgtm/ecosistema-verum/releases/download/verumia-v1.3.0/VerumIA-Setup-1.3.0.exe" class="boton boton-oro" download>¿No empezó? Descargar de nuevo</a>
+        <a id="descarga-respaldo" href="https://github.com/asesormedicolegalcol-lgtm/ecosistema-verum/releases/download/verumia-v1.3.1/VerumIA-Setup-1.3.1.exe" class="boton boton-oro" download>¿No empezó? Descargar de nuevo</a>
     </div>
 </div>
 </section>
@@ -90,66 +84,75 @@
 
     <div class="paso-caja">
         <div class="paso-titulo"><span class="paso-numero">1</span><h3>El navegador termina de descargar el archivo</h3></div>
-        <p>VerumIA-Setup-1.3.0.exe pesa cerca de 420 MB — según tu conexión, puede tardar algunos minutos. Como es un instalador nuevo y todavía poco descargado, Chrome o Edge pueden mostrar un aviso antes de guardarlo:</p>
-
-        <div class="simulacion">
-            <div class="simulacion-barra"><svg width="14" height="14"><use href="#i-descarga" style="color:#555"></use></svg> Descargas</div>
-            <div class="simulacion-cuerpo">
-                <strong style="font-size:.85rem">VerumIA-Setup-1.3.0.exe no se descarga con frecuencia.</strong>
-                <p style="font-size:.8rem;color:#555;margin:6px 0 10px">Asegúrate de que confías en VerumIA-Setup-1.3.0.exe antes de abrirlo.</p>
-                <span style="display:inline-block;background:#1a73e8;color:#fff;font-size:.78rem;padding:6px 14px;border-radius:4px;margin-right:6px">Conservar</span>
-                <span style="display:inline-block;background:#f1f3f4;color:#333;font-size:.78rem;padding:6px 14px;border-radius:4px">Eliminar</span>
-            </div>
-        </div>
-
-        <p>Haz clic en <strong>"Conservar"</strong> (o "Mantener"/"Descargar de todas formas", el texto exacto varía un poco entre Chrome y Edge). Es un aviso genérico para cualquier instalador poco común, no algo específico de VerumIA.</p>
+        <p>VerumIA-Setup-1.3.1.exe pesa cerca de 420 MB — según tu conexión, puede tardar algunos minutos. Como es un instalador nuevo y todavía poco descargado, Chrome o Edge pueden mostrar un aviso antes de guardarlo ("no se descarga con frecuencia" o similar) -- es un aviso genérico para cualquier instalador poco común, no algo específico de VerumIA. Haz clic en <strong>"Conservar"</strong> / "Mantener" / "Descargar de todas formas" (el texto varía entre navegadores).</p>
     </div>
 
     <div class="paso-caja">
         <div class="paso-titulo"><span class="paso-numero">2</span><h3>Windows revisa el instalador antes de abrirlo (SmartScreen)</h3></div>
         <p>Al hacer doble clic en el archivo descargado, Windows Defender SmartScreen muestra esta ventana porque el instalador es de un desarrollador independiente, todavía sin firma digital de pago de Microsoft:</p>
 
-        <div class="simulacion-windows">
-            <div class="simulacion-windows-caja">
-                <div class="simulacion-windows-topbar"></div>
-                <div class="simulacion-windows-cuerpo">
-                    <div class="simulacion-windows-titulo">🛡️ Windows protegió su PC</div>
-                    <div class="simulacion-windows-texto">Microsoft Defender SmartScreen impidió el inicio de una aplicación no reconocida. Ejecutar esta aplicación podría poner en riesgo su PC.</div>
-                    <div class="simulacion-enlace">Más información</div><br>
-                    <span class="simulacion-boton-azul">No ejecutar</span>
-                </div>
-            </div>
-        </div>
+        <img class="captura" src="img/instalacion/smartscreen-1.png" alt="Windows protegió su PC -- SmartScreen impidió el inicio de una aplicación no reconocida">
 
         <p>Haz clic en <strong>"Más información"</strong> — la ventana se expande y aparece un botón nuevo:</p>
 
-        <div class="simulacion-windows">
-            <div class="simulacion-windows-caja">
-                <div class="simulacion-windows-topbar"></div>
-                <div class="simulacion-windows-cuerpo">
-                    <div class="simulacion-windows-titulo">🛡️ Windows protegió su PC</div>
-                    <div class="simulacion-windows-texto">Microsoft Defender SmartScreen impidió el inicio de una aplicación no reconocida. Ejecutar esta aplicación podría poner en riesgo su PC.<br><br><strong>Editor: Editor desconocido</strong><br>Aplicación: VerumIA-Setup-1.3.0.exe</div>
-                    <span class="simulacion-boton-gris">Ejecutar de todas formas</span>
-                    <span class="simulacion-boton-azul">No ejecutar</span>
-                </div>
-            </div>
-        </div>
+        <img class="captura" src="img/instalacion/smartscreen-2.png" alt="SmartScreen expandido, mostrando el botón Ejecutar de todas formas">
 
         <p>Haz clic en <strong>"Ejecutar de todas formas"</strong>. Este paso solo aparece la primera vez que se ejecuta el instalador en tu equipo.</p>
     </div>
 
     <div class="paso-caja">
         <div class="paso-titulo"><span class="paso-numero">3</span><h3>Sigue el asistente de instalación</h3></div>
-        <p>Es un instalador estándar de Windows (Inno Setup): elige la carpeta de instalación si quieres cambiarla, acepta los términos y haz clic en <strong>Siguiente</strong> hasta llegar a <strong>Instalar</strong>. Al finalizar, VerumIA queda disponible en el menú Inicio y con un ícono en el escritorio.</p>
+        <p>Es un instalador estándar de Windows (Inno Setup). Estas son las pantallas que vas a ver, en orden:</p>
+
+        <div class="subpaso">
+            <h4>Bienvenida</h4>
+            <img class="captura" src="img/instalacion/asistente-bienvenida.png" alt="Bienvenido al asistente de instalación de VerumIA">
+        </div>
+
+        <div class="subpaso">
+            <h4>Carpeta de destino</h4>
+            <p>Déjala tal cual (recomendado) o cámbiala con <strong>"Examinar..."</strong> si prefieres otra ubicación.</p>
+            <img class="captura" src="img/instalacion/asistente-carpeta.png" alt="Seleccione la carpeta de destino">
+        </div>
+
+        <div class="subpaso">
+            <h4>Cuenta del propietario</h4>
+            <p>Escribe tu nombre, apellido y una contraseña -- con eso se arma tu usuario de acceso (ej. "PROPIETARIO.JUANPEREZ"). <strong>Anota o memoriza bien la contraseña:</strong> si la olvidas, no hay forma de recuperarla, solo de restablecerla con otra cuenta que tenga privilegios suficientes.</p>
+            <img class="captura" src="img/instalacion/asistente-propietario.png" alt="Cuenta del propietario -- nombres, apellidos y contraseña">
+        </div>
+
+        <div class="subpaso">
+            <h4>Tareas adicionales</h4>
+            <p>La casilla de <strong>Inteligencia Artificial local</strong> (Ollama + modelo gemma4:12b, ~9GB) es opcional y viene sin marcar. Si no la marcas, VerumIA queda instalado y funcional igual, usando proveedores de IA en la nube hasta que decidas instalar IA local después desde Configuración → Proveedores de IA. Si la marcas, la primera instalación va a tardar más (descarga varios GB) -- es normal, solo pasa una vez.</p>
+            <img class="captura" src="img/instalacion/asistente-tareas.png" alt="Seleccione las tareas adicionales -- acceso directo e Inteligencia Artificial local">
+        </div>
+
+        <div class="subpaso">
+            <h4>Listo para instalar</h4>
+            <img class="captura" src="img/instalacion/asistente-listo.png" alt="Listo para instalar -- resumen antes de hacer clic en Instalar">
+        </div>
+
+        <div class="subpaso">
+            <h4>Instalando</h4>
+            <img class="captura" src="img/instalacion/asistente-instalando.png" alt="Instalando VerumIA -- barra de progreso">
+        </div>
+
+        <div class="subpaso">
+            <h4>Tu cuenta ya está lista</h4>
+            <p>Al terminar, un aviso muestra el usuario que se generó y confirma tu contraseña -- <strong>guarda este dato</strong>, lo vas a necesitar para iniciar sesión (también queda guardado en "credenciales_iniciales.txt", dentro de la carpeta de instalación).</p>
+            <img class="captura" src="img/instalacion/asistente-credenciales.png" alt="Tu cuenta de VerumIA ya está lista -- usuario y contraseña generados">
+        </div>
+
+        <div class="subpaso">
+            <h4>Instalación completada</h4>
+            <p>Deja marcado <strong>"Iniciar VerumIA ahora"</strong> y haz clic en <strong>Finalizar</strong>. VerumIA queda disponible en el menú Inicio y con un ícono en el escritorio para la próxima vez.</p>
+            <img class="captura" src="img/instalacion/asistente-completado.png" alt="Completando la instalación de VerumIA">
+        </div>
     </div>
 
     <div class="paso-caja">
-        <div class="paso-titulo"><span class="paso-numero">4</span><h3>Primer arranque: elige tu proveedor de inteligencia artificial</h3></div>
-        <p>La primera vez que abras VerumIA, te va a pedir configurar al menos un proveedor de IA (para redactar borradores, cronologías y análisis). Tienes dos caminos:</p>
-        <ul class="lista-check" style="margin-top:10px">
-            <li><strong>Un proveedor en la nube</strong> (OpenAI, Anthropic, Gemini, etc., con tu propia llave/API key) — queda listo casi de inmediato.</li>
-            <li><strong>Ollama (IA 100% local, sin enviar nada a internet)</strong> — VerumIA necesita descargar el modelo de lenguaje a tu equipo la primera vez, que puede pesar varios GB. <span style="color:var(--teal);font-weight:600">Si eliges esta opción, la primera configuración va a tardar más</span> (varios minutos, según tu conexión e internet) — es normal, solo pasa una vez; después arranca de inmediato en cada apertura.</li>
-        </ul>
+        <div class="paso-titulo"><span class="paso-numero">4</span><h3>Primer arranque</h3></div>
+        <p>VerumIA se abre solo en tu navegador. Inicia sesión con el usuario y la contraseña que acabas de crear -- tu período de prueba gratuita de 7 días arranca automáticamente, sin que tengas que pegar ninguna clave de activación. Al vencer, la app te pide contactar a tu proveedor para pasar a una licencia paga.</p>
     </div>
 
     <div class="aviso" style="margin-top:8px">
