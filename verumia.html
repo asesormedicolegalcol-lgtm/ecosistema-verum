@@ -1253,17 +1253,32 @@
         mensaje.style.color = "var(--teal)";
         mensaje.textContent = "Preparando la descarga...";
 
+        // Caso real reportado: un bloqueador de anuncios/privacidad
+        // puede frenar la petición a formsubmit.co SIN devolver error
+        // -- la deja pendiente para siempre, y el fetch nunca se
+        // resuelve ni se rechaza. Sin este límite de tiempo, eso
+        // dejaba a la persona atascada en el modal, sin poder
+        // descargar nada. Con AbortController, a los 4s se cancela
+        // solo (lo que sí resuelve la promesa) y sigue de todas
+        // formas -- el correo es un aviso interno, nunca debe
+        // bloquear una descarga real.
+        var controladorTiempo = new AbortController();
+        var temporizadorTiempo = setTimeout(function () { controladorTiempo.abort(); }, 4000);
+
         fetch("https://formsubmit.co/ajax/edmlegal.especializados@gmail.com", {
             method: "POST",
             headers: { "Accept": "application/json" },
             body: datos,
+            signal: controladorTiempo.signal,
         })
             .catch(function () {
-                // Aunque falle el envío del correo, igual se deja
-                // descargar -- no tiene sentido bloquear una demo real
-                // por un problema del servicio de correo.
+                // Aunque falle, se agote el tiempo, o lo bloquee un
+                // extensión del navegador, igual se deja continuar --
+                // no tiene sentido bloquear una demo real por un
+                // problema del servicio de correo.
             })
             .finally(function () {
+                clearTimeout(temporizadorTiempo);
                 // La descarga arranca en la página de instrucciones
                 // (no aquí) -- así, si el cliente necesita volver a
                 // descargar más tarde, tiene un enlace visible ahí en
