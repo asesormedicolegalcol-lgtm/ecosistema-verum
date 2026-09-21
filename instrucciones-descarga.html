@@ -85,10 +85,6 @@
 </div>
 </section>
 
-<script>
-window.location.href = "https://github.com/asesormedicolegalcol-lgtm/ecosistema-verum/releases/download/verumia-v1.3.0/VerumIA-Setup-1.3.0.exe";
-</script>
-
 <section class="seccion seccion-clara">
 <div class="contenedor" style="max-width:760px;margin:0 auto">
 
@@ -209,5 +205,19 @@ window.location.href = "https://github.com/asesormedicolegalcol-lgtm/ecosistema-
 </footer>
 
 <script src="js/interactivo.js" defer></script>
+<script>
+// Antes esto disparaba con window.location.href, que es una
+// navegación real: en algunos navegadores/dispositivos eso detenía
+// el resto de la página (por eso el título y el botón se veían pero
+// los 4 pasos y el pie de página no aparecían). Un <a download> con
+// click() simulado descarga el archivo sin navegar fuera de esta
+// página, y se dispara al final para no competir con el renderizado.
+var enlaceDescargaAuto = document.createElement("a");
+enlaceDescargaAuto.href = "https://github.com/asesormedicolegalcol-lgtm/ecosistema-verum/releases/download/verumia-v1.3.0/VerumIA-Setup-1.3.0.exe";
+enlaceDescargaAuto.setAttribute("download", "VerumIA-Setup-1.3.0.exe");
+document.body.appendChild(enlaceDescargaAuto);
+enlaceDescargaAuto.click();
+enlaceDescargaAuto.remove();
+</script>
 </body>
 </html>
