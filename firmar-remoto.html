@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Firmar documento — VerumIA | Ecosistema Verum</title>
+<meta name="description" content="Firma un documento enviado por tu abogado a través de VerumIA.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/estilo.css">
+<style>
+.firma-tabla{width:100%;border-collapse:collapse;margin:16px 0}
+.firma-tabla th{width:34%;text-align:left;color:var(--texto-suave);font-weight:600}
+.firma-tabla th,.firma-tabla td{padding:8px 10px;border-bottom:1px solid var(--borde);vertical-align:top}
+.firma-resultado{margin-top:16px;padding:14px 16px;border-radius:8px;font-weight:600}
+.firma-ok{background:#dcfce7;color:#14532d}
+.firma-mal{background:#fee2e2;color:#7f1d1d}
+.firma-aviso{background:var(--oro-suave);color:var(--texto);padding:12px 16px;border-radius:8px;margin:16px 0}
+#lienzo{width:100%;height:220px;border:2px dashed var(--borde);border-radius:8px;background:#fff;touch-action:none;display:block}
+.firma-botones{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.firma-botones button{padding:10px 18px;border-radius:8px;border:1px solid var(--borde);background:#fff;font-size:15px;cursor:pointer}
+.firma-botones button.primario{background:var(--azul,#1e3a5f);color:#fff;border-color:transparent}
+.firma-botones button:disabled{opacity:.5;cursor:not-allowed}
+</style>
+</head>
+<body>
+
+<header class="cabecera">
+<div class="contenedor cabecera-fila">
+    <a href="index.html" class="marca">
+        <img src="img/logo-verumia.png" alt="Ecosistema Verum">
+        <span class="marca-texto">
+            <strong>Ecosistema Verum</strong>
+            <span>EDM Legal Especializados</span>
+        </span>
+    </a>
+</div>
+</header>
+
+<section class="seccion">
+<div class="contenedor">
+<div class="documento">
+
+    <h2>Firmar documento</h2>
+    <p class="fecha-doc">Enviado a través de VerumIA</p>
+
+    <div id="estado">Consultando la solicitud…</div>
+
+    <div id="detalle" hidden>
+
+        <table class="firma-tabla">
+            <tr><th>Documento</th><td id="f-titulo"></td></tr>
+            <tr><th>Firmante</th><td id="f-firmante"></td></tr>
+            <tr><th>Válido hasta</th><td id="f-expiracion"></td></tr>
+        </table>
+
+        <div class="firma-aviso">
+            Dibuja tu firma en el recuadro de abajo con el dedo o el mouse. Al confirmar,
+            tu abogado recibirá la firma y el documento quedará firmado -- este enlace deja
+            de funcionar después.
+        </div>
+
+        <canvas id="lienzo"></canvas>
+
+        <div class="firma-botones">
+            <button id="btn-limpiar" type="button">Limpiar</button>
+            <button id="btn-confirmar" type="button" class="primario">Confirmar firma</button>
+        </div>
+
+        <div id="resultado" class="firma-resultado" hidden role="status"></div>
+
+    </div>
+
+</div>
+</div>
+</section>
+
+<script>
+// Mismo Worker de Cloudflare que la verificación de QR (ver
+// codigo_fuente/verificacion_worker/README.md en el repositorio de
+// VerumIA) -- esta página es pública, sin cuenta de VerumIA.
+const API_URL = "https://verumia-verificacion.eduardodelahozm.workers.dev";
+
+const $ = (id) => document.getElementById(id);
+const estado = $("estado");
+const token = new URLSearchParams(location.search).get("token") || "";
+
+function mostrarError(mensaje) {
+    estado.hidden = false;
+    estado.textContent = mensaje;
+    estado.className = "firma-resultado firma-mal";
+    $("detalle").hidden = true;
+}
+
+async function cargarContexto() {
+
+    if (!/^[a-f0-9]{16,64}$/.test(token)) {
+        return mostrarError("El enlace no es válido.");
+    }
+
+    let r;
+    try {
+        r = await fetch(`${API_URL}/firmas/${encodeURIComponent(token)}`);
+    } catch {
+        return mostrarError("No se pudo contactar el servicio de firma. Intenta de nuevo más tarde.");
+    }
+
+    if (r.status === 404) {
+        return mostrarError("Este enlace no corresponde a ninguna solicitud de firma de VerumIA.");
+    }
+    if (!r.ok) {
+        return mostrarError("El servicio de firma no está disponible en este momento.");
+    }
+
+    const d = await r.json();
+
+    if (d.estado === "firmado") {
+        return mostrarError("Este documento ya fue firmado antes -- si fuiste tú, no hace falta hacer nada más.");
+    }
+    if (d.estado === "expirado") {
+        return mostrarError("Este enlace ya venció -- pídele a tu abogado que te envíe uno nuevo.");
+    }
+    if (d.estado === "cancelado") {
+        return mostrarError("Esta solicitud de firma fue cancelada.");
+    }
+
+    $("f-titulo").textContent = `${d.documento_titulo || ""}${d.documento_codigo ? " (" + d.documento_codigo + ")" : ""}`;
+    $("f-firmante").textContent = d.nombre_firmante || "";
+    $("f-expiracion").textContent = d.fecha_expiracion ? new Date(d.fecha_expiracion).toLocaleString("es-CO") : "";
+
+    estado.hidden = true;
+    $("detalle").hidden = false;
+    prepararLienzo();
+}
+
+// --- Captura de la firma (mouse + táctil, sin librerías) ---
+
+let dibujando = false;
+let trazoVacio = true;
+let ctx;
+
+function prepararLienzo() {
+
+    const lienzo = $("lienzo");
+    const relacion = window.devicePixelRatio || 1;
+    const rect = lienzo.getBoundingClientRect();
+
+    lienzo.width = rect.width * relacion;
+    lienzo.height = rect.height * relacion;
+
+    ctx = lienzo.getContext("2d");
+    ctx.scale(relacion, relacion);
+    ctx.lineWidth = 2.5;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.strokeStyle = "#000";
+
+    function posicion(evento) {
+        const rect = lienzo.getBoundingClientRect();
+        const punto = evento.touches ? evento.touches[0] : evento;
+        return { x: punto.clientX - rect.left, y: punto.clientY - rect.top };
+    }
+
+    function iniciar(evento) {
+        evento.preventDefault();
+        dibujando = true;
+        const { x, y } = posicion(evento);
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+    }
+
+    function mover(evento) {
+        if (!dibujando) return;
+        evento.preventDefault();
+        const { x, y } = posicion(evento);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        trazoVacio = false;
+    }
+
+    function terminar() {
+        dibujando = false;
+    }
+
+    lienzo.addEventListener("mousedown", iniciar);
+    lienzo.addEventListener("mousemove", mover);
+    window.addEventListener("mouseup", terminar);
+    lienzo.addEventListener("touchstart", iniciar, { passive: false });
+    lienzo.addEventListener("touchmove", mover, { passive: false });
+    lienzo.addEventListener("touchend", terminar);
+
+    $("btn-limpiar").addEventListener("click", () => {
+        ctx.clearRect(0, 0, lienzo.width, lienzo.height);
+        trazoVacio = true;
+    });
+
+    $("btn-confirmar").addEventListener("click", confirmarFirma);
+}
+
+async function confirmarFirma() {
+
+    if (trazoVacio) {
+        alert("Dibuja tu firma antes de confirmar.");
+        return;
+    }
+
+    const boton = $("btn-confirmar");
+    boton.disabled = true;
+    boton.textContent = "Enviando...";
+
+    const firmaBase64 = $("lienzo").toDataURL("image/png");
+
+    try {
+
+        const r = await fetch(`${API_URL}/firmas/${encodeURIComponent(token)}/firmar`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ firma_base64: firmaBase64 }),
+        });
+
+        const resultado = $("resultado");
+        resultado.hidden = false;
+
+        if (r.ok) {
+            resultado.className = "firma-resultado firma-ok";
+            resultado.textContent = "✓ Firma enviada correctamente. Ya puedes cerrar esta página.";
+            $("lienzo").style.display = "none";
+            document.querySelector(".firma-botones").style.display = "none";
+        } else {
+            const d = await r.json().catch(() => ({}));
+            resultado.className = "firma-resultado firma-mal";
+            resultado.textContent = d.error || "No se pudo enviar la firma. Intenta de nuevo.";
+            boton.disabled = false;
+            boton.textContent = "Confirmar firma";
+        }
+
+    } catch {
+        const resultado = $("resultado");
+        resultado.hidden = false;
+        resultado.className = "firma-resultado firma-mal";
+        resultado.textContent = "Sin conexión -- intenta de nuevo cuando tengas internet.";
+        boton.disabled = false;
+        boton.textContent = "Confirmar firma";
+    }
+
+}
+
+cargarContexto();
+</script>
+
+</body>
+</html>
