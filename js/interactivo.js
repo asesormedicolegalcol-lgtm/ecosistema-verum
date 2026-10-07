@@ -129,6 +129,32 @@ del inicio. Sin dependencias externas; se incluye igual en las 12 páginas.
 
     }
 
+    /* --- Contador de visitas del sitio (Worker + D1, ver
+       codigo_fuente/verificacion_worker en el repo de VerumIA). Suma 1
+       por carga de página -- es un conteo de vistas, no de visitantes
+       únicos: no usa cookies ni guarda IP. Se inyecta en el pie, junto
+       al resto de datos de contacto. --- */
+    const piePara = document.querySelector('.pie-abajo');
+    if (piePara) {
+
+        const contador = document.createElement('span');
+        contador.className = 'contador-visitas';
+        contador.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12Z"/><circle cx="12" cy="12" r="3"/></svg> Visitas al sitio: <strong>…</strong>';
+        piePara.appendChild(contador);
+
+        fetch('https://verumia-verificacion.eduardodelahozm.workers.dev/contador/sitio')
+            .then(r => r.ok ? r.json() : null)
+            .then(datos => {
+                if (datos && Number.isFinite(datos.visitas)) {
+                    contador.querySelector('strong').textContent = datos.visitas.toLocaleString('es-CO');
+                } else {
+                    contador.remove();
+                }
+            })
+            .catch(() => contador.remove());
+
+    }
+
     /* --- Botón "volver arriba" --- */
     if (!document.querySelector('.flotante-arriba')) {
 
