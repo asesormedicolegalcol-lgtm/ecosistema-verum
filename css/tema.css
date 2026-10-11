@@ -507,8 +507,8 @@ html{scroll-padding-top:120px}
 
 /* HUD como fondo sutil del hero del inicio */
 .hud-fondo{
-    position:absolute;right:-6%;top:50%;transform:translateY(-50%);z-index:1;
-    width:min(1150px,78vw);opacity:.32;pointer-events:none;
-    -webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);
+    position:absolute;left:74%;top:50%;transform:translate(-50%,-50%);z-index:1;
+    width:min(1500px,98vw);opacity:.8;pointer-events:none;
+    -webkit-mask-image:radial-gradient(closest-side,#000 62%,transparent 100%);mask-image:radial-gradient(closest-side,#000 62%,transparent 100%);
 }
-@media (max-width:860px){.hud-fondo{width:130vw;right:-40vw;opacity:.22}}
+@media (max-width:860px){.hud-fondo{width:150vw;left:60%;opacity:.5}}
