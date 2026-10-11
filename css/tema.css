@@ -512,3 +512,18 @@ html{scroll-padding-top:120px}
     -webkit-mask-image:radial-gradient(closest-side,#000 62%,transparent 100%);mask-image:radial-gradient(closest-side,#000 62%,transparent 100%);
 }
 @media (max-width:860px){.hud-fondo{width:150vw;left:60%;opacity:.5}}
+
+/* Catálogo de dictámenes periciales (VerumIA) */
+.categorias-dictamen{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.categoria-dictamen{border-radius:24px;padding:clamp(24px,2.6vw,40px);border:1px solid var(--borde);background:#f7f9fc;position:relative;overflow:hidden}
+.categoria-dictamen::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--acento)}
+.cat-medica{--acento:#0b6fb8}.cat-patrimonial{--acento:var(--oro)}.cat-tecnica{--acento:var(--teal)}
+.categoria-dictamen h3{font-size:1.4rem;color:var(--marca-oscuro);margin-bottom:18px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.categoria-dictamen h3 small{font-family:var(--sans);font-size:.72rem;letter-spacing:1px;text-transform:uppercase;color:var(--texto-suave);font-weight:700}
+.chips-dictamen{display:flex;flex-wrap:wrap;gap:9px}
+.chips-dictamen span{font-size:.85rem;font-weight:600;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--borde);color:var(--marca-oscuro);transition:transform .2s,border-color .2s,background .2s}
+.chips-dictamen span:hover{transform:translateY(-2px);border-color:var(--acento);background:color-mix(in srgb,var(--acento) 10%,#fff)}
+.nota-dictamen{text-align:center;margin-top:26px;color:var(--texto-suave);font-size:.98rem}
+@media (max-width:1100px){.categorias-dictamen{grid-template-columns:1fr}}
+
+.categoria-dictamen h3 small{white-space:nowrap}
