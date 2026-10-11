@@ -1,0 +1,292 @@
+/*
+===============================================================================
+La Ingeniería de la Verdad — página del libro (tema oscuro editorial)
+Paleta tomada de las portadas: negro cálido, dorado y crema.
+Se carga después de estilo.css y tema.css.
+===============================================================================
+*/
+
+:root{
+    --tinta:#070709;
+    --tinta-2:#100d08;
+    --crema:#f3e7c6;
+    --crema-suave:#d8cfb8;
+    --oro-libro:#d9ae45;
+    --oro-libro-2:#f1cf79;
+}
+
+body.pagina-libro{background:var(--tinta);color:var(--crema-suave)}
+.pagina-libro .barra-superior{background:#000}
+
+.pagina-libro h1,.pagina-libro h2,.pagina-libro h3{color:var(--crema)}
+.pagina-libro .sobretitulo{color:var(--oro-libro-2)}
+.pagina-libro .linea-oro{background:var(--oro-libro)}
+.pagina-libro .seccion-titulo p{color:var(--crema-suave)}
+.pagina-libro .seccion-titulo h2 em{color:var(--oro-libro-2)}
+
+/*---------------- HERO ----------------*/
+.libro-hero{
+    position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center;
+    padding:150px 0 120px;
+    background:
+        radial-gradient(900px 640px at 78% 50%,rgba(217,174,69,.26),transparent 62%),
+        radial-gradient(600px 500px at 0% 0%,rgba(120,80,20,.28),transparent 60%),
+        linear-gradient(180deg,#050506,#0d0a06);
+}
+.libro-hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:radial-gradient(rgba(241,207,121,.16) 1px,transparent 1px);
+    background-size:34px 34px;
+    -webkit-mask-image:radial-gradient(70% 70% at 70% 50%,#000,transparent);
+    mask-image:radial-gradient(70% 70% at 70% 50%,#000,transparent);
+}
+.libro-hero .contenedor{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,5vw,90px);align-items:center}
+
+.libro-etiqueta{
+    display:inline-flex;gap:10px;align-items:center;padding:7px 18px;border-radius:999px;margin-bottom:26px;
+    border:1px solid rgba(217,174,69,.5);background:rgba(217,174,69,.1);color:var(--oro-libro-2);
+    font-size:.76rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:600;
+}
+.libro-etiqueta i{width:7px;height:7px;border-radius:50%;background:var(--oro-libro-2);box-shadow:0 0 0 4px rgba(241,207,121,.2)}
+.libro-hero h1{
+    font-size:clamp(3rem,6.2vw,6.4rem);line-height:.98;font-weight:600;letter-spacing:-.02em;
+    color:var(--crema);margin-bottom:22px;
+}
+.libro-hero h1 em{
+    display:block;font-style:italic;font-weight:500;
+    background:linear-gradient(100deg,var(--oro-libro-2),#fff3c9 55%,var(--oro-libro));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.libro-bajada{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,1.8vw,1.55rem);color:var(--oro-libro-2);margin-bottom:18px}
+.libro-hero p.texto{max-width:54ch;font-size:clamp(1.02rem,1.4vw,1.2rem);color:var(--crema-suave);margin-bottom:34px}
+.libro-hero .botones{margin-bottom:34px}
+.pagina-libro .boton-oro{background:linear-gradient(135deg,var(--oro-libro-2),var(--oro-libro));color:#1a1204}
+.pagina-libro .boton-linea{border-color:rgba(243,231,198,.45);color:var(--crema)}
+.pagina-libro .boton-linea:hover{background:rgba(243,231,198,.1);border-color:var(--crema)}
+
+.libro-cifras{display:flex;flex-wrap:wrap;gap:12px 40px;padding-top:26px;border-top:1px solid rgba(217,174,69,.3)}
+.libro-cifras div{display:flex;flex-direction:column}
+.libro-cifras strong{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--oro-libro-2);line-height:1}
+.libro-cifras span{font-size:.78rem;letter-spacing:.8px;text-transform:uppercase;color:var(--crema-suave);margin-top:6px}
+
+/* Los dos volúmenes en 3D */
+.estante{position:relative;height:clamp(480px,50vw,820px);perspective:2000px}
+.estante::before{
+    content:"";position:absolute;left:8%;right:8%;bottom:2%;height:40px;
+    background:radial-gradient(closest-side,rgba(0,0,0,.8),transparent);filter:blur(10px);
+}
+.estante .tomo-3d{
+    position:absolute;bottom:4%;width:53%;aspect-ratio:1000/1438;
+    transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.estante .tomo-3d img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:3px 10px 10px 3px;
+    box-shadow:0 40px 80px rgba(0,0,0,.7),0 0 0 1px rgba(217,174,69,.3),inset 6px 0 14px rgba(0,0,0,.4);
+}
+.estante .tomo-3d::after{ /* lomo */
+    content:"";position:absolute;left:0;top:0;bottom:0;width:7px;border-radius:3px 0 0 3px;
+    background:linear-gradient(90deg,rgba(0,0,0,.55),rgba(255,255,255,.12),transparent);
+}
+.estante .t1{left:2%;transform:rotateY(18deg) rotateZ(-4deg);z-index:1}
+.estante .t2{right:0;transform:rotateY(-14deg) rotateZ(3deg) translateY(-3%);z-index:2}
+.estante:hover .t1{transform:rotateY(10deg) rotateZ(-6deg) translateX(-14px)}
+.estante:hover .t2{transform:rotateY(-8deg) rotateZ(5deg) translate(14px,-3%)}
+.estante .sello{
+    position:absolute;z-index:5;left:46%;top:2%;width:clamp(92px,8vw,130px);aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,var(--oro-libro-2),var(--oro-libro) 60%,#8a6417);
+    color:#1a1204;display:flex;align-items:center;justify-content:center;text-align:center;
+    font-weight:800;font-size:.7rem;letter-spacing:.8px;text-transform:uppercase;line-height:1.25;
+    box-shadow:0 14px 34px rgba(0,0,0,.55);transform:rotate(-8deg);
+}
+
+/*---------------- Volúmenes ----------------*/
+.pagina-libro .seccion{padding:110px 0}
+.volumenes{display:grid;grid-template-columns:1fr;gap:28px}
+.volumen{
+    position:relative;border-radius:30px;padding:clamp(28px,3vw,52px);overflow:hidden;
+    border:1px solid rgba(217,174,69,.3);
+    background:linear-gradient(160deg,#100d08,#1a1409);
+    display:grid;grid-template-columns:minmax(240px,26%) 1fr;gap:clamp(26px,3.4vw,70px);align-items:center;
+}
+.volumen::after{
+    content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;
+    background:radial-gradient(circle,rgba(217,174,69,.2),transparent 68%);pointer-events:none;
+}
+.volumen.vol2{background:linear-gradient(160deg,#0f0a08,#1c120b)}
+
+.voltear{perspective:1400px;cursor:pointer;position:relative;z-index:2}
+.voltear-interior{
+    position:relative;aspect-ratio:1000/1438;transform-style:preserve-3d;
+    transition:transform .8s cubic-bezier(.2,.8,.2,1);
+}
+.voltear:hover .voltear-interior,.voltear.girado .voltear-interior{transform:rotateY(180deg)}
+.voltear img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+    border-radius:4px 10px 10px 4px;box-shadow:0 28px 54px rgba(0,0,0,.65),0 0 0 1px rgba(217,174,69,.28);
+}
+.voltear img.dorso{transform:rotateY(180deg)}
+.voltear small{display:block;text-align:center;margin-top:14px;color:var(--oro-libro-2);font-size:.72rem;letter-spacing:1.3px;text-transform:uppercase;opacity:.85}
+
+.volumen-info{position:relative;z-index:2}
+.volumen-info .num{font-family:var(--serif);font-style:italic;color:var(--oro-libro-2);font-size:1.15rem;margin-bottom:6px;display:block}
+.volumen-info h3{font-size:clamp(1.6rem,2.3vw,2.4rem);font-weight:600;line-height:1.12;margin-bottom:12px}
+.volumen-info .cita{
+    font-family:var(--serif);font-style:italic;color:var(--oro-libro-2);font-size:1.12rem;line-height:1.4;
+    border-left:3px solid var(--oro-libro);padding-left:16px;margin:16px 0 18px;
+}
+.volumen-info p{margin-bottom:16px;font-size:.98rem}
+.lista-libro{list-style:none;display:grid;gap:9px 34px;margin:0 0 22px;grid-template-columns:1fr 1fr}
+.lista-libro li{position:relative;padding-left:24px;font-size:.95rem;color:var(--crema-suave)}
+.lista-libro li::before{content:"◆";position:absolute;left:0;top:1px;color:var(--oro-libro);font-size:.7rem}
+.volumen-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.volumen-meta span{
+    font-size:.76rem;font-weight:600;letter-spacing:.4px;padding:5px 13px;border-radius:999px;
+    border:1px solid rgba(217,174,69,.4);color:var(--oro-libro-2);background:rgba(217,174,69,.08);
+}
+.paquete{
+    margin-top:28px;border-radius:26px;padding:clamp(26px,3vw,44px);display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;
+    background:linear-gradient(120deg,rgba(217,174,69,.2),rgba(217,174,69,.06));border:1px solid rgba(217,174,69,.5);
+}
+.paquete h3{font-size:1.7rem;margin-bottom:6px}
+.paquete p{margin:0;max-width:60ch}
+
+/*---------------- Contenido ----------------*/
+.pestanas{display:flex;gap:10px;justify-content:center;margin:0 0 34px;flex-wrap:wrap}
+.pestana{
+    background:transparent;border:1px solid rgba(217,174,69,.45);color:var(--crema);cursor:pointer;
+    padding:11px 24px;border-radius:999px;font:600 .92rem var(--sans);transition:all .2s;
+}
+.pestana:hover{background:rgba(217,174,69,.12)}
+.pestana[aria-selected="true"]{background:linear-gradient(135deg,var(--oro-libro-2),var(--oro-libro));color:#1a1204;border-color:transparent}
+.panel-contenido{display:none}
+.panel-contenido.activo{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 28px;align-items:start}
+.parte{
+    border:1px solid rgba(217,174,69,.25);border-radius:18px;background:rgba(255,255,255,.03);overflow:hidden;
+}
+.parte summary{
+    cursor:pointer;list-style:none;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;gap:14px;
+    font-family:var(--serif);font-size:1.15rem;color:var(--crema);font-weight:500;
+}
+.parte summary::-webkit-details-marker{display:none}
+.parte summary small{font-family:var(--sans);font-size:.74rem;color:var(--oro-libro-2);letter-spacing:.8px;text-transform:uppercase;white-space:nowrap}
+.parte summary::after{content:"+";color:var(--oro-libro-2);font-size:1.5rem;line-height:1;transition:transform .25s}
+.parte[open] summary::after{transform:rotate(45deg)}
+.parte[open]{background:rgba(217,174,69,.07);border-color:rgba(217,174,69,.5)}
+.parte ol{list-style:none;padding:0 24px 20px;display:grid;gap:10px}
+.parte li{display:flex;gap:12px;font-size:.93rem;color:var(--crema-suave);line-height:1.45}
+.parte li b{flex:none;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:.72rem;color:#1a1204;background:var(--oro-libro);font-weight:700}
+.apendices-nota{text-align:center;margin-top:26px;color:var(--crema-suave);font-size:.92rem}
+
+/*---------------- Muestra ----------------*/
+.muestra-visor{
+    display:grid;grid-template-columns:260px 1fr;gap:34px;align-items:start;
+    border:1px solid rgba(217,174,69,.3);border-radius:30px;padding:clamp(22px,3vw,44px);
+    background:radial-gradient(700px 400px at 80% 0%,rgba(217,174,69,.14),transparent 60%),#0d0a06;
+}
+.muestra-lateral h3{font-size:1.5rem;margin-bottom:8px}
+.muestra-lateral p{font-size:.92rem;margin-bottom:18px}
+.miniaturas{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.miniaturas button{
+    border:2px solid transparent;border-radius:6px;padding:0;background:none;cursor:pointer;overflow:hidden;opacity:.6;transition:all .2s;
+}
+.miniaturas button.activa{border-color:var(--oro-libro-2);opacity:1}
+.miniaturas img{width:100%;display:block}
+.muestra-hoja{position:relative;display:flex;justify-content:center;gap:22px;align-items:flex-start}
+.muestra-hoja .hoja{
+    flex:1;max-width:620px;background:#fff;border-radius:4px;overflow:hidden;cursor:zoom-in;
+    box-shadow:0 30px 70px rgba(0,0,0,.65);transition:transform .4s cubic-bezier(.2,.8,.2,1);
+}
+.muestra-hoja .hoja:hover{transform:translateY(-4px)}
+.muestra-hoja .hoja img{width:100%;display:block}
+.flecha{
+    align-self:center;width:48px;height:48px;border-radius:50%;border:1px solid rgba(217,174,69,.5);background:rgba(0,0,0,.4);
+    color:var(--oro-libro-2);font-size:1.3rem;cursor:pointer;transition:all .2s;flex:none;
+}
+.flecha:hover{background:var(--oro-libro);color:#1a1204}
+dialog.lupa{border:0;background:transparent;max-width:min(94vw,900px);max-height:96vh;padding:0}
+dialog.lupa::backdrop{background:rgba(0,0,0,.85)}
+dialog.lupa img{width:100%;max-height:94vh;object-fit:contain;border-radius:4px;background:#fff}
+
+/*---------------- Lectura en línea ----------------*/
+.biblioteca{
+    border-radius:34px;padding:clamp(30px,4.4vw,72px);position:relative;overflow:hidden;
+    background:
+        radial-gradient(640px 420px at 100% 0%,rgba(217,174,69,.26),transparent 62%),
+        linear-gradient(150deg,#14110b,#0a0a0c);
+    border:1px solid rgba(217,174,69,.4);
+    display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(26px,4vw,70px);align-items:center;
+}
+.biblioteca h2{font-size:clamp(2rem,3.6vw,3.4rem);font-weight:600;line-height:1.08;margin-bottom:16px}
+.biblioteca h2 em{font-style:italic;color:var(--oro-libro-2);font-weight:500}
+.ventajas{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 24px;margin:24px 0 30px}
+.ventajas li{display:flex;gap:11px;font-size:.95rem;color:var(--crema-suave)}
+.ventajas svg{flex:none;width:22px;height:22px;color:var(--oro-libro-2);margin-top:2px}
+.lector-demo{
+    border-radius:20px;border:1px solid rgba(217,174,69,.35);background:#0b0b0e;overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,.55);
+}
+.lector-barra{display:flex;gap:7px;align-items:center;padding:11px 16px;background:#050507;color:var(--oro-libro-2);font-size:.72rem;letter-spacing:1px;text-transform:uppercase}
+.lector-barra i{width:9px;height:9px;border-radius:50%;background:#3a3a40}
+.lector-barra span{margin-left:auto}
+.lector-lista{list-style:none;padding:8px 6px}
+.lector-lista li{display:flex;align-items:center;gap:14px;padding:13px 16px;border-radius:12px;color:var(--crema-suave);font-size:.92rem}
+.lector-lista li:nth-child(odd){background:rgba(255,255,255,.03)}
+.lector-lista .libre{color:var(--oro-libro-2);font-weight:600}
+.lector-lista svg{flex:none;width:18px;height:18px;color:var(--oro-libro)}
+.lector-lista em{margin-left:auto;font-style:normal;font-size:.7rem;letter-spacing:.9px;text-transform:uppercase;color:var(--oro-libro-2);border:1px solid rgba(217,174,69,.4);padding:3px 10px;border-radius:999px;white-space:nowrap}
+
+/*---------------- Autor ----------------*/
+.autor{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,3vw,56px);align-items:center;
+    border-top:1px solid rgba(217,174,69,.3);border-bottom:1px solid rgba(217,174,69,.3);padding:56px 0}
+.autor .monograma-autor{
+    width:clamp(120px,12vw,190px);aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-style:italic;font-size:clamp(3.4rem,6vw,5.4rem);color:#1a1204;font-weight:600;
+    background:radial-gradient(circle at 30% 30%,var(--oro-libro-2),var(--oro-libro) 65%,#8a6417);
+    box-shadow:0 0 0 8px rgba(217,174,69,.14);
+}
+.autor h3{font-size:clamp(1.6rem,2.4vw,2.4rem);margin-bottom:10px}
+.autor p{max-width:80ch;margin-bottom:16px}
+
+/*---------------- FAQ ----------------*/
+.faq{max-width:1040px;margin:0 auto;display:grid;gap:12px}
+.faq details{border:1px solid rgba(217,174,69,.28);border-radius:16px;background:rgba(255,255,255,.03)}
+.faq summary{cursor:pointer;list-style:none;padding:20px 24px;font-weight:600;color:var(--crema);display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--oro-libro-2);font-size:1.4rem;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq details p{padding:0 24px 22px;margin:0;color:var(--crema-suave)}
+
+/*---------------- Cierre ----------------*/
+.cierre-libro{
+    text-align:center;padding:110px 0;position:relative;overflow:hidden;
+    background:radial-gradient(700px 420px at 50% 120%,rgba(217,174,69,.34),transparent 65%),#050506;
+}
+.cierre-libro h2{font-size:clamp(2.2rem,4.6vw,4rem);font-weight:600;max-width:20ch;margin:0 auto 18px;line-height:1.05}
+.cierre-libro h2 em{font-style:italic;font-weight:500;color:var(--oro-libro-2)}
+.cierre-libro p{max-width:58ch;margin:0 auto 30px}
+.cierre-libro .botones{justify-content:center}
+.aviso-legal{max-width:90ch;margin:34px auto 0;font-size:.78rem;color:#8d8570;line-height:1.55}
+
+/*---------------- Responsivo ----------------*/
+@media (max-width:1180px){
+    .lista-libro{grid-template-columns:1fr}
+    .biblioteca{grid-template-columns:1fr}
+    .panel-contenido.activo{grid-template-columns:1fr}
+}
+@media (max-width:980px){
+    .libro-hero .contenedor{grid-template-columns:1fr}
+    .estante{height:clamp(420px,86vw,620px);max-width:640px;margin:10px auto 0;width:100%}
+    .muestra-visor{grid-template-columns:1fr}
+    .autor{grid-template-columns:1fr;text-align:center;justify-items:center}
+}
+@media (max-width:700px){
+    .volumen{grid-template-columns:1fr}
+    .volumen .voltear{max-width:300px;margin:0 auto}
+    .ventajas{grid-template-columns:1fr}
+    .flecha{width:38px;height:38px}
+    .pagina-libro .seccion{padding:72px 0}
+}
+@media (prefers-reduced-motion:reduce){
+    .estante .tomo-3d,.voltear-interior{transition:none}
+}

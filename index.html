@@ -3,12 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ecosistema Verum — Tecnología y ciencia para el sector legal, médico y psicológico</title>
-<meta name="description" content="Ecosistema Verum: soluciones de base tecnológica y conocimiento científico para el área legal, médica y psicológica. VerumIA, Lex Verum Pro, Verum Status, Verum Med y Verum Psi.">
+<title>Ecosistema Verum — Software para abogados y profesionales de la salud</title>
+<meta name="description" content="Ecosistema Verum: software para abogados y profesionales de la salud. VerumIA (asistente jurídico integral, 11 especialidades), Verum Health (historias clínicas de todas las profesiones de la salud), Lex Verum Pro y Verum Status. Y el tratado La Ingeniería de la Verdad.">
+<meta property="og:title" content="Ecosistema Verum">
+<meta property="og:description" content="Software para abogados y profesionales de la salud: redacta, calcula, vigila procesos y lleva historias clínicas.">
+<meta property="og:image" content="https://ecosistemaverum.com/img/libro/portada-vol-1.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/estilo.css">
+<link rel="stylesheet" href="css/tema.css">
 </head>
-<body>
+<body class="con-hero">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
 <defs>
 
@@ -276,55 +282,144 @@
 
 </defs>
 </svg>
-
+<div class="barra-superior">
+<div class="contenedor">
+    <div class="grupo"><span><svg><use href="#i-escudo"></use></svg>Software para abogados y profesionales de la salud</span></div>
+    <div class="grupo">
+        <a href="mailto:edmlegal.especializados@gmail.com"><svg><use href="#i-correo"></use></svg>edmlegal.especializados@gmail.com</a>
+        <a href="https://wa.me/573202413579" target="_blank" rel="noopener"><svg><use href="#i-chat"></use></svg>+57 320 241 3579</a>
+    </div>
+</div>
+</div>
 
 <header class="cabecera">
 <div class="contenedor cabecera-fila">
     <a href="index.html" class="marca">
         <img src="img/logo-verumia.png" alt="Ecosistema Verum">
-        <span class="marca-texto">
-            <strong>Ecosistema Verum</strong>
-            <span>EDM Legal Especializados</span>
-        </span>
+        <span class="marca-texto"><strong>Ecosistema Verum</strong><span>EDM Legal Especializados</span></span>
     </a>
     <button class="nav-boton" onclick="document.getElementById('nav').classList.toggle('abierto')" aria-label="Menú">☰</button>
     <nav class="nav" id="nav">
         <a href="index.html" class="activo">Inicio</a>
         <a href="verumia.html">VerumIA</a>
         <a href="lex-verum-pro.html">Lex Verum Pro</a>
-        <a href="verum-med.html">VerumMed</a>
+        <a href="verum-health.html">Verum Health</a>
         <a href="verum-status.html">Verum Status</a>
-        <a href="verum-psi.html">Verum Psi</a>
         <a href="libro.html">La Ingeniería de la Verdad</a>
         <a href="perfil.html">Perfil</a>
-        <a href="soporte.html">Soporte</a>
+        <a href="soporte.html" class="cta-nav">Contacto</a>
     </nav>
 </div>
 </header>
 
-<section class="portada">
+<section class="hero">
+<svg class="hero-red" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g>
+        <line x1="80" y1="120" x2="260" y2="240"/><line x1="260" y1="240" x2="430" y2="150"/><line x1="430" y1="150" x2="610" y2="270"/>
+        <line x1="610" y1="270" x2="790" y2="120"/><line x1="790" y1="120" x2="980" y2="230"/><line x1="980" y1="230" x2="1130" y2="110"/>
+        <line x1="260" y1="240" x2="330" y2="420"/><line x1="330" y1="420" x2="560" y2="480"/><line x1="560" y1="480" x2="610" y2="270"/>
+        <line x1="560" y1="480" x2="760" y2="560"/><line x1="760" y1="560" x2="980" y2="230"/><line x1="760" y1="560" x2="1010" y2="610"/>
+        <line x1="330" y1="420" x2="120" y2="560"/><line x1="980" y1="230" x2="1090" y2="420"/><line x1="1090" y1="420" x2="1010" y2="610"/>
+    </g>
+    <circle cx="80" cy="120" r="2"/><circle cx="260" cy="240" r="2"/><circle cx="430" cy="150" r="2"/><circle cx="610" cy="270" r="2"/>
+    <circle cx="790" cy="120" r="2"/><circle cx="980" cy="230" r="2"/><circle cx="1130" cy="110" r="2"/><circle cx="330" cy="420" r="2"/>
+    <circle cx="560" cy="480" r="2"/><circle cx="760" cy="560" r="2"/><circle cx="1010" cy="610" r="2"/><circle cx="120" cy="560" r="2"/><circle cx="1090" cy="420" r="2"/>
+</svg>
+
+<canvas class="hud hud-fondo" data-logo="img/logo-verumia.png" aria-hidden="true"></canvas>
 <div class="contenedor">
-    <div class="placa-empresa">
-        <img src="img/logo-edm-legal.png" alt="EDM Legal Especializados SAS">
-        <span>EDM Legal<br>Especializados SAS</span>
-    </div>
-    <h1>Ecosistema <em>Verum</em></h1>
-    <p>Soluciones disruptivas de base tecnológica y conocimiento científico para el área legal, médica y psicológica. Herramientas construidas por quien ejerce las dos disciplinas.</p>
-    <div class="botones">
-        <a href="#aplicaciones" class="boton boton-oro">Ver las aplicaciones</a>
-        <a href="perfil.html" class="boton boton-linea">Dirección del ecosistema →</a>
+    <div>
+        <div class="hero-etiqueta"><img src="img/logo-edm-legal.png" alt="EDM Legal Especializados SAS">EDM Legal Especializados SAS</div>
+        <h1>Tu trabajo como <em>abogado</em> o <em>profesional de la salud</em>, en un solo ecosistema.</h1>
+        <p class="hero-texto">Software que se encarga de lo repetitivo para que dediques tu tiempo a lo que importa: tus casos y tus pacientes. Diseñado por un médico que también es abogado y perito.</p>
+        <ul class="hero-capacidades">
+            <li>Redactar demandas, tutelas, contestaciones y dictámenes</li>
+            <li>Calcular indemnizaciones, términos, PCL y liquidaciones</li>
+            <li>Vigilar tus procesos judiciales con alertas</li>
+            <li>Llevar historias clínicas de 10 profesiones de la salud</li>
+        </ul>
+        <div class="botones">
+            <a href="verumia.html" class="boton boton-oro">Conocer VerumIA</a>
+            <a href="libro.html" class="boton boton-linea">La Ingeniería de la Verdad →</a>
+        </div>
+        <div class="hero-firma">Ecosistema Verum · EDM Legal Especializados SAS</div>
     </div>
 
-    <div class="metricas-mini">
-        <div class="metrica-mini"><strong><span data-contador="19" data-sufijo="+">0</span></strong><span>Años de trayectoria</span></div>
-        <div class="metrica-mini"><strong><span data-contador="120" data-sufijo="+">0</span></strong><span>Dictámenes periciales</span></div>
-        <div class="metrica-mini"><strong><span data-contador="40" data-sufijo="+">0</span></strong><span>Sustentaciones orales</span></div>
-        <div class="metrica-mini"><strong><span data-contador="5" data-sufijo="">0</span></strong><span>Aplicaciones del ecosistema</span></div>
+    <div class="hero-visual">
+        <div class="pantalla">
+            <div class="pantalla-barra"><span></span><span></span><span></span></div>
+            <img src="img/captura-verumia-inicio.png" alt="Pantalla principal de VerumIA">
+        </div>
+        <div class="ficha-flotante ficha-1"><svg><use href="#i-confidencial"></use></svg><div>IA local<small>Sin servidores externos</small></div></div>
+        <a href="libro.html" class="portada-flotante" aria-label="La Ingeniería de la Verdad"><img src="img/libro/portada-vol-1-s.jpg" alt="La Ingeniería de la Verdad, Volumen I"><span>Nuevo<br>tratado</span></a>
+    </div>
+</div>
+<div class="indicador-scroll" aria-hidden="true"></div>
+</section>
+
+<section class="cifras">
+<div class="contenedor">
+    <div class="cifras-fila">
+        <div class="cifra"><strong><span data-contador="19" data-sufijo="+">0</span></strong><span>Años de trayectoria</span></div>
+        <div class="cifra"><strong><span data-contador="120" data-sufijo="+">0</span></strong><span>Dictámenes periciales</span></div>
+        <div class="cifra"><strong><span data-contador="40" data-sufijo="+">0</span></strong><span>Sustentaciones orales</span></div>
+        <div class="cifra"><strong><span data-contador="5" data-sufijo="">0</span></strong><span>Aplicaciones del ecosistema</span></div>
     </div>
 </div>
 </section>
 
+<section class="seccion" id="obras" style="padding-bottom:60px">
 <div class="contenedor">
+    <div class="seccion-titulo">
+        <span class="sobretitulo">Lo más destacado</span>
+        <div class="linea-oro"></div>
+        <h2>Software y <em>conocimiento</em></h2>
+        <p>VerumIA, para abogados y peritos médicos, ordena y redacta el caso. El libro del autor enseña a defenderlo: para abogados, profesionales de la salud y estudiantes.</p>
+    </div>
+
+    <div class="obras">
+        <article class="obra obra-verumia">
+            <span class="etiqueta-mini">Para abogados y peritos médicos · Windows</span>
+            <span class="sobretitulo">VerumIA</span>
+            <h3>Todo tu despacho, <em>en un solo lugar</em></h3>
+            <p>Para <strong>abogados y peritos médicos</strong>. El asistente jurídico integral: expedientes, cronologías automáticas, análisis con IA local, demandas, dictámenes y facturación para <strong>11 especialidades del derecho</strong>. Sin depender de ningún servidor externo.</p>
+            <div class="chips-especialidades"><span>Penal</span><span>Civil</span><span>Laboral</span><span>Familia</span><span>Administrativo</span><span>Comercial</span><span>Tributario</span><span>Ambiental</span><span>Disciplinario</span><span>Médico-legal</span><span>y más</span></div>
+            <div class="botones">
+                <a href="verumia.html" class="boton boton-oro">Conocer VerumIA</a>
+                <a href="verumia.html#precios" class="boton boton-linea">Calcular licencia</a>
+            </div>
+            <div class="obra-visual obra-hud">
+                <canvas class="hud" data-logo="img/logo-verumia.png" role="img" aria-label="Animación de arranque de VerumIA"></canvas>
+            </div>
+        </article>
+
+        <article class="obra obra-libro">
+            <span class="etiqueta-mini">Libro del autor · 2 volúmenes</span>
+            <span class="sobretitulo">Derecho médico</span>
+            <h3>La Ingeniería <em>de la Verdad</em></h3>
+            <p>Qué se le exige al médico y cómo se prueba, se litiga y se decide un caso de responsabilidad en salud. Para abogados, profesionales de la salud y estudiantes. 687 páginas.</p>
+            <div class="botones">
+                <a href="libro.html" class="boton boton-oro">Ver los dos volúmenes</a>
+                <a href="libro.html#muestra" class="boton boton-linea">Leer una muestra</a>
+            </div>
+            <div class="obra-visual">
+                <img src="img/libro/portada-vol-1.jpg" alt="La Ingeniería de la Verdad, Volumen I" loading="lazy">
+                <img src="img/libro/portada-vol-2.jpg" alt="La Ingeniería de la Verdad, Volumen II" loading="lazy">
+            </div>
+        </article>
+    </div>
+</div>
+</section>
+
+<section class="seccion" id="aplicaciones" style="padding-top:60px">
+<div class="contenedor">
+    <div class="seccion-titulo">
+        <span class="sobretitulo">El resto del ecosistema</span>
+        <div class="linea-oro"></div>
+        <h2>Herramientas para <em>cada etapa</em></h2>
+        <p>Historias clínicas, apps móviles y desarrollos a la medida, del estrado a la consulta.</p>
+    </div>
+
     <div class="selector-necesidad">
         <p>¿Qué necesitas resolver?</p>
         <div class="chips-necesidad">
@@ -336,142 +431,107 @@
             <button type="button" class="chip-necesidad" data-objetivo="medida">Una aplicación a la medida</button>
         </div>
     </div>
-</div>
 
-<section class="seccion seccion-clara" id="aplicaciones">
-<div class="contenedor">
-
-    <div class="seccion-titulo">
-        <div class="linea-oro"></div>
-        <h2>Aplicaciones tecnológicas</h2>
-        <p>Cada herramienta resuelve una etapa concreta del trabajo jurídico y pericial, del escritorio al estrado.</p>
-    </div>
-
-    <div class="rejilla rejilla-3">
-
-        <article class="producto" data-necesidades="redactar">
-            <div class="producto-cinta"></div>
+    <div class="bento bento-resto">
+        <article class="producto producto-health" data-necesidades="clinica,psicologia">
+            <span class="estado pronto">En desarrollo</span>
             <div class="producto-cuerpo">
-                <div class="producto-tipo">Escritorio · Windows</div>
-                <div class="producto-encabezado">
-                    <img src="img/icono-verumia-96.png" alt="" class="icono-app">
-                    <h3>VerumIA</h3>
-                </div>
-                <p>Asistente jurídico especializado para el despacho completo: expedientes, cronologías automáticas, análisis médico-legal con inteligencia artificial, dictámenes, demandas, PCL y facturación. Funciona sin depender de ningún servidor externo.</p>
-                <div class="insignias" style="margin-bottom:20px">
-                    <span class="insignia">11 especialidades</span>
-                    <span class="insignia teal">IA local</span>
-                </div>
-                <a href="verumia.html" class="boton boton-navy">Ver funciones →</a>
+                <div class="producto-tipo">Escritorio · Ecosistema de historias clínicas</div>
+                <div class="producto-encabezado"><img src="img/icono-verum-health-256.png" alt="" class="icono-app"><h3>Verum Health</h3></div>
+                <p style="margin-top:12px">Un expediente por paciente y un módulo para cada profesión de la salud. Integra VerumMed y Verum Psi en un solo ecosistema, sin inteligencia artificial: reglas y escalas deterministas.</p>
+                <div class="chips-especialidades chips-claros"><span>Medicina</span><span>Psicología</span><span>Enfermería</span><span>Odontología</span><span>Nutrición</span><span>Fisioterapia</span><span>y 4 más</span></div>
+                <a href="verum-health.html" class="boton boton-oro">Conocer Verum Health →</a>
             </div>
         </article>
 
-        <article class="producto" data-necesidades="campo">
-            <div class="producto-cinta"></div>
+        <article class="producto" data-necesidades="campo,redactar">
+            <span class="estado">Google Play</span>
             <div class="producto-cuerpo">
                 <div class="producto-tipo">Android · Disponible</div>
-                <div class="producto-encabezado">
-                    <img src="img/icono-lex-verum-pro-96.png" alt="" class="icono-app">
-                    <h3>Lex Verum Pro</h3>
-                </div>
-                <p>Laboratorio pericial jurídico de bolsillo. Calculadoras periciales, dosificación punitiva, control de términos, grabación de audiencias con marcado de hitos y exportación a PDF listo para radicar.</p>
-                <div class="insignias" style="margin-bottom:20px">
-                    <span class="insignia">En Google Play</span>
-                    <span class="insignia teal">IA configurable</span>
-                </div>
+                <div class="producto-encabezado"><img src="img/icono-lex-verum-pro-96.png" alt="" class="icono-app"><h3>Lex Verum Pro</h3></div>
+                <p style="margin-top:12px">Laboratorio pericial jurídico de bolsillo: calculadoras periciales, dosificación punitiva, control de términos y grabación de audiencias con marcado de hitos.</p>
                 <a href="lex-verum-pro.html" class="boton boton-navy">Ver funciones →</a>
             </div>
         </article>
 
         <article class="producto" data-necesidades="vigilar">
-            <div class="producto-cinta teal"></div>
+            <span class="estado pronto">Próximamente</span>
             <div class="producto-cuerpo">
-                <div class="producto-tipo">Android · Próximamente</div>
-                <div class="producto-encabezado">
-                    <img src="img/icono-verum-status-96.png" alt="" class="icono-app">
-                    <h3>Verum Status</h3>
-                </div>
-                <p>Vigilancia judicial automatizada por radicado. Inspección algorítmica tres veces al día sobre el portal de la Rama Judicial, con alertas push instantáneas ante cualquier novedad en tus procesos.</p>
-                <div class="insignias" style="margin-bottom:20px">
-                    <span class="insignia teal">Alertas push</span>
-                    <span class="insignia teal">Rama Judicial</span>
-                </div>
+                <div class="producto-tipo">Android</div>
+                <div class="producto-encabezado"><img src="img/icono-verum-status-96.png" alt="" class="icono-app"><h3>Verum Status</h3></div>
+                <p style="margin-top:12px">Vigilancia judicial por radicado: inspección tres veces al día en la Rama Judicial y alertas push instantáneas.</p>
                 <a href="verum-status.html" class="boton boton-navy">Ver detalle →</a>
             </div>
         </article>
 
-        <article class="producto" data-necesidades="clinica">
-            <div class="producto-cinta navy"></div>
-            <div class="producto-cuerpo">
-                <div class="producto-tipo">Android · En fase de pruebas</div>
-                <div class="producto-encabezado">
-                    <img src="img/icono-verum-med-96.png" alt="" class="icono-app">
-                    <h3>VerumMed</h3>
-                </div>
-                <p>Historia clínica electrónica en 7 pasos, con dictado por voz, búsqueda CIE-10, analizador de signos vitales por edad y firma con verificación de identidad. Exporta en PDF con hash de seguridad.</p>
-                <div class="insignias" style="margin-bottom:20px">
-                    <span class="insignia">Historia clínica</span>
-                    <span class="insignia teal">Firma verificada</span>
-                </div>
-                <a href="verum-med.html" class="boton boton-navy">Ver funciones →</a>
-            </div>
-        </article>
-
-        <article class="producto" data-necesidades="psicologia">
-            <div class="producto-cinta teal"></div>
-            <div class="producto-cuerpo">
-                <div class="producto-tipo">Android · En pruebas cerradas</div>
-                <div class="producto-encabezado">
-                    <img src="img/icono-verum-psi-96.png" alt="" class="icono-app">
-                    <h3>Verum Psi</h3>
-                </div>
-                <p>Más de 110 escalas y cuestionarios estandarizados de psicología clínica y forense, con grabadora de sesiones, registro clínico y firma con verificación de identidad.</p>
-                <div class="insignias" style="margin-bottom:20px">
-                    <span class="insignia teal">110+ escalas</span>
-                    <span class="insignia teal">Evaluación forense</span>
-                </div>
-                <a href="verum-psi.html" class="boton boton-navy">Ver funciones →</a>
-            </div>
-        </article>
-
         <article class="producto" data-necesidades="medida">
-            <div class="producto-cinta"></div>
+            <span class="estado">Servicio</span>
             <div class="producto-cuerpo">
-                <div class="producto-tipo">Servicio · A la medida</div>
-                <div class="producto-encabezado">
-                    <img src="img/icono-edmlegaltech-96.png" alt="" class="icono-app">
-                    <h3>Apps corporativas</h3>
-                </div>
-                <p>Diseño, desarrollo y despliegue de soluciones móviles personalizadas para Android. Integraciones de bases de datos seguras, automatización y asistencia analítica adaptadas a tu firma, clínica o empresa.</p>
+                <div class="producto-tipo">A la medida</div>
+                <div class="producto-encabezado"><img src="img/icono-edmlegaltech-96.png" alt="" class="icono-app"><h3>Apps corporativas</h3></div>
+                <p style="margin-top:12px">Soluciones móviles personalizadas para tu firma, clínica o empresa: bases de datos seguras, automatización y asistencia analítica.</p>
                 <a href="https://wa.me/573202413579?text=Hola,%20solicito%20informaci%C3%B3n%20sobre%20el%20desarrollo%20de%20Apps%20personalizadas" class="boton boton-navy" target="_blank" rel="noopener">Cotizar desarrollo →</a>
             </div>
         </article>
-
     </div>
 </div>
 </section>
 
-<section class="seccion">
+<div class="cinta" aria-hidden="true">
+<div class="cinta-pista">
+    <span>Expedientes</span><span>Cronologías automáticas</span><span>Dictámenes periciales</span><span>Demandas y tutelas</span><span>Pérdida de Capacidad Laboral</span><span>Historia clínica</span><span>Escalas psicológicas</span><span>Vigilancia judicial</span><span>Firma verificada</span>
+    <span>Expedientes</span><span>Cronologías automáticas</span><span>Dictámenes periciales</span><span>Demandas y tutelas</span><span>Pérdida de Capacidad Laboral</span><span>Historia clínica</span><span>Escalas psicológicas</span><span>Vigilancia judicial</span><span>Firma verificada</span>
+</div>
+</div>
+
+<section class="seccion camino">
 <div class="contenedor">
-    <div class="seccion-titulo">
+    <div class="seccion-titulo" style="text-align:center;margin-inline:auto">
+        <span class="sobretitulo">Método</span>
         <div class="linea-oro"></div>
-        <h2>Ciencia y literatura jurídico-médica</h2>
+        <h2>Un solo ecosistema, <em>todo el caso</em></h2>
     </div>
+    <div class="camino-fila">
+        <div class="paso"><div class="num">1</div><h3>Documentar</h3><p>Historia clínica y evidencia ordenadas, con firma verificada.</p></div>
+        <div class="paso"><div class="num">2</div><h3>Analizar</h3><p>Cronología y análisis médico-legal con IA local y confidencial.</p></div>
+        <div class="paso"><div class="num">3</div><h3>Redactar</h3><p>Dictámenes, demandas y tutelas listos para radicar.</p></div>
+        <div class="paso"><div class="num">4</div><h3>Sustentar</h3><p>Audiencia con calculadoras, términos y vigilancia del proceso.</p></div>
+    </div>
+</div>
+</section>
 
-    <div class="rejilla rejilla-2" style="align-items:start">
-        <div class="tarjeta">
-            <div class="tarjeta-icono"><svg><use href="#i-biblioteca"></use></svg></div>
-            <h3>La Ingeniería de la Verdad</h3>
-            <p style="margin-bottom:14px"><strong>Tratado en 2 tomos.</strong> Obra exhaustiva sobre Derecho Médico: respuestas estratégicas, definiciones de precisión técnica y casuística de defensa diseñada para médicos, juristas y el sector salud.</p>
-            <a href="libro.html" class="boton boton-navy">Conocer la obra →</a>
+<section class="seccion" style="padding-top:40px">
+<div class="contenedor">
+    <div class="dos-paneles">
+        <div class="panel panel-libro">
+            <span class="sobretitulo" style="color:var(--oro-brillante)">Servicios profesionales</span>
+            <h3>Peritaje, defensa y consultoría</h3>
+            <ul class="lista-servicios">
+                <li>Dictámenes periciales médico-legales</li>
+                <li>Defensa de pacientes y litigio general</li>
+                <li>Outsourcing jurídico-médico para clínicas</li>
+                <li>Aplicaciones a la medida para tu firma o institución</li>
+            </ul>
+            <a href="perfil.html" class="boton boton-oro">Ver servicios →</a>
         </div>
-
-        <div class="tarjeta">
-            <div class="tarjeta-icono"><svg><use href="#i-balanza"></use></svg></div>
-            <h3>Dirección del ecosistema</h3>
-            <p style="margin-bottom:14px"><strong>Dr. Eduardo J. De La Hoz Merlano.</strong> Médico y Cirujano, Abogado y Auxiliar de la Justicia. Más de 19 años de trayectoria, 120+ dictámenes periciales y 40+ sustentaciones orales defendidas ante estrados judiciales.</p>
+        <div class="panel panel-direccion">
+            <div class="monograma">V</div>
+            <span class="sobretitulo">Dirección del ecosistema</span>
+            <h3>Dr. Eduardo J. De La Hoz Merlano</h3>
+            <p>Médico y Cirujano, Abogado y Auxiliar de la Justicia. Más de 19 años de trayectoria, 120+ dictámenes periciales y 40+ sustentaciones orales ante estrados judiciales.</p>
             <a href="perfil.html" class="boton boton-navy">Ver perfil profesional →</a>
         </div>
+    </div>
+</div>
+</section>
+
+<section class="banda-final">
+<div class="contenedor">
+    <h2>¿Listo para llevar tu práctica <em>al siguiente nivel</em>?</h2>
+    <p>Cuéntanos qué necesitas: una demostración de VerumIA o una aplicación a la medida para tu firma o clínica.</p>
+    <div class="botones">
+        <a href="https://wa.me/573202413579?text=Hola%2C%20escribo%20desde%20ecosistemaverum.com" class="boton boton-oro" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <a href="soporte.html" class="boton boton-linea">Soporte y contacto</a>
     </div>
 </div>
 </section>
@@ -493,9 +553,8 @@
             <ul>
                 <li><a href="verumia.html">VerumIA</a></li>
                 <li><a href="lex-verum-pro.html">Lex Verum Pro</a></li>
-                <li><a href="verum-med.html">VerumMed</a></li>
+                <li><a href="verum-health.html">Verum Health</a></li>
                 <li><a href="verum-status.html">Verum Status</a></li>
-                <li><a href="verum-psi.html">Verum Psi</a></li>
             </ul>
         </div>
         <div>
@@ -524,5 +583,6 @@
 </footer>
 
 <script src="js/interactivo.js" defer></script>
+<script src="js/hud.js" defer></script>
 </body>
 </html>

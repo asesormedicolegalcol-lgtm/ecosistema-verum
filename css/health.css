@@ -1,0 +1,58 @@
+/* Verum Health — componentes propios (sobre estilo.css + tema.css) */
+
+.hero-health .hero-texto strong{color:#fff}
+
+/* Mosaico de profesiones en el hero */
+.mosaico-prof{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative;z-index:2}
+.mosaico-prof span{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;aspect-ratio:1;
+    border-radius:22px;color:#fff;font-weight:600;font-size:.9rem;
+    background:linear-gradient(150deg,color-mix(in srgb,var(--acento) 55%,#0b1f3b),color-mix(in srgb,var(--acento) 18%,#0b1f3b));
+    border:1px solid color-mix(in srgb,var(--acento) 60%,transparent);
+    box-shadow:0 18px 40px rgba(0,0,0,.35);transition:transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.mosaico-prof span:nth-child(even){transform:translateY(18px)}
+.mosaico-prof span:hover{transform:translateY(-6px) scale(1.04)}
+.mosaico-prof svg{width:38px;height:38px}
+.hero-health .hero-visual::before{background:radial-gradient(closest-side,rgba(124,58,237,.28),transparent 70%)}
+
+/* Rejilla de profesiones */
+.rejilla-profesiones{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.profesion{
+    position:relative;background:#fff;border:1px solid var(--borde);border-radius:22px;padding:30px;overflow:hidden;
+    transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s;
+}
+.profesion::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--acento)}
+.profesion:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(11,31,59,.14)}
+.profesion-icono{
+    width:52px;height:52px;border-radius:15px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+    color:#fff;background:var(--acento);box-shadow:0 10px 22px color-mix(in srgb,var(--acento) 40%,transparent);
+}
+.profesion-icono svg{width:26px;height:26px}
+.profesion h3{font-size:1.3rem;margin-bottom:8px;color:var(--marca-oscuro)}
+.profesion p{color:var(--texto-suave);font-size:.95rem}
+
+/* Integración VerumMed + Verum Psi */
+.integracion{
+    display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,70px);align-items:center;color:#fff;
+    padding:clamp(30px,4.4vw,72px);border-radius:32px;
+    background:radial-gradient(560px 380px at 100% 0%,rgba(212,166,42,.25),transparent 62%),linear-gradient(155deg,#0b1f3b,#14346a);
+}
+.integracion h2{color:#fff;font-size:clamp(1.9rem,3.2vw,3rem);font-weight:600;line-height:1.1;margin-bottom:16px}
+.integracion h2 em{font-style:italic;color:var(--oro-brillante);font-weight:500}
+.integracion p{color:#c9d6e9;margin-bottom:26px;max-width:60ch}
+.integracion-flechas{display:grid;gap:12px;justify-items:center;text-align:center}
+.integracion-flechas span{
+    width:100%;max-width:300px;padding:16px 20px;border-radius:16px;font-weight:600;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);
+}
+.integracion-flechas b{font-size:2rem;color:var(--oro-brillante);transform:rotate(90deg);line-height:1}
+.integracion-flechas .destino{background:linear-gradient(135deg,var(--oro-brillante),var(--oro));color:var(--marca-oscuro);border:0;font-size:1.15rem}
+@media (max-width:900px){.integracion{grid-template-columns:1fr}.mosaico-prof span{aspect-ratio:auto;padding:22px 8px}}
+
+.hero-health .ficha-1{left:-24px;bottom:-30px}
+.hero-health .ficha-2{right:-12px;top:-30px}
+@media (min-width:1300px){
+    .rejilla-profesiones{grid-template-columns:repeat(5,1fr)}
+    .nucleo-rejilla{grid-template-columns:repeat(3,1fr)!important}
+}

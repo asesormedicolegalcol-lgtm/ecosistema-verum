@@ -1,0 +1,514 @@
+/*
+===============================================================================
+Ecosistema Verum — Propuesta de rediseño (capa sobre estilo.css)
+Mantiene la identidad: navy #0b1f3b + dorado #d4a62a + teal #0f766e.
+Añade: tipografía editorial, hero inmersivo, producto en pantalla, bento de apps.
+Se carga después de estilo.css en todas las páginas.
+===============================================================================
+*/
+
+:root{
+    --serif:"Fraunces","Playfair Display",Georgia,serif;
+    --sans:"Inter","Segoe UI",system-ui,sans-serif;
+    --cristal:rgba(255,255,255,.07);
+    --cristal-borde:rgba(255,255,255,.16);
+}
+
+body{font-family:var(--sans);background:#fff}
+/*---------------- Aprovechar todo el ancho en pantallas grandes ----------------*/
+:root{--ancho:min(1840px,94vw)}
+.contenedor{max-width:var(--ancho);padding-left:clamp(20px,2.4vw,48px);padding-right:clamp(20px,2.4vw,48px)}
+@media (min-width:1500px){
+    .seccion{padding-block:110px}
+    .hero h1{font-size:clamp(3.2rem,3.9vw,4.9rem)}
+    .hero-texto{font-size:1.28rem}
+    .rejilla-3{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+}
+
+h1,h2,h3,.serif{font-family:var(--serif);letter-spacing:-.01em}
+
+/*---------------- Barra superior de contacto ----------------*/
+.barra-superior{
+    background:#07162b;color:#9fb0c9;font-size:.78rem;
+    position:relative;z-index:60;border-bottom:1px solid rgba(255,255,255,.06);
+}
+.barra-superior .contenedor{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:8px;padding-bottom:8px;flex-wrap:wrap}
+.barra-superior a{color:#c9d6e9}
+.barra-superior a:hover{color:var(--oro-brillante);text-decoration:none}
+.barra-superior .grupo{display:flex;gap:22px;align-items:center}
+.barra-superior svg{width:14px;height:14px;vertical-align:-2px;margin-right:6px;color:var(--oro)}
+
+/*---------------- Encabezado ----------------*/
+.cabecera{
+    background:rgba(7,22,43,.94);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    transition:background .3s,top .3s,box-shadow .3s;
+}
+body.con-hero .cabecera{
+    position:fixed;left:0;right:0;top:34px;
+    background:transparent;box-shadow:none;
+    -webkit-backdrop-filter:none;backdrop-filter:none;
+}
+body.con-hero .cabecera.con-sombra{
+    top:0;background:rgba(7,22,43,.84);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    box-shadow:0 8px 30px rgba(0,0,0,.28);
+}
+.nav a{font-size:.86rem;letter-spacing:.2px;position:relative;background:none!important}
+.nav a::after{
+    content:"";position:absolute;left:13px;right:13px;bottom:3px;height:2px;
+    background:var(--oro);transform:scaleX(0);transform-origin:left;transition:transform .3s;
+}
+.nav a:hover::after,.nav a.activo::after{transform:scaleX(1)}
+.nav a.cta-nav{
+    border:1px solid var(--oro);color:var(--oro-brillante);border-radius:999px;margin-left:8px;
+}
+.nav a.cta-nav::after{display:none}
+.nav a.cta-nav:hover{background:var(--oro)!important;color:var(--marca-oscuro)}
+
+/*---------------- HERO ----------------*/
+.hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    padding:150px 0 120px;color:#fff;overflow:hidden;
+    background:
+        linear-gradient(100deg,rgba(7,22,43,.97) 0%,rgba(11,31,59,.86) 42%,rgba(11,31,59,.35) 100%),
+
+        radial-gradient(900px 600px at 80% 20%,rgba(212,166,42,.20),transparent 60%),
+        radial-gradient(700px 500px at 0% 100%,rgba(15,118,110,.30),transparent 60%),
+        #0b1f3b;
+}
+.hero-red{position:absolute;inset:0;width:100%;height:100%;opacity:.55;pointer-events:none}
+.hero-red line{stroke:rgba(242,201,76,.28);stroke-width:1}
+.hero-red circle{fill:var(--oro-brillante);animation:pulso 4s ease-in-out infinite}
+.hero-red circle:nth-of-type(2n){animation-delay:1.3s}
+.hero-red circle:nth-of-type(3n){animation-delay:2.4s}
+@keyframes pulso{0%,100%{opacity:.25;r:2}50%{opacity:1;r:3.6}}
+
+.hero .contenedor{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+
+.hero-etiqueta{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:7px 16px 7px 8px;border-radius:999px;margin-bottom:26px;
+    background:var(--cristal);border:1px solid var(--cristal-borde);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+    font-size:.78rem;letter-spacing:1.2px;text-transform:uppercase;color:#e8eefb;
+}
+.hero-etiqueta img{height:30px;width:auto;border-radius:6px}
+
+.hero h1{
+    font-size:clamp(2.4rem,4.4vw,4.4rem);line-height:1.06;font-weight:600;
+    max-width:18ch;margin-bottom:24px;
+}
+.hero h1 em{
+    font-style:italic;font-weight:500;
+    background:linear-gradient(100deg,var(--oro-brillante),#fff1b8 55%,var(--oro));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-texto{font-size:clamp(1.02rem,1.6vw,1.2rem);color:#c9d6e9;max-width:52ch;margin-bottom:34px;line-height:1.7}
+.hero-firma{margin-top:30px;color:#93a6c4;font-size:.86rem;display:flex;gap:10px;align-items:center}
+.hero-firma::before{content:"";width:34px;height:1px;background:var(--oro)}
+
+.boton{border-radius:999px;padding:14px 30px}
+
+/* Pantalla del producto, inclinada, con halo dorado */
+.hero-visual{position:relative;perspective:1600px}
+.hero-visual::before{
+    content:"";position:absolute;inset:-8% -6%;
+    background:radial-gradient(closest-side,rgba(212,166,42,.35),transparent 70%);
+    filter:blur(30px);
+}
+.pantalla{
+    position:relative;border-radius:16px;overflow:hidden;
+    border:1px solid var(--cristal-borde);background:#0e2447;
+    box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 6px rgba(255,255,255,.04);
+    transform:rotateY(-12deg) rotateX(5deg) rotateZ(1deg);
+    transition:transform .8s cubic-bezier(.2,.8,.2,1);
+}
+.hero-visual:hover .pantalla{transform:rotateY(-3deg) rotateX(1deg)}
+.pantalla-barra{background:#0a1a33;padding:10px 14px;display:flex;gap:7px}
+.pantalla-barra span{width:10px;height:10px;border-radius:50%;background:#ec6a5e}
+.pantalla-barra span:nth-child(2){background:#f4bf4f}
+.pantalla-barra span:nth-child(3){background:#61c454}
+.pantalla img{width:100%}
+
+.ficha-flotante{
+    position:absolute;z-index:3;display:flex;align-items:center;gap:11px;
+    background:rgba(255,255,255,.96);color:var(--marca-oscuro);
+    padding:12px 18px;border-radius:14px;font-size:.82rem;font-weight:600;line-height:1.25;
+    box-shadow:0 18px 40px rgba(0,0,0,.35);animation:flota 6s ease-in-out infinite;
+}
+.ficha-flotante svg{width:26px;height:26px;color:var(--teal);flex-shrink:0}
+.ficha-flotante small{display:block;color:var(--texto-suave);font-weight:500;font-size:.72rem}
+.ficha-1{left:-34px;bottom:12%}
+.ficha-2{right:-14px;top:6%;animation-delay:2s}
+@keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.indicador-scroll{
+    position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;
+    width:26px;height:42px;border:1.5px solid rgba(255,255,255,.4);border-radius:14px;
+}
+.indicador-scroll::after{
+    content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;
+    border-radius:2px;background:var(--oro-brillante);animation:rueda 1.8s infinite;
+}
+@keyframes rueda{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+
+/*---------------- Franja de cifras ----------------*/
+.cifras{
+    position:relative;z-index:5;margin-top:-62px;
+}
+.cifras-fila{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    background:#fff;border-radius:22px;
+    box-shadow:0 30px 70px rgba(11,31,59,.2);border:1px solid var(--borde);overflow:hidden;
+}
+.cifra{padding:30px 26px;text-align:center;position:relative}
+.cifra+.cifra::before{content:"";position:absolute;left:0;top:24%;bottom:24%;width:1px;background:var(--borde)}
+.cifra strong{
+    display:block;font-family:var(--serif);font-size:clamp(2rem,3.4vw,2.9rem);font-weight:600;line-height:1;
+    background:linear-gradient(135deg,var(--marca-oscuro),#2b5aa0);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.cifra span{display:block;margin-top:8px;color:var(--texto-suave);font-size:.84rem;letter-spacing:.3px}
+
+/*---------------- Secciones ----------------*/
+.seccion{padding:100px 0}
+.sobretitulo{
+    display:inline-block;color:var(--teal);font-weight:700;font-size:.74rem;
+    letter-spacing:2.2px;text-transform:uppercase;margin-bottom:14px;
+}
+.seccion-titulo{max-width:70ch}
+.seccion-titulo h2{font-size:clamp(2rem,4vw,3.1rem);font-weight:600;line-height:1.1}
+.seccion-titulo h2 em{font-style:italic;color:var(--oro);font-weight:500}
+.seccion-titulo .linea-oro{margin-left:auto;margin-right:auto}
+
+.selector-necesidad{margin:0 auto 70px;box-shadow:var(--sombra)}
+
+/*---------------- Aplicaciones: bento ----------------*/
+.bento{display:grid;gap:22px;grid-template-columns:repeat(6,1fr)}
+.bento .producto{grid-column:span 2;border-radius:22px;border:1px solid var(--borde);box-shadow:none;background:#f7f9fc}
+.bento .producto:hover{box-shadow:0 26px 60px rgba(11,31,59,.16);transform:translateY(-6px)}
+.bento .producto-cinta{display:none}
+.bento .producto-cuerpo{padding:34px}
+.bento .producto h3{font-family:var(--serif);font-size:1.55rem;font-weight:600}
+
+/* Tarjeta destacada VerumIA: ancha, oscura, con captura */
+.bento .producto.estrella{
+    grid-column:span 4;grid-row:span 2;color:#fff;border:0;padding:38px 0 0 38px;overflow:hidden;
+    background:
+        radial-gradient(500px 340px at 100% 0%,rgba(212,166,42,.22),transparent 65%),
+        linear-gradient(155deg,#0b1f3b,#14346a);
+}
+.bento .producto.estrella h3{color:#fff;font-size:2.3rem}
+.bento .producto.estrella p{color:#c9d6e9;font-size:1.02rem;max-width:56ch}
+.bento .producto.estrella .producto-tipo{color:var(--oro-brillante)}
+.bento .producto.estrella .insignia{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.22)}
+.bento .producto.estrella .insignia.teal{background:rgba(42,167,155,.18);color:#7ee3d8;border-color:rgba(126,227,216,.35)}
+.bento .producto.estrella .boton-navy{background:var(--oro);color:var(--marca-oscuro)}
+.bento .producto.estrella .boton-navy:hover{background:var(--oro-brillante)}
+.estrella-captura{
+    margin:0 0 0 38px;border-radius:14px 0 0 0;overflow:hidden;
+    box-shadow:-20px -10px 50px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.14);border-right:0;border-bottom:0;
+    transition:transform .6s cubic-bezier(.2,.8,.2,1);
+}
+.producto.estrella:hover .estrella-captura{transform:translate(-8px,-8px)}
+.estrella-captura img{width:100%}
+
+.icono-app{width:58px;height:58px;border-radius:16px}
+.estado{
+    position:absolute;top:22px;right:22px;font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    padding:5px 11px;border-radius:999px;background:#e6f4f2;color:var(--teal);
+}
+.estado.pronto{background:var(--oro-suave);color:#8a6a10}
+.bento .producto{position:relative}
+.estrella .estado{background:rgba(126,227,216,.16);color:#7ee3d8}
+
+/*---------------- Cómo trabaja ----------------*/
+.camino{background:linear-gradient(180deg,#f3f6fb,#fff)}
+.camino-fila{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:56px}
+.camino-fila::before{
+    content:"";position:absolute;left:12.5%;right:12.5%;top:34px;height:2px;
+    background:repeating-linear-gradient(90deg,var(--oro) 0 8px,transparent 8px 16px);
+}
+.paso{text-align:center;padding:0 18px;position:relative}
+.paso .num{
+    width:68px;height:68px;border-radius:50%;margin:0 auto 20px;position:relative;z-index:1;
+    background:var(--marca-oscuro);color:var(--oro-brillante);font-family:var(--serif);font-size:1.6rem;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px #f3f6fb,0 12px 26px rgba(11,31,59,.25);
+}
+.paso h3{font-size:1.2rem;margin-bottom:8px;color:var(--marca-oscuro)}
+.paso p{color:var(--texto-suave);font-size:.93rem;max-width:30ch;margin:0 auto}
+
+/*---------------- Cinta de capacidades ----------------*/
+.cinta{overflow:hidden;background:var(--marca-oscuro);padding:22px 0;border-block:1px solid rgba(212,166,42,.35)}
+.cinta-pista{display:flex;gap:56px;width:max-content;animation:desliza 38s linear infinite}
+.cinta:hover .cinta-pista{animation-play-state:paused}
+.cinta-pista span{
+    color:#c9d6e9;font-family:var(--serif);font-size:1.15rem;white-space:nowrap;display:flex;align-items:center;gap:56px;
+}
+.cinta-pista span::after{content:"✦";color:var(--oro);font-size:.8rem}
+@keyframes desliza{to{transform:translateX(-50%)}}
+
+/*---------------- Libro + Dirección ----------------*/
+.dos-paneles{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.panel{
+    border-radius:26px;padding:clamp(32px,4vw,52px);position:relative;overflow:hidden;min-height:420px;
+    display:flex;flex-direction:column;justify-content:flex-end;
+}
+.panel h3{font-size:clamp(1.7rem,2.6vw,2.3rem);font-weight:600;line-height:1.12;margin-bottom:14px}
+.panel p{max-width:46ch;margin-bottom:26px;font-size:1rem}
+.panel-libro{
+    color:#fff;
+    background:
+        radial-gradient(420px 300px at 85% 10%,rgba(212,166,42,.35),transparent 65%),
+        linear-gradient(160deg,#0b1f3b,#183863);
+}
+.panel-libro p{color:#c9d6e9}
+.panel-libro .tomos{
+    position:absolute;right:38px;top:34px;display:flex;gap:14px;
+}
+.tomo{
+    width:92px;height:128px;border-radius:4px 10px 10px 4px;padding:12px 10px;
+    background:linear-gradient(145deg,#183863,#0b1f3b);border:1px solid rgba(212,166,42,.55);
+    box-shadow:8px 14px 28px rgba(0,0,0,.45),inset 5px 0 0 rgba(212,166,42,.5);
+    font-family:var(--serif);font-size:.62rem;line-height:1.25;color:var(--oro-brillante);
+    display:flex;flex-direction:column;justify-content:space-between;
+}
+.tomo b{font-size:1.3rem;font-weight:600}
+.tomo:nth-child(2){transform:translateY(22px) rotate(4deg)}
+.tomo:nth-child(1){transform:rotate(-4deg)}
+.panel-direccion{background:var(--oro-suave);color:var(--marca-oscuro);border:1px solid rgba(212,166,42,.4)}
+.panel-direccion p{color:#5b4a14}
+.panel-direccion .monograma{
+    position:absolute;right:30px;top:6px;font-family:var(--serif);font-size:11rem;line-height:1;font-weight:600;
+    color:rgba(212,166,42,.22);font-style:italic;
+}
+.panel-direccion .boton-navy{align-self:flex-start}
+.panel .boton{align-self:flex-start}
+
+/*---------------- Banda final ----------------*/
+.banda-final{
+    margin:0 auto;padding:90px 0;text-align:center;color:#fff;position:relative;overflow:hidden;
+    background:
+        radial-gradient(600px 380px at 50% 120%,rgba(212,166,42,.35),transparent 65%),
+        linear-gradient(160deg,#07162b,#0b1f3b 60%,#14346a);
+}
+.banda-final h2{font-size:clamp(2rem,4.2vw,3.2rem);font-weight:600;max-width:20ch;margin:0 auto 18px;line-height:1.1}
+.banda-final h2 em{font-style:italic;color:var(--oro-brillante);font-weight:500}
+.banda-final p{color:#c9d6e9;max-width:56ch;margin:0 auto 32px}
+.banda-final .botones{justify-content:center}
+
+/*---------------- Responsivo ----------------*/
+@media (max-width:980px){
+    .hero .contenedor{grid-template-columns:1fr}
+    .hero-visual{max-width:640px;margin:20px auto 0}
+    .pantalla{transform:none}
+    .ficha-1{left:-6px}.ficha-2{right:-6px}
+    .bento{grid-template-columns:repeat(2,1fr)}
+    .bento .producto,.bento .producto.estrella{grid-column:span 2}
+    .bento .producto.estrella{grid-row:auto}
+    .camino-fila{grid-template-columns:1fr 1fr;gap:34px 0}
+    .camino-fila::before{display:none}
+    .dos-paneles{grid-template-columns:1fr}
+    .cifras-fila{grid-template-columns:1fr 1fr}
+    .cifra:nth-child(3)::before{display:none}
+    .barra-superior .grupo:first-child{display:none}
+}
+@media (max-width:860px){
+    body.con-hero .cabecera{top:0;background:rgba(7,22,43,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+    .barra-superior{display:none}
+    .hero{padding:110px 0 110px}
+}
+@media (max-width:620px){
+    .bento .producto{grid-column:span 2}
+    .camino-fila{grid-template-columns:1fr}
+    .seccion{padding:70px 0}
+    .panel-libro .tomos{display:none}
+    .ficha-flotante{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+    .hero-red circle,.ficha-flotante,.cinta-pista,.indicador-scroll::after{animation:none}
+    .pantalla{transition:none}
+}
+
+.bento .producto.estrella .producto-cuerpo{padding:0 38px 28px 0!important}
+
+/*---------------- Dos obras insignia (inicio) ----------------*/
+.obras{display:grid;grid-template-columns:1.08fr .92fr;gap:26px}
+.obra{
+    --pad:clamp(32px,3.6vw,64px);
+    position:relative;overflow:hidden;border-radius:30px;color:#fff;
+    min-height:0;padding:var(--pad) var(--pad) 0;
+    display:flex;flex-direction:column;
+}
+.obra .sobretitulo{color:var(--oro-brillante)}
+.obra h3{font-size:clamp(2.2rem,3.6vw,3.8rem);font-weight:600;line-height:1.04;margin-bottom:16px;max-width:14ch}
+.obra h3 em{font-style:italic;font-weight:500;color:var(--oro-brillante)}
+.obra p{color:#c9d6e9;max-width:48ch;font-size:1.04rem;margin-bottom:26px}
+.obra .etiqueta-mini{
+    align-self:flex-start;margin-bottom:18px;padding:5px 14px;border-radius:999px;font-size:.72rem;letter-spacing:1.4px;
+    text-transform:uppercase;font-weight:700;background:rgba(212,166,42,.16);color:var(--oro-brillante);
+    border:1px solid rgba(212,166,42,.45);
+}
+.obra .sobretitulo{display:block}
+.obra-visual{position:relative;flex:none;height:clamp(340px,30vw,560px);margin:30px calc(var(--pad)*-1) 0;overflow:hidden}
+.obra-verumia{
+    background:
+        radial-gradient(620px 420px at 100% 0%,rgba(212,166,42,.26),transparent 62%),
+        radial-gradient(500px 400px at 0% 100%,rgba(15,118,110,.32),transparent 62%),
+        linear-gradient(155deg,#0b1f3b,#14346a);
+    perspective:1800px;
+}
+.obra-verumia .pantalla{
+    position:absolute;right:-5%;bottom:-12%;width:88%;transform:rotateY(-14deg) rotateX(6deg) rotateZ(-2deg);
+    transform-origin:100% 100%;box-shadow:0 30px 70px rgba(0,0,0,.5);
+}
+.obra-verumia:hover .pantalla{transform:rotateY(-6deg) rotateX(2deg) rotateZ(-1deg) translateY(-8px)}
+.obra-libro{
+    background:
+        radial-gradient(520px 420px at 80% 70%,rgba(212,166,42,.30),transparent 62%),
+        linear-gradient(160deg,#070709,#14110b 70%,#1d1708);
+    border:1px solid rgba(212,166,42,.35);
+}
+.obra-libro .obra-visual{display:flex;justify-content:center;align-items:flex-end;gap:4%}
+.obra-libro .obra-visual img{
+    height:92%;width:auto;max-width:44%;object-fit:cover;border-radius:4px 8px 8px 4px;margin-bottom:-8%;
+    box-shadow:0 26px 50px rgba(0,0,0,.65),0 0 0 1px rgba(212,166,42,.25);
+    transition:transform .6s cubic-bezier(.2,.8,.2,1);
+}
+.obra-libro .obra-visual img:nth-child(1){transform:rotate(-5deg) translateY(4%)}
+.obra-libro .obra-visual img:nth-child(2){transform:rotate(4deg)}
+.obra-libro:hover .obra-visual img:nth-child(1){transform:rotate(-8deg) translate(-10px,-8px)}
+.obra-libro:hover .obra-visual img:nth-child(2){transform:rotate(7deg) translate(10px,-8px)}
+.obra-libro p{color:#d8d0bd}
+
+/* Resto del ecosistema: 5 tarjetas (3 + 2) */
+.bento-resto{grid-template-columns:repeat(6,1fr)}
+.bento-resto .producto{grid-column:span 2}
+.bento-resto .producto:nth-child(n+4){grid-column:span 3}
+
+@media (max-width:1100px){
+    .obras{grid-template-columns:1fr}
+    .bento-resto .producto,.bento-resto .producto:nth-child(n+4){grid-column:span 3}
+}
+@media (max-width:700px){
+    .obra{min-height:0}
+    .obra-visual{height:340px}
+    .bento-resto .producto,.bento-resto .producto:nth-child(n+4){grid-column:span 6}
+}
+
+/* Portada de libro flotante en el hero + lista de servicios */
+.portada-flotante{
+    position:absolute;right:-10px;top:-4%;z-index:3;display:block;width:clamp(96px,9vw,150px);
+    transform:rotate(6deg);transition:transform .4s cubic-bezier(.2,.8,.2,1);
+    animation:flota 6s ease-in-out infinite;animation-delay:2s;
+}
+.portada-flotante:hover{transform:rotate(0) scale(1.06);text-decoration:none}
+.portada-flotante img{width:100%;border-radius:3px 7px 7px 3px;box-shadow:0 22px 44px rgba(0,0,0,.55),0 0 0 1px rgba(212,166,42,.4)}
+.portada-flotante span{
+    position:absolute;left:-14px;bottom:14px;background:var(--oro);color:var(--marca-oscuro);
+    font-size:.66rem;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;line-height:1.2;
+    padding:7px 11px;border-radius:6px;box-shadow:0 8px 18px rgba(0,0,0,.35);
+}
+.lista-servicios{list-style:none;display:grid;gap:12px;margin:6px 0 28px;position:relative;z-index:2}
+.lista-servicios li{position:relative;padding-left:28px;color:#d8e2f2;font-size:1rem}
+.lista-servicios li::before{content:"✦";position:absolute;left:0;color:var(--oro-brillante);font-size:.85rem;top:3px}
+
+/* Navegación en una sola línea en escritorio */
+@media (min-width:861px){
+    .nav{flex-wrap:nowrap;gap:2px}
+    .nav a{white-space:nowrap;padding:8px clamp(7px,.8vw,13px);font-size:clamp(.78rem,.95vw,.88rem)}
+    .nav a.cta-nav{margin-left:6px;padding-inline:clamp(12px,1.2vw,18px)}
+}
+
+/*---------------- Subpágina de producto (VerumIA) ----------------*/
+.hero-producto{min-height:92vh}
+.hero-nota{margin-top:14px;font-size:.9rem;color:#9fb0c9;max-width:60ch}
+.hero-nota a{color:#fff;text-decoration:underline}
+.hero-producto .hero-texto strong{color:#fff}
+.subnav{
+    position:sticky;top:62px;z-index:40;background:rgba(255,255,255,.92);
+    -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--borde);margin-top:40px;
+}
+.subnav .contenedor{display:flex;gap:6px;align-items:center;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+.subnav a{
+    color:var(--marca-oscuro);font-size:.86rem;font-weight:600;padding:8px 16px;border-radius:999px;white-space:nowrap;transition:background .2s;
+}
+.subnav a:hover{background:var(--oro-suave);text-decoration:none}
+.subnav .subnav-libro{margin-left:auto;background:var(--marca-oscuro);color:var(--oro-brillante)}
+.subnav .subnav-libro:hover{background:var(--marca-hover)}
+html{scroll-padding-top:120px}
+
+.mockup-navegador{max-width:min(1320px,100%)}
+
+/* Franja cruzada hacia el libro */
+.cruce-libro{
+    display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,70px);align-items:center;color:#fff;
+    padding:clamp(28px,3.4vw,56px);border-radius:30px;border:1px solid rgba(212,166,42,.4);
+    background:radial-gradient(520px 340px at 90% 20%,rgba(217,174,69,.28),transparent 62%),linear-gradient(160deg,#070709,#17120a);
+    transition:transform .3s,box-shadow .3s;
+}
+.cruce-libro:hover{text-decoration:none;transform:translateY(-4px);box-shadow:0 26px 60px rgba(0,0,0,.35)}
+.cruce-portadas{display:flex;gap:0}
+.cruce-portadas img{width:clamp(110px,11vw,190px);border-radius:3px 8px 8px 3px;box-shadow:0 20px 40px rgba(0,0,0,.6),0 0 0 1px rgba(217,174,69,.3)}
+.cruce-portadas img:first-child{transform:rotate(-5deg) translateX(14px)}
+.cruce-portadas img:last-child{transform:rotate(4deg)}
+.cruce-texto .sobretitulo{color:var(--oro-brillante)}
+.cruce-texto h3{font-size:clamp(1.8rem,3vw,3rem);color:#f3e7c6;font-weight:600;margin-bottom:10px}
+.cruce-texto p{color:#d8cfb8;max-width:60ch;margin-bottom:22px}
+@media (max-width:700px){.cruce-libro{grid-template-columns:1fr;text-align:center}.cruce-portadas{justify-content:center}}
+
+/* Páginas de texto: un poco más de ancho útil */
+.documento{max-width:min(1040px,100%)}
+
+/* Chips de especialidades jurídicas */
+.chips-especialidades{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 0;max-width:62ch;position:relative;z-index:2}
+.chips-especialidades span{
+    font-size:.78rem;font-weight:600;letter-spacing:.3px;padding:5px 13px;border-radius:999px;color:#e8eefb;
+    background:var(--cristal);border:1px solid var(--cristal-borde);
+}
+.chips-especialidades span:last-child{color:var(--oro-brillante);border-color:rgba(212,166,42,.5)}
+
+/* Verum Health en el home: tarjeta destacada */
+.bento-resto .producto-health{grid-column:span 4}
+.bento-resto .producto:nth-child(2){grid-column:span 2}
+.bento-resto .producto:nth-child(n+3){grid-column:span 3}
+.producto-health{
+    color:#fff;border:0!important;
+    background:radial-gradient(520px 340px at 100% 0%,rgba(124,58,237,.35),transparent 62%),linear-gradient(155deg,#0b1f3b,#14346a)!important;
+}
+.producto-health h3{color:#fff!important;font-size:2rem!important}
+.producto-health p{color:#c9d6e9!important}
+.producto-health .producto-tipo{color:var(--oro-brillante)}
+.producto-health .estado{background:rgba(212,166,42,.18);color:var(--oro-brillante)}
+.chips-claros{margin:0 0 24px}
+@media (max-width:1100px){.bento-resto .producto-health,.bento-resto .producto:nth-child(n+2){grid-column:span 6}}
+
+.obra .chips-especialidades{margin:0 0 28px}
+
+/* Lista de capacidades concretas en el hero */
+.hero-capacidades{list-style:none;display:grid;gap:10px 28px;grid-template-columns:1fr 1fr;margin:0 0 34px;max-width:64ch}
+.hero-capacidades li{position:relative;padding-left:28px;color:#e3ebf8;font-size:.97rem;line-height:1.4}
+.hero-capacidades li::before{content:"✓";position:absolute;left:0;top:0;color:var(--oro-brillante);font-weight:800}
+@media (max-width:700px){.hero-capacidades{grid-template-columns:1fr}}
+
+/* HUD animado de VerumIA (animación de arranque del programa) */
+.hud{display:block;width:100%;aspect-ratio:11/10}
+.hero-hud{display:flex;flex-direction:column;align-items:center}
+.hero-hud::before{background:radial-gradient(closest-side,rgba(15,139,141,.30),transparent 70%)}
+.hud-pie{
+    position:relative;z-index:2;margin-top:-6px;font-size:.74rem;letter-spacing:2px;text-transform:uppercase;color:#9fc7c8;
+}
+.hud-pie::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#2aa79b;margin-right:10px;
+    box-shadow:0 0 0 0 rgba(42,167,155,.7);animation:latido 1.8s infinite}
+@keyframes latido{70%{box-shadow:0 0 0 9px rgba(42,167,155,0)}100%{box-shadow:0 0 0 0 rgba(42,167,155,0)}}
+.obra-hud{margin-top:10px;display:flex;align-items:center;justify-content:center}
+.obra-hud .hud{width:min(100%,560px)}
+@media (prefers-reduced-motion:reduce){.hud-pie::before{animation:none}}
+
+/* HUD como fondo sutil del hero del inicio */
+.hud-fondo{
+    position:absolute;right:-6%;top:50%;transform:translateY(-50%);z-index:1;
+    width:min(1150px,78vw);opacity:.32;pointer-events:none;
+    -webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);mask-image:radial-gradient(closest-side,#000 55%,transparent 100%);
+}
+@media (max-width:860px){.hud-fondo{width:130vw;right:-40vw;opacity:.22}}

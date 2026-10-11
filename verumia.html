@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VerumIA — Asistente jurídico especializado para el despacho | Ecosistema Verum</title>
-<meta name="description" content="VerumIA: expedientes, cronologías automáticas, análisis médico-legal con IA, dictámenes, demandas, PCL, audiencias y facturación. Funciona en tu propio equipo, sin servidor externo.">
+<title>VerumIA — Asistente jurídico para abogados y peritos médicos | Ecosistema Verum</title>
+<meta name="description" content="VerumIA, para abogados y peritos médicos: expedientes, cronologías automáticas, análisis médico-legal con IA, dictámenes, demandas, PCL, audiencias y facturación. Funciona en tu propio equipo, sin servidor externo.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/estilo.css">
+<link rel="stylesheet" href="css/tema.css">
 </head>
-<body>
+<body class="con-hero">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
 <defs>
 
@@ -285,6 +288,16 @@
 </svg>
 
 
+<div class="barra-superior">
+<div class="contenedor">
+    <div class="grupo"><span><svg><use href="#i-escudo"></use></svg>Para abogados y peritos médicos · 11 especialidades · IA local</span></div>
+    <div class="grupo">
+        <a href="mailto:edmlegal.especializados@gmail.com"><svg><use href="#i-correo"></use></svg>edmlegal.especializados@gmail.com</a>
+        <a href="https://wa.me/573202413579" target="_blank" rel="noopener"><svg><use href="#i-chat"></use></svg>+57 320 241 3579</a>
+    </div>
+</div>
+</div>
+
 <header class="cabecera">
 <div class="contenedor cabecera-fila">
     <a href="index.html" class="marca">
@@ -299,38 +312,71 @@
         <a href="index.html">Inicio</a>
         <a href="verumia.html" class="activo">VerumIA</a>
         <a href="lex-verum-pro.html">Lex Verum Pro</a>
-        <a href="verum-med.html">VerumMed</a>
+        <a href="verum-health.html">Verum Health</a>
         <a href="verum-status.html">Verum Status</a>
-        <a href="verum-psi.html">Verum Psi</a>
         <a href="libro.html">La Ingeniería de la Verdad</a>
         <a href="perfil.html">Perfil</a>
-        <a href="soporte.html">Soporte</a>
+        <a href="soporte.html" class="cta-nav">Contacto</a>
     </nav>
 </div>
 </header>
 
-<section class="portada">
+<section class="hero hero-producto">
+<svg class="hero-red" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g>
+        <line x1="80" y1="120" x2="260" y2="240"/><line x1="260" y1="240" x2="430" y2="150"/><line x1="430" y1="150" x2="610" y2="270"/>
+        <line x1="610" y1="270" x2="790" y2="120"/><line x1="790" y1="120" x2="980" y2="230"/><line x1="980" y1="230" x2="1130" y2="110"/>
+        <line x1="260" y1="240" x2="330" y2="420"/><line x1="330" y1="420" x2="560" y2="480"/><line x1="560" y1="480" x2="610" y2="270"/>
+        <line x1="560" y1="480" x2="760" y2="560"/><line x1="760" y1="560" x2="980" y2="230"/><line x1="980" y1="230" x2="1090" y2="420"/>
+    </g>
+    <circle cx="80" cy="120" r="2"/><circle cx="260" cy="240" r="2"/><circle cx="430" cy="150" r="2"/><circle cx="610" cy="270" r="2"/>
+    <circle cx="790" cy="120" r="2"/><circle cx="980" cy="230" r="2"/><circle cx="1130" cy="110" r="2"/><circle cx="330" cy="420" r="2"/>
+    <circle cx="560" cy="480" r="2"/><circle cx="760" cy="560" r="2"/><circle cx="1090" cy="420" r="2"/>
+</svg>
 <div class="contenedor">
-    <span class="portada-etiqueta">Escritorio · Windows</span>
-    <div class="portada-encabezado">
-        <img src="img/icono-verumia-96.png" alt="" class="icono-app-portada">
-        <h1><em>VerumIA</em></h1>
+    <div>
+        <div class="hero-etiqueta"><img src="img/icono-verumia-96.png" alt="">Escritorio · Windows</div>
+        <h1><em>VerumIA</em>, el asistente jurídico integral de tu despacho.</h1>
+        <p class="hero-texto"><strong>Para abogados y peritos médicos.</strong> Lleva tus expedientes, redacta borradores con inteligencia artificial, calcula lo que se factura a cada cliente y mantiene todo respaldado — <strong>sin depender de ningún servidor externo</strong>.</p>
+        <div class="botones">
+            <button type="button" id="demo-boton-abrir" class="boton boton-oro" style="cursor:pointer;border:none;font-family:inherit;font-size:inherit">Descargar demo gratis (Windows)</button>
+            <a href="https://wa.me/573202413579?text=Hola,%20quiero%20solicitar%20una%20demo%20gratis%20de%20VerumIA" class="boton boton-linea" target="_blank" rel="noopener">Solicitar por WhatsApp</a>
+        </div>
+        <div class="chips-especialidades"><span>Penal</span><span>Civil</span><span>Laboral</span><span>Familia</span><span>Administrativo</span><span>Comercial</span><span>Tributario</span><span>Ambiental</span><span>Disciplinario</span><span>Médico-legal</span><span>y más</span></div>
+        <p class="hero-nota">Demo completa por 7 días, luego pide tu licencia. Funciona en tu propio equipo, sin instalar nada externo. <a href="instrucciones-descarga.html">¿Ya la descargaste? Ver instrucciones de instalación</a></p>
     </div>
-    <p>Tu asistente jurídico especializado: lleva tus expedientes, redacta borradores con inteligencia artificial, calcula lo que se factura a cada cliente y mantiene todo respaldado — <strong>sin depender de ningún servidor externo</strong>.</p>
-    <div class="botones">
-        <button type="button" id="demo-boton-abrir" class="boton boton-oro" style="cursor:pointer;border:none;font-family:inherit;font-size:inherit">Descargar demo gratis (Windows)</button>
-        <a href="https://wa.me/573202413579?text=Hola,%20quiero%20solicitar%20una%20demo%20gratis%20de%20VerumIA" class="boton boton-linea" target="_blank" rel="noopener">Solicitar por WhatsApp</a>
-        <a href="#funciones" class="boton boton-linea">Ver todas las funciones →</a>
+    <div class="hero-visual hero-hud">
+        <canvas class="hud" data-logo="img/logo-verumia.png" role="img" aria-label="Animación de arranque de VerumIA: anillos orbitando el logo"></canvas>
+        <span class="hud-pie">Así arranca VerumIA</span>
+        <div class="ficha-flotante ficha-1"><svg><use href="#i-confidencial"></use></svg><div>IA local<small>Tus datos no salen del equipo</small></div></div>
+        <div class="ficha-flotante ficha-2"><svg><use href="#i-calendario"></use></svg><div>Demo de 7 días<small>Completa y sin tarjeta</small></div></div>
     </div>
-    <p style="margin-top:12px;font-size:.92rem;color:rgba(255,255,255,.7)">Demo completa por 7 días, luego pide tu licencia -- funciona en tu propio equipo, sin instalar nada externo. <a href="instrucciones-descarga.html" style="color:rgba(255,255,255,.9);text-decoration:underline">¿Ya la descargaste? Ver instrucciones de instalación</a></p>
-    <div class="metricas-mini">
-        <div class="metrica-mini"><strong>11</strong><span>Especialidades jurídicas</span></div>
-        <div class="metrica-mini"><strong>33</strong><span>Calculadoras determinísticas</span></div>
-        <div class="metrica-mini"><strong>100+</strong><span>Funciones sin depender de IA</span></div>
-        <div class="metrica-mini"><strong>14</strong><span>Proveedores de IA soportados</span></div>
+</div>
+<div class="indicador-scroll" aria-hidden="true"></div>
+</section>
+
+<section class="cifras">
+<div class="contenedor">
+    <div class="cifras-fila">
+        <div class="cifra"><strong>11</strong><span>Especialidades jurídicas</span></div>
+        <div class="cifra"><strong>33</strong><span>Calculadoras determinísticas</span></div>
+        <div class="cifra"><strong>100+</strong><span>Funciones sin depender de IA</span></div>
+        <div class="cifra"><strong>14</strong><span>Proveedores de IA soportados</span></div>
     </div>
 </div>
 </section>
+
+<nav class="subnav" aria-label="Secciones de VerumIA">
+<div class="contenedor">
+    <a href="#funciones">Funciones</a>
+    <a href="#especialidades">Especialidades</a>
+    <a href="#calculadoras">Calculadoras</a>
+    <a href="#precios">Licencia</a>
+    <a href="#movil">Móvil</a>
+    <a href="#privacidad">Privacidad</a>
+    <a href="libro.html" class="subnav-libro">Libro: La Ingeniería de la Verdad →</a>
+</div>
+</nav>
 
 <section class="seccion">
 <div class="contenedor">
@@ -438,7 +484,7 @@
 </div>
 </section>
 
-<section class="seccion seccion-clara">
+<section class="seccion seccion-clara" id="especialidades">
 <div class="contenedor">
     <div class="seccion-titulo">
         <div class="linea-oro"></div>
@@ -534,7 +580,7 @@
 </div>
 </section>
 
-<section class="seccion">
+<section class="seccion" id="calculadoras">
 <div class="contenedor">
     <div class="seccion-titulo">
         <div class="linea-oro"></div>
@@ -899,7 +945,7 @@
 </div>
 </section>
 
-<section class="seccion">
+<section class="seccion" id="privacidad">
 <div class="contenedor">
     <div class="seccion-titulo">
         <div class="linea-oro"></div>
@@ -938,6 +984,20 @@
 </div>
 </section>
 
+<section class="seccion" style="padding-block:60px">
+<div class="contenedor">
+    <a href="libro.html" class="cruce-libro">
+        <div class="cruce-portadas"><img src="img/libro/portada-vol-1-s.jpg" alt=""><img src="img/libro/portada-vol-2-s.jpg" alt=""></div>
+        <div class="cruce-texto">
+            <span class="sobretitulo">Complementa tu práctica</span>
+            <h3>La Ingeniería de la Verdad</h3>
+            <p>Tratado en dos volúmenes sobre responsabilidad en salud: el complemento ideal de VerumIA para quien litiga, dictamina o defiende en el campo médico-legal.</p>
+            <span class="boton boton-oro">Conocer la obra →</span>
+        </div>
+    </a>
+</div>
+</section>
+
 <footer class="pie">
 <div class="contenedor">
     <div class="pie-rejilla">
@@ -955,9 +1015,8 @@
             <ul>
                 <li><a href="verumia.html">VerumIA</a></li>
                 <li><a href="lex-verum-pro.html">Lex Verum Pro</a></li>
-                <li><a href="verum-med.html">VerumMed</a></li>
+                <li><a href="verum-health.html">Verum Health</a></li>
                 <li><a href="verum-status.html">Verum Status</a></li>
-                <li><a href="verum-psi.html">Verum Psi</a></li>
             </ul>
         </div>
         <div>
@@ -986,6 +1045,7 @@
 </footer>
 
 <script src="js/interactivo.js" defer></script>
+<script src="js/hud.js" defer></script>
 
 <script>
 (function(){
