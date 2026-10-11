@@ -13,8 +13,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/estilo.css">
 <link rel="stylesheet" href="css/tema.css">
+<meta property="og:title" content="Dr. Eduardo J. De La Hoz Merlano — Perfil profesional">
+<meta property="og:image" content="https://ecosistemaverum.com/img/eduardo-de-la-hoz.jpg">
 </head>
-<body>
+<body class="con-hero">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
 <defs>
 
@@ -284,14 +286,21 @@
 </svg>
 
 
+<div class="barra-superior">
+<div class="contenedor">
+    <div class="grupo"><span><svg><use href="#i-balanza"></use></svg>Médico y Abogado · Auxiliar de la Justicia · Autor</span></div>
+    <div class="grupo">
+        <a href="mailto:edmlegal.especializados@gmail.com"><svg><use href="#i-correo"></use></svg>edmlegal.especializados@gmail.com</a>
+        <a href="https://wa.me/573202413579" target="_blank" rel="noopener"><svg><use href="#i-chat"></use></svg>+57 320 241 3579</a>
+    </div>
+</div>
+</div>
+
 <header class="cabecera">
 <div class="contenedor cabecera-fila">
     <a href="index.html" class="marca">
         <img src="img/logo-verumia.png" alt="Ecosistema Verum">
-        <span class="marca-texto">
-            <strong>Ecosistema Verum</strong>
-            <span>EDM Legal Especializados</span>
-        </span>
+        <span class="marca-texto"><strong>Ecosistema Verum</strong><span>EDM Legal Especializados</span></span>
     </a>
     <button class="nav-boton" onclick="document.getElementById('nav').classList.toggle('abierto')" aria-label="Menú">☰</button>
     <nav class="nav" id="nav">
@@ -307,56 +316,100 @@
 </div>
 </header>
 
-<section class="portada">
+<section class="hero hero-perfil">
+<svg class="hero-red" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g>
+        <line x1="80" y1="120" x2="260" y2="240"/><line x1="260" y1="240" x2="430" y2="150"/><line x1="430" y1="150" x2="610" y2="270"/>
+        <line x1="610" y1="270" x2="790" y2="120"/><line x1="790" y1="120" x2="980" y2="230"/><line x1="980" y1="230" x2="1130" y2="110"/>
+        <line x1="260" y1="240" x2="330" y2="420"/><line x1="330" y1="420" x2="560" y2="480"/><line x1="560" y1="480" x2="610" y2="270"/>
+        <line x1="560" y1="480" x2="760" y2="560"/><line x1="760" y1="560" x2="980" y2="230"/>
+    </g>
+    <circle cx="80" cy="120" r="2"/><circle cx="260" cy="240" r="2"/><circle cx="430" cy="150" r="2"/><circle cx="610" cy="270" r="2"/>
+    <circle cx="790" cy="120" r="2"/><circle cx="980" cy="230" r="2"/><circle cx="1130" cy="110" r="2"/><circle cx="330" cy="420" r="2"/>
+    <circle cx="560" cy="480" r="2"/><circle cx="760" cy="560" r="2"/>
+</svg>
 <div class="contenedor">
-    <span class="portada-etiqueta">Dirección del ecosistema</span>
-    <h1>Dr. Eduardo J. <em>De La Hoz Merlano</em></h1>
-    <p>Estratega Legal, Consultor Médico Forense y Líder en LegalTech.</p>
-    <div class="insignias">
-        <span class="insignia">Médico y Cirujano</span>
-        <span class="insignia">Abogado</span>
-        <span class="insignia">Minor en Derecho Administrativo</span>
-        <span class="insignia">Auxiliar de la Justicia (Perito)</span>
+    <div>
+        <div class="hero-etiqueta"><img src="img/logo-edm-legal.png" alt="EDM Legal Especializados SAS">Dirección del ecosistema</div>
+        <h1>Dr. Eduardo J. <em>De La Hoz Merlano</em></h1>
+        <p class="hero-texto">Estratega legal, consultor médico forense y líder en LegalTech. Médico que ejerce el derecho, y el derecho con lectura clínica real.</p>
+        <div class="chips-especialidades chips-perfil">
+            <span>Médico y Cirujano</span><span>Abogado</span><span>Minor en Derecho Administrativo</span><span>Auxiliar de la Justicia (Perito)</span>
+        </div>
+        <div class="botones" style="margin-top:28px">
+            <a href="https://wa.me/573202413579?text=Hola%2C%20quiero%20una%20asesor%C3%ADa%20jur%C3%ADdica%20especializada" class="boton boton-oro" target="_blank" rel="noopener">Escribirme por WhatsApp</a>
+            <a href="libro.html" class="boton boton-linea">Conocer mi obra →</a>
+        </div>
+    </div>
+    <div class="hero-visual hero-medallon hero-retrato">
+        <div class="retrato">
+            <div class="retrato-marco"><img src="img/eduardo-de-la-hoz.jpg" alt="Dr. Eduardo J. De La Hoz Merlano en su oficina, con VerumIA en las pantallas" width="608" height="546"></div>
+            <span class="rotulo r1">Médico y Cirujano</span>
+            <span class="rotulo r2">Abogado</span>
+            <span class="rotulo r3">Perito</span>
+            <span class="rotulo r4">Autor</span>
+        </div>
+        <a href="libro.html" class="portada-flotante" aria-label="La Ingeniería de la Verdad"><img src="img/libro/portada-vol-1-s.jpg" alt="La Ingeniería de la Verdad"><span>Autor<br>del tratado</span></a>
+    </div>
+</div>
+<div class="indicador-scroll" aria-hidden="true"></div>
+</section>
+
+<section class="cifras">
+<div class="contenedor">
+    <div class="cifras-fila">
+        <div class="cifra"><strong><span data-contador="19" data-sufijo="+">0</span></strong><span>Años de trayectoria</span></div>
+        <div class="cifra"><strong><span data-contador="120" data-sufijo="+">0</span></strong><span>Dictámenes periciales</span></div>
+        <div class="cifra"><strong><span data-contador="40" data-sufijo="+">0</span></strong><span>Sustentaciones orales defendidas</span></div>
+        <div class="cifra"><strong><span data-contador="200" data-sufijo="+">0</span></strong><span>Colaboradores asistenciales liderados</span></div>
     </div>
 </div>
 </section>
 
-<section class="seccion seccion-clara">
+<section class="seccion" id="trayectoria">
 <div class="contenedor">
-    <div class="rejilla rejilla-3" style="margin-bottom:46px">
-        <div class="tarjeta" style="text-align:center">
-            <div style="font-size:2.4rem;font-weight:700;color:var(--oro)">19+</div>
-            <p style="font-weight:600;color:var(--texto)">años de trayectoria</p>
-        </div>
-        <div class="tarjeta" style="text-align:center">
-            <div style="font-size:2.4rem;font-weight:700;color:var(--oro)">120+</div>
-            <p style="font-weight:600;color:var(--texto)">dictámenes periciales</p>
-        </div>
-        <div class="tarjeta" style="text-align:center">
-            <div style="font-size:2.4rem;font-weight:700;color:var(--oro)">40+</div>
-            <p style="font-weight:600;color:var(--texto)">sustentaciones orales defendidas</p>
-        </div>
+    <div class="seccion-titulo">
+        <span class="sobretitulo">Trayectoria</span>
+        <div class="linea-oro"></div>
+        <h2>Dos profesiones, <em>una sola mirada</em></h2>
     </div>
 
-    <div class="documento">
-
-        <h2>Trayectoria profesional</h2>
-        <p>Profesional interdisciplinario con una sólida trayectoria de más de 19 años de experiencia en el sector salud y el ejercicio jurídico estructurado. Ha ejercido roles de alta responsabilidad corporativa como <strong>Director Médico</strong> y <strong>Coordinador Estratégico</strong> en instituciones de salud de alta complejidad (Niveles I al IV), liderando procesos normativos de calidad, habilitación y la gestión operativa de equipos superiores a los 200 colaboradores asistenciales.</p>
-        <p>Su perfil combina de manera única la práctica científica de la medicina crítica y de urgencias con la rigurosidad técnica de la ciencia jurídica, enfocándose de manera preferente en el análisis de la <strong>Lex Artis</strong>, la auditoría integral de la historia clínica y el marco normativo de la responsabilidad médica en Colombia.</p>
-
-        <h2>Consultoría pericial y práctica jurídica</h2>
-        <p>Actúa de manera activa como Auxiliar de la Justicia en calidad de <strong>Perito Médico Identificado</strong>, con un récord sobresaliente de más de 120 dictámenes periciales ejecutados y más de 40 sustentaciones orales defendidas con éxito en los diferentes estrados judiciales del país dentro de procesos contencioso-administrativos, civiles y penales.</p>
-        <p>Su práctica litigante está estrictamente enfocada en el <strong>Derecho Médico</strong>, representando defensas de alta complejidad ante tribunales ordinarios y Tribunales de Ética Médica.</p>
-
-        <h2>Investigador y autor científico</h2>
-        <p>Es autor e investigador principal del tratado científico-jurídico <strong>«La Ingeniería de la Verdad»</strong> (edición en 2 tomos). Una obra técnica diseñada estratégicamente para médicos, juristas, académicos y el sector salud en general, enfocada en resolver las zonas grises de la responsabilidad profesional, establecer definiciones de precisión pericial y estructurar estrategias defensivas avanzadas ante crisis institucionales.</p>
-        <p><a href="libro.html">Conocer la obra →</a></p>
-
-        <h2>Docencia universitaria de pregrado y postgrado</h2>
-        <p>Acreditado con formación en docencia universitaria, se desempeña como catedrático experto para facultades de Derecho y Ciencias de la Salud en reconocidas universidades del país. Ha orientado módulos avanzados de Postgrado en Derecho Laboral y Seguridad Social enfocado en la pérdida de capacidad laboral (PCL) e invalidez, así como cátedras de pregrado en áreas fundamentales de investigación criminal y forense.</p>
+    <div class="bloques-perfil">
+        <article class="bloque-perfil">
+            <span class="bloque-num">01</span>
+            <h3>Trayectoria profesional</h3>
+            <p>Profesional interdisciplinario con una sólida trayectoria de más de 19 años de experiencia en el sector salud y el ejercicio jurídico estructurado. Ha ejercido roles de alta responsabilidad corporativa como <strong>Director Médico</strong> y <strong>Coordinador Estratégico</strong> en instituciones de salud de alta complejidad (Niveles I al IV), liderando procesos normativos de calidad, habilitación y la gestión operativa de equipos superiores a los 200 colaboradores asistenciales.</p>
+            <p>Su perfil combina de manera única la práctica científica de la medicina crítica y de urgencias con la rigurosidad técnica de la ciencia jurídica, enfocándose de manera preferente en el análisis de la <strong>Lex Artis</strong>, la auditoría integral de la historia clínica y el marco normativo de la responsabilidad médica en Colombia.</p>
+        </article>
+        <article class="bloque-perfil">
+            <span class="bloque-num">02</span>
+            <h3>Consultoría pericial y práctica jurídica</h3>
+            <p>Actúa de manera activa como Auxiliar de la Justicia en calidad de <strong>Perito Médico Identificado</strong>, con un récord sobresaliente de más de 120 dictámenes periciales ejecutados y más de 40 sustentaciones orales defendidas con éxito en los diferentes estrados judiciales del país dentro de procesos contencioso-administrativos, civiles y penales.</p>
+            <p>Su práctica litigante está estrictamente enfocada en el <strong>Derecho Médico</strong>, representando defensas de alta complejidad ante tribunales ordinarios y Tribunales de Ética Médica.</p>
+        </article>
+        <article class="bloque-perfil">
+            <span class="bloque-num">03</span>
+            <h3>Investigador y autor científico</h3>
+            <p>Es autor e investigador principal del tratado científico-jurídico <strong>«La Ingeniería de la Verdad»</strong> (edición en 2 tomos). Una obra técnica diseñada estratégicamente para médicos, juristas, académicos y el sector salud en general, enfocada en resolver las zonas grises de la responsabilidad profesional, establecer definiciones de precisión pericial y estructurar estrategias defensivas avanzadas ante crisis institucionales.</p>
+            <p><a href="libro.html" class="enlace-flecha">Conocer la obra →</a></p>
+        </article>
+        <article class="bloque-perfil">
+            <span class="bloque-num">04</span>
+            <h3>Docencia universitaria de pregrado y postgrado</h3>
+            <p>Acreditado con formación en docencia universitaria, se desempeña como catedrático experto para facultades de Derecho y Ciencias de la Salud en reconocidas universidades del país. Ha orientado módulos avanzados de Postgrado en Derecho Laboral y Seguridad Social enfocado en la pérdida de capacidad laboral (PCL) e invalidez, así como cátedras de pregrado en áreas fundamentales de investigación criminal y forense.</p>
+        </article>
     </div>
+</div>
+</section>
 
-    <div class="rejilla rejilla-3" style="margin-top:34px">
+<section class="seccion seccion-clara" style="padding-block:70px">
+<div class="contenedor">
+    <div class="seccion-titulo">
+        <span class="sobretitulo">Áreas de conocimiento</span>
+        <div class="linea-oro"></div>
+        <h2>Lo que enseña y <em>lo que practica</em></h2>
+    </div>
+    <div class="rejilla rejilla-3">
         <div class="tarjeta">
             <div class="tarjeta-icono"><svg><use href="#i-microscopio"></use></svg></div>
             <h3>Ciencias forenses</h3>
@@ -376,12 +429,13 @@
 </div>
 </section>
 
-<section class="seccion">
+<section class="seccion" id="servicios">
 <div class="contenedor">
 
-    <div class="seccion-titulo reveal">
-        <span class="portada-etiqueta" style="background:rgba(212,166,42,.12);border-color:rgba(212,166,42,.4);color:#8a6a1a;margin-bottom:16px">EDM Legal Especializados S.A.S.</span>
-        <h2>Servicios jurídicos especializados en Derecho Médico</h2>
+    <div class="seccion-titulo">
+        <span class="sobretitulo">EDM Legal Especializados S.A.S.</span>
+        <div class="linea-oro"></div>
+        <h2>Servicios jurídicos especializados <em>en Derecho Médico</em></h2>
         <p>Además de su ejercicio profesional individual, el Dr. De La Hoz dirige <strong>EDM Legal Especializados S.A.S.</strong>, firma boutique que presta servicios jurídicos especializados a instituciones de salud, profesionales médicos, aseguradoras y pacientes en todo el país.</p>
     </div>
 
@@ -432,27 +486,32 @@
             <p>Procesos civiles, administrativos y de familia que exigen la misma rigurosidad técnica y estratégica del derecho médico, respaldados por más de 19 años de ejercicio profesional interdisciplinario.</p>
         </div>
     </div>
+</div>
+</section>
 
-    <div class="franja-contacto" style="margin-top:44px">
-        <div>
-            <h3>¿Necesita asesoría jurídica especializada?</h3>
-            <p>Escríbame directamente para evaluar su caso: respuesta personal, sin intermediarios.</p>
+<section class="seccion" style="padding-top:20px;padding-bottom:50px">
+<div class="contenedor">
+    <a href="libro.html" class="cruce-libro">
+        <div class="cruce-portadas"><img src="img/libro/portada-vol-1-s.jpg" alt=""><img src="img/libro/portada-vol-2-s.jpg" alt=""></div>
+        <div class="cruce-texto">
+            <span class="sobretitulo">Obra del autor</span>
+            <h3>La Ingeniería de la Verdad</h3>
+            <p>Tratado en dos volúmenes sobre responsabilidad en salud, para abogados, profesionales de la salud y estudiantes.</p>
+            <span class="boton boton-oro">Conocer la obra →</span>
         </div>
-        <div class="franja-contacto-enlaces">
-            <a class="enlace-contacto" href="https://wa.me/573202413579?text=Hola%2C%20quiero%20una%20asesor%C3%ADa%20jur%C3%ADdica%20especializada" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.02 2c-5.5 0-9.97 4.46-9.97 9.96 0 1.76.46 3.45 1.33 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.77 1.22h.01c5.5 0 9.97-4.46 9.97-9.96S17.52 2 12.02 2Zm0 18.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.55 3.7-8.26 8.26-8.26 2.2 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.84c0 4.55-3.71 8.24-8.27 8.24Z"/></svg>
-                320 241 3579
-            </a>
-            <a class="enlace-contacto" href="mailto:edmlegal.especializados@gmail.com">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M4 6.5 12 13l8-6.5"/></svg>
-                edmlegal.especializados@gmail.com
-            </a>
-            <a class="enlace-contacto boton-oro" style="color:var(--marca-oscuro);background:var(--oro)" href="soporte.html">
-                Más formas de contacto →
-            </a>
-        </div>
+    </a>
+</div>
+</section>
+
+<section class="banda-final">
+<div class="contenedor">
+    <h2>¿Necesita asesoría jurídica <em>especializada</em>?</h2>
+    <p>Escríbame directamente para evaluar su caso: respuesta personal, sin intermediarios.</p>
+    <div class="botones">
+        <a href="https://wa.me/573202413579?text=Hola%2C%20quiero%20una%20asesor%C3%ADa%20jur%C3%ADdica%20especializada" class="boton boton-oro" target="_blank" rel="noopener">WhatsApp 320 241 3579</a>
+        <a href="mailto:edmlegal.especializados@gmail.com" class="boton boton-linea">edmlegal.especializados@gmail.com</a>
+        <a href="soporte.html" class="boton boton-linea">Más formas de contacto →</a>
     </div>
-
 </div>
 </section>
 
