@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lex Verum Pro — Laboratorio pericial jurídico para Android | Ecosistema Verum</title>
-<meta name="description" content="Lex Verum Pro: calculadoras periciales, dosificación punitiva, control de términos, grabación de audiencias con marcado de hitos y exportación a PDF. Disponible en Google Play.">
+<title>Lex Verum Pro — Calculadoras jurídicas y grabación de audiencias | Ecosistema Verum</title>
+<meta name="description" content="Lex Verum Pro para Android: calculadoras jurídicas (intereses, alimentos, laboral, penal, IPC, términos), grabación de audiencias con hitos y exportación a PDF. Descárgala en Google Play.">
+<meta property="og:title" content="Lex Verum Pro — Laboratorio pericial jurídico en tu celular">
+<meta property="og:description" content="Calculadoras jurídicas y grabación de audiencias con hitos. Disponible en Google Play.">
+<meta property="og:image" content="https://ecosistemaverum.com/img/lex/inicio.jpg">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
@@ -13,8 +16,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/estilo.css">
 <link rel="stylesheet" href="css/tema.css">
+<link rel="stylesheet" href="css/lex.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"MobileApplication","name":"Lex Verum Pro","operatingSystem":"ANDROID","applicationCategory":"BusinessApplication","description":"Calculadoras jurídicas y grabación de audiencias con marcado de hitos.","url":"https://ecosistemaverum.com/lex-verum-pro.html","downloadUrl":"https://play.google.com/store/apps/details?id=com.edmlegal.lexverum","author":{"@type":"Organization","name":"EDM Legal Especializados SAS"}}</script>
 </head>
-<body>
+<body class="con-hero">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
 <defs>
 
@@ -283,22 +288,28 @@
 </defs>
 </svg>
 
+<div class="barra-superior">
+<div class="contenedor">
+    <div class="grupo"><span><svg><use href="#i-calculadora"></use></svg>Calculadoras jurídicas · Grabación de audiencias · Android</span></div>
+    <div class="grupo">
+        <a href="mailto:edmlegal.especializados@gmail.com"><svg><use href="#i-correo"></use></svg>edmlegal.especializados@gmail.com</a>
+        <a href="https://wa.me/573202413579" target="_blank" rel="noopener"><svg><use href="#i-chat"></use></svg>+57 320 241 3579</a>
+    </div>
+</div>
+</div>
 
 <header class="cabecera">
 <div class="contenedor cabecera-fila">
     <a href="index.html" class="marca">
         <img src="img/logo-verumia.png" alt="Ecosistema Verum">
-        <span class="marca-texto">
-            <strong>Ecosistema Verum</strong>
-            <span>EDM Legal Especializados</span>
-        </span>
+        <span class="marca-texto"><strong>Ecosistema Verum</strong><span>EDM Legal Especializados</span></span>
     </a>
     <button class="nav-boton" onclick="document.getElementById('nav').classList.toggle('abierto')" aria-label="Menú">☰</button>
     <nav class="nav" id="nav">
         <a href="index.html">Inicio</a>
         <a href="verumia.html">VerumIA</a>
-        <a href="lex-verum-pro.html">Lex Verum Pro</a>
-        <a href="verum-health.html" class="activo">Verum Health</a>
+        <a href="lex-verum-pro.html" class="activo">Lex Verum Pro</a>
+        <a href="verum-health.html">Verum Health</a>
         <a href="verum-status.html">Verum Status</a>
         <a href="libro.html">La Ingeniería de la Verdad</a>
         <a href="perfil.html">Perfil</a>
@@ -307,138 +318,237 @@
 </div>
 </header>
 
-<section class="portada">
+<section class="hero hero-producto hero-lex">
+<svg class="hero-red" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g>
+        <line x1="80" y1="120" x2="260" y2="240"/><line x1="260" y1="240" x2="430" y2="150"/><line x1="430" y1="150" x2="610" y2="270"/>
+        <line x1="610" y1="270" x2="790" y2="120"/><line x1="790" y1="120" x2="980" y2="230"/><line x1="980" y1="230" x2="1130" y2="110"/>
+        <line x1="260" y1="240" x2="330" y2="420"/><line x1="330" y1="420" x2="560" y2="480"/><line x1="560" y1="480" x2="610" y2="270"/>
+    </g>
+    <circle cx="80" cy="120" r="2"/><circle cx="260" cy="240" r="2"/><circle cx="430" cy="150" r="2"/><circle cx="610" cy="270" r="2"/>
+    <circle cx="790" cy="120" r="2"/><circle cx="980" cy="230" r="2"/><circle cx="1130" cy="110" r="2"/><circle cx="330" cy="420" r="2"/><circle cx="560" cy="480" r="2"/>
+</svg>
 <div class="contenedor">
-    <span class="portada-etiqueta">Android · Disponible en Google Play</span>
-    <div class="portada-encabezado">
-        <img src="img/icono-lex-verum-pro-96.png" alt="" class="icono-app-portada">
-        <h1><em>Lex Verum Pro</em></h1>
+    <div>
+        <div class="hero-etiqueta"><img src="img/icono-lex-verum-pro-96.png" alt="">Android · Disponible en Google Play</div>
+        <h1><em>Lex Verum Pro</em>: tu laboratorio pericial jurídico en el bolsillo.</h1>
+        <p class="hero-texto">Calculadoras jurídicas precisas y <strong>grabación de audiencias con marcado de hitos</strong>, en el mismo celular que ya llevas al estrado. Calcula, graba, marca lo importante y entrega un PDF listo para radicar.</p>
+        <ul class="hero-capacidades">
+            <li>Intereses, alimentos, laboral, penal, IPC y términos</li>
+            <li>Hitos con un toque: hechos, contradicciones, testigos</li>
+            <li>Transcripción y análisis con tus propias llaves de IA</li>
+            <li>Exportación a PDF con formato profesional</li>
+        </ul>
+        <div class="botones">
+            <a href="https://play.google.com/store/apps/details?id=com.edmlegal.lexverum" class="boton boton-oro boton-play" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3.2c0-.5.55-.8 1-.55l13.4 8.3c.4.25.4.85 0 1.1L6 20.35c-.45.25-1-.05-1-.55V3.2Z"/></svg>Descargar en Google Play</a>
+            <a href="#grabacion" class="boton boton-linea">Ver la grabadora →</a>
+        </div>
     </div>
-    <p>Laboratorio pericial jurídico. La estación móvil avanzada para el procesamiento matemático legal, transcripción inteligente y análisis crítico de litigios.</p>
-    <div class="botones">
-        <a href="https://play.google.com/store/apps/details?id=com.edmlegal.lexverum" class="boton boton-oro" target="_blank" rel="noopener">Descargar en Google Play</a>
-        <a href="#funciones" class="boton boton-linea">Ver funciones →</a>
+    <div class="hero-visual hero-telefonos">
+        <div class="telefono telefono-grande"><div class="telefono-pantalla"><img src="img/lex/inicio.jpg" alt="Pantalla principal de Lex Verum Pro con las calculadoras jurídicas" width="720" height="1280"></div></div>
+        <div class="telefono telefono-chico t-izq"><div class="telefono-pantalla"><img src="img/lex/laboral.jpg" alt="Liquidación laboral" width="720" height="1280" loading="lazy"></div></div>
+        <div class="telefono telefono-chico t-der"><div class="telefono-pantalla"><img src="img/lex/marcas.jpg" alt="Historial de marcas de la audiencia" width="720" height="1280" loading="lazy"></div></div>
+        <div class="ficha-flotante ficha-1"><svg><use href="#i-microfono"></use></svg><div>Hitos con 1 toque<small>Hechos, contradicciones, testigos</small></div></div>
+    </div>
+</div>
+<div class="indicador-scroll" aria-hidden="true"></div>
+</section>
+
+<section class="cifras">
+<div class="contenedor">
+    <div class="cifras-fila">
+        <div class="cifra"><strong>8</strong><span>Calculadoras jurídicas</span></div>
+        <div class="cifra"><strong>12</strong><span>Países en la liquidación laboral</span></div>
+        <div class="cifra"><strong>1</strong><span>Toque para marcar un hito</span></div>
+        <div class="cifra"><strong>PDF</strong><span>Listo para aportar como insumo pericial</span></div>
     </div>
 </div>
 </section>
 
-<section class="seccion seccion-clara" id="funciones">
+<section class="seccion" id="calculadoras">
 <div class="contenedor">
     <div class="seccion-titulo">
+        <span class="sobretitulo">Calculadoras</span>
         <div class="linea-oro"></div>
-        <h2>Arquitectura de funciones</h2>
-        <p>Cálculo pericial, control de términos y captura de audiencias, en el mismo dispositivo que ya llevas al estrado.</p>
+        <h2>Cálculo pericial <em>donde lo necesites</em></h2>
+        <p>Algoritmos dedicados a resolver liquidaciones e indexaciones directamente desde el terreno, con módulos estandarizados según el marco normativo vigente.</p>
     </div>
 
-    <div class="rejilla rejilla-3">
+    <div class="galeria-telefonos">
+        <figure>
+            <div class="telefono"><div class="telefono-pantalla"><img src="img/lex/interes.jpg" alt="Liquidación de intereses con el resultado detallado" width="720" height="1280" loading="lazy"></div></div>
+            <figcaption><strong>Intereses</strong><span>Capital, tasa, base de días y liquidación total.</span></figcaption>
+        </figure>
+        <figure>
+            <div class="telefono"><div class="telefono-pantalla"><img src="img/lex/laboral.jpg" alt="Liquidación laboral de prestaciones sociales" width="720" height="1280" loading="lazy"></div></div>
+            <figcaption><strong>Liquidación laboral</strong><span>Prima, cesantías, intereses, vacaciones y sanción moratoria.</span></figcaption>
+        </figure>
+        <figure>
+            <div class="telefono"><div class="telefono-pantalla"><img src="img/lex/penal.jpg" alt="Dosimetría penal con cuartos de pena" width="720" height="1280" loading="lazy"></div></div>
+            <figcaption><strong>Dosimetría penal</strong><span>Rango de pena, cuartos, atenuantes y rebajas procesales.</span></figcaption>
+        </figure>
+        <figure>
+            <div class="telefono"><div class="telefono-pantalla"><img src="img/lex/inicio.jpg" alt="Todas las calculadoras en una sola pantalla" width="720" height="1280" loading="lazy"></div></div>
+            <figcaption><strong>Todo en un solo lugar</strong><span>Alimentos, IPC, vencimientos, pretensión y crédito.</span></figcaption>
+        </figure>
+    </div>
 
+    <div class="rejilla rejilla-3 cols-3" style="margin-top:56px">
         <div class="tarjeta">
             <div class="tarjeta-icono"><svg><use href="#i-calculadora"></use></svg></div>
-            <h3>Suite de operaciones analítico-jurídicas</h3>
-            <p style="margin-bottom:14px">Algoritmos matemáticos dedicados a resolver cálculos periciales y de indexación directamente desde el terreno de juego, con módulos estandarizados según el marco normativo actual:</p>
-            <ul class="lista-punto">
-                <li><strong>Interés / Crédito</strong> — tasación de obligaciones comerciales, civiles y moratorias</li>
-                <li><strong>Alimentos / Laboral</strong> — liquidación de prestaciones, derechos irrenunciables y cuotas de sostenimiento</li>
-                <li><strong>IPC / Index</strong> — indexación de capital y actualización de pérdidas de valor adquisitivo</li>
-                <li><strong>Pretensión</strong> — cuantificación objetiva del daño y estimación económica para demandas</li>
-            </ul>
+            <h3>Interés / Crédito</h3>
+            <p>Tasación de obligaciones comerciales, civiles y moratorias, con interés simple o compuesto y abonos parciales.</p>
         </div>
-
         <div class="tarjeta">
-            <div class="tarjeta-icono"><svg><use href="#i-microfono"></use></svg></div>
-            <h3>Audiencias, dosificación penal y control cronológico</h3>
-            <p style="margin-bottom:14px">Herramientas orientadas a mitigar riesgos procesales en tiempo real, combinando el cálculo legal preciso con la captura de eventos sustanciales en audiencias orales:</p>
-            <ul class="lista-punto">
-                <li><strong>Módulo penal</strong> — calculadoras de dosificación punitiva y análisis de cuartos de pena</li>
-                <li><strong>Vencimientos y alertas</strong> — conteo estricto de términos procesales con alertas críticas preventivas</li>
-                <li><strong>Grabadora con hitos</strong> — documentación de audio ininterrumpida, marcando eventos clave (objeciones, testimonios) con un solo toque</li>
-            </ul>
+            <div class="tarjeta-icono"><svg><use href="#i-usuarios"></use></svg></div>
+            <h3>Alimentos / Laboral</h3>
+            <p>Liquidación de cuotas de sostenimiento, prestaciones y derechos irrenunciables; en la laboral, con el salario mínimo del año que elijas.</p>
         </div>
-
         <div class="tarjeta">
-            <div class="tarjeta-icono"><svg><use href="#i-documento"></use></svg></div>
-            <h3>Exportación automatizada a PDF</h3>
-            <p style="margin-bottom:14px">Consolida valoraciones, cálculos de indexación y resúmenes procesales en un archivo PDF estructurado, listo para aportarse como insumo pericial formal o compartirse como reporte ejecutivo dentro de la firma.</p>
-            <ul class="lista-punto">
-                <li>Conversión nativa e inmediata desde el dispositivo Android</li>
-                <li>Formato profesional apto para radicación judicial</li>
-                <li>Trazabilidad metodológica clara</li>
-            </ul>
+            <div class="tarjeta-icono"><svg><use href="#i-moneda"></use></svg></div>
+            <h3>IPC / Índices y pretensión</h3>
+            <p>Indexación de capital, actualización de pérdidas de valor adquisitivo y cuantificación objetiva del daño para demandas.</p>
         </div>
-
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-balanza"></use></svg></div>
+            <h3>Módulo penal</h3>
+            <p>Dosificación punitiva, cuartos de pena y efecto de las rebajas procesales.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-calendario"></use></svg></div>
+            <h3>Vencimientos y alertas</h3>
+            <p>Conteo estricto de términos procesales con alertas críticas preventivas, para que ningún plazo te sorprenda.</p>
+        </div>
+        <div class="tarjeta">
+            <div class="tarjeta-icono"><svg><use href="#i-escudo"></use></svg></div>
+            <h3>Marcos de varios países</h3>
+            <p>Colombia, México, Estados Unidos, España, Chile y Perú, y liquidación laboral también para Ecuador, Argentina, Uruguay, Panamá, El Salvador y Brasil.</p>
+        </div>
     </div>
 </div>
 </section>
 
-<section class="seccion">
+<section class="seccion seccion-clara" id="grabacion">
+<div class="contenedor">
+    <div class="grabacion-grid">
+        <div class="grabacion-video">
+            <div class="telefono telefono-grande"><div class="telefono-pantalla">
+                <video src="video/lex-grabadora.mp4" poster="video/lex-grabadora-poster.jpg" muted loop playsinline preload="metadata" aria-label="Demostración de la grabadora de audiencias con hitos"></video>
+            </div></div>
+        </div>
+        <div>
+            <span class="sobretitulo">Grabación de audiencias</span>
+            <div class="linea-oro" style="margin-left:0"></div>
+            <h2 class="titulo-izq">Graba la audiencia y <em>marca lo que importa</em></h2>
+            <p class="lead">Documentación de audio ininterrumpida con marcas legales de un solo toque. Cada hito queda fijado en el instante exacto de la grabación, para volver a él sin escuchar horas de audio.</p>
+
+            <div class="marcas-legales">
+                <div class="marca-ley m-hecho"><b>HECHOS</b><span>Lo que el testigo afirma</span></div>
+                <div class="marca-ley m-contra"><b>CONTRADICCIÓN</b><span>Lo que no cuadra</span></div>
+                <div class="marca-ley m-testigo"><b>NUEVO TESTIGO</b><span>Quién empieza a declarar</span></div>
+            </div>
+
+            <ul class="lista-check">
+                <li><strong>Hitos con marca de tiempo</strong> — fecha, hora y minuto exacto de cada evento.</li>
+                <li><strong>Pausa y reanudación</strong> sin perder la continuidad del registro.</li>
+                <li><strong>Transcripción y análisis con IA</strong> con tus propias llaves (Groq para transcribir, Gemini para analizar).</li>
+                <li><strong>Huella digital del audio (SHA-256)</strong> en el dictamen, para acreditar su integridad.</li>
+                <li><strong>Historial de audiencias</strong> para retomar cualquier caso.</li>
+            </ul>
+            <div class="botones" style="margin-top:28px">
+                <a href="https://play.google.com/store/apps/details?id=com.edmlegal.lexverum" class="boton boton-navy" target="_blank" rel="noopener">Probar en Google Play →</a>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="seccion" id="pdf">
 <div class="contenedor">
     <div class="seccion-titulo">
+        <span class="sobretitulo">Exportación</span>
         <div class="linea-oro"></div>
-        <h2>Activación de la inteligencia artificial</h2>
-        <p>Lex Verum Pro trabaja con tus propias llaves. Estos son los cuatro motores que puedes enlazar, todos con capa gratuita.</p>
+        <h2>Del celular a un <em>PDF profesional</em></h2>
+        <p>Consolida la identificación técnica del registro, las marcas relevantes y la transcripción en un informe en tamaño folio, con cláusulas de blindaje legal.</p>
+    </div>
+    <div class="pdf-fila">
+        <div class="pdf-hoja"><img src="img/lex/pdf-dictamen.jpg" alt="Ejemplo de dictamen en PDF generado por Lex Verum Pro" width="780" height="1068" loading="lazy"></div>
+        <ul class="lista-check pdf-lista">
+            <li><strong>Identificación técnica</strong> — nombre del caso, inicio y fin, duración efectiva, formato de captura y jurisdicción aplicada.</li>
+            <li><strong>Marcas relevantes</strong> — tabla cronológica con colores: hechos, contradicciones y testigos.</li>
+            <li><strong>Transcripción y análisis</strong> — texto justificado con interlineado legible.</li>
+            <li><strong>Blindaje legal</strong> — alcance y limitaciones de la certificación.</li>
+            <li><strong>Se guarda en la carpeta «LexVerum» de Documentos</strong>, listo para compartir o radicar.</li>
+        </ul>
+    </div>
+</div>
+</section>
+
+<section class="seccion seccion-clara" id="ia">
+<div class="contenedor">
+    <div class="seccion-titulo">
+        <span class="sobretitulo">Inteligencia artificial</span>
+        <div class="linea-oro"></div>
+        <h2>Activa la IA <em>con tus propias llaves</em></h2>
+        <p>Lex Verum Pro trabaja con tus llaves: tú controlas los motores y los costos. Estos son los cuatro que puedes enlazar, todos con capa gratuita.</p>
     </div>
 
-    <div class="documento">
+    <div class="rejilla rejilla-4 pasos-ia">
+        <div class="tarjeta"><span class="paso-numero">1</span><h3>Gemini</h3><p><strong>Análisis jurídico principal.</strong> Botón «Obtener Clave Gemini Gratis»: inicia sesión con Google, crea un proyecto con «New Project», copia la API Key y pégala en la app. <em>Espera 2 minutos antes de la primera validación.</em></p></div>
+        <div class="tarjeta"><span class="paso-numero">2</span><h3>Groq</h3><p><strong>Transcripción rápida.</strong> Toca «Obtener Clave Groq Gratis», entra a «API Keys» y pulsa «Create API Key». Copia la cadena que inicia con <code>gsk_</code> y pégala para activar las transcripciones.</p></div>
+        <div class="tarjeta"><span class="paso-numero">3</span><h3>OpenRouter</h3><p><strong>Motor de respaldo.</strong> En «Motores de Respaldo (Emergencia)» pulsa «Obtener Llave OpenRouter», crea la clave en «Keys» (inicia con <code>sk-or-v1-</code>) y pégala para tener contingencia si Gemini falla.</p></div>
+        <div class="tarjeta"><span class="paso-numero">4</span><h3>DeepSeek</h3><p><strong>Estratega legal alterno.</strong> En la misma sección pulsa «Obtener Llave DeepSeek», genera el token en «API Keys» (inicia con <code>sk-</code>) y pégalo para robustecer el análisis de tu teoría del caso.</p></div>
+    </div>
 
-        <h3>1. Análisis jurídico principal — Google Gemini</h3>
-        <p>Presiona el botón <strong>«Obtener Clave Gemini Gratis»</strong> en la app. Inicia sesión con tu cuenta de Google en la ventana del navegador. Crea un nuevo espacio de trabajo con «New Project», localiza tu API Key, asígnale un nombre, copia el código generado, regresa a Lex Verum Pro y pégalo en el campo correspondiente. <em>Espera 2 minutos antes de tu primera validación.</em></p>
-
-        <h3>2. Transcripción rápida de audiencias — Groq</h3>
-        <p>Toca <strong>«Obtener Clave Groq Gratis»</strong>. Accede a la plataforma con tus credenciales, ve al menú lateral de configuración de desarrollador y haz clic en «API Keys». Presiona «Create API Key», asígnale un identificador (por ejemplo, <em>LexVerum</em>), copia la cadena que inicia con <code>gsk_</code> y pégala en su casilla para activar las transcripciones instantáneas.</p>
-
-        <h3>3. Motor de respaldo universal — OpenRouter</h3>
-        <p>Despliega el menú de <strong>Motores de Respaldo (Emergencia)</strong> y presiona «Obtener Llave OpenRouter». Crea tu cuenta, navega a la sección «Keys», selecciona «Create Key», asígnale un nombre, copia la clave que inicia con <code>sk-or-v1-</code> y pégala en la aplicación para asegurar contingencia si Gemini presenta caídas.</p>
-
-        <h3>4. Estratega legal alterno — DeepSeek</h3>
-        <p>En la misma sección de respaldo, oprime «Obtener Llave DeepSeek». Dentro de tu consola de usuario, ve a «API Keys», genera un token nuevo, cópialo (inicia con <code>sk-</code>) y pégalo en el último campo para robustecer el análisis predictivo de tu teoría del caso.</p>
-
-        <div class="aviso">
+    <div class="video-tutorial">
+        <div class="aviso" style="margin:0 0 18px">
             <strong><svg class="icono-linea"><use href="#i-video"></use></svg>Soporte audiovisual guiado</strong>
-            <p>Si prefieres ver el flujo operativo en pantalla, el video tutorial muestra la calibración en vivo de cada una de las llaves analíticas.</p>
+            <p>Mira el flujo completo en pantalla: el video muestra la calibración en vivo de cada llave.</p>
         </div>
-
-        <div style="position:relative;padding-top:56.25%;border-radius:10px;overflow:hidden">
-            <iframe src="https://www.youtube.com/embed/kS4uT0W4u6M" title="Tutorial de activación de IA en Lex Verum Pro" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen loading="lazy"></iframe>
+        <div class="video-marco">
+            <iframe src="https://www.youtube.com/embed/kS4uT0W4u6M" title="Tutorial de activación de IA en Lex Verum Pro" allowfullscreen loading="lazy"></iframe>
         </div>
-
     </div>
 </div>
 </section>
 
-<section class="seccion seccion-clara">
+<section class="seccion" id="privacidad">
 <div class="contenedor">
     <div class="seccion-titulo">
+        <span class="sobretitulo">Confidencialidad</span>
         <div class="linea-oro"></div>
-        <h2>Confidencialidad y seguridad local</h2>
+        <h2>Tu información <em>se queda en tu dispositivo</em></h2>
     </div>
-
-    <div class="documento">
-        <p>Conscientes del secreto profesional y de la reserva legal que ampara las actividades de abogados, peritos y médicos, Lex Verum Pro <strong>no almacena, centraliza ni transmite</strong> registros de audio ni información procesal confidencial a servidores externos no autorizados.</p>
-        <p style="margin-bottom:0">Toda la información recopilada mediante el marcado de hitos, cálculos matemáticos o almacenamiento de actas reside de forma exclusiva en los contenedores de datos internos del dispositivo del usuario final, bajo estrictos estándares de almacenamiento local.</p>
-    </div>
-
-    <div class="rejilla rejilla-3" style="margin-top:34px">
-        <div class="tarjeta">
-            <div class="tarjeta-icono"><svg><use href="#i-descarga"></use></svg></div>
-            <h3>Acceso inmediato</h3>
-            <p style="margin-bottom:16px">Descarga la suite oficial directamente desde la tienda segura de Google para terminales Android.</p>
-            <a href="https://play.google.com/store/apps/details?id=com.edmlegal.lexverum" class="boton boton-navy" target="_blank" rel="noopener">Google Play →</a>
-        </div>
-        <div class="tarjeta">
-            <div class="tarjeta-icono"><svg><use href="#i-chat"></use></svg></div>
-            <h3>Soporte e implementación</h3>
-            <p style="margin-bottom:16px">¿Requieres asistencia corporativa o capacitación sobre el uso de Lex Verum Pro en tu firma legal?</p>
-            <a href="https://wa.me/573202413579?text=Hola,%20solicito%20soporte%20o%20asesor%C3%ADa%20t%C3%A9cnica%20sobre%20la%20App%20Lex%20Verum%20Pro" class="boton boton-navy" target="_blank" rel="noopener">Soporte por WhatsApp →</a>
-        </div>
-        <div class="tarjeta">
-            <div class="tarjeta-icono"><svg><use href="#i-confidencial"></use></svg></div>
-            <h3>Seguridad jurídica</h3>
-            <p style="margin-bottom:16px">Consulta en detalle nuestras directrices de administración y tratamiento de datos.</p>
-            <a href="privacidad-lex-verum-pro.html" class="boton boton-navy">Política de privacidad →</a>
+    <div class="privacidad-panel">
+        <div class="privacidad-icono"><svg><use href="#i-confidencial"></use></svg></div>
+        <div>
+            <p>Conscientes del secreto profesional y de la reserva legal que ampara las actividades de abogados, peritos y médicos, Lex Verum Pro <strong>no almacena, centraliza ni transmite</strong> registros de audio ni información procesal confidencial a servidores externos no autorizados.</p>
+            <p style="margin-bottom:0">Toda la información recopilada mediante el marcado de hitos, cálculos matemáticos o almacenamiento de actas reside de forma exclusiva en los contenedores de datos internos del dispositivo del usuario final, bajo estrictos estándares de almacenamiento local.</p>
         </div>
     </div>
 </div>
 </section>
+
+<section class="banda-final banda-descarga" id="descargar">
+<div class="contenedor">
+    <div class="descarga-grid">
+        <div class="descarga-texto">
+            <h2>Descarga <em>Lex Verum Pro</em> hoy.</h2>
+            <p>Disponible para Android en Google Play. Escanea el código con la cámara de tu celular o toca el botón.</p>
+            <div class="botones">
+                <a href="https://play.google.com/store/apps/details?id=com.edmlegal.lexverum" class="boton boton-oro boton-play" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3.2c0-.5.55-.8 1-.55l13.4 8.3c.4.25.4.85 0 1.1L6 20.35c-.45.25-1-.05-1-.55V3.2Z"/></svg>Descargar en Google Play</a>
+                <a href="https://wa.me/573202413579?text=Hola,%20solicito%20soporte%20o%20asesor%C3%ADa%20t%C3%A9cnica%20sobre%20la%20App%20Lex%20Verum%20Pro" class="boton boton-linea" target="_blank" rel="noopener">Soporte por WhatsApp</a>
+            </div>
+            <p class="descarga-enlaces"><a href="privacidad-lex-verum-pro.html">Política de privacidad</a> · <a href="soporte.html">Soporte y contacto</a></p>
+        </div>
+        <a class="qr-tarjeta" href="https://play.google.com/store/apps/details?id=com.edmlegal.lexverum" target="_blank" rel="noopener" aria-label="Código QR para descargar Lex Verum Pro en Google Play">
+            <img src="img/qr-lex-verum-pro.svg" alt="Código QR de la ficha de Lex Verum Pro en Google Play" width="220" height="220">
+            <span>Escanea para descargar</span>
+        </a>
+    </div>
+</div>
+</section>
+
 
 <footer class="pie">
 <div class="contenedor">
@@ -485,7 +595,17 @@
     </div>
 </div>
 </footer>
-
 <script src="js/interactivo.js" defer></script>
+<script>
+/* Reproduce el video de la grabadora solo cuando está a la vista */
+(() => {
+    const v = document.querySelector('.grabacion-video video');
+    if (!v || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    new IntersectionObserver((e) => {
+        e[0].isIntersecting ? v.play().catch(() => {}) : v.pause();
+    }, { threshold: 0.5 }).observe(v);
+})();
+</script>
 </body>
 </html>

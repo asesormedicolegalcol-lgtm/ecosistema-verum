@@ -1,0 +1,122 @@
+/* Lex Verum Pro — componentes propios (sobre estilo.css + tema.css) */
+
+/* ---------- Marco de teléfono ---------- */
+.telefono{
+    position:relative;width:min(300px,64vw);aspect-ratio:9/15.6;border-radius:44px;padding:10px;
+    background:linear-gradient(160deg,#1a2238,#05070f);
+    border:1px solid rgba(255,255,255,.18);
+    box-shadow:0 40px 80px rgba(0,0,0,.45),inset 0 0 0 2px rgba(255,255,255,.04);
+}
+.telefono::before{ /* cámara */
+    content:"";position:absolute;left:50%;top:16px;width:10px;height:10px;margin-left:-5px;border-radius:50%;
+    background:#0b0f1c;box-shadow:0 0 0 2px rgba(255,255,255,.06);z-index:3;
+}
+.telefono-pantalla{width:100%;height:100%;border-radius:34px;overflow:hidden;background:#f5f7fb}
+.telefono-pantalla img,.telefono-pantalla video{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.telefono-grande{width:min(330px,70vw)}
+
+/* ---------- Hero ---------- */
+.hero-lex .hero-texto strong{color:#fff}
+.hero-telefonos{position:relative;display:flex;justify-content:center;align-items:center;min-height:560px}
+.hero-telefonos::before{background:radial-gradient(closest-side,rgba(212,166,42,.30),transparent 70%)}
+.hero-telefonos .telefono-grande{position:relative;z-index:3;transform:rotate(-2deg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.hero-telefonos:hover .telefono-grande{transform:rotate(0)}
+.telefono-chico{position:absolute;z-index:2;width:min(220px,40vw)}
+.telefono-chico.t-izq{left:2%;top:12%;transform:rotate(-9deg);opacity:.95}
+.telefono-chico.t-der{right:0;top:6%;transform:rotate(8deg);opacity:.95}
+.hero-telefonos .ficha-1{left:4%;bottom:6%;z-index:5}
+.boton-play{display:inline-flex;align-items:center;gap:10px}
+.boton-play svg{width:20px;height:20px}
+
+/* ---------- Galería de teléfonos ---------- */
+.galeria-telefonos{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2.4vw,40px);align-items:start;justify-items:center}
+.galeria-telefonos figure{margin:0;text-align:center;max-width:300px}
+.galeria-telefonos .telefono{width:100%;margin:0 auto 20px;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.galeria-telefonos .telefono{background:linear-gradient(160deg,#1b2a52,#0b1428)}
+.galeria-telefonos figure:hover .telefono{transform:translateY(-8px)}
+.galeria-telefonos figcaption strong{display:block;font-family:var(--serif);font-size:1.25rem;color:var(--marca-oscuro);margin-bottom:4px}
+.galeria-telefonos figcaption span{color:var(--texto-suave);font-size:.92rem;display:block}
+
+/* ---------- Grabación ---------- */
+.grabacion-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(30px,5vw,90px);align-items:center}
+.grabacion-video{display:flex;justify-content:center}
+.titulo-izq{font-size:clamp(2rem,3.6vw,3.2rem);font-weight:600;line-height:1.1;color:var(--marca-oscuro);margin-bottom:16px}
+.titulo-izq em{font-style:italic;color:var(--oro);font-weight:500}
+.lead{font-size:1.08rem;color:var(--texto-suave);max-width:60ch;margin-bottom:26px}
+.marcas-legales{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px;max-width:640px}
+.marca-ley{border-radius:16px;padding:16px;color:#fff;display:flex;flex-direction:column;gap:4px}
+.marca-ley b{font-size:.84rem;letter-spacing:.8px}
+.marca-ley span{font-size:.8rem;opacity:.9}
+.m-hecho{background:linear-gradient(150deg,#2e7d32,#1b5e20)}
+.m-contra{background:linear-gradient(150deg,#d32f2f,#a31515)}
+.m-testigo{background:linear-gradient(150deg,#1565c0,#0d47a1)}
+
+/* ---------- PDF ---------- */
+.pdf-fila{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:clamp(30px,5vw,80px);align-items:center;max-width:1100px;margin:0 auto}
+.pdf-hoja{
+    border-radius:6px;overflow:hidden;background:#fff;transform:rotate(-2deg);transition:transform .5s cubic-bezier(.2,.8,.2,1);
+    box-shadow:0 40px 80px rgba(11,31,59,.25),0 0 0 1px var(--borde);
+}
+.pdf-hoja:hover{transform:rotate(0)}
+.pdf-hoja img{display:block;width:100%;height:auto}
+
+/* ---------- IA ---------- */
+.rejilla-4{grid-template-columns:repeat(4,1fr)}
+.pasos-ia .tarjeta h3{font-family:var(--serif)}
+.pasos-ia code{background:var(--oro-suave);padding:1px 6px;border-radius:5px;font-size:.88em}
+.video-tutorial{max-width:980px;margin:44px auto 0}
+.video-marco{position:relative;padding-top:56.25%;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px rgba(11,31,59,.25)}
+.video-marco iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* ---------- Privacidad ---------- */
+.privacidad-panel{
+    display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;max-width:1100px;margin:0 auto;
+    background:linear-gradient(150deg,#0b1f3b,#14346a);color:#dce6f5;border-radius:28px;padding:clamp(28px,4vw,52px);
+}
+.privacidad-panel p{margin-bottom:14px;font-size:1.02rem}
+.privacidad-panel strong{color:#fff}
+.privacidad-icono{width:84px;height:84px;border-radius:24px;background:rgba(212,166,42,.18);color:var(--oro-brillante);display:flex;align-items:center;justify-content:center}
+.privacidad-icono svg{width:44px;height:44px}
+
+/* ---------- Descarga + QR ---------- */
+.banda-descarga{padding:100px 0;text-align:left}
+.descarga-grid{display:grid;grid-template-columns:1fr auto;gap:clamp(30px,6vw,100px);align-items:center;max-width:1100px;margin:0 auto}
+.banda-descarga h2{margin:0 0 16px;max-width:14ch;text-align:left}
+.banda-descarga p{margin:0 0 28px;text-align:left}
+.banda-descarga .botones{justify-content:flex-start}
+.descarga-enlaces{margin-top:24px!important;font-size:.9rem}
+.descarga-enlaces a{color:#c9d6e9;text-decoration:underline}
+.qr-tarjeta{
+    display:block;background:#fff;border-radius:28px;padding:22px 22px 16px;text-align:center;color:var(--marca-oscuro);
+    box-shadow:0 30px 70px rgba(0,0,0,.4);transition:transform .3s;
+}
+.qr-tarjeta:hover{transform:translateY(-6px) rotate(-1deg);text-decoration:none}
+.qr-tarjeta img{width:220px;height:220px;display:block;margin:0 auto 12px}
+.qr-tarjeta span{font-weight:700;font-size:.9rem;letter-spacing:.3px}
+
+/* ---------- Responsivo ---------- */
+@media (max-width:1100px){
+    .galeria-telefonos{grid-template-columns:repeat(2,1fr)}
+    .rejilla-4{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+    .grabacion-grid,.pdf-fila,.descarga-grid{grid-template-columns:1fr}
+    .descarga-grid{text-align:center;justify-items:center}
+    .banda-descarga h2,.banda-descarga p{text-align:center;margin-inline:auto}
+    .banda-descarga .botones{justify-content:center}
+    .pdf-hoja{max-width:380px;margin:0 auto}
+    .telefono-chico.t-izq{left:-4%}
+    .privacidad-panel{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+    .galeria-telefonos{grid-template-columns:1fr}
+    .rejilla-4{grid-template-columns:1fr}
+    .marcas-legales{grid-template-columns:1fr}
+    .telefono-chico{display:none}
+    .hero-telefonos{min-height:0}
+}
+@media (prefers-reduced-motion:reduce){
+    .hero-telefonos .telefono-grande,.galeria-telefonos .telefono,.pdf-hoja{transition:none}
+}
+
+@media (min-width:900px){.cols-3{grid-template-columns:repeat(3,1fr)}}
