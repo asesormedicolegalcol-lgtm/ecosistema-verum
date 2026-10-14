@@ -68,6 +68,11 @@
 
         <canvas id="lienzo"></canvas>
 
+        <label for="autorizo" style="display:flex;gap:8px;align-items:flex-start;font-size:.9rem;line-height:1.4;margin:14px 0 4px">
+            <input type="checkbox" id="autorizo" style="margin-top:4px">
+            <span>Autorizo el tratamiento de mi nombre, mi número de identificación y mi firma manuscrita para firmar este documento y entregarlo a quien me lo envió. Autorizo que EDM Legal Especializados SAS (NIT 901.551.688), como operador técnico del servicio, los guarde de forma temporal en servidores de Cloudflare, que pueden estar fuera de Colombia, hasta que mi abogado o perito los descargue y, a más tardar, siete (7) días. Conozco mis derechos como titular y cómo ejercerlos en la <a href="privacidad-sitio.html" target="_blank" rel="noopener">Política de Privacidad</a>. Esta autorización es voluntaria; si no la das, no podrás firmar por este medio.</span>
+        </label>
+
         <div class="firma-botones">
             <button id="btn-limpiar" type="button">Limpiar</button>
             <button id="btn-confirmar" type="button" class="primario">Confirmar firma</button>
@@ -207,6 +212,11 @@ async function confirmarFirma() {
 
     if (trazoVacio) {
         alert("Dibuja tu firma antes de confirmar.");
+        return;
+    }
+
+    if (!$("autorizo").checked) {
+        alert("Para firmar debes aceptar la autorización de tratamiento de datos personales.");
         return;
     }
 

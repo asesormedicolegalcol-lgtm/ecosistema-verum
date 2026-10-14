@@ -919,7 +919,7 @@
         <div class="calculadora-resultado">
 
             <p id="calc-aviso-bloqueo" class="calculadora-aviso-bloqueo">
-                Completa tu nombre y correo (a la izquierda) y dale clic a "Calcular cotización" para ver el precio.
+                Completa tu nombre y correo, acepta la autorización de datos (a la izquierda) y dale clic a "Calcular cotización" para ver el precio.
             </p>
 
             <div id="calc-valores">
@@ -943,6 +943,17 @@
 
             <button id="calc-boton-calcular" type="button" class="boton boton-navy" style="width:100%;text-align:center;margin-top:18px;cursor:pointer;border:none;font-family:inherit">
                 Calcular cotización
+                <span style="display:block;font-size:.78rem;color:var(--texto-suave);margin-top:2px">Solo lo usamos para identificar quién te recomendó; no se le enviará publicidad.</span>
+            </label>
+
+            <label for="calc-autorizo" style="display:flex;gap:8px;align-items:flex-start;font-size:.84rem;line-height:1.35;font-weight:400;color:var(--texto);margin-top:10px">
+                <input type="checkbox" id="calc-autorizo" required style="margin-top:3px">
+                <span>Autorizo a EDM Legal Especializados SAS (NIT 901.551.688) a tratar mi nombre y correo para responder esta cotización y atender mi solicitud, incluida su transferencia a los proveedores de correo y alojamiento indicados en la <a href="privacidad-sitio.html" target="_blank" rel="noopener">Política de Privacidad y Cookies</a>, donde están mis derechos como titular y cómo ejercerlos. <span style="color:#b91c1c">*</span></span>
+            </label>
+
+            <label for="calc-comercial" style="display:flex;gap:8px;align-items:flex-start;font-size:.84rem;line-height:1.35;font-weight:400;color:var(--texto);margin-top:10px">
+                <input type="checkbox" id="calc-comercial" style="margin-top:3px">
+                <span>(Opcional) Autorizo que me contacten con información comercial y novedades de VerumIA. Puedo retirar esta autorización cuando quiera.</span>
             </button>
 
             <p id="calc-mensaje-correo" style="font-size:.82rem;color:var(--teal);margin-top:8px;min-height:1.2em"></p>
@@ -1091,6 +1102,7 @@
     // Tabla de 2 ejes: cantidad de equipos (1 a 10) x plazo -- cada
     // celda es un precio propio, no una banda compartida. Del 1 al 3 y
     // del 3 al 6 y del 6 al 10 son los puntos que confirmó Eduardo;
+                <li><a href="privacidad-sitio.html">Privacidad y cookies del sitio</a></li>
     // los intermedios (4,5,7,8,9) están interpolados en línea recta
     // entre esos puntos, redondeados a miles de peso. 10 o más usa el
     // mismo precio que el equipo 10 (el piso).
@@ -1118,8 +1130,10 @@
     var mensajeCorreo = document.getElementById("calc-mensaje-correo");
 
     function datosCompletos() {
-        return campoNombre.value.trim().length > 0 && REGEX_CORREO.test(campoCorreo.value.trim());
+        return campoNombre.value.trim().length > 0 && REGEX_CORREO.test(campoCorreo.value.trim()) && campoAutorizo.checked;
     }
+    var campoAutorizo = document.getElementById("calc-autorizo");
+    var campoComercial = document.getElementById("calc-comercial");
 
     function bloquear() {
 
@@ -1187,13 +1201,14 @@
 
         if (!datosCompletos()) {
             mensajeCorreo.style.color = "#b91c1c";
-            mensajeCorreo.textContent = "Completa tu nombre y correo antes de calcular la cotización.";
+            mensajeCorreo.textContent = "Completa tu nombre, tu correo y acepta la autorización de tratamiento de datos para calcular la cotización.";
             return;
         }
 
         panelValores.classList.remove("bloqueado");
         avisoBloqueo.style.display = "none";
         botonWhatsapp.classList.remove("deshabilitado");
+    campoAutorizo.addEventListener("change", actualizar);
         botonWhatsapp.setAttribute("aria-disabled", "false");
 
         var plazoTexto = NOMBRES_PLAZO[campoPlazo.value];
@@ -1255,6 +1270,8 @@
         <h3 style="margin-top:0;color:var(--marca-oscuro)">Antes de descargar</h3>
         <p style="color:var(--texto-suave);font-size:.92rem">Cuéntanos quién eres -- te llega el enlace de descarga y quedamos en contacto para tu licencia cuando termine la prueba de 7 días.</p>
 
+        datosCorreo.append("autorizacion_tratamiento_datos", "SI - " + new Date().toISOString() + " - politica sitio v1 (2026-10-14)");
+        datosCorreo.append("autorizacion_contacto_comercial", campoComercial.checked ? "SI" : "NO");
         <label style="display:block;margin-top:14px;font-size:.9rem;font-weight:600;color:var(--texto)">Nombre completo
             <input type="text" id="demo-modal-nombre" required style="display:block;width:100%;margin-top:4px;padding:10px;border:1px solid var(--borde);border-radius:8px;font-family:inherit;font-size:1rem;box-sizing:border-box">
         </label>
@@ -1306,6 +1323,16 @@
 
     botonDescargar.addEventListener("click", function () {
 
+        <label for="demo-modal-autorizo" style="display:flex;gap:8px;align-items:flex-start;font-size:.84rem;line-height:1.35;font-weight:400;color:var(--texto);margin-top:10px">
+            <input type="checkbox" id="demo-modal-autorizo" required style="margin-top:3px">
+            <span>Autorizo a EDM Legal Especializados SAS (NIT 901.551.688) a tratar mi nombre, correo y perfil profesional para enviarme la descarga, hacer seguimiento de la licencia al terminar la prueba y atender mi solicitud, incluida su transferencia a los proveedores indicados en la <a href="privacidad-sitio.html" target="_blank" rel="noopener">Política de Privacidad y Cookies</a>. <span style="color:#b91c1c">*</span></span>
+        </label>
+
+        <label for="demo-modal-comercial" style="display:flex;gap:8px;align-items:flex-start;font-size:.84rem;line-height:1.35;font-weight:400;color:var(--texto);margin-top:10px">
+            <input type="checkbox" id="demo-modal-comercial" style="margin-top:3px">
+            <span>(Opcional) Autorizo que me contacten con información comercial y novedades. Puedo retirar esta autorización cuando quiera.</span>
+        </label>
+
         if (!campoNombre.value.trim() || !campoCorreo.value.trim()) {
             mensaje.style.color = "#b91c1c";
             mensaje.textContent = "Completa tu nombre y correo para continuar.";
@@ -1322,6 +1349,8 @@
 
         botonDescargar.disabled = true;
         mensaje.style.color = "var(--teal)";
+    var campoAutorizoDemo = document.getElementById("demo-modal-autorizo");
+    var campoComercialDemo = document.getElementById("demo-modal-comercial");
         mensaje.textContent = "Preparando la descarga...";
 
         // Caso real reportado: un bloqueador de anuncios/privacidad
@@ -1347,10 +1376,18 @@
                 // extensión del navegador, igual se deja continuar --
                 // no tiene sentido bloquear una demo real por un
                 // problema del servicio de correo.
+        if (!campoAutorizoDemo.checked) {
+            mensaje.style.color = "#b91c1c";
+            mensaje.textContent = "Para continuar debes aceptar la autorización de tratamiento de datos personales.";
+            return;
+        }
+
             })
             .finally(function () {
                 clearTimeout(temporizadorTiempo);
                 mensaje.textContent = "¡Listo! Iniciando la descarga...";
+        datos.append("autorizacion_tratamiento_datos", "SI - " + new Date().toISOString() + " - politica sitio v1 (2026-10-14)");
+        datos.append("autorizacion_contacto_comercial", campoComercialDemo.checked ? "SI" : "NO");
 
                 // La descarga se dispara aquí, una sola vez, con el
                 // clic real de la persona -- la página de instrucciones
