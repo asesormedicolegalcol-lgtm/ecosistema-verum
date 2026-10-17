@@ -1,0 +1,179 @@
+/*
+===============================================================================
+Ecosistema Verum — Capa "Folio" (solo inicio: body.home-folio)
+Idea: la página es un expediente. Cada hecho se apoya en un folio.
+Se carga después de tema.css. Mantiene navy + dorado + teal de la marca.
+===============================================================================
+*/
+
+body.home-folio{
+    --serif:"Literata",Georgia,"Times New Roman",serif;
+    --sans:"Public Sans","Segoe UI",system-ui,sans-serif;
+    --papel:#F2F4F7;
+    --tinta:#0b1f3b;
+    --hilo:#d4a62a;
+    --verificado:#0f766e;
+    --sello:#8c2f39;
+    --linea-papel:#c9d0da;
+    counter-reset:folio;
+    background:var(--papel);
+    font-family:var(--sans);
+}
+.home-folio h1,.home-folio h2,.home-folio h3{font-family:var(--serif);letter-spacing:-.005em;font-optical-sizing:auto}
+
+/* Sin palabra acentuada en los títulos: el énfasis lo da la frase, no un adorno */
+.home-folio h1 em,.home-folio h2 em,.home-folio h3 em{font-style:normal;color:inherit;font-weight:inherit}
+
+/* Sin etiquetas sobre los títulos ni filete dorado decorativo */
+.home-folio .seccion-titulo .sobretitulo,
+.home-folio .seccion-titulo .linea-oro,
+.home-folio .obra .sobretitulo,
+.home-folio .cinta{display:none}
+
+/* ---------------- Portada ---------------- */
+.portada{
+    background:var(--papel);
+    padding:clamp(56px,8vw,112px) 0 clamp(48px,6vw,88px);
+    border-bottom:1px solid var(--linea-papel);
+}
+.portada-rejilla{
+    display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+    gap:clamp(32px,5vw,96px);align-items:center;
+}
+.portada-texto h1{
+    font-size:clamp(2.3rem,4.4vw,4.4rem);line-height:1.06;font-weight:700;
+    color:var(--tinta);max-width:17ch;margin:0 0 24px;
+}
+.portada-texto>p{
+    font-size:clamp(1.02rem,1.3vw,1.2rem);line-height:1.7;color:#3b4a63;max-width:58ch;margin:0 0 30px;
+}
+.portada-texto .botones{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+.portada-texto .boton-linea{color:var(--tinta);border:1.5px solid var(--tinta);background:transparent}
+.portada-texto .boton-linea:hover{background:var(--tinta);color:#fff}
+.portada-nota{
+    font-size:.9rem;color:#52617a;border-left:3px solid var(--hilo);padding-left:14px;max-width:56ch;margin:0;
+}
+
+/* Hoja de dictamen: la jugada memorable */
+.folio-hoja{
+    position:relative;margin:0;background:#fff;color:var(--tinta);
+    border:1px solid var(--linea-papel);border-radius:3px;
+    padding:clamp(22px,2.4vw,38px) clamp(22px,2.6vw,42px) 30px;
+    box-shadow:7px 7px 0 -1px #fff,7px 7px 0 0 var(--linea-papel),14px 14px 0 -1px #fff,14px 14px 0 0 var(--linea-papel);
+    margin-right:14px;margin-bottom:14px;
+}
+.folio-hoja::before{ /* hilo del expediente */
+    content:"";position:absolute;left:-1px;top:-28px;bottom:-28px;width:3px;background:var(--hilo);opacity:.9;
+}
+.folio-cab{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    padding-bottom:12px;border-bottom:1px solid var(--linea-papel);margin-bottom:18px;
+    font-size:.82rem;color:#52617a}
+.folio-cab strong{font-family:var(--serif);font-size:1rem;color:var(--tinta);font-weight:600}
+.folio-hallazgo{margin:0 0 20px}
+.folio-hallazgo p{font-family:var(--serif);font-size:1.06rem;line-height:1.6;margin:0 0 8px;color:var(--tinta)}
+.cita-folio{
+    display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;color:var(--verificado);
+    background:#e6f3f1;border:1px solid #b7dcd7;border-radius:3px;padding:3px 9px;
+}
+.cita-folio::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--verificado)}
+.folio-pie{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+    margin-top:6px;padding-top:14px;border-top:1px solid var(--linea-papel);font-size:.78rem;color:#6a778c}
+.sello{
+    position:absolute;right:clamp(18px,2vw,32px);bottom:56px;
+    transform:rotate(-8deg);background:rgba(255,255,255,.7);border:2px solid var(--sello);color:var(--sello);
+    font-family:var(--serif);font-weight:700;font-size:.72rem;line-height:1.25;text-align:center;
+    padding:5px 9px;border-radius:3px;opacity:.82;
+}
+
+/* ---------------- Folios en el margen ---------------- */
+.home-folio .seccion-titulo{counter-increment:folio;position:relative;max-width:62ch}
+.home-folio .seccion-titulo h2{font-size:clamp(1.9rem,3.4vw,2.9rem);font-weight:700;line-height:1.12;color:var(--tinta);text-align:left}
+.home-folio .seccion-titulo p{color:#3b4a63;max-width:60ch}
+.home-folio .seccion-titulo[style]{text-align:left!important;margin-inline:0!important}
+@media (min-width:1560px){
+    .home-folio .seccion-titulo::before{
+        content:"Folio " counter(folio);
+        position:absolute;left:-118px;top:.55em;width:88px;text-align:right;
+        font-family:var(--serif);font-size:.82rem;color:#7a879c;
+        border-right:2px solid var(--hilo);padding-right:12px;line-height:1.2;
+    }
+}
+
+/* ---------------- Superficies: hojas, no tarjetas blandas ---------------- */
+.home-folio .cifras{background:#fff;border-block:1px solid var(--linea-papel)}
+.home-folio .cifras .contenedor,.home-folio .cifras-fila{box-shadow:none!important;border-radius:0!important;background:transparent!important}
+.home-folio .cifra strong{font-family:var(--serif);color:var(--tinta)}
+.home-folio .producto,.home-folio .panel,.home-folio .paso{border-radius:3px}
+.home-folio .producto{
+    background:#fff;border:1px solid var(--linea-papel);
+    box-shadow:5px 5px 0 -1px #fff,5px 5px 0 0 var(--linea-papel);
+}
+.home-folio .camino .paso .num{
+    font-family:var(--serif);border-radius:3px;background:var(--tinta);color:#fff;
+}
+.home-folio .banda-final{background:var(--tinta)}
+.home-folio .banda-final h2{font-family:var(--serif);font-weight:700;max-width:22ch}
+
+/* Foco visible y movimiento reducido */
+.home-folio a:focus-visible,.home-folio button:focus-visible{outline:3px solid var(--hilo);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.home-folio *{animation:none!important;transition:none!important}}
+
+/* ---------------- Móvil ---------------- */
+@media (max-width:900px){
+    .portada-rejilla{grid-template-columns:1fr}
+    .portada-texto h1{max-width:none}
+    .folio-hoja{margin-right:8px;margin-bottom:8px}
+    .sello{position:static;display:inline-block;transform:none;margin-bottom:12px}
+}
+
+/* ---------------- Confianza (qué pasa con tus documentos) ---------------- */
+.confianza-fila{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;margin-top:34px;border-top:1px solid var(--linea-papel)}
+.confianza-item{padding:26px 28px 26px 0;border-bottom:1px solid var(--linea-papel)}
+.confianza-item+.confianza-item{padding-left:28px;border-left:1px solid var(--linea-papel)}
+.confianza-item h3{font-size:1.15rem;font-weight:700;color:var(--tinta);margin:0 0 8px}
+.confianza-item p{font-size:.98rem;line-height:1.65;color:#3b4a63;margin:0;max-width:44ch}
+.confianza-enlace{margin-top:18px}
+.confianza-enlace a{font-weight:600;color:var(--tinta);text-decoration:underline;text-decoration-color:var(--hilo);text-underline-offset:4px}
+@media (max-width:760px){.confianza-item+.confianza-item{padding-left:0;border-left:0}}
+.home-folio .portada-nota a{color:var(--tinta);font-weight:600}
+.home-folio .portada .chips-especialidades span{background:#fff;color:var(--tinta);border:1px solid var(--linea-papel);border-radius:3px}
+
+/* ---------------- Índice del expediente (inicio) ---------------- */
+.indice ol{list-style:none;margin:0;padding:0}
+.indice li+li{border-top:1px solid var(--linea-papel)}
+.indice a{display:grid;grid-template-columns:54px 1fr auto;gap:14px;align-items:baseline;padding:14px 4px;color:var(--tinta);text-decoration:none}
+.indice a:hover .indice-cuerpo strong{text-decoration:underline;text-decoration-color:var(--hilo);text-underline-offset:4px;text-decoration-thickness:2px}
+.indice-folio{font-family:var(--serif);font-size:.82rem;color:#7a879c}
+.indice-cuerpo strong{display:block;font-family:var(--serif);font-size:1.12rem;font-weight:600}
+.indice-cuerpo small{display:block;font-size:.86rem;line-height:1.45;color:#52617a;margin-top:2px}
+.indice-estado{font-size:.76rem;font-weight:600;color:var(--verificado);white-space:nowrap}
+.indice-estado.en-camino{color:#8a6a12}
+@media (max-width:520px){.indice a{grid-template-columns:44px 1fr}.indice-estado{grid-column:2}}
+
+/* ---- Versión que se descarga, bajo el botón ---- */
+.home-folio .version-descarga{
+    margin:12px 0 0;
+    font-size:.88rem;
+    color:#52617a;
+}
+.home-folio .version-descarga strong{color:var(--tinta);font-weight:600}
+
+/* ---- Logo animado de VerumIA (HUD) en el hero de verumia.html ---- */
+.home-folio .hud-panel{
+    background:#0b1f3b;
+    border-radius:16px;
+    padding:18px 18px 14px;
+    margin:0;
+}
+.home-folio .hud-panel .hud{width:100%}
+
+/* Franja de la hoja de cronología, debajo del hero */
+.home-folio .folio-demo-rejilla{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);
+    gap:clamp(28px,5vw,80px);
+    align-items:center;
+}
+@media (max-width:900px){
+    .home-folio .folio-demo-rejilla{grid-template-columns:1fr}
+}

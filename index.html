@@ -13,11 +13,12 @@
 <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,600;7..72,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/estilo.css">
 <link rel="stylesheet" href="css/tema.css">
+<link rel="stylesheet" href="css/folio.css">
 </head>
-<body class="con-hero">
+<body class="home-folio">
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
 <defs>
 
@@ -315,49 +316,29 @@
 </div>
 </header>
 
-<section class="hero">
-<svg class="hero-red" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <g>
-        <line x1="80" y1="120" x2="260" y2="240"/><line x1="260" y1="240" x2="430" y2="150"/><line x1="430" y1="150" x2="610" y2="270"/>
-        <line x1="610" y1="270" x2="790" y2="120"/><line x1="790" y1="120" x2="980" y2="230"/><line x1="980" y1="230" x2="1130" y2="110"/>
-        <line x1="260" y1="240" x2="330" y2="420"/><line x1="330" y1="420" x2="560" y2="480"/><line x1="560" y1="480" x2="610" y2="270"/>
-        <line x1="560" y1="480" x2="760" y2="560"/><line x1="760" y1="560" x2="980" y2="230"/><line x1="760" y1="560" x2="1010" y2="610"/>
-        <line x1="330" y1="420" x2="120" y2="560"/><line x1="980" y1="230" x2="1090" y2="420"/><line x1="1090" y1="420" x2="1010" y2="610"/>
-    </g>
-    <circle cx="80" cy="120" r="2"/><circle cx="260" cy="240" r="2"/><circle cx="430" cy="150" r="2"/><circle cx="610" cy="270" r="2"/>
-    <circle cx="790" cy="120" r="2"/><circle cx="980" cy="230" r="2"/><circle cx="1130" cy="110" r="2"/><circle cx="330" cy="420" r="2"/>
-    <circle cx="560" cy="480" r="2"/><circle cx="760" cy="560" r="2"/><circle cx="1010" cy="610" r="2"/><circle cx="120" cy="560" r="2"/><circle cx="1090" cy="420" r="2"/>
-</svg>
-
-<canvas class="hud hud-fondo" data-logo="img/logo-verumia.png" aria-hidden="true"></canvas>
-<div class="contenedor">
-    <div>
-        <div class="hero-etiqueta"><img src="img/logo-edm-legal.png" alt="EDM Legal Especializados SAS">EDM Legal Especializados SAS</div>
-        <h1>Tu trabajo como <em>abogado</em>, <em>perito</em> o <em>profesional de la salud</em>, en un solo ecosistema.</h1>
-        <p class="hero-texto">Software que se encarga de lo repetitivo para que dediques tu tiempo a lo que importa: tus casos y tus pacientes. Diseñado por un médico que también es abogado y perito.</p>
-        <ul class="hero-capacidades">
-            <li>Redactar demandas, tutelas y 32 tipos de dictamen pericial</li>
-            <li>Calcular indemnizaciones, términos, PCL y liquidaciones</li>
-            <li>Vigilar tus procesos judiciales con alertas</li>
-            <li>Llevar historias clínicas de 10 profesiones de la salud</li>
-        </ul>
+<section class="portada portada-indice">
+<div class="contenedor portada-rejilla">
+    <div class="portada-texto">
+        <h1>Todo lo que lleva un caso, de la consulta al estrado.</h1>
+        <p>Software para abogados, peritos y profesionales de la salud, y un libro que enseña a defender lo que se prueba.</p>
         <div class="botones">
-            <a href="verumia.html" class="boton boton-oro">Conocer VerumIA</a>
-            <a href="libro.html" class="boton boton-linea">La Ingeniería de la Verdad →</a>
+            <a href="https://wa.me/573202413579?text=Hola%2C%20quiero%20una%20demostraci%C3%B3n%20de%20VerumIA" class="boton boton-oro" target="_blank" rel="noopener">Pedir una demostración</a>
+            <a href="perfil.html" class="boton boton-linea">Quién está detrás</a>
         </div>
-        <div class="hero-firma">Ecosistema Verum · EDM Legal Especializados SAS</div>
+        <p class="portada-nota">Hecho por un médico que también es abogado y perito. Tus expedientes y documentos se guardan en tu propio equipo.</p>
     </div>
 
-    <div class="hero-visual">
-        <div class="pantalla">
-            <div class="pantalla-barra"><span></span><span></span><span></span></div>
-            <img src="img/captura-verumia-inicio.png" alt="Pantalla principal de VerumIA">
-        </div>
-        <div class="ficha-flotante ficha-1"><svg><use href="#i-confidencial"></use></svg><div>IA local<small>Sin servidores externos</small></div></div>
-        <a href="libro.html" class="portada-flotante" aria-label="La Ingeniería de la Verdad"><img src="img/libro/portada-vol-1-s.jpg" alt="La Ingeniería de la Verdad, Volumen I"><span>Nuevo<br>tratado</span></a>
-    </div>
+    <nav class="folio-hoja indice" aria-label="Productos del ecosistema">
+        <div class="folio-cab"><strong>Índice del expediente</strong><span>Ecosistema Verum</span></div>
+        <ol>
+            <li><a href="verumia.html"><span class="indice-folio">Fol. 1</span><span class="indice-cuerpo"><strong>VerumIA</strong><small>Expedientes, demandas y 32 tipos de dictamen. Windows.</small></span><span class="indice-estado">Disponible</span></a></li>
+            <li><a href="lex-verum-pro.html"><span class="indice-folio">Fol. 2</span><span class="indice-cuerpo"><strong>Lex Verum Pro</strong><small>Calculadoras, términos y audiencias en el celular.</small></span><span class="indice-estado">Android</span></a></li>
+            <li><a href="verum-health.html"><span class="indice-folio">Fol. 3</span><span class="indice-cuerpo"><strong>Verum Health</strong><small>Historia clínica para 10 profesiones de la salud.</small></span><span class="indice-estado en-camino">En desarrollo</span></a></li>
+            <li><a href="verum-status.html"><span class="indice-folio">Fol. 4</span><span class="indice-cuerpo"><strong>Verum Status</strong><small>Vigilancia de procesos judiciales con alertas.</small></span><span class="indice-estado en-camino">Próximamente</span></a></li>
+            <li><a href="libro.html"><span class="indice-folio">Fol. 5</span><span class="indice-cuerpo"><strong>La Ingeniería de la Verdad</strong><small>Libro en dos volúmenes sobre responsabilidad en salud.</small></span><span class="indice-estado">Libro</span></a></li>
+        </ol>
+    </nav>
 </div>
-<div class="indicador-scroll" aria-hidden="true"></div>
 </section>
 
 <section class="cifras">
@@ -385,7 +366,7 @@
             <span class="etiqueta-mini">Para abogados y peritos · Windows</span>
             <span class="sobretitulo">VerumIA</span>
             <h3>Todo tu despacho, <em>en un solo lugar</em></h3>
-            <p>Para <strong>abogados y peritos de todas las áreas</strong>. El asistente jurídico integral: expedientes, cronologías automáticas, análisis con IA local, demandas, <strong>32 tipos de dictamen pericial</strong> (médicos, contables, técnicos…) y facturación para <strong>11 especialidades del derecho</strong>. Sin depender de ningún servidor externo.</p>
+            <p>Para <strong>abogados y peritos de todas las áreas</strong>. El asistente jurídico integral: expedientes, cronologías automáticas, análisis con IA local, demandas, <strong>32 tipos de dictamen pericial</strong> (médicos, contables, técnicos…) y facturación para <strong>11 especialidades del derecho</strong>. Tus expedientes quedan en tu propio equipo.</p>
             <div class="chips-especialidades"><span>Penal</span><span>Civil</span><span>Laboral</span><span>Familia</span><span>Administrativo</span><span>Comercial</span><span>Tributario</span><span>Ambiental</span><span>Disciplinario</span><span>Médico-legal</span><span>y más</span></div>
             <div class="botones">
                 <a href="verumia.html" class="boton boton-oro">Conocer VerumIA</a>
@@ -496,10 +477,25 @@
     </div>
     <div class="camino-fila">
         <div class="paso"><div class="num">1</div><h3>Documentar</h3><p>Expediente, evidencia y documentos ordenados, con firma verificada.</p></div>
-        <div class="paso"><div class="num">2</div><h3>Analizar</h3><p>Cronología y análisis del caso con IA local y confidencial.</p></div>
+        <div class="paso"><div class="num">2</div><h3>Analizar</h3><p>Cronología y análisis del caso con IA: local o con tu propia clave.</p></div>
         <div class="paso"><div class="num">3</div><h3>Redactar</h3><p>Dictámenes, demandas y tutelas listos para radicar.</p></div>
         <div class="paso"><div class="num">4</div><h3>Sustentar</h3><p>Audiencia con calculadoras, términos y vigilancia del proceso.</p></div>
     </div>
+</div>
+</section>
+
+<section class="seccion confianza" id="confianza">
+<div class="contenedor">
+    <div class="seccion-titulo">
+        <h2>Qué pasa con tus documentos</h2>
+        <p>Trabajas con expedientes e historias clínicas. Esto es lo que VerumIA hace con ellos.</p>
+    </div>
+    <div class="confianza-fila">
+        <div class="confianza-item"><h3>Viven en tu equipo</h3><p>La base de datos, los expedientes y las historias clínicas se guardan en tu propio computador, no en una nube de VerumIA.</p></div>
+        <div class="confianza-item"><h3>Tú eliges dónde corre la IA</h3><p>Modelo local con Ollama, que no envía nada a internet, o tu propia clave de uno de los 14 proveedores soportados.</p></div>
+        <div class="confianza-item"><h3>Todo sale como borrador</h3><p>Nada se radica ni se envía por ti: revisas, firmas y radicas. Cada hecho remite a su folio para que lo verifiques.</p></div>
+    </div>
+    <p class="confianza-enlace"><a href="verumia.html#privacidad">Ver cómo funciona la privacidad</a></p>
 </div>
 </section>
 
