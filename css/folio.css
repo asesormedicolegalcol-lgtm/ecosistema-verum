@@ -177,3 +177,13 @@ body.home-folio{
 @media (max-width:900px){
     .home-folio .folio-demo-rejilla{grid-template-columns:1fr}
 }
+
+/* ---- Elección de versión en la ventana de descarga ---- */
+.version-opciones{border:1px solid var(--borde,#d8dee8);border-radius:10px;padding:12px 14px;margin:0 0 14px}
+.version-opciones legend{font-size:.9rem;font-weight:600;color:var(--marca-oscuro,#0b1f3b);padding:0 6px}
+.version-opcion{display:flex;gap:10px;align-items:flex-start;padding:8px 4px;cursor:pointer;font-weight:400}
+.version-opcion+.version-opcion{border-top:1px solid #eef1f5}
+.version-opcion input{margin-top:4px}
+.version-opcion strong{display:block;font-size:.95rem;color:var(--marca-oscuro,#0b1f3b)}
+.version-opcion small{display:block;font-size:.82rem;line-height:1.4;color:#52617a;margin-top:2px}
+.version-ayuda{font-size:.8rem;color:#52617a;margin:8px 0 0}
