@@ -79,7 +79,7 @@
     <h1>Cómo instalar la <em>demo de VerumIA</em></h1>
     <p>Tu descarga ya empezó sola. Estos son los pasos normales para abrir el instalador en Windows — ningún aviso que veas es un error, es lo esperado la primera vez que se instala un programa nuevo que todavía no tiene firma digital de Microsoft.</p>
     <div class="botones">
-        <a id="descarga-respaldo" href="https://github.com/asesormedicolegalcol-lgtm/ecosistema-verum/releases/download/verumia-v1.3.5/VerumIA-Setup-1.3.5-liviana.exe" class="boton boton-oro" download>¿No empezó? Descargar de nuevo</a>
+        <a id="descarga-respaldo" href="https://github.com/asesormedicolegalcol-lgtm/ecosistema-verum/releases/download/verumia-v1.3.5/VerumIA-Setup-1.3.5.exe" class="boton boton-oro" download>¿No empezó? Descargar de nuevo</a>
     </div>
 </div>
 </section>
@@ -89,7 +89,7 @@
 
     <div class="paso-caja">
         <div class="paso-titulo"><span class="paso-numero">1</span><h3>El navegador termina de descargar el archivo</h3></div>
-        <p><span id="instr-archivo">VerumIA-Setup-1.3.5-liviana.exe</span> pesa cerca de <span id="instr-peso">0,4 GB</span> — según tu conexión, puede tardar algunos minutos. Como es un instalador nuevo y todavía poco descargado, Chrome o Edge pueden mostrar un aviso antes de guardarlo ("no se descarga con frecuencia" o similar) -- es un aviso genérico para cualquier instalador poco común, no algo específico de VerumIA. Haz clic en <strong>"Conservar"</strong> / "Mantener" / "Descargar de todas formas" (el texto varía entre navegadores).</p>
+        <p>VerumIA-Setup-1.3.5.exe pesa cerca de 1,4 GB — según tu conexión, puede tardar algunos minutos. Como es un instalador nuevo y todavía poco descargado, Chrome o Edge pueden mostrar un aviso antes de guardarlo ("no se descarga con frecuencia" o similar) -- es un aviso genérico para cualquier instalador poco común, no algo específico de VerumIA. Haz clic en <strong>"Conservar"</strong> / "Mantener" / "Descargar de todas formas" (el texto varía entre navegadores).</p>
     </div>
 
     <div class="paso-caja">
@@ -212,25 +212,6 @@
 </div>
 </footer>
 
-<script>
-(function () {
-    // Muestra el archivo y el peso de la versión que la persona eligió al descargar
-    // (?version=liviana | completa). Sin parámetro, se asume la liviana.
-    var base = "https://github.com/asesormedicolegalcol-lgtm/ecosistema-verum/releases/download/verumia-v1.3.5/";
-    var versiones = {
-        liviana: { archivo: "VerumIA-Setup-1.3.5-liviana.exe", peso: "0,4 GB" },
-        completa: { archivo: "VerumIA-Setup-1.3.5.exe", peso: "1,4 GB" }
-    };
-    var pedida = (new URLSearchParams(window.location.search).get("version") || "liviana");
-    var v = versiones[pedida] || versiones.liviana;
-    var enlace = document.getElementById("descarga-respaldo");
-    if (enlace) enlace.href = base + v.archivo;
-    var archivo = document.getElementById("instr-archivo");
-    if (archivo) archivo.textContent = v.archivo;
-    var peso = document.getElementById("instr-peso");
-    if (peso) peso.textContent = v.peso;
-})();
-</script>
 <script src="js/interactivo.js" defer></script>
 </body>
 </html>
