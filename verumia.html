@@ -1307,9 +1307,12 @@
 </script>
 
 <div id="demo-modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(11,31,59,.72);z-index:200;align-items:center;justify-content:center;padding:20px">
-    <div style="background:var(--superficie);border-radius:var(--radio);max-width:420px;width:100%;padding:28px;position:relative;box-shadow:var(--sombra-alta)">
+    <div class="demo-modal-caja">
         <button type="button" id="demo-modal-cerrar" aria-label="Cerrar" style="position:absolute;top:14px;right:14px;border:none;background:none;font-size:1.4rem;line-height:1;cursor:pointer;color:var(--texto-suave)">×</button>
-        <h3 style="margin-top:0;color:var(--marca-oscuro)">Antes de descargar</h3>
+        <h3 style="margin-top:0;margin-bottom:12px;color:var(--marca-oscuro)">Antes de descargar</h3>
+
+        <div class="demo-modal-rejilla">
+        <div class="demo-col-version">
 
         <fieldset class="version-opciones">
             <legend>Elige tu versión</legend>
@@ -1329,6 +1332,8 @@
             </label>
             <p class="version-ayuda">¿No sabes qué tarjeta gráfica tienes? Elige la liviana: puedes descargar la completa cuando quieras.</p>
         </fieldset>
+        </div>
+        <div class="demo-col-datos">
         <p style="color:var(--texto-suave);font-size:.92rem">Cuéntanos quién eres -- te llega el enlace de descarga y quedamos en contacto para tu licencia cuando termine la prueba de 7 días.</p>
 
         <label style="display:block;margin-top:14px;font-size:.9rem;font-weight:600;color:var(--texto)">Nombre completo
@@ -1347,6 +1352,10 @@
             </select>
         </label>
 
+        </div>
+        </div>
+
+        <div class="demo-modal-legal">
         <label for="demo-modal-autorizo" style="display:flex;gap:8px;align-items:flex-start;font-size:.84rem;line-height:1.35;font-weight:400;color:var(--texto);margin-top:10px">
             <input type="checkbox" id="demo-modal-autorizo" required style="margin-top:3px">
             <span>Autorizo a EDM Legal Especializados SAS (NIT 901.551.688) a tratar mi nombre, correo y perfil profesional para enviarme la descarga, hacer seguimiento de la licencia al terminar la prueba y atender mi solicitud, incluida su transferencia a los proveedores indicados en la <a href="privacidad-sitio.html" target="_blank" rel="noopener">Política de Privacidad y Cookies</a>. <span style="color:#b91c1c">*</span></span>
@@ -1356,6 +1365,8 @@
             <input type="checkbox" id="demo-modal-comercial" style="margin-top:3px">
             <span>(Opcional) Autorizo que me contacten con información comercial y novedades. Puedo retirar esta autorización cuando quiera.</span>
         </label>
+
+        </div>
 
         <p id="demo-modal-mensaje" style="min-height:1.2em;font-size:.85rem;margin-top:10px"></p>
 

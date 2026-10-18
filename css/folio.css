@@ -187,3 +187,56 @@ body.home-folio{
 .version-opcion strong{display:block;font-size:.95rem;color:var(--marca-oscuro,#0b1f3b)}
 .version-opcion small{display:block;font-size:.82rem;line-height:1.4;color:#52617a;margin-top:2px}
 .version-ayuda{font-size:.8rem;color:#52617a;margin:8px 0 0}
+
+/* ---- Ventana de descarga: más ancha y menos alta ---- */
+.demo-modal-caja{
+    background:var(--superficie);
+    border-radius:var(--radio);
+    width:min(940px,100%);
+    max-height:calc(100vh - 40px);
+    overflow-y:auto;
+    padding:22px 26px 24px;
+    position:relative;
+    box-shadow:var(--sombra-alta);
+}
+.demo-modal-rejilla{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+    gap:22px 28px;
+    align-items:start;
+}
+.demo-modal-caja .version-opciones{margin:0}
+.demo-col-datos{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px 14px;
+    align-content:start;
+}
+.demo-col-datos > p{grid-column:1 / -1;margin:0 !important;font-size:.88rem !important}
+.demo-col-datos > label{margin-top:0 !important}
+.demo-col-datos > label:last-child{grid-column:1 / -1}
+.demo-modal-legal{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px 22px;
+    margin-top:14px;
+}
+.demo-modal-legal > label{margin-top:0 !important}
+#demo-modal-mensaje{margin:8px 0 0 !important}
+#demo-modal-boton{margin-top:8px !important}
+@media (max-width:760px){
+    .demo-modal-caja{padding:18px 16px 20px}
+    .demo-modal-rejilla,.demo-modal-legal{grid-template-columns:1fr}
+    .demo-col-datos{grid-template-columns:1fr}
+}
+
+/* Ajuste fino: que quepa completa en pantallas bajas (laptops de ~650 px de alto) */
+.demo-modal-caja{padding:16px 24px 18px}
+.demo-modal-caja h3{font-size:1.15rem}
+.demo-modal-caja .version-opciones{padding:6px 12px 8px}
+.demo-modal-caja .version-opcion{padding:6px 4px}
+.demo-modal-caja .version-opcion small{font-size:.8rem;line-height:1.35}
+.demo-modal-caja .version-ayuda{font-size:.78rem;margin-top:4px}
+.demo-modal-legal{margin-top:10px;gap:8px 22px}
+.demo-modal-legal > label{font-size:.8rem !important;line-height:1.3 !important}
+.demo-modal-caja .version-descarga{margin:6px 0 0 !important}
