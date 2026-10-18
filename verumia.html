@@ -399,6 +399,7 @@
     <a href="#dictamenes">Dictámenes</a>
     <a href="#especialidades">Especialidades</a>
     <a href="#calculadoras">Calculadoras</a>
+    <a href="#requisitos">Requisitos</a>
     <a href="#precios">Licencia</a>
     <a href="#movil">Móvil</a>
     <a href="#privacidad">Privacidad</a>
@@ -925,6 +926,87 @@
         <img src="img/captura-verumia-manual-usuario.png" alt="Manual de usuario de VerumIA, con índice de capítulos y buscador, abierto en el capítulo 'Activar la licencia'." loading="lazy">
     </div>
     <p style="text-align:center;color:var(--texto-suave);font-size:.9rem;margin-top:16px">El manual de usuario, siempre a un clic de distancia dentro del programa.</p>
+</div>
+</section>
+
+<section class="seccion" id="requisitos">
+<div class="contenedor">
+    <div class="seccion-titulo">
+        <div class="linea-oro"></div>
+        <h2>Qué necesita tu equipo</h2>
+        <p>Depende de cómo uses la inteligencia artificial. Elige tu caso: VerumIA trabaja sin IA, con la IA de un proveedor en la nube (con tu propia clave) o con IA local en tu computador.</p>
+    </div>
+
+    <div class="tabla-scroll">
+    <table class="tabla-requisitos">
+        <thead>
+            <tr>
+                <th scope="col"><span class="visualmente-oculto">Requisito</span></th>
+                <th scope="col">Sin IA</th>
+                <th scope="col">Con IA por clave (API)</th>
+                <th scope="col">Con IA local</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Windows</th>
+                <td><span class="req-si">✓</span> 10 u 11, 64 bits</td>
+                <td><span class="req-si">✓</span> 10 u 11, 64 bits</td>
+                <td><span class="req-si">✓</span> 10 u 11, 64 bits</td>
+            </tr>
+            <tr>
+                <th scope="row">Memoria (RAM)</th>
+                <td><span class="req-si">✓</span> 8 GB. VerumIA usa unos 0,6 GB</td>
+                <td><span class="req-si">✓</span> 8 GB</td>
+                <td><span class="req-si">✓</span> 16 GB recomendados</td>
+            </tr>
+            <tr>
+                <th scope="row">Disco libre</th>
+                <td><span class="req-si">✓</span> 3 GB</td>
+                <td><span class="req-si">✓</span> 3 GB</td>
+                <td><span class="req-si">✓</span> 9 GB: los 3 GB más Ollama (1,4 GB) y el modelo (4,3 GB)</td>
+            </tr>
+            <tr>
+                <th scope="row">Internet</th>
+                <td><span class="req-si">✓</span> Para consultas judiciales, Google y descargas</td>
+                <td><span class="req-si">✓</span> Necesario también para la IA</td>
+                <td><span class="req-si">✓</span> La IA funciona sin internet</td>
+            </tr>
+            <tr>
+                <th scope="row">Google Chrome</th>
+                <td><span class="req-si">✓</span> Para las consultas judiciales</td>
+                <td><span class="req-si">✓</span> Para las consultas judiciales</td>
+                <td><span class="req-si">✓</span> Para las consultas judiciales</td>
+            </tr>
+            <tr>
+                <th scope="row">Tarjeta gráfica</th>
+                <td><span class="req-no">✗</span> No hace falta</td>
+                <td><span class="req-no">✗</span> No hace falta</td>
+                <td><span class="req-si">✓</span> NVIDIA con 5 GB de VRAM o más. Sin ella funciona un modelo menor, más lento</td>
+            </tr>
+            <tr>
+                <th scope="row">Qué instalas o contratas</th>
+                <td><span class="req-no">✗</span> Nada más</td>
+                <td><span class="req-si">✓</span> Una clave propia de un proveedor: Gemini, Groq, OpenAI, Anthropic y otros</td>
+                <td><span class="req-si">✓</span> Ollama y el modelo gemma4 e2b; el instalador puede descargarlos por ti</td>
+            </tr>
+            <tr>
+                <th scope="row">Búsqueda semántica</th>
+                <td><span class="req-si">✓</span> Opcional. Descarga un modelo de unos 0,5 GB y suma unos 0,4 GB de RAM</td>
+                <td><span class="req-si">✓</span> Igual</td>
+                <td><span class="req-si">✓</span> Igual</td>
+            </tr>
+            <tr>
+                <th scope="row">Audiencias en vivo</th>
+                <td><span class="req-si">✓</span> Transcribe con el procesador</td>
+                <td><span class="req-si">✓</span> Transcribe con el procesador</td>
+                <td><span class="req-si">✓</span> Con tarjeta NVIDIA transcribe de 5 a 10 veces más rápido (versión completa)</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <p class="nota-dictamen">Cifras medidas con la versión 1.3.5. En un equipo con menos memoria o disco puede funcionar, pero más lento. El uso de memoria depende de los documentos que abras.</p>
 </div>
 </section>
 

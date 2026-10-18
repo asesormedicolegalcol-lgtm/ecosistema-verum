@@ -258,3 +258,14 @@ body.home-folio{
     .anuncio-rejilla{grid-template-columns:1fr}
     .anuncio-accion{justify-self:start}
 }
+
+/* ---- Tabla de requisitos del equipo ---- */
+.tabla-requisitos{width:100%;border-collapse:collapse;min-width:760px;background:#fff;border:1px solid var(--linea-papel);border-radius:10px;overflow:hidden}
+.tabla-requisitos th,.tabla-requisitos td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid #eef1f5;font-size:.93rem;line-height:1.45}
+.tabla-requisitos thead th{background:var(--tinta);color:#fff;font-family:var(--serif);font-size:1rem;font-weight:700;border-bottom:3px solid var(--hilo)}
+.tabla-requisitos tbody th{width:17%;font-weight:600;color:var(--tinta);background:#f6f8fb}
+.tabla-requisitos tbody tr:last-child th,.tabla-requisitos tbody tr:last-child td{border-bottom:none}
+.tabla-requisitos td{width:27.6%}
+.req-si{color:var(--verificado);font-weight:700;margin-right:4px}
+.req-no{color:#9aa5b8;font-weight:700;margin-right:4px}
+.visualmente-oculto{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
