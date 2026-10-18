@@ -240,3 +240,21 @@ body.home-folio{
 .demo-modal-legal{margin-top:10px;gap:8px 22px}
 .demo-modal-legal > label{font-size:.8rem !important;line-height:1.3 !important}
 .demo-modal-caja .version-descarga{margin:6px 0 0 !important}
+
+/* ---- Anuncio: VerumIA funciona mejor con Claude Desktop y Google ---- */
+.anuncio-integraciones{background:#0b1f3b;color:#fff;border-left:6px solid #d4a62a;padding:26px 0 74px}  /* el bloque de cifras de abajo se monta sobre este */
+.anuncio-rejilla{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px 34px;align-items:center}
+.anuncio-logos{display:flex;align-items:center;gap:14px}
+.anuncio-logo{width:68px;height:68px;border-radius:16px;background:#fff;display:grid;place-items:center;padding:13px;box-sizing:border-box}
+.anuncio-logo svg{width:100%;height:100%;display:block}
+.anuncio-logo-claude{width:auto;min-width:104px;padding:0 16px}
+.anuncio-nombre-claude{font-family:var(--serif);font-weight:700;font-size:1.28rem;color:#c15f3c;letter-spacing:-.01em}
+.anuncio-mas{font-size:1.6rem;font-weight:300;color:#d4a62a;line-height:1}
+.anuncio-texto h2{margin:0 0 6px;font-size:clamp(1.25rem,2.1vw,1.7rem);color:#fff;font-weight:700;line-height:1.2}
+.anuncio-texto p{margin:0;font-size:.96rem;line-height:1.6;color:#d6e0ef;max-width:78ch}
+.anuncio-texto strong{color:#fff}
+.anuncio-marcas{margin:16px auto 0;font-size:.74rem;line-height:1.45;color:#8ea3c0}
+@media (max-width:900px){
+    .anuncio-rejilla{grid-template-columns:1fr}
+    .anuncio-accion{justify-self:start}
+}
