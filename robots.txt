@@ -1,0 +1,6 @@
+# Todo el sitio puede rastrearse. Las páginas de verificación y firma llevan noindex en su propio HTML
+# (no se bloquean aquí a propósito: si se bloquearan, el buscador no vería el noindex).
+User-agent: *
+Allow: /
+
+Sitemap: https://ecosistemaverum.com/sitemap.xml
