@@ -607,3 +607,15 @@ html{scroll-padding-top:120px}
 .hero-retrato .portada-flotante{right:-6%;top:-6%}
 @media (max-width:980px){.hero-retrato .rotulo.r1,.hero-retrato .rotulo.r3{left:2%}.hero-retrato .rotulo.r2{right:2%}}
 @media (prefers-reduced-motion:reduce){.retrato-marco{transition:none}}
+
+/*---------------- Redes sociales (perfil) ----------------*/
+.redes-barra{display:inline-flex;gap:14px;align-items:center;margin-left:2px}
+.barra-superior .redes-barra svg{width:16px;height:16px;margin:0;vertical-align:middle;color:currentColor}
+.barra-superior .red-barra{display:inline-flex}
+.redes-sociales{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:34px;flex-wrap:wrap}
+.redes-sociales .redes-etiqueta{color:#c9d6e9;font-size:.95rem;margin-right:6px}
+.red-circulo{width:46px;height:46px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+    border:1px solid var(--oro);color:var(--oro-brillante);transition:background .2s,color .2s,transform .2s}
+.red-circulo svg{width:22px;height:22px}
+.red-circulo:hover,.red-circulo:focus-visible{background:var(--oro);color:var(--marca-oscuro);transform:translateY(-2px);text-decoration:none}
+.red-circulo:focus-visible,.red-barra:focus-visible{outline:2px solid var(--oro-brillante);outline-offset:3px}
