@@ -552,16 +552,35 @@
     });
     f.addEventListener('submit',function(e){
         e.preventDefault();
-        var d=new FormData(f);
+        var d=new FormData(f), btn=f.querySelector('button[type=submit]');
         if(!d.get('nombre')||!d.get('telefono')||!f.acepto.checked){
             est.textContent='Complete nombre, teléfono y acepte el tratamiento de datos.';est.className='estado error';return;
         }
-        var t='Hola, quiero información.\nNombre: '+d.get('nombre')+'\nTeléfono: '+d.get('telefono')
-            +(d.get('correo')?'\nCorreo: '+d.get('correo'):'')+(d.get('ciudad')?'\nCiudad: '+d.get('ciudad'):'')
-            +'\nÁrea: '+d.get('area')+(d.get('mensaje')?'\nCaso: '+d.get('mensaje'):'');
-        /* VISTA PREVIA: abre WhatsApp con el mensaje armado. Para recibirlo por correo, reemplazar por Web3Forms/Formspree. */
-        window.open('https://wa.me/573202413579?text='+encodeURIComponent(t),'_blank','noopener');
-        est.textContent='Se abrió WhatsApp con su solicitud lista para enviar.';est.className='estado ok';
+        var correo=new FormData();
+        ['nombre','telefono','correo','ciudad','area','mensaje'].forEach(function(k){correo.append(k,d.get(k)||'');});
+        correo.append('autorizacion_tratamiento_datos','SI - '+new Date().toISOString()+' - politica sitio v1 (2026-10-14)');
+        correo.append('_subject','Nueva solicitud de servicios jurídicos: '+(d.get('area')||''));
+        correo.append('_template','table');
+        correo.append('_captcha','false');
+        var t='Hola, quiero información.
+Nombre: '+d.get('nombre')+'
+Área: '+d.get('area');
+        var wa='https://wa.me/573202413579?text='+encodeURIComponent(t);
+        btn.disabled=true;est.className='estado';est.textContent='Enviando...';
+        var ctl=new AbortController(),tm=setTimeout(function(){ctl.abort();},12000);
+        fetch('https://formsubmit.co/ajax/edmlegal.especializados@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:correo,signal:ctl.signal})
+            .then(function(r){if(!r.ok)throw new Error('http');return r.json();})
+            .then(function(){
+                clearTimeout(tm);f.reset();
+                est.className='estado ok';
+                est.innerHTML='Recibimos su solicitud. Le responderemos pronto. Si desea, también puede <a href="'+wa+'" target="_blank" rel="noopener">escribirnos por WhatsApp</a>.';
+            })
+            .catch(function(){
+                clearTimeout(tm);
+                est.className='estado error';
+                est.innerHTML='No pudimos enviar la solicitud desde esta página. Escríbanos por <a href="'+wa+'" target="_blank" rel="noopener">WhatsApp</a> o a edmlegal.especializados@gmail.com.';
+            })
+            .finally(function(){btn.disabled=false;});
     });
 })();
 </script>
