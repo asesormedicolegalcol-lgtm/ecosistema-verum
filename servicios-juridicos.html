@@ -562,9 +562,7 @@
         correo.append('_subject','Nueva solicitud de servicios jurídicos: '+(d.get('area')||''));
         correo.append('_template','table');
         correo.append('_captcha','false');
-        var t='Hola, quiero información.
-Nombre: '+d.get('nombre')+'
-Área: '+d.get('area');
+        var t='Hola, quiero información.\nNombre: '+d.get('nombre')+'\nÁrea: '+d.get('area');
         var wa='https://wa.me/573202413579?text='+encodeURIComponent(t);
         btn.disabled=true;est.className='estado';est.textContent='Enviando...';
         var ctl=new AbortController(),tm=setTimeout(function(){ctl.abort();},12000);
