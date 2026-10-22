@@ -631,3 +631,67 @@ details.pregunta summary{cursor:pointer;font-weight:600;line-height:1.5}
 details.pregunta[open]{border-color:var(--oro);box-shadow:0 6px 20px rgba(11,31,59,.08)}
 details.pregunta p{margin:10px 0 0;line-height:1.7;color:#3a4a63}
 .lista-limpia+p{margin-top:20px}
+
+/*---------------- Servicios jurídicos: áreas, equipo y formulario ----------------*/
+.rejilla-4{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.areas .tarjeta .resp{font-size:.88rem;color:#3a4a63;margin-top:12px}
+.areas .tarjeta .enlace-area{font-weight:600;font-size:.92rem;display:inline-block;margin-top:6px}
+.equipo .socio{text-align:center;background:#fff;border:1px solid #d7dde8;border-radius:16px;padding:26px 18px}
+.socio-foto{width:112px;height:112px;margin:0 auto 14px;border-radius:50%;overflow:hidden;background:#0b1f3b;display:flex;align-items:center;justify-content:center}
+.socio-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.socio-foto .inicial{font-family:var(--serif);font-size:2.6rem;color:#d4a62a}
+.socio h3{font-size:1.1rem;margin:0 0 4px}
+.socio-cargo{font-size:.85rem;color:#5b6b85;margin:0 0 8px}
+.socio-area{font-weight:600;color:#0b1f3b;margin:0 0 14px}
+.boton-linea-oscuro{border:1.5px solid #0b1f3b;color:#0b1f3b;background:transparent;padding:10px 22px;font-size:.9rem}
+.boton-linea-oscuro:hover{background:#0b1f3b;color:#fff}
+.solicitud{display:grid;gap:36px;grid-template-columns:1fr}
+@media (min-width:900px){.solicitud{grid-template-columns:3fr 2fr}}
+.formulario-contacto{display:grid;gap:16px}
+.formulario-contacto label{display:grid;gap:6px;font-weight:600;font-size:.92rem;color:#0b1f3b}
+.formulario-contacto input,.formulario-contacto select,.formulario-contacto textarea{font:inherit;font-weight:400;padding:12px 14px;border:1px solid #c4ccda;border-radius:10px;background:#fff}
+.formulario-contacto input:focus,.formulario-contacto select:focus,.formulario-contacto textarea:focus{outline:2px solid #d4a62a;outline-offset:1px}
+.formulario-contacto .fila-2{display:grid;gap:16px;grid-template-columns:1fr}
+@media (min-width:600px){.formulario-contacto .fila-2{grid-template-columns:1fr 1fr}}
+.formulario-contacto .acepto{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.85rem;line-height:1.5;color:#3a4a63}
+.formulario-contacto .acepto input{margin-top:3px}
+.formulario-contacto button{justify-self:start;border:0;cursor:pointer}
+.formulario-contacto .estado{margin:0;font-size:.9rem}
+.formulario-contacto .estado.ok{color:#1b6b3a}
+.formulario-contacto .estado.error{color:#a12727}
+.datos-contacto{background:#fff;border:1px solid #d7dde8;border-radius:16px;padding:26px}
+.datos-contacto h3{margin-top:0}
+.datos-contacto .nota{font-size:.82rem;color:#5b6b85;margin-bottom:0}
+
+/*---------------- Hero con carrusel ----------------*/
+.hero-doble{display:grid;gap:40px;align-items:center;grid-template-columns:1fr}
+@media (min-width:960px){.hero-doble{grid-template-columns:1.1fr .9fr}}
+.cifras-hero{list-style:none;display:flex;gap:34px;margin:34px 0 0;padding:0;flex-wrap:wrap}
+.cifras-hero li{display:grid;gap:2px}
+.cifras-hero strong{font-family:var(--serif);font-size:2.2rem;color:#e8bd4a;line-height:1}
+.cifras-hero li>span{font-size:.85rem;color:#c8d3e6}
+.slider{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.16);background:#07162b;aspect-ratio:4/3.4}
+.slides,.slide{position:absolute;inset:0}
+.slide{margin:0;opacity:0;transition:opacity .9s ease;pointer-events:none}
+.slide.activo{opacity:1;pointer-events:auto}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:48px 22px 44px;background:linear-gradient(transparent,rgba(5,14,30,.92));color:#fff;display:grid;gap:2px}
+.slide figcaption strong{font-family:var(--serif);font-size:1.2rem}
+.slide figcaption span{font-size:.88rem;color:#d7e0ef}
+.slider-puntos{position:absolute;left:0;right:0;bottom:14px;display:flex;gap:8px;justify-content:center}
+.slider-puntos button{width:9px;height:9px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.4);cursor:pointer}
+.slider-puntos button.activo{background:#d4a62a;width:24px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){.slide,.slide img{transition:none}.slide.activo img{transform:none}}
+
+.creditos-fotos{font-size:.75rem;color:#6b7a93;margin:18px 0 0;max-width:90ch}
+
+@media (min-width:1200px){.rejilla-4.equipo{grid-template-columns:repeat(4,1fr)}}
+
+.intro-area{max-width:90ch;color:#3a4a63;line-height:1.7;margin:0 0 26px}
+.areas .tarjeta .detalle{margin:12px 0 0;padding-left:18px;font-size:.9rem;color:#3a4a63;line-height:1.55}
+.areas .tarjeta .detalle li{margin:4px 0}
+@media (min-width:900px){.rejilla.areas{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1200px){.rejilla.areas.areas-8{grid-template-columns:repeat(4,1fr)}}
+.faq-rejilla{display:grid;gap:0 22px;grid-template-columns:1fr;align-items:start}
+.faq-rejilla details.pregunta{max-width:none;margin:0 0 14px}
+@media (min-width:900px){.faq-rejilla{grid-template-columns:1fr 1fr}}
