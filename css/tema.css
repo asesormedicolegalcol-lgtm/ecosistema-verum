@@ -686,7 +686,7 @@ details.pregunta p{margin:10px 0 0;line-height:1.7;color:#3a4a63}
 
 .creditos-fotos{font-size:.75rem;color:#6b7a93;margin:18px 0 0;max-width:90ch}
 
-@media (min-width:1200px){.rejilla-4.equipo{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1200px){.rejilla-4.equipo{grid-template-columns:repeat(4,1fr)}}
 
 .intro-area{max-width:90ch;color:#3a4a63;line-height:1.7;margin:0 0 26px}
 .areas .tarjeta .detalle{margin:12px 0 0;padding-left:18px;font-size:.9rem;color:#3a4a63;line-height:1.55}
