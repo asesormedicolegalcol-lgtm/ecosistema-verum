@@ -693,3 +693,6 @@ details.pregunta p{margin:10px 0 0;line-height:1.7;color:#3a4a63}
 .areas .tarjeta .detalle li{margin:4px 0}
 @media (min-width:900px){.rejilla.areas{grid-template-columns:repeat(3,1fr)}}
 @media (min-width:1200px){.rejilla.areas.areas-8{grid-template-columns:repeat(4,1fr)}}
+.faq-rejilla{display:grid;gap:0 22px;grid-template-columns:1fr;align-items:start}
+.faq-rejilla details.pregunta{max-width:none;margin:0 0 14px}
+@media (min-width:900px){.faq-rejilla{grid-template-columns:1fr 1fr}}
