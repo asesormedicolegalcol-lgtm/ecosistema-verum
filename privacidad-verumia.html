@@ -322,7 +322,7 @@
 <div class="documento">
 
     <h2>Política de Privacidad — VerumIA</h2>
-    <p class="fecha-doc">Asistente jurídico especializado de escritorio · Versión 2 · Última actualización: 14 de octubre de 2026</p>
+    <p class="fecha-doc">Asistente jurídico especializado de escritorio · Versión 2 · Última actualización: 2 de noviembre de 2026</p>
 
     <h3>1. Naturaleza del programa</h3>
     <p>VerumIA es una aplicación de escritorio del Ecosistema Verum que se instala y ejecuta <strong>en el equipo del propio usuario</strong>. Está dirigida a abogados, peritos, médicos y auxiliares de la justicia para la gestión de expedientes, el análisis documental y probatorio asistido por inteligencia artificial, la elaboración de documentos técnicos y jurídicos, y el seguimiento procesal de los casos a su cargo.</p>
@@ -380,6 +380,7 @@
 
     <h3>8. Red de Socios e intercambio de expedientes</h3>
     <p>Cuando el usuario decide compartir un expediente o exportar un cliente hacia otra instalación de VerumIA, la información viaja en un <strong>paquete cifrado protegido por contraseña</strong>, que el usuario entrega por el canal que elija. El intercambio ocurre siempre por decisión expresa del usuario.</p>
+    <p>La <strong>Mesa de trabajo</strong> (conversación y solicitudes de tarea, audiencia o reunión entre socios) usa el mismo mecanismo: los mensajes viajan en paquetes cifrados con una contraseña que solo conocen los socios, por la carpeta compartida o el Google Drive que ellos mismos eligen. EDM no recibe, no guarda ni puede leer esos mensajes. VerumIA Móvil solo muestra lo que el programa de escritorio del propio usuario ya recibió.</p>
 
     <h3>9. Módulos y funciones del programa</h3>
     <p>Además de lo descrito en los numerales anteriores, VerumIA incluye, entre otros, los siguientes módulos, todos ellos operando sobre la información almacenada localmente conforme al numeral 3 y, cuando emplean inteligencia artificial, conforme al numeral 5:</p>
@@ -441,10 +442,11 @@
     </ul>
 
     <h3>18. Servicios en la nube operados por EDM y terceros</h3>
-    <p>Además del programa, EDM Legal Especializados SAS opera tres servicios en la nube, alojados en la infraestructura de Cloudflare:</p>
+    <p>Además del programa, EDM Legal Especializados SAS opera cuatro servicios en la nube, alojados en la infraestructura de Cloudflare:</p>
     <ul>
         <li><strong>Verificación de documentos con código QR.</strong> Guarda el identificador del documento, su tipo, la huella digital SHA-256 (no el contenido), la fecha de emisión, el nombre del perito y el número de expediente, para que cualquier persona con el código pueda comprobar la autenticidad. Se conserva mientras el documento deba seguir siendo verificable.</li>
         <li><strong>Firma remota.</strong> Cuando el usuario envía un enlace para que un cliente firme a distancia, el servicio guarda de forma temporal el nombre y el número de identificación del firmante, el título del documento y, luego, la firma manuscrita. Cuando el programa del despacho descarga la firma, esos datos se borran del servicio; si nunca se descarga, se borran a más tardar siete (7) días después de crear la solicitud. El firmante da su autorización expresa en la propia página de firma, antes de firmar.</li>
+        <li><strong>Apoyo en audiencia (salas).</strong> Cuando un usuario crea una sala para asesorar a un abogado en tiempo real, este servicio guarda de forma temporal el código de la sala, un PIN de cuatro dígitos, un secreto de acceso, el resumen irreversible (hash) de la licencia que la creó, el número de mensajes enviados, y un identificador aleatorio de cada celular o navegador que ocupa un puesto en la sala. Los nombres y profesiones que escriben los participantes y los mensajes que se envían <strong>solo se transmiten entre ellos; el servicio no los guarda ni los lee</strong>. La imagen y el audio de la audiencia no pasan por EDM: viajan directamente entre los dispositivos y, si la conexión directa no es posible, cifrados por un servidor de reenvío de Cloudflare. Toda la información de la sala se borra a las 24 horas de vencer (la sala dura 6 horas) o al instante si el asesor la cierra. Del uso de salas se conserva, por cada licencia, únicamente el número de salas del mes junto con el resumen irreversible de esa licencia, para aplicar el límite mensual del plan. La conexión es cifrada (HTTPS/WSS).</li>
         <li><strong>Contador de visitas del sitio.</strong> Suma las páginas vistas. No guarda dirección IP ni instala cookies.</li>
     </ul>
     <p>Para operar el sitio y las solicitudes, EDM usa además los siguientes terceros, que tratan los datos bajo sus propias condiciones:</p>
@@ -459,7 +461,7 @@
     <p><strong>Transferencia internacional.</strong> Varios de estos terceros tratan datos en servidores fuera de Colombia. Al enviar un formulario del sitio o firmar de forma remota, la persona autoriza de manera expresa e inequívoca esa transferencia para las finalidades del numeral 2 (artículo 26 de la Ley 1581 de 2012). Si el usuario configura un proveedor externo de inteligencia artificial (numeral 5), él decide el envío y responde por él.</p>
 
     <h3>19. VerumIA Móvil (Android)</h3>
-    <p>VerumIA Móvil es la aplicación complementaria para el celular. No crea cuentas de EDM ni envía información a EDM: trabaja con el programa de escritorio del propio usuario, en su red, y con la cuenta de Google que el despacho vincule. Pide los siguientes permisos, solo cuando la persona usa la función correspondiente:</p>
+    <p>VerumIA Móvil es la aplicación complementaria para el celular. No crea cuentas de EDM: trabaja con el programa de escritorio del propio usuario, en su red, y con la cuenta de Google que el despacho vincule. <strong>La única función que se conecta a un servicio de EDM es «Apoyo en audiencia»</strong> (véase el numeral 18): al entrar a una sala, la aplicación envía a ese servicio el código de la sala, el PIN, el nombre y la profesión que la persona escribe, un identificador aleatorio del celular y los mensajes de la conversación. El servicio no guarda el contenido de los mensajes. El resto de las funciones no envía información a EDM. Pide los siguientes permisos, solo cuando la persona usa la función correspondiente:</p>
     <ul>
         <li><strong>Cámara:</strong> fotografiar documentos y evidencias y escanear códigos QR.</li>
         <li><strong>Micrófono:</strong> grabar audiencias, notas de voz y el audio de la grabación de pantalla.</li>
@@ -467,9 +469,11 @@
         <li><strong>Grabación de pantalla:</strong> solo después del aviso del sistema operativo, con una notificación visible mientras graba.</li>
         <li><strong>Red local:</strong> encontrar y comunicarse con el programa de escritorio del despacho.</li>
         <li><strong>Notificaciones y alarmas:</strong> avisos de agenda y de tareas. Los recordatorios de audiencias y vencimientos se calculan en el propio celular con la última agenda guardada (la aplicación revisa en segundo plano, cada cierto tiempo, si el programa del despacho está al alcance para actualizarla). La alarma exacta es opcional y solo se activa si la persona concede el permiso «Alarmas y recordatorios». En la pantalla bloqueada el aviso no muestra nombres de casos ni de clientes.</li>
+        <li><strong>Vibración:</strong> avisar con dos vibraciones cuando llega un mensaje durante «Apoyo en audiencia». No accede a información alguna.</li>
+        <li><strong>Mantener la pantalla encendida:</strong> mientras la persona está dentro de una sala de «Apoyo en audiencia»; no requiere permiso especial.</li>
         <li><strong>Huella, rostro o PIN del celular:</strong> bloqueo opcional de la aplicación. La aplicación solo recibe el resultado «autenticado sí o no» que entrega el sistema operativo; nunca ve la huella ni el rostro.</li>
     </ul>
-    <p>La comunicación entre la aplicación y el programa de escritorio del despacho ocurre dentro de la red local y <strong>no va cifrada</strong> (HTTP): úsala solo en redes de confianza. La aplicación no hace copia de seguridad en la nube de Google. Los expedientes, la agenda y los archivos pendientes de subir se guardan en la memoria del celular para trabajar sin conexión. Al desinstalar la aplicación o borrar sus datos, se eliminan del celular. La persona puede revocar cualquier permiso desde los ajustes de Android.</p>
+    <p>La comunicación entre la aplicación y el programa de escritorio del despacho ocurre dentro de la red local y <strong>no va cifrada</strong> (HTTP): úsala solo en redes de confianza. La aplicación no hace copia de seguridad en la nube de Google. Los expedientes, la agenda y los archivos pendientes de subir se guardan en la memoria del celular para trabajar sin conexión. Al desinstalar la aplicación o borrar sus datos, se eliminan del celular. La comunicación de «Apoyo en audiencia» con el servicio de salas va cifrada (HTTPS/WSS). La aplicación recuerda en el celular el nombre y la profesión que la persona escribió, el identificador aleatorio de este celular y el código de la última sala (hasta por 6 horas) para facilitar volver a entrar; se borran al desinstalar la aplicación o borrar sus datos. La persona puede revocar cualquier permiso desde los ajustes de Android.</p>
 
     <h3>20. Seguridad de la información</h3>
     <p>EDM aplica medidas razonables para proteger los datos que trata: servicios en la nube con acceso autenticado por despacho, claves de despacho que se guardan solo como huella criptográfica, enlaces de firma con vigencia limitada, borrado de los datos de firma una vez entregados y licencias firmadas digitalmente. En el programa, los datos viven en el equipo del usuario, quien debe protegerlo con contraseña, cifrado de disco y copias de seguridad.</p>
@@ -478,7 +482,7 @@
     <p>VerumIA y sus servicios están dirigidos a profesionales mayores de edad. EDM no recolecta a sabiendas datos de menores de 18 años. Si el usuario registra en sus expedientes datos de niños, niñas o adolescentes, es él quien responde por su tratamiento conforme a la ley (numeral 10).</p>
 
     <h3>22. Vigencia de la base de datos y de esta política</h3>
-    <p>Esta política rige desde el 14 de octubre de 2026. Los datos de contacto y de licencia se conservan mientras dure la relación con el usuario y, después, durante el tiempo necesario para atender reclamos y cumplir obligaciones legales, contables y tributarias; vencido ese plazo se suprimen o se anonimizan. Para el sitio web y sus cookies, véase la <a href="privacidad-sitio.html">Política de privacidad y cookies del sitio</a>.</p>
+    <p>Esta política rige desde el 2 de noviembre de 2026. Los datos de contacto y de licencia se conservan mientras dure la relación con el usuario y, después, durante el tiempo necesario para atender reclamos y cumplir obligaciones legales, contables y tributarias; vencido ese plazo se suprimen o se anonimizan. Para el sitio web y sus cookies, véase la <a href="privacidad-sitio.html">Política de privacidad y cookies del sitio</a>.</p>
 
     <p style="margin-top:30px;padding-top:18px;border-top:1px solid var(--borde);color:var(--texto-suave);font-size:.9rem">© 2026 Ecosistema Verum / EDM Legal. Todos los derechos reservados.</p>
 
