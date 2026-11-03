@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu consulta virtual | Ecosistema Verum</title>
+<meta name="description" content="Confirmación de tu consulta virtual con EDM Legal Especializados.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilo.css">
+<link rel="stylesheet" href="css/tema.css">
+<style>
+.compra-caja{background:var(--superficie);border:1px solid var(--borde);border-radius:var(--radio);padding:24px;margin-bottom:24px;box-shadow:var(--sombra)}
+.licencia-codigo{font-family:ui-monospace,Consolas,monospace;font-size:.95rem;line-height:1.6;word-break:break-all;background:#f1f5f9;border:1px solid var(--borde);border-radius:10px;padding:14px;margin:12px 0;user-select:all}
+.estado-compra{font-weight:600;margin:0 0 6px}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<defs>
+<symbol id="i-descarga" viewBox="0 0 24 24">
+  <path d="M12 3.5v12" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+  <path d="M7 11l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M4.5 18.5v1.5a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1v-1.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+</symbol>
+<symbol id="i-escudo" viewBox="0 0 24 24">
+  <path d="M12 3.5 19.5 6.5V11c0 5.2-3.2 8.6-7.5 9.7C7.7 19.6 4.5 16.2 4.5 11V6.5L12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M9 12l2.2 2.2L15.5 9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+<symbol id="i-ia" viewBox="0 0 24 24">
+  <circle cx="6" cy="7" r="1.9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="6" cy="17" r="1.9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="18" cy="12" r="1.9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="12" cy="12" r="2.3" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <line x1="7.7" y1="8.1" x2="10.2" y2="10.4" stroke="currentColor" stroke-width="1.4"/>
+  <line x1="7.7" y1="15.9" x2="10.2" y2="13.6" stroke="currentColor" stroke-width="1.4"/>
+  <line x1="14.3" y1="12" x2="16.1" y2="12" stroke="currentColor" stroke-width="1.4"/>
+</symbol>
+</defs>
+</svg>
+
+<header class="cabecera">
+<div class="contenedor cabecera-fila">
+    <a href="index.html" class="marca">
+        <img src="img/logo-verumia.png" alt="Ecosistema Verum">
+        <span class="marca-texto">
+            <strong>Ecosistema Verum</strong>
+            <span>EDM Legal Especializados</span>
+        </span>
+    </a>
+    <button class="nav-boton" onclick="document.getElementById('nav').classList.toggle('abierto')" aria-label="Menú">☰</button>
+    <nav class="nav" id="nav">
+        <a href="index.html">Inicio</a>
+        <a href="servicios-juridicos.html">Servicios jurídicos</a>
+        <a href="verumia.html">VerumIA</a>
+        <a href="lex-verum-pro.html">Lex Verum Pro</a>
+        <a href="verum-health.html">Verum Health</a>
+        <a href="verum-status.html">Verum Status</a>
+        <a href="libro.html">La Ingeniería de la Verdad</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="soporte.html" class="cta-nav">Contacto</a>
+    </nav>
+</div>
+</header>
+
+<section class="portada">
+<div class="contenedor">
+    <span class="portada-etiqueta">Consulta virtual</span>
+    <h1>Tu consulta <em>virtual</em></h1>
+    <p id="resumen-portada">Estamos confirmando tu pago con Wompi. No cierres esta página.</p>
+</div>
+</section>
+
+<section class="seccion seccion-clara">
+<div class="contenedor" style="max-width:760px;margin:0 auto">
+
+    <div class="compra-caja" id="caja-estado">
+        <p class="estado-compra" id="texto-estado">Confirmando tu pago…</p>
+        <p style="color:var(--texto-suave);margin:0" id="detalle-estado">Esto suele tardar unos segundos. La página se actualiza sola.</p>
+    </div>
+
+    <div class="compra-caja" id="caja-cita" hidden>
+        <h3 style="margin-top:0">Tu consulta está confirmada</h3>
+        <p style="font-size:1.15rem;margin:8px 0 4px"><strong id="cita-fecha"></strong></p>
+        <p style="margin:0 0 14px;color:var(--texto-suave)">Hora de Colombia · 50 minutos por videollamada</p>
+
+        <a id="cita-meet" class="boton boton-navy" href="#" target="_blank" rel="noopener" hidden style="display:inline-block">Abrir la videollamada (Google Meet)</a>
+        <p id="cita-sin-meet" style="margin:0" hidden>Estamos terminando de agendar tu cita. Te llegará la invitación de Google Calendar con el enlace de la videollamada a tu correo en unos minutos.</p>
+
+        <h3 style="margin-top:26px">Qué sigue</h3>
+        <ul>
+            <li>Te enviamos la invitación de Google Calendar y un correo de confirmación con el enlace.</li>
+            <li>Ingresa unos minutos antes, desde un lugar tranquilo y con buena conexión.</li>
+            <li>Ten a la mano los documentos relacionados con tu caso.</li>
+            <li>Si necesitas cancelar o reprogramar, escríbenos por WhatsApp o responde el correo de confirmación, con la mayor anticipación posible.</li>
+        </ul>
+        <p style="color:var(--texto-suave);font-size:.9rem">Guarda el enlace de esta página: aquí puedes volver a ver los datos de tu cita.</p>
+    </div>
+
+    <div class="compra-caja" id="caja-ayuda" hidden>
+        <p style="margin:0">Si ya pagaste y necesitas ayuda, escríbenos por
+        <a href="https://wa.me/573202413579" target="_blank" rel="noopener">WhatsApp +57 320 241 3579</a> con el código de referencia
+        <strong id="ref-visible"></strong> y lo resolvemos.</p>
+    </div>
+
+</div>
+</section>
+
+<footer class="pie">
+<div class="contenedor">
+    <div class="pie-rejilla">
+        <div>
+            <h4>Ecosistema Verum</h4>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Perfil profesional</a></li>
+                <li><a href="libro.html">La Ingeniería de la Verdad</a></li>
+                <li><a href="perito-medico.html">Perito médico</a></li>
+                <li><a href="abogado-derecho-medico.html">Abogado en derecho médico</a></li>
+                <li><a href="soporte.html">Soporte y contacto</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Aplicaciones</h4>
+            <ul>
+                <li><a href="verumia.html">VerumIA</a></li>
+                <li><a href="lex-verum-pro.html">Lex Verum Pro</a></li>
+                <li><a href="verum-health.html">Verum Health</a></li>
+                <li><a href="verum-status.html">Verum Status</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="privacidad-verumia.html">Privacidad — VerumIA</a></li>
+                <li><a href="privacidad-sitio.html">Privacidad y cookies del sitio</a></li>
+                <li><a href="terminos.html">Términos de uso</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contacto</h4>
+            <ul>
+                <li><a href="mailto:edmlegal.especializados@gmail.com">edmlegal.especializados@gmail.com</a></li>
+                <li><a href="https://wa.me/573202413579" target="_blank" rel="noopener">WhatsApp +57 320 241 3579</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="pie-abajo">
+        <span>© 2026 Ecosistema Verum / EDM Legal Especializados SAS. Todos los derechos reservados.</span>
+        <span>Colombia</span>
+    </div>
+</div>
+</footer>
+<script>
+(function () {
+    var API = "https://verumia-ventas.eduardodelahozm.workers.dev";
+    var ref = new URLSearchParams(window.location.search).get("ref") || "";
+    var texto = document.getElementById("texto-estado");
+    var detalle = document.getElementById("detalle-estado");
+    var portada = document.getElementById("resumen-portada");
+    var intentos = 0, maximo = 120; // 120 consultas cada 3 s = 6 minutos
+
+    function mayuscula(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
+
+    function mostrarAyuda() {
+        document.getElementById("ref-visible").textContent = ref;
+        document.getElementById("caja-ayuda").hidden = false;
+    }
+
+    if (!/^CON-[0-9a-f]{32}$/.test(ref)) {
+        texto.textContent = "No encontramos tu reserva.";
+        detalle.textContent = "El enlace no es válido. Si pagaste, escríbenos por WhatsApp y te ayudamos.";
+        portada.textContent = "Enlace no válido.";
+        document.getElementById("caja-ayuda").hidden = false;
+        return;
+    }
+
+    function citaLista(d) {
+        document.getElementById("caja-estado").hidden = true;
+        document.getElementById("cita-fecha").textContent = mayuscula(d.etiqueta);
+        var enlace = document.getElementById("cita-meet");
+        if (d.meet_url && /^https:\/\/meet\.google\.com\//.test(d.meet_url)) {
+            enlace.href = d.meet_url; enlace.hidden = false;
+        } else {
+            document.getElementById("cita-sin-meet").hidden = false;
+        }
+        document.getElementById("caja-cita").hidden = false;
+        portada.textContent = "Pago confirmado. Tu consulta quedó agendada.";
+        mostrarAyuda();
+    }
+
+    function consultar() {
+        intentos++;
+        fetch(API + "/v1/consulta/estado?ref=" + encodeURIComponent(ref), { cache: "no-store" })
+            .then(function (r) { return r.json(); })
+            .then(function (d) {
+                if (d.estado === "pagado") {
+                    if (d.agendada || intentos >= 20) return citaLista(d);   // si la cita tarda, se muestra igual con el aviso
+                    detalle.textContent = "Pago confirmado. Estamos agendando tu cita…";
+                } else if (d.estado === "revisar") {
+                    texto.textContent = "Estamos revisando tu reserva.";
+                    detalle.textContent = "Tu pago se recibió, pero necesitamos confirmar el horario contigo. Escríbenos por WhatsApp con tu código de referencia y lo resolvemos hoy mismo.";
+                    portada.textContent = "Tu reserva está en revisión.";
+                    return mostrarAyuda();
+                } else if (d.pasarela === "DECLINED" || d.pasarela === "ERROR" || d.pasarela === "VOIDED") {
+                    texto.textContent = "El pago no fue aprobado.";
+                    detalle.innerHTML = 'No se hizo ningún cobro. <a href="servicios-juridicos.html#consulta-virtual">Volver a intentarlo</a>.';
+                    portada.textContent = "El pago no se completó.";
+                    return;
+                } else if (intentos >= maximo) {
+                    texto.textContent = "Aún no vemos la confirmación del pago.";
+                    detalle.textContent = "Si ya pagaste, puede tardar unos minutos más: recarga esta página en un rato.";
+                    return mostrarAyuda();
+                }
+                setTimeout(consultar, 3000);
+            })
+            .catch(function () {
+                if (intentos >= maximo) { mostrarAyuda(); return; }
+                setTimeout(consultar, 5000);
+            });
+    }
+
+    consultar();
+})();
+</script>
+<script src="js/interactivo.js" defer></script>
+</body>
+</html>

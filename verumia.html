@@ -344,6 +344,7 @@
         <div class="botones">
             <button type="button" id="demo-boton-abrir" class="boton boton-oro" style="cursor:pointer;border:none;font-family:inherit;font-size:inherit">Descargar demo gratis (Windows)</button>
             <a href="acceso-anticipado-app-movil.html" class="boton boton-linea">Probar la app móvil (Android)</a>
+            <a href="#comprar" class="boton boton-linea">Comprar licencia</a>
             <a href="https://wa.me/573202413579?text=Hola,%20quiero%20solicitar%20una%20demo%20gratis%20de%20VerumIA" class="boton boton-linea" target="_blank" rel="noopener">Solicitar por WhatsApp</a>
         </div>
         <p class="version-descarga">Versión <strong data-version-descarga>1.3.6</strong> para Windows · al descargar eliges la liviana (cerca de 0,5 GB) o la completa (cerca de 1,5 GB)</p>
@@ -1251,7 +1252,7 @@
     <div class="seccion-titulo">
         <div class="linea-oro"></div>
         <h2>Calcula tu licencia</h2>
-        <p>Indica cuántos equipos necesitas y por cuánto tiempo — el precio por equipo se ajusta solo, más bajo entre más equipos pidas.</p>
+        <p>Indica cuántos equipos necesitas y por cuánto tiempo — el precio por equipo se ajusta solo, más bajo entre más equipos pidas. Todos los precios son en pesos colombianos (COP) e <strong>incluyen IVA</strong>.</p>
     </div>
 
     <div class="calculadora-precio">
@@ -1344,10 +1345,149 @@
     </div>
 
     <p style="text-align:center;color:var(--texto-suave);font-size:.85rem;margin-top:18px">
-        Precios de referencia en pesos colombianos (COP). El vendedor confirma el valor final al recibir tu solicitud.
+        Precios en pesos colombianos (COP), IVA incluido. Para <strong>1 equipo</strong> puedes comprar y recibir tu licencia al instante en el bloque «Compra en línea» de abajo. Para <strong>2 o más equipos</strong>, solicita la cotización: el vendedor te confirma el valor y te entrega las licencias.
     </p>
+
+    <div id="comprar" class="calculadora-precio" style="margin-top:36px;scroll-margin-top:90px">
+        <div class="calculadora-controles">
+            <h3 style="margin:0 0 6px">Compra en línea · 1 equipo</h3>
+            <p style="font-size:.9rem;color:var(--texto-suave);margin:0 0 10px">Paga con Wompi y recibe tu licencia en la pantalla al instante. Precio final con IVA incluido. Para varios equipos, usa la cotización de arriba.</p>
+
+            <div style="margin:0 0 14px">
+                <span style="display:block;font-size:.78rem;color:var(--texto-suave);margin-bottom:6px">Medios de pago disponibles en Wompi</span>
+                <div class="medios-pago" style="display:flex;flex-wrap:wrap;gap:6px">
+                    <span>Tarjetas débito y crédito</span>
+                    <span>PSE</span>
+                    <span>Nequi</span>
+                    <span>DaviPlata</span>
+                    <span>Botón Bancolombia</span>
+                    <span>Bancolombia QR</span>
+                    <span>Compra y Paga Después Bancolombia</span>
+                    <span>SU+Pay</span>
+                </div>
+            </div>
+            <style>
+                .medios-pago span{display:inline-block;padding:4px 10px;border:1px solid var(--borde);border-radius:999px;background:var(--superficie,#fff);font-size:.78rem;font-weight:600;color:var(--texto)}
+            </style>
+
+            <label for="compra-plan">
+                Duración de la licencia
+                <select id="compra-plan">
+                    <option value="trimestral">Trimestral — $440.000</option>
+                    <option value="semestral">Semestral — $735.000</option>
+                    <option value="anual" selected>Anual — $1.320.000</option>
+                </select>
+            </label>
+
+            <label for="compra-huella">
+                Huella de tu equipo <span style="color:#b91c1c">*</span>
+                <input type="text" id="compra-huella" placeholder="32 caracteres (cópiala desde VerumIA)" autocomplete="off" spellcheck="false" maxlength="48">
+                <span style="display:block;font-size:.78rem;color:var(--texto-suave);margin-top:2px">La licencia solo funcionará en el equipo con esta huella. Revísala bien antes de pagar.</span>
+            </label>
+
+            <label for="compra-correo">
+                Tu correo <span style="color:#b91c1c">*</span>
+                <input type="email" id="compra-correo" placeholder="tu@correo.com" autocomplete="email">
+            </label>
+
+            <label for="compra-acepto" style="display:flex;gap:8px;align-items:flex-start;font-size:.84rem;line-height:1.35;font-weight:400;color:var(--texto);margin-top:10px">
+                <input type="checkbox" id="compra-acepto" style="margin-top:3px">
+                <span>Autorizo a EDM Legal Especializados SAS (NIT 901.551.688) a tratar la huella de mi equipo y mi correo para emitir y entregar mi licencia, según la <a href="privacidad-verumia.html" target="_blank" rel="noopener">Política de Privacidad</a>, y acepto los <a href="terminos.html#compra-en-linea" target="_blank" rel="noopener">Términos de uso y condiciones de compra en línea</a>. <span style="color:#b91c1c">*</span></span>
+            </label>
+
+            <label for="compra-ejecucion" style="display:flex;gap:8px;align-items:flex-start;font-size:.84rem;line-height:1.35;font-weight:400;color:var(--texto);margin-top:10px">
+                <input type="checkbox" id="compra-ejecucion" style="margin-top:3px">
+                <span>Solicito que mi licencia se entregue y comience a regir de inmediato al confirmarse el pago, y entiendo que, por tratarse de un servicio cuya prestación comienza con mi acuerdo, una vez entregada <strong>no procede el derecho de retracto</strong> (art. 47, Ley 1480 de 2011). <span style="color:#b91c1c">*</span></span>
+            </label>
+        </div>
+
+        <div class="calculadora-resultado">
+            <div style="background:#f1f5f9;border:1px solid var(--borde);border-radius:10px;padding:12px 14px;margin-bottom:12px;font-size:.9rem">
+                <strong>Resumen de tu pedido</strong>
+                <div id="compra-resumen" style="margin-top:4px;line-height:1.5"></div>
+            </div>
+            <p id="compra-mensaje" style="font-size:.9rem;min-height:1.4em;color:#b91c1c;margin:0 0 10px"></p>
+            <button id="compra-boton" type="button" class="boton boton-oro" style="width:100%;text-align:center;cursor:pointer;border:none;font-family:inherit">
+                Pagar con Wompi
+            </button>
+            <p style="font-size:.8rem;color:var(--texto-suave);margin-top:10px">Serás llevado a la página segura de Wompi para pagar. No guardamos datos de tu tarjeta.</p>
+        </div>
+    </div>
 </div>
 </section>
+
+<script>
+(function () {
+    var API = "https://verumia-ventas.eduardodelahozm.workers.dev";
+    var boton = document.getElementById("compra-boton");
+    var mensaje = document.getElementById("compra-mensaje");
+    if (!boton) return;
+
+    // Los botones «Comprar licencia» bajan al bloque de compra. Como la página termina de cargar imágenes mientras
+    // baja (y cambia la altura), el desplazamiento suave puede quedarse corto: se reajusta hasta quedar en el bloque.
+    function irAlBloqueDeCompra(evento) {
+        var bloque = document.getElementById("comprar");
+        if (!bloque) return;
+        if (evento) evento.preventDefault();
+        // El bloque está muy abajo (decenas de miles de píxeles): un desplazamiento suave tan largo no termina de
+        // forma confiable, así que se salta directo y se reajusta mientras terminan de cargar las imágenes.
+        var intentos = 0;
+        (function acercar() {
+            bloque.scrollIntoView({ behavior: "instant", block: "start" });
+            intentos++;
+            if (intentos < 4) setTimeout(acercar, 500);
+        })();
+        if (history.replaceState) history.replaceState(null, "", "#comprar");
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('a[href="#comprar"]'), function (enlace) {
+        enlace.addEventListener("click", irAlBloqueDeCompra);
+    });
+
+    // Resumen del pedido (precios finales con IVA incluido; deben coincidir con el Worker de ventas)
+    var PLANES = { trimestral: { precio: "$440.000", plazo: "3 meses" }, semestral: { precio: "$735.000", plazo: "6 meses" }, anual: { precio: "$1.320.000", plazo: "12 meses" } };
+    var selectorPlan = document.getElementById("compra-plan");
+    function pintarResumen() {
+        var p = PLANES[selectorPlan.value];
+        document.getElementById("compra-resumen").innerHTML =
+            "Licencia de VerumIA <strong>" + selectorPlan.value + "</strong> · 1 equipo<br>" +
+            "Total a pagar: <strong>" + p.precio + " COP</strong> (IVA incluido)<br>" +
+            "Entrega: inmediata, en pantalla, al confirmarse el pago<br>" +
+            "Vigencia: " + p.plazo + " desde la fecha del pago";
+    }
+    selectorPlan.addEventListener("change", pintarResumen);
+    pintarResumen();
+
+    boton.addEventListener("click", function () {
+        var huella = document.getElementById("compra-huella").value.replace(/[^0-9a-fA-F]/g, "");
+        var correo = document.getElementById("compra-correo").value.trim();
+        mensaje.textContent = "";
+
+        if (huella.length !== 32) { mensaje.textContent = "La huella debe tener 32 caracteres (letras A–F y números). Cópiala desde VerumIA."; return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) { mensaje.textContent = "Escribe un correo válido."; return; }
+        if (!document.getElementById("compra-acepto").checked) { mensaje.textContent = "Debes aceptar la autorización de datos y los términos."; return; }
+        if (!document.getElementById("compra-ejecucion").checked) { mensaje.textContent = "Debes confirmar que solicitas la entrega inmediata de la licencia."; return; }
+
+        boton.disabled = true;
+        boton.textContent = "Preparando tu pago…";
+
+        fetch(API + "/v1/compra/crear", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ huella: huella, plan: document.getElementById("compra-plan").value, correo: correo, acepta: true, acepta_ejecucion: true, terminos: "2026-10-30" })
+        })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+            if (res.ok && res.d.url_pago) { window.location.href = res.d.url_pago; return; }
+            mensaje.textContent = (res.d && res.d.error) || "No pudimos preparar el pago. Inténtalo de nuevo o escríbenos por WhatsApp.";
+            boton.disabled = false; boton.textContent = "Pagar con Wompi";
+        })
+        .catch(function () {
+            mensaje.textContent = "No pudimos conectar. Revisa tu internet o escríbenos por WhatsApp.";
+            boton.disabled = false; boton.textContent = "Pagar con Wompi";
+        });
+    });
+})();
+</script>
 
 <section class="seccion" id="movil">
 <div class="contenedor">

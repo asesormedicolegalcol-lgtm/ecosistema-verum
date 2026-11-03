@@ -325,7 +325,8 @@
         <h1>Abogados y peritos con <em>doble formación</em> en medicina y derecho</h1>
         <p>Una firma boutique con atención presencial en Cúcuta, Bogotá y Soacha, y virtual en toda Colombia: responsabilidad médica, dictámenes periciales y PCL, derecho administrativo, penal, disciplinario y ética médica, civil, familia, laboral y seguros.</p>
         <div class="botones" style="margin-top:26px">
-            <a href="#solicitar" class="boton boton-oro">Solicitar información</a>
+            <a href="#consulta-virtual" class="boton boton-oro">Agendar consulta virtual · $250.000</a>
+            <a href="#solicitar" class="boton boton-linea">Solicitar información</a>
             <a href="https://wa.me/573202413579?text=Hola%2C%20quiero%20una%20asesor%C3%ADa%20jur%C3%ADdica" class="boton boton-linea" target="_blank" rel="noopener">WhatsApp 320 241 3579</a>
         </div>
         <ul class="cifras-hero">
@@ -538,6 +539,216 @@
     </div>
 </div>
 </section>
+
+<section class="seccion" id="consulta-virtual">
+<div class="contenedor">
+    <div class="seccion-titulo">
+        <div class="linea-oro"></div>
+        <h2>Consulta virtual</h2>
+        <p>Una cita de 50 minutos por videollamada (Google Meet) con nuestro equipo, para que cuentes tu caso y salgas con una orientación clara. Eliges el día y la hora, pagas en línea y recibes la invitación en tu correo.</p>
+    </div>
+
+    <div class="consulta-caja">
+
+        <div class="consulta-izquierda">
+
+            <h3 class="consulta-paso"><span>1</span> Elige el día y la hora</h3>
+            <p id="consulta-estado-agenda" class="consulta-ayuda">Cargando horarios disponibles…</p>
+
+            <div id="consulta-selector" hidden>
+                <label for="consulta-dia" class="consulta-etiqueta">Día</label>
+                <select id="consulta-dia"></select>
+                <span class="consulta-etiqueta" style="margin-top:14px">Hora (hora de Colombia)</span>
+                <div id="consulta-horas" class="consulta-horas" role="group" aria-label="Horarios disponibles"></div>
+            </div>
+
+            <h3 class="consulta-paso" style="margin-top:28px"><span>2</span> Tus datos</h3>
+
+            <label for="consulta-nombre" class="consulta-etiqueta">Nombre completo <span class="obligatorio">*</span></label>
+            <input type="text" id="consulta-nombre" autocomplete="name" maxlength="80">
+
+            <label for="consulta-telefono" class="consulta-etiqueta">Celular o WhatsApp <span class="obligatorio">*</span></label>
+            <input type="tel" id="consulta-telefono" inputmode="tel" autocomplete="tel" placeholder="Ej.: 3001234567" maxlength="20">
+
+            <label for="consulta-correo" class="consulta-etiqueta">Correo electrónico <span class="obligatorio">*</span></label>
+            <input type="email" id="consulta-correo" autocomplete="email" placeholder="Allí llegará la invitación de Google Meet">
+
+            <label for="consulta-motivo" class="consulta-etiqueta">¿Sobre qué quieres consultar? (opcional)</label>
+            <textarea id="consulta-motivo" rows="3" maxlength="300" placeholder="Una o dos líneas. No escribas datos clínicos detallados ni envíes documentos aquí; los revisamos en la consulta."></textarea>
+
+            <label class="consulta-acepto">
+                <input type="checkbox" id="consulta-acepto">
+                <span>Autorizo a EDM Legal Especializados SAS (NIT 901.551.688) a tratar mi nombre, celular, correo y el motivo de la consulta para agendarla, atenderla y contactarme, según la <a href="privacidad-sitio.html" target="_blank" rel="noopener">Política de Privacidad</a> (Ley 1581 de 2012), y acepto los <a href="terminos.html#consulta-virtual" target="_blank" rel="noopener">términos de la consulta virtual</a>. <span class="obligatorio">*</span></span>
+            </label>
+        </div>
+
+        <aside class="consulta-derecha">
+            <div class="consulta-resumen">
+                <strong>Resumen de tu consulta</strong>
+                <div id="consulta-resumen" class="consulta-resumen-texto">Elige un día y una hora para ver el resumen.</div>
+            </div>
+
+            <p id="consulta-mensaje" class="consulta-mensaje" role="alert"></p>
+
+            <button id="consulta-pagar" type="button" class="boton boton-oro" disabled>Reservar y pagar con Wompi</button>
+
+            <p class="consulta-ayuda" style="margin-top:12px">Al pulsar, el horario queda reservado para ti durante 15 minutos mientras pagas en la página segura de Wompi. No guardamos datos de tu tarjeta.</p>
+
+            <div class="medios-pago" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
+                <span>Tarjetas</span><span>PSE</span><span>Nequi</span><span>DaviPlata</span><span>Botón Bancolombia</span><span>Bancolombia QR</span>
+            </div>
+
+            <p class="consulta-ayuda" style="margin-top:14px">¿Necesitas otro horario o prefieres atención presencial? Escríbenos por <a href="https://wa.me/573202413579?text=Hola%2C%20quiero%20agendar%20una%20consulta" target="_blank" rel="noopener">WhatsApp</a>.</p>
+        </aside>
+
+    </div>
+</div>
+</section>
+
+<style>
+#consulta-virtual .consulta-caja{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;background:var(--superficie,#fff);border:1px solid var(--borde,#d9dee8);border-radius:var(--radio,16px);padding:28px;box-shadow:var(--sombra,0 6px 24px rgba(11,31,59,.08))}
+#consulta-virtual .consulta-paso{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:1.05rem}
+#consulta-virtual .consulta-paso span{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--marca-oscuro,#0b1f3b);color:#fff;font-size:.9rem;font-weight:700}
+#consulta-virtual .consulta-etiqueta{display:block;margin:12px 0 5px;font-weight:600;font-size:.9rem;color:#0b1f3b}
+#consulta-virtual input[type=text],#consulta-virtual input[type=tel],#consulta-virtual input[type=email],#consulta-virtual select,#consulta-virtual textarea{width:100%;font:inherit;font-weight:400;padding:11px 13px;border:1px solid #c4ccda;border-radius:10px;background:#fff;box-sizing:border-box}
+#consulta-virtual .consulta-ayuda{font-size:.84rem;color:var(--texto-suave,#5b6577);margin:6px 0 0;line-height:1.45}
+#consulta-virtual .consulta-horas{display:flex;flex-wrap:wrap;gap:8px}
+#consulta-virtual .consulta-horas button{font:inherit;font-weight:600;padding:9px 14px;border:1px solid #c4ccda;border-radius:999px;background:#fff;color:#0b1f3b;cursor:pointer}
+#consulta-virtual .consulta-horas button:hover{border-color:#0b1f3b}
+#consulta-virtual .consulta-horas button[aria-pressed=true]{background:#0b1f3b;border-color:#0b1f3b;color:#fff}
+#consulta-virtual .consulta-acepto{display:flex;gap:8px;align-items:flex-start;margin-top:16px;font-size:.84rem;line-height:1.4;font-weight:400}
+#consulta-virtual .consulta-acepto input{margin-top:3px}
+#consulta-virtual .obligatorio{color:#b91c1c}
+#consulta-virtual .consulta-derecha{background:#fbf6e6;border:1px solid #efe3b8;border-radius:14px;padding:20px;align-self:start}
+#consulta-virtual .consulta-resumen{background:#fff;border:1px solid var(--borde,#d9dee8);border-radius:10px;padding:12px 14px;margin-bottom:12px;font-size:.92rem}
+#consulta-virtual .consulta-resumen-texto{margin-top:6px;line-height:1.55}
+#consulta-virtual .consulta-mensaje{font-size:.9rem;min-height:1.3em;color:#b91c1c;margin:0 0 10px}
+#consulta-virtual #consulta-pagar{width:100%;text-align:center;cursor:pointer;border:none;font-family:inherit}
+#consulta-virtual #consulta-pagar:disabled{opacity:.55;cursor:not-allowed}
+#consulta-virtual .medios-pago span{display:inline-block;padding:4px 10px;border:1px solid var(--borde,#d9dee8);border-radius:999px;background:#fff;font-size:.78rem;font-weight:600}
+@media (max-width:820px){#consulta-virtual .consulta-caja{grid-template-columns:1fr;padding:20px}}
+</style>
+
+<script>
+(function () {
+    var API = "https://verumia-ventas.eduardodelahozm.workers.dev";
+    var TERMINOS = "2026-10-30";
+    var PRECIO = "$250.000";
+
+    var estadoAgenda = document.getElementById("consulta-estado-agenda");
+    var selector = document.getElementById("consulta-selector");
+    var selectorDia = document.getElementById("consulta-dia");
+    var contenedorHoras = document.getElementById("consulta-horas");
+    var resumen = document.getElementById("consulta-resumen");
+    var mensaje = document.getElementById("consulta-mensaje");
+    var botonPagar = document.getElementById("consulta-pagar");
+    if (!botonPagar) return;
+
+    var dias = [];
+    var elegido = null;     // { inicio, etiqueta }
+
+    function mayuscula(texto) { return texto.charAt(0).toUpperCase() + texto.slice(1); }
+
+    function pintarResumen() {
+        if (!elegido) { resumen.textContent = "Elige un día y una hora para ver el resumen."; botonPagar.disabled = true; return; }
+        resumen.innerHTML = "Consulta virtual por videollamada (Google Meet)<br>" +
+            "<strong>" + mayuscula(elegido.etiqueta) + "</strong> (hora de Colombia)<br>" +
+            "Duración: 50 minutos<br>" +
+            "Total a pagar: <strong>" + PRECIO + " COP</strong> (IVA incluido)";
+        botonPagar.disabled = false;
+    }
+
+    function pintarHoras(indice) {
+        contenedorHoras.innerHTML = "";
+        var dia = dias[indice];
+        if (!dia) return;
+        dia.horarios.forEach(function (h) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.textContent = h.hora;
+            b.setAttribute("aria-pressed", elegido && elegido.inicio === h.inicio ? "true" : "false");
+            b.addEventListener("click", function () {
+                elegido = { inicio: h.inicio, etiqueta: dia.etiqueta + ", " + h.hora };
+                Array.prototype.forEach.call(contenedorHoras.children, function (x) { x.setAttribute("aria-pressed", "false"); });
+                b.setAttribute("aria-pressed", "true");
+                mensaje.textContent = "";
+                pintarResumen();
+            });
+            contenedorHoras.appendChild(b);
+        });
+    }
+
+    function cargarAgenda() {
+        estadoAgenda.hidden = false;
+        estadoAgenda.textContent = "Cargando horarios disponibles…";
+        selector.hidden = true;
+
+        fetch(API + "/v1/consulta/disponibilidad", { cache: "no-store" })
+            .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+            .then(function (res) {
+                if (!res.ok) throw new Error((res.d && res.d.error) || "agenda");
+                dias = res.d.dias || [];
+                if (!dias.length) { estadoAgenda.textContent = "Por ahora no hay horarios libres en los próximos días. Escríbenos por WhatsApp y te ayudamos a coordinar."; return; }
+                estadoAgenda.hidden = true;
+                selectorDia.innerHTML = "";
+                dias.forEach(function (d, i) {
+                    var o = document.createElement("option");
+                    o.value = String(i);
+                    o.textContent = mayuscula(d.etiqueta);
+                    selectorDia.appendChild(o);
+                });
+                selector.hidden = false;
+                elegido = null;
+                pintarHoras(0);
+                pintarResumen();
+            })
+            .catch(function () {
+                estadoAgenda.textContent = "No pudimos cargar la agenda en este momento. Inténtalo de nuevo en unos minutos o escríbenos por WhatsApp.";
+            });
+    }
+
+    selectorDia.addEventListener("change", function () { elegido = null; pintarHoras(Number(selectorDia.value)); pintarResumen(); });
+
+    botonPagar.addEventListener("click", function () {
+        mensaje.textContent = "";
+        var nombre = document.getElementById("consulta-nombre").value.trim();
+        var telefono = document.getElementById("consulta-telefono").value.trim();
+        var correo = document.getElementById("consulta-correo").value.trim();
+
+        if (!elegido) { mensaje.textContent = "Elige un día y una hora."; return; }
+        if (nombre.length < 3) { mensaje.textContent = "Escribe tu nombre completo."; return; }
+        if (telefono.replace(/\D/g, "").length < 7) { mensaje.textContent = "Escribe un número de celular válido."; return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) { mensaje.textContent = "Escribe un correo válido."; return; }
+        if (!document.getElementById("consulta-acepto").checked) { mensaje.textContent = "Debes aceptar la autorización de datos y los términos."; return; }
+
+        botonPagar.disabled = true;
+        botonPagar.textContent = "Reservando tu horario…";
+
+        fetch(API + "/v1/consulta/reservar", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                inicio: elegido.inicio, nombre: nombre, telefono: telefono, correo: correo,
+                motivo: document.getElementById("consulta-motivo").value.trim(), acepta: true, terminos: TERMINOS
+            })
+        })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, estado: r.status, d: d }; }); })
+        .then(function (res) {
+            if (res.ok && res.d.url_pago) { window.location.href = res.d.url_pago; return; }
+            mensaje.textContent = (res.d && res.d.error) || "No pudimos reservar el horario. Inténtalo de nuevo o escríbenos por WhatsApp.";
+            botonPagar.textContent = "Reservar y pagar con Wompi";
+            if (res.estado === 409) cargarAgenda(); else botonPagar.disabled = false;
+        })
+        .catch(function () {
+            mensaje.textContent = "No pudimos conectar. Revisa tu internet o escríbenos por WhatsApp.";
+            botonPagar.textContent = "Reservar y pagar con Wompi";
+            botonPagar.disabled = false;
+        });
+    });
+
+    cargarAgenda();
+})();
+</script>
 
 <section class="seccion seccion-clara" id="solicitar">
 <div class="contenedor">
