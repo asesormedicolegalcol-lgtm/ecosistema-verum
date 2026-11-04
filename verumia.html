@@ -1457,6 +1457,21 @@
     selectorPlan.addEventListener("change", pintarResumen);
     pintarResumen();
 
+    // Los precios reales los fija el Worker de ventas (única fuente); lo escrito arriba es la copia por si no hay conexión.
+    window.PRECIOS_VIVOS = fetch(API + "/v1/precios").then(function (r) { return r.ok ? r.json() : null; }).then(function (datos) {
+        if (!datos || !datos.planes) return null;
+        var formato = new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 });
+        var etiquetas = { trimestral: "Trimestral", semestral: "Semestral", anual: "Anual" };
+        datos.planes.forEach(function (p) {
+            if (!PLANES[p.id] || !(p.pesos > 0)) return;
+            PLANES[p.id].precio = formato.format(p.pesos);
+            var opcion = selectorPlan.querySelector('option[value="' + p.id + '"]');
+            if (opcion) opcion.textContent = etiquetas[p.id] + " — " + PLANES[p.id].precio;
+        });
+        pintarResumen();
+        return datos;
+    }).catch(function () { return null; });
+
     boton.addEventListener("click", function () {
         var huella = document.getElementById("compra-huella").value.replace(/[^0-9a-fA-F]/g, "");
         var correo = document.getElementById("compra-correo").value.trim();
@@ -1634,6 +1649,12 @@
     };
 
     var NOMBRES_PLAZO = { trimestral: "trimestral", semestral: "semestral", anual: "anual" };
+
+    // El precio de 1 equipo lo fija el Worker de ventas; el resto de la tabla (varios equipos) es solo de este sitio.
+    (window.PRECIOS_VIVOS || Promise.resolve(null)).then(function (datos) {
+        if (!datos) return;
+        datos.planes.forEach(function (p) { if (TABLA_PRECIOS[p.id] && p.pesos > 0) TABLA_PRECIOS[p.id][1] = p.pesos; });
+    });
 
     var formatoCOP = new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 });
 
