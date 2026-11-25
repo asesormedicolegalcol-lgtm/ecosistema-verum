@@ -273,7 +273,12 @@ async function confirmarFirma() {
         const r = await fetchConLimite(`${API_URL}/firmas/${encodeURIComponent(token)}/firmar`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ firma_base64: firmaBase64 }),
+            // Se envía la aceptación con el texto EXACTO que la persona vio, para poder probar después
+            // a qué dio su consentimiento. El servicio la exige.
+            body: JSON.stringify({
+                firma_base64: firmaBase64,
+                autorizacion: { aceptada: $("autorizo").checked, texto: textoDeLaAutorizacion() },
+            }),
         }, SEGUNDOS_LIMITE_ENVIO);
 
         if (r.ok) {
@@ -300,6 +305,12 @@ async function confirmarFirma() {
 
 // Si un intento anterior falló o se cortó, un «enlace ya usado» significa que sí había llegado.
 let intentoPrevio = false;
+
+// Texto literal de la autorización que la persona acepta al marcar la casilla.
+function textoDeLaAutorizacion() {
+    const el = document.querySelector('label[for="autorizo"] span');
+    return el ? el.textContent.replace(/\s+/g, " ").trim() : "";
+}
 
 // Reduce el ancho de la imagen (la firma conserva su proporción y la transparencia).
 function imagenDeLaFirma() {
