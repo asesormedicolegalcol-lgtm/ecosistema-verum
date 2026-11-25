@@ -96,6 +96,25 @@ const $ = (id) => document.getElementById(id);
 const estado = $("estado");
 const token = new URLSearchParams(location.search).get("token") || "";
 
+// Con señal débil una petición puede quedarse esperando para siempre: se corta a los
+// pocos segundos y se le dice a la persona qué hacer, en vez de dejar «Enviando...» eterno.
+const SEGUNDOS_LIMITE_CONSULTA = 20;
+const SEGUNDOS_LIMITE_ENVIO = 40;
+
+// Ancho máximo (px) de la imagen de la firma que se sube: de sobra para el documento y
+// mucho más liviana de enviar con datos móviles.
+const ANCHO_MAXIMO_FIRMA = 700;
+
+async function fetchConLimite(url, opciones, segundos) {
+    const control = new AbortController();
+    const temporizador = setTimeout(() => control.abort(), segundos * 1000);
+    try {
+        return await fetch(url, { ...opciones, signal: control.signal });
+    } finally {
+        clearTimeout(temporizador);
+    }
+}
+
 function mostrarError(mensaje) {
     estado.hidden = false;
     estado.textContent = mensaje;
@@ -111,9 +130,9 @@ async function cargarContexto() {
 
     let r;
     try {
-        r = await fetch(`${API_URL}/firmas/${encodeURIComponent(token)}`);
+        r = await fetchConLimite(`${API_URL}/firmas/${encodeURIComponent(token)}`, {}, SEGUNDOS_LIMITE_CONSULTA);
     } catch {
-        return mostrarError("No se pudo contactar el servicio de firma. Intenta de nuevo más tarde.");
+        return mostrarError("No se pudo contactar el servicio de firma. Revisa tu conexión (cambia entre Wi-Fi y datos móviles, o desactiva la VPN) y recarga esta página. El enlace sigue vigente.");
     }
 
     if (r.status === 404) {
@@ -224,41 +243,83 @@ async function confirmarFirma() {
     boton.disabled = true;
     boton.textContent = "Enviando...";
 
-    const firmaBase64 = $("lienzo").toDataURL("image/png");
+    const aviso = setTimeout(() => {
+        boton.textContent = "Enviando... (la señal está lenta, espera un momento)";
+    }, 12000);
 
-    try {
+    const firmaBase64 = imagenDeLaFirma();
 
-        const r = await fetch(`${API_URL}/firmas/${encodeURIComponent(token)}/firmar`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ firma_base64: firmaBase64 }),
-        });
+    const resultado = $("resultado");
 
-        const resultado = $("resultado");
+    function firmaRecibida(texto) {
         resultado.hidden = false;
+        resultado.className = "firma-resultado firma-ok";
+        resultado.textContent = texto;
+        $("lienzo").style.display = "none";
+        document.querySelector(".firma-botones").style.display = "none";
+    }
 
-        if (r.ok) {
-            resultado.className = "firma-resultado firma-ok";
-            resultado.textContent = "✓ Firma enviada correctamente. Ya puedes cerrar esta página.";
-            $("lienzo").style.display = "none";
-            document.querySelector(".firma-botones").style.display = "none";
-        } else {
-            const d = await r.json().catch(() => ({}));
-            resultado.className = "firma-resultado firma-mal";
-            resultado.textContent = d.error || "No se pudo enviar la firma. Intenta de nuevo.";
-            boton.disabled = false;
-            boton.textContent = "Confirmar firma";
-        }
-
-    } catch {
-        const resultado = $("resultado");
+    function falloReintentable(texto) {
+        intentoPrevio = true;
         resultado.hidden = false;
         resultado.className = "firma-resultado firma-mal";
-        resultado.textContent = "Sin conexión -- intenta de nuevo cuando tengas internet.";
+        resultado.textContent = texto;
         boton.disabled = false;
         boton.textContent = "Confirmar firma";
     }
 
+    try {
+
+        const r = await fetchConLimite(`${API_URL}/firmas/${encodeURIComponent(token)}/firmar`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ firma_base64: firmaBase64 }),
+        }, SEGUNDOS_LIMITE_ENVIO);
+
+        if (r.ok) {
+            firmaRecibida("✓ Firma enviada correctamente. Ya puedes cerrar esta página.");
+        } else if (r.status === 409 && intentoPrevio) {
+            // El primer intento sí había llegado (solo se perdió la respuesta): no hay que repetir nada.
+            firmaRecibida("✓ Tu firma ya había sido recibida. Ya puedes cerrar esta página.");
+        } else {
+            const d = await r.json().catch(() => ({}));
+            falloReintentable(d.error || "No se pudo enviar la firma. Intenta de nuevo.");
+        }
+
+    } catch (error) {
+        if (error && error.name === "AbortError") {
+            falloReintentable("La conexión está muy lenta y la firma no alcanzó a enviarse. Tu firma sigue aquí: cambia entre Wi-Fi y datos móviles (o acércate a mejor señal) y pulsa «Confirmar firma» otra vez, una sola vez.");
+        } else {
+            falloReintentable("Sin conexión -- tu firma sigue aquí. Intenta de nuevo cuando tengas internet.");
+        }
+    } finally {
+        clearTimeout(aviso);
+    }
+
+}
+
+// Si un intento anterior falló o se cortó, un «enlace ya usado» significa que sí había llegado.
+let intentoPrevio = false;
+
+// Reduce el ancho de la imagen (la firma conserva su proporción y la transparencia).
+function imagenDeLaFirma() {
+
+    const lienzo = $("lienzo");
+
+    if (lienzo.width <= ANCHO_MAXIMO_FIRMA) {
+        return lienzo.toDataURL("image/png");
+    }
+
+    const copia = document.createElement("canvas");
+    copia.width = ANCHO_MAXIMO_FIRMA;
+    copia.height = Math.max(1, Math.round(lienzo.height * (ANCHO_MAXIMO_FIRMA / lienzo.width)));
+
+    const c = copia.getContext("2d");
+    c.imageSmoothingEnabled = true;
+    c.imageSmoothingQuality = "high";
+    c.drawImage(lienzo, 0, 0, copia.width, copia.height);
+
+    return copia.toDataURL("image/png");
 }
 
 cargarContexto();
