@@ -25,10 +25,11 @@
 .profesion::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--acento)}
 .profesion:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(11,31,59,.14)}
 .profesion-icono{
-    width:52px;height:52px;border-radius:15px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+    width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;
     color:#fff;background:var(--acento);box-shadow:0 10px 22px color-mix(in srgb,var(--acento) 40%,transparent);
 }
-.profesion-icono svg{width:26px;height:26px}
+.profesion-icono svg{width:42px;height:42px}
+.hero-logo{display:block;height:68px;width:auto;margin-bottom:18px}
 .profesion h3{font-size:1.3rem;margin-bottom:8px;color:var(--marca-oscuro)}
 .profesion p{color:var(--texto-suave);font-size:.95rem}
 
